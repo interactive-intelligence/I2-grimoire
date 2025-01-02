@@ -37,7 +37,8 @@ jobs:
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         
         # Check if the PDF branch already exists
-        if git ls-remote --exit-code --heads origin PDF; then
+        ret_val=$( git ls-remote --heads git@github.com:user/repo.git refs/heads/[branch-name] | wc -l )
+        if [ $ret_val -eq 1 ]; then
           # Switch to the existing branch
           git switch PDF
           git pull
