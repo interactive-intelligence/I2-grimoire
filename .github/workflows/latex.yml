@@ -35,9 +35,11 @@ jobs:
         # Configure git credentials
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+        git fetch --all
         
         # Check if the PDF branch already exists
-        ret_val=$( git ls-remote --heads git@github.com:user/repo.git refs/heads/[branch-name] | wc -l )
+        ret_val=$( git ls-remote --heads origin refs/heads/PDF | wc -l )
         if [ $ret_val -eq 1 ]; then
           # Switch to the existing branch
           git switch PDF
