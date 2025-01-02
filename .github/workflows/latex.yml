@@ -30,7 +30,7 @@ jobs:
     - name: Update PDF branch
       run: |
         cp main.pdf /tmp
-        git checkout --orphan pdf && rm -rf . || git switch pdf
+        git checkout --orphan pdf && rm -rf * || git switch pdf
         mv /tmp/main.pdf .
         git push -u origin pdf
     
