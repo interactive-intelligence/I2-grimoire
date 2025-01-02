@@ -32,5 +32,7 @@ jobs:
         cp main.pdf /tmp
         git checkout --orphan pdf && rm -rf * || git switch pdf
         mv /tmp/main.pdf .
+        git add .
+        git commit -m "Update PDF"
         git push -u origin pdf
     
