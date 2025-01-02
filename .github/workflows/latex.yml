@@ -16,10 +16,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Compile LaTeX document
-      uses: xu-cheng/latex-action@v3
+    - uses: actions/cache@v3
+      name: Tectonic Cache
       with:
-        root_file: main.tex
+        path: ~/.cache/Tectonic
+        key: ${{ runner.os }}-tectonic-${{ hashFiles('**/*.tex') }}
+        restore-keys: |
+          ${{ runner.os }}-tectonic-
+    - uses: wtfjoke/setup-tectonic@v3
+    - name: Run Tectonic
+      run: tectonic main.tex
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
