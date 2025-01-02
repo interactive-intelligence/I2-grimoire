@@ -35,8 +35,6 @@ jobs:
         # Configure git credentials
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-
-        git fetch --all
         
         # Check if the PDF branch already exists
         ret_val=$( git ls-remote --heads origin refs/heads/PDF | wc -l )
