@@ -43,7 +43,6 @@ jobs:
         if [ $ret_val -eq 1 ]; then
           # Switch to the existing branch
           git switch PDF
-          git pull
         else
           # Create a new orphan branch
           git checkout --orphan PDF
