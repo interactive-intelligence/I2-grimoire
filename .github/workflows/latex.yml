@@ -49,16 +49,8 @@ jobs:
           # Remove all files from the new orphan branch
           git rm -rf .
         fi
-
-        # Debugging step, remove later
-        ls -ld .
-        ls -l /tmp/main.pdf
         
-        # Move the PDF back and rename it
-        if [ -f 'I2 Grimore.pdf' ]; then
-          rm 'I2 Grimore.pdf'
-        fi
-        mv /tmp/main.pdf 'I2 Grimore.pdf'
+        cp /tmp/main.pdf 'I2 Grimore.pdf'
         
         # Add and commit changes
         git add 'I2 Grimore.pdf'
