@@ -36,11 +36,8 @@ jobs:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         
-        # Fetch all branches and tags
-        git fetch --all
-        
         # Check if the PDF branch already exists
-        if git show-ref --quiet refs/heads/PDF; then
+        if git ls-remote --exit-code --heads origin refs/heads/PDF; then
           # Switch to the existing branch
           git switch PDF
           git pull
