@@ -43,6 +43,7 @@ jobs:
         if git show-ref --quiet refs/heads/PDF; then
           # Switch to the existing branch
           git switch PDF
+          git pull
         else
           # Create a new orphan branch
           git checkout --orphan PDF
