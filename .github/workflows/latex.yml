@@ -32,6 +32,7 @@ jobs:
         git checkout --orphan pdf || git switch PDF
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git reset
         git add main.pdf
         git commit -m "Update PDF"
         git push -u origin PDF
