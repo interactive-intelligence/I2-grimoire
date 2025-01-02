@@ -29,12 +29,10 @@ jobs:
 
     - name: Update PDF branch
       run: |
-        cp main.pdf /tmp
-        git checkout --orphan pdf && rm -rf * || git switch pdf
-        mv /tmp/main.pdf .
+        git checkout --orphan pdf || git switch PDF
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git add .
+        git add main.pdf
         git commit -m "Update PDF"
-        git push -u origin pdf
+        git push -u origin PDF
     
