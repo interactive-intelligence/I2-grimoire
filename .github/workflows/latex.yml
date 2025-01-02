@@ -29,14 +29,33 @@ jobs:
 
     - name: Update PDF branch
       run: |
+        # Move the PDF to a temporary location
         mv main.pdf /tmp
+        
+        # Configure git credentials
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
+        
+        # Fetch all branches and tags
         git fetch --all
-        git pull --all
-        git checkout --orphan PDF && find . -mindepth 1 ! -path './.git/*' ! -path './.git' -delete || git switch PDF
+        
+        # Check if the PDF branch already exists
+        if git show-ref --quiet refs/heads/PDF; then
+          # Switch to the existing branch
+          git switch PDF
+        else
+          # Create a new orphan branch
+          git checkout --orphan PDF
+          # Remove all files from the new orphan branch
+          git rm -rf .
+        fi
+        
+        # Move the PDF back and rename it
         mv /tmp/main.pdf 'I2 Grimore.pdf'
-        git add .
+        
+        # Add and commit changes
+        git add 'I2 Grimore.pdf'
         git commit -m "Update PDF"
+        
+        # Push changes to the origin
         git push -u origin PDF
-    
