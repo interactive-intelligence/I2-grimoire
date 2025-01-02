@@ -13,13 +13,13 @@ jobs:
   
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/moderncv/debian-texlive-docker:main
+      image: ghcr.io/sarisia/texlive:2019
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Compile LaTeX document
-      run: latexmk -pdf main.tex
+      run: latexmk -interaction=nonstopmode -pdf main.tex
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
