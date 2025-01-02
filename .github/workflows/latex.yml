@@ -29,11 +29,10 @@ jobs:
 
     - name: Update PDF branch
       run: |
-        git checkout --orphan pdf || git switch PDF
+        git checkout --orphan pdf && find . -type f \( -path ".git/*" -o -path "main.tex" \) -prune -o -delete || git switch PDF
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        git reset
-        git add main.pdf
+        git add .
         git commit -m "Update PDF"
         git push -u origin PDF
     
