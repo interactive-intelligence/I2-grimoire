@@ -7,19 +7,19 @@ on:
     branches: [ "main" ]
 
 jobs:
-  job:
+  LaTeX:
     permissions:
       contents: write
   
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/moderncv/debian-texlive-docker:main
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Compile LaTeX document
-      uses: xu-cheng/latex-action@v3
-      with:
-        root_file: main.tex
+      run: latexmk -pdf main.tex
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
@@ -27,11 +27,10 @@ jobs:
         name: PDF
         path: main.pdf
 
-    - name: Remove all files except PDF file
-      run: find . ! -name 'main.pdf' -type f -delete
-
-    - uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: Update PDF
-        branch: pdf
+    - name: Update PDF branch
+      run: |
+        cp main.pdf /tmp
+        git checkout --orphan pdf && rm -rf . || git switch pdf
+        mv /tmp/main.pdf .
+        git push -u origin pdf
     
