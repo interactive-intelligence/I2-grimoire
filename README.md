@@ -1,4 +1,4 @@
-# I2 Grimore
+# I2 Grimoire
 
 This is the repository for hosting the source for the I2 Grimoire!
 
