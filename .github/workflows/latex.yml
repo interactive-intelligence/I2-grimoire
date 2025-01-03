@@ -50,10 +50,10 @@ jobs:
           git rm -rf .
         fi
         
-        cp /tmp/main.pdf 'I2 Grimore.pdf'
+        cp /tmp/main.pdf 'I2 Grimoire.pdf'
         
         # Add and commit changes
-        git add 'I2 Grimore.pdf'
+        git add 'I2 Grimoire.pdf'
         git commit -m "Update PDF"
         
         # Push changes to the origin
