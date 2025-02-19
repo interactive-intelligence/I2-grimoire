@@ -145,60 +145,60 @@
 \end{flushleft}
 
 \section{Proofs for Problems with Behavior Cloning}
-\subsection{Quadratically Compounding Error}
-\begin{flushleft}
-    \large Below is a walkthrough demonstrating how basic behavior cloning has quadratically compounding error: \break
+% \subsection{Quadratically Compounding Error}
+% \begin{flushleft}
+%     \large Below is a walkthrough demonstrating how basic behavior cloning has quadratically compounding error: \break
 
-    To analyze the effects of deviation from the expert, we create a cost function that gives us 1 when the agent deviates from the expert and 0 otherwise. This will let us quantify the number of deviations from the expert throughout an episode. $a^*$ represents the action the expert policy ($\pi_e$) would take at time $t$: $a^* = \pi_e(s_t)$.
+%     To analyze the effects of deviation from the expert, we create a cost function that gives us 1 when the agent deviates from the expert and 0 otherwise. This will let us quantify the number of deviations from the expert throughout an episode. $a^*$ represents the action the expert policy ($\pi_e$) would take at time $t$: $a^* = \pi_e(s_t)$.
 
-    $$c(s_t, a_t) = \begin{cases} 
-          0, & \textrm{if } a_t = a^* \\
-          1, & \textrm{otherwise} 
-       \end{cases}
-    $$
+%     $$c(s_t, a_t) = \begin{cases} 
+%           0, & \textrm{if } a_t = a^* \\
+%           1, & \textrm{otherwise} 
+%        \end{cases}
+%     $$
 
-    We also assume the ``worst case scenario'', meaning that once the agent takes a decision that takes it off of the path of the expert, we have no guarantees that it will ever find its way back on track and penalize it heavily. The earlier it goes off track, the higher the penalty. A mistake at time $t = 0$ will incur a penalty of 1 for each subsequent timestep until the episode ends. We say that an episode has length $H$. So:
+%     We also assume the ``worst case scenario'', meaning that once the agent takes a decision that takes it off of the path of the expert, we have no guarantees that it will ever find its way back on track and penalize it heavily. The earlier it goes off track, the higher the penalty. A mistake at time $t = 0$ will incur a penalty of 1 for each subsequent timestep until the episode ends. We say that an episode has length $H$. So:
 
-    \begin{itemize}
-        \item If $a_t \neq a^*$  when $t=0$ $\rightarrow$ Cost = $H$
-        \item If $a_t \neq a^*$  when $t=1$ $\rightarrow$ Cost = $H-1$
-        \item If $a_t \neq a^*$  when $t=2$ $\rightarrow$ Cost = $H-2$
-        \item ...
-        \item If $a_t \neq a^*$  when $t=H-1$ $\rightarrow$ Cost = $1$
-        \item If $a_t \neq a^*$  when $t=H$ $\rightarrow$ Cost = $0$
-    \end{itemize}
+%     \begin{itemize}
+%         \item If $a_t \neq a^*$  when $t=0$ $\rightarrow$ Cost = $H$
+%         \item If $a_t \neq a^*$  when $t=1$ $\rightarrow$ Cost = $H-1$
+%         \item If $a_t \neq a^*$  when $t=2$ $\rightarrow$ Cost = $H-2$
+%         \item ...
+%         \item If $a_t \neq a^*$  when $t=H-1$ $\rightarrow$ Cost = $1$
+%         \item If $a_t \neq a^*$  when $t=H$ $\rightarrow$ Cost = $0$
+%     \end{itemize}
 
-    We can write this in summation form as:
+%     We can write this in summation form as:
 
-    $$\sum_{t=0}^H \biggl[ \sum^{H-t} c(s_t, a_t)\biggr]$$
+%     $$\sum_{t=0}^H \biggl[ \sum^{H-t} c(s_t, a_t)\biggr]$$
 
-    Because we know that $\pi_\theta$ is somewhat imperfect, we assign a probability $\epsilon$ which represents the chance that the agent picks an action different from the expert:
+%     Because we know that $\pi_\theta$ is somewhat imperfect, we assign a probability $\epsilon$ which represents the chance that the agent picks an action different from the expert:
 
-    $$p(\pi_\theta(s_t) \neq a^*) = \epsilon$$
+%     $$p(\pi_\theta(s_t) \neq a^*) = \epsilon$$
 
-    We finally take the expected value of the cost throughout an episode and bound it. We assume that $s_t$ and $a_t$ come from $\pi_\theta$:
+%     We finally take the expected value of the cost throughout an episode and bound it. We assume that $s_t$ and $a_t$ come from $\pi_\theta$:
 
-    $$\mathrm{Expected\;Cost} = \mathbb{E}\sum_{t=0}^H \biggl[ \sum^{H-t} c(s_t, a_t)\biggr]$$
+%     $$\mathrm{Expected\;Cost} = \mathbb{E}\sum_{t=0}^H \biggl[ \sum^{H-t} c(s_t, a_t)\biggr]$$
 
-    We can use Linearity of Expectation (LOE) to move the expectation inside the summations:
+%     We can use Linearity of Expectation (LOE) to move the expectation inside the summations:
 
-    $$\mathrm{Expected\;Cost} = \sum_{t=0}^H \biggl[ \sum^{H-t} \mathbb{E}[c(s_t, a_t)]\biggr]$$
+%     $$\mathrm{Expected\;Cost} = \sum_{t=0}^H \biggl[ \sum^{H-t} \mathbb{E}[c(s_t, a_t)]\biggr]$$
 
-    The expected value of an indicator variable (in this case $c(s_t,a_t)$) is equal to the probability of that event ocurring. We said earlier that the probability the agent chooses an action different from the expert is $\epsilon$:
+%     The expected value of an indicator variable (in this case $c(s_t,a_t)$) is equal to the probability of that event ocurring. We said earlier that the probability the agent chooses an action different from the expert is $\epsilon$:
 
-    $$\mathrm{Expected\;Cost} = \sum_{t=0}^H \sum^{H-t} \epsilon$$
+%     $$\mathrm{Expected\;Cost} = \sum_{t=0}^H \sum^{H-t} \epsilon$$
 
-    We can now create a quadratic upper bound:
+%     We can now create a quadratic upper bound:
 
-    \begin{align*}
-        \mathrm{Expected\;Cost} &= \sum_{t=0}^H \sum^{H-t} \epsilon \\
-        &= H\epsilon + (H-1)\epsilon + (H-2)\epsilon +...+ \epsilon + 0\\
-        &\leq H\epsilon + H\epsilon + H\epsilon +...+ H\epsilon\\
-        \mathrm{Expected\;Cost} &\leq H^2\epsilon
-    \end{align*}
+%     \begin{align*}
+%         \mathrm{Expected\;Cost} &= \sum_{t=0}^H \sum^{H-t} \epsilon \\
+%         &= H\epsilon + (H-1)\epsilon + (H-2)\epsilon +...+ \epsilon + 0\\
+%         &\leq H\epsilon + H\epsilon + H\epsilon +...+ H\epsilon\\
+%         \mathrm{Expected\;Cost} &\leq H^2\epsilon
+%     \end{align*}
 
-    Now we can clearly see that the expected error over an episode with length $H$ can be quadratically compounding.
-\end{flushleft}
+%     Now we can clearly see that the expected error over an episode with length $H$ can be quadratically compounding.
+% \end{flushleft}
 
 \subsection{Mode Averaging}
 \begin{flushleft}
