@@ -81,7 +81,7 @@ jobs:
         # copy pdfs over
         cp /tmp/main.pdf 'I2 Grimoire.pdf'
         # copy each unit
-        mkdir units
+        mkdir -p units
         cp /tmp/cv_unit.pdf './units/Computer Vision.pdf'
         cp /tmp/dl_unit.pdf './units/Deep Learning.pdf'
         cp /tmp/lm_unit.pdf './units/Language Modeling.pdf'
