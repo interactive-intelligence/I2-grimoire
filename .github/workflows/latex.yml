@@ -68,11 +68,16 @@ jobs:
         if [ $ret_val -eq 1 ]; then
           # Switch to the existing branch
           git switch PDF
+          
+          # remove generated files
+          rm -rf *
         else
           # Create a new orphan branch
           git checkout --orphan PDF
           # Remove all files from the new orphan branch
           git rm -rf .
+          # Remove untracked files as well
+          rm -rf *
         fi
         
         # copy pdfs over
