@@ -151,9 +151,9 @@ This train/test split method is fundamental to machine learning as it ensures th
     How to derive this is a tad beyond the scope of this article, especially if you are unfamiliar with matrix calculus. However, the proof is provided below for thoroughness. For a quick refresher on matrix algebra, see \href{https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi}{Essence of Linear Algebra Series by 3Blue1Brown}. For a quick refresher on matrix calculus, see \href{https://www.youtube.com/watch?v=tIkzL4jlt8g}{Matrix Calculus for Machine Learning by StatQuest}.
  
     \begin{align*}
-        \hat{\textbf{w}} &= \underset{w}{argmin} \sum_{i=1}^n (y_i - \hat{y}_i)^2 && \text{Find $\textbf{w}$ that minimizes the SSE. This is $\hat{\textbf{w}}$.}\\
-        &= \underset{w}{argmin} \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w} + b))^2 && \text{Plug in $\hat{y}_i = \textbf{x}_i^{\top}\textbf{w} + b$.}\\
-        &= \underset{w}{argmin} \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w}))^2 && \text{\parbox{0.5\textwidth}{Disregard $b$, since an intercept can be represented by appending a 1 to $\textbf{x}$.}}\\
+        \hat{\textbf{w}} &= \argmin_w \sum_{i=1}^n (y_i - \hat{y}_i)^2 && \text{Find $\textbf{w}$ that minimizes the SSE. This is $\hat{\textbf{w}}$.}\\
+        &= \argmin_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w} + b))^2 && \text{Plug in $\hat{y}_i = \textbf{x}_i^{\top}\textbf{w} + b$.}\\
+        &= \argmin_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w}))^2 && \text{\parbox{0.5\textwidth}{Disregard $b$, since an intercept can be represented by appending a 1 to $\textbf{x}$.}}\\
         0 &= \frac{\partial}{\partial w} \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\hat{\textbf{w}}))^2 && \text{\parbox{0.5\textwidth}{Find $\hat{\textbf{w}}$ by taking the partial derivative of the argmin term and setting it equal to 0.}}\\
         &= \sum_{i=1}^n \frac{\partial}{\partial w} (y_i - (\textbf{x}_i^{\top}\hat{\textbf{w}}))^2 && \text{Property of derivatives.}\\
         &= \sum_{i=1}^n 2(y_i - \textbf{x}_i^{\top}\hat{\textbf{w}})(-\textbf{x}_i) && \text{Derive.}\\
