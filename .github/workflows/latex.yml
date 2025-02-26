@@ -90,7 +90,7 @@ jobs:
         
         # Add and commit changes
         git add .
-        git commit -m "Update PDF"
+        git commit -m "Update PDF (${{ github.sha }})"
         
         # Push changes to the origin
         git push -u origin PDF
