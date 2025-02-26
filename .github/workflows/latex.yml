@@ -86,7 +86,7 @@ jobs:
         cp /tmp/rl_unit.pdf './units/Reinforcement Learning.pdf'
         
         # Add and commit changes
-        git add 'I2 Grimoire.pdf'
+        git add .
         git commit -m "Update PDF"
         
         # Push changes to the origin
