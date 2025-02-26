@@ -56,6 +56,9 @@ jobs:
       run: |
         # Move the PDF to a temporary location
         mv main.pdf cv_unit.pdf dl_unit.pdf lm_unit.pdf ml_unit.pdf rl_unit.pdf /tmp
+
+        # Remove generated tex files
+        rm cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
         
         # Configure git credentials
         git config user.name 'github-actions[bot]'
@@ -68,16 +71,11 @@ jobs:
         if [ $ret_val -eq 1 ]; then
           # Switch to the existing branch
           git switch PDF
-          
-          # remove generated files
-          rm -rf *
         else
           # Create a new orphan branch
           git checkout --orphan PDF
           # Remove all files from the new orphan branch
           git rm -rf .
-          # Remove untracked files as well
-          rm -rf *
         fi
         
         # copy pdfs over
