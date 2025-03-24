@@ -52,6 +52,9 @@ jobs:
         name: PDF
         path: main.pdf
 
+    - name: Fetch Just the docs theme
+      run: git clone https://github.com/just-the-docs/just-the-docs-template /tmp/just-the-docs
+
     - name: Update PDF branch
       run: |
         # Move the PDF to a temporary location
@@ -90,6 +93,31 @@ jobs:
 
         # Set CNAME
         echo 'grimoire.uw-i2.org' > CNAME
+
+        # Setup Just the Docs
+        cp -r /tmp/just-the-docs/* .
+
+        # Perform some edits
+        sed -i 's,^url: .*,url: http://grimoire.uw-i2.org,' _config.yml
+
+        cat << EOF > index.md
+        ---
+        title: I2 Grimoire
+        layout: minimal
+        ---
+        # I2 Grimoire 📚
+        <a style="font-size: 20px" href="./I2%20Grimoire.pdf">Link to Main PDF</a>
+        
+        ## Units
+        
+        <ul>
+        {% for file in site.static_files %}
+          {% if file.path contains '/units/' and file.extname == ".pdf" %}
+            <li><a href="{{ file.path | relative_url }}">{{ file.name | replace: '.pdf', '' }}</a></li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+        EOF
         
         # Add and commit changes
         git add .
