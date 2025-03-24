@@ -95,7 +95,7 @@ jobs:
         echo 'grimoire.uw-i2.org' > CNAME
 
         # Setup Just the Docs
-        rsync -av --exclude='.git' /tmp/just-the-docs/. .
+        cp -r /tmp/just-the-docs/* .
 
         # Perform some edits
         sed -i 's,^url: .*,url: http://grimoire.uw-i2.org,' _config.yml
