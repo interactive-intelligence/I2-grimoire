@@ -1,8 +1,11 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: I2 Grimoire
+description: The I2 textbook on Artificial Intelligence
 theme: just-the-docs
 
-url: http://grimoire.uw-i2.org
+url: https://grimoire.uw-i2.org
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  I2 Website: https://uw-i2.org
+  Intro Course: https://course.uw-i2.org
+  
+search_enabled: false

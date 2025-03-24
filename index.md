@@ -3,7 +3,8 @@ title: I2 Grimoire
 layout: minimal
 ---
 # I2 Grimoire 📚
-<a style="font-size: 20px" href="./I2%20Grimoire.pdf">Link to Main PDF</a>
+
+## [Main PDF](./I2%20Grimoire.pdf)
 
 ## Units
 
