@@ -87,6 +87,9 @@ jobs:
         cp /tmp/lm_unit.pdf './units/Language Modeling.pdf'
         cp /tmp/ml_unit.pdf './units/Machine Learning.pdf'
         cp /tmp/rl_unit.pdf './units/Reinforcement Learning.pdf'
+
+        # Set CNAME
+        echo 'grimoire.uw-i2.org' > CNAME
         
         # Add and commit changes
         git add .
