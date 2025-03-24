@@ -105,7 +105,19 @@ jobs:
         cp -r /tmp/just-the-docs/* .
 
         # Perform some edits
-        sed -i 's,^url: .*,url: http://grimoire.uw-i2.org,' _config.yml
+        cat << EOF > _config.yml
+        title: I2 Grimoire
+        description: The I2 textbook on Artificial Intelligence
+        theme: just-the-docs
+
+        url: https://grimoire.uw-i2.org
+
+        aux_links:
+          I2 Website: https://uw-i2.org
+          Intro Course: https://course.uw-i2.org
+          
+        search_enabled: false
+        EOF
 
         cat << EOF > index.md
         ---
@@ -113,7 +125,8 @@ jobs:
         layout: minimal
         ---
         # I2 Grimoire 📚
-        <a style="font-size: 20px" href="./I2%20Grimoire.pdf">Link to Main PDF</a>
+
+        ## [Main PDF](./I2%20Grimoire.pdf)
         
         ## Units
         
