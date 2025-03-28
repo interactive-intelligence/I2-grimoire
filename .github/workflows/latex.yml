@@ -28,30 +28,14 @@ jobs:
     - name: Build main document
       run: tectonic main.tex
 
-    - name: Build CV unit
+    - name: Build unit PDFs
       run: |
         sed -e 's/{{unit}}/cv/g;s/{{UNIT}}/COMPUTER VISION/g' unit_template.tex > cv_unit.tex
-        tectonic cv_unit.tex
-
-    - name: Build DL unit
-      run: |
         sed -e 's/{{unit}}/dl/g;s/{{UNIT}}/DEEP LEARNING/g' unit_template.tex > dl_unit.tex
-        tectonic dl_unit.tex
-
-    - name: Build LM unit
-      run: |
         sed -e 's/{{unit}}/lm/g;s/{{UNIT}}/LANGUAGE MODELING/g' unit_template.tex > lm_unit.tex
-        tectonic lm_unit.tex
-
-    - name: Build ML unit
-      run: |
         sed -e 's/{{unit}}/ml/g;s/{{UNIT}}/MACHINE LEARNING/g' unit_template.tex > ml_unit.tex
-        tectonic ml_unit.tex
-
-    - name: Build RL unit
-      run: |
         sed -e 's/{{unit}}/rl/g;s/{{UNIT}}/REINFORCEMENT LEARNING/g' unit_template.tex > rl_unit.tex
-        tectonic rl_unit.tex
+        parallel tectonic {} ::: cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
