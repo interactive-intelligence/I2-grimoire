@@ -56,9 +56,9 @@ jobs:
 
     - name: Convert latex to markdown
       run: |
-        # Get pandoc crossref (doesn't work)
+        # Get pandoc crossref
         cd $(mktemp -d)
-        wget -c https://github.com/lierdakil/pandoc-crossref/releases/latest/v0.3.20/pandoc-crossref-Linux-X64.tar.xz
+        wget -c https://github.com/lierdakil/pandoc-crossref/releases/latest/download/pandoc-crossref-Linux-X64.tar.xz
         tar -xf pandoc-crossref-Linux-X64.tar.xz
         sudo mv pandoc-crossref /usr/local/bin/
         sudo chmod a+x /usr/local/bin/pandoc-crossref
