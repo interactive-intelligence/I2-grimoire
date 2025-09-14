@@ -2,11 +2,11 @@
 <script>
 window.MathJax = {
   tex: {
-    // macros: {
-    //   // Ignore parbox
-    //   parbox: ["#2", 2]
-    // },
-    inlineMath: {'[+]': [['$', '$']]}
+    macros: {
+      parbox: ["#2", 2]
+    },
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    processEscapes: true
   }
 };
 </script>

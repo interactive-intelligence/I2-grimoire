@@ -18,4 +18,5 @@ nav_order: 1
 </ul>
 
 ## NEW: Experimental web version
+- TOC
 {:toc}
