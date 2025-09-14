@@ -1,4 +1,5 @@
-n---nlayout: page
+n---
+layout: page
 title: Deep Learning
 permalink: /ml
 nav_order: 2
@@ -8,7 +9,6 @@ description: Deep Learning Unit
 
 ## Fundamental Structure
 
-```{=html}
 <div class="flushleft">
 To understand deep learning (DL) on a deeper level, we must first look
 closer at neural networks. They are ubiquitous in the space of DL and
@@ -33,8 +33,6 @@ networks](dl/neuralnetwork.png){#fig:neuralnetwork
 width="0.5\\linewidth"}
 
 </div>
-```
-```{=html}
 <div class="flushleft">
 As you can see in Figure 1 above, there are different levels or layers
 of neurons (pink, then yellow, and finally blue). That is a key
@@ -51,11 +49,10 @@ model as one long vector of pixels, and this vector would be entered
 into the input layer of the model.
 
 </div>
-```
+
 ![Visualization of how images are converted into
 vectors](dl/img-vector.png){#fig:img-vector width="1\\linewidth"}
 
-```{=html}
 <div class="flushleft">
 Next are the **hidden layers**, which are yellow in the first image.
 There are usually multiple hidden layers in deep learning models,
@@ -104,10 +101,9 @@ also a lot more compute. The reasons for this will be explained in later
 sections.
 
 </div>
-```
+
 ## Flow of Information
 
-```{=html}
 <div class="flushleft">
 Now that you understand the different layers of a neural network, let's
 see how the values in the input layer travel through the edges to get to
@@ -206,10 +202,9 @@ $\textbf{b} \in \mathbb{R}^{4 \times 1}$. Based on the architecture of
 your neural network, these numbers will change in expected ways.
 
 </div>
-```
+
 ## The Perceptron and XOR
 
-```{=html}
 <div class="flushleft">
 We just wrote out the equations that define how information flows
 between two layers in a neural network. Well, if we stop here and don't
@@ -308,8 +303,6 @@ than just lines in our spaces to solve the XOR problem? The answer lies
 with nonlinearities (shocker!).
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -338,12 +331,11 @@ with nonlinearities (shocker!).
     perceptron) cannot be used to solve the XOR problem
 
 </div>
-```
+
 # Non-Linearity and Activation Functions
 
 ## Introducing Nonlinearities
 
-```{=html}
 <div class="flushleft">
 Let's take a step up from the XOR problem and look at something arguably
 more complex: Image classification. Image classification, especially
@@ -400,10 +392,9 @@ do so accurately. Of course, we would also need enough data and compute
 to train this arbitrarily large model.
 
 </div>
-```
+
 ## Common Activation Functions
 
-```{=html}
 <div class="flushleft">
 ![Plots of various activation
 functions](dl/activationfuncs.png){#fig:activationfuncs
@@ -415,39 +406,35 @@ binary classification tasks but can cause issues like vanishing
 gradients in deeper networks (more on this later). The formula, where
 $x$ is a given neuron's output is:
 
-```{=html}
 <div class="center">
 $\sigma(x) = \frac{1}{1+e^{-x}}$
 
 </div>
-```
+
 The hyperbolic tangent activation function, or **tanh**, squashes inputs
 between -1 and 1. It is zero-centered, which makes it easier for
 optimization compared to the sigmoid function. The tanh formula is:
 
-```{=html}
 <div class="center">
 $tanh(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$
 
 </div>
-```
+
 Another activation function, **Rectified Linear Unit or ReLU**, outputs
 the input if it's positive, and zero otherwise. It is computationally
 efficient and helps alleviate the vanishing gradient problem by allowing
 gradients to flow when the input is positive. ReLU is written as:
 
-```{=html}
 <div class="center">
 $ReLU(x) = MAX(0,x)$
 
 </div>
-```
+
 There is also another form of the ReLU activation function called
 **Leaky ReLU** that allows a small, non-zero gradient when the input is
 negative, helping prevent the issue of \"dead neurons\" (neurons that
 never activate). Leaky ReLU looks like:
 
-```{=html}
 <div class="center">
 $$f(x)= 
         \begin{cases}
@@ -456,11 +443,8 @@ $$f(x)=
         \end{cases}$$
 
 </div>
-```
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -476,12 +460,11 @@ $$f(x)=
 3.  In your own words, what is the Universal Approximation Theorem?
 
 </div>
-```
+
 # Backpropagation
 
 ## Loss Functions
 
-```{=html}
 <div class="flushleft">
 How does a neural network 'learn' using training (a.k.a labeled) data?
 It uses a process called **backpropagation**. This process adjusts the
@@ -536,10 +519,9 @@ Calculating these loss metrics is the final step of what is called the
 the **backward pass** or **backpropagation**.
 
 </div>
-```
+
 ## Derivatives and Gradients
 
-```{=html}
 <div class="flushleft">
 Before we delve into the semi-convoluted math behind backpropagation, we
 should revisit some concepts from calculus. Take a look at the equation
@@ -614,10 +596,9 @@ There are tricks we can use to calculate gradients in chunks rather than
 taking 100's of derivatives.
 
 </div>
-```
+
 ## Gradient Flow
 
-```{=html}
 <div class="flushleft">
 The model first calculates the derivative of the loss with respect to
 $\hat{y}_i$, since $\hat{y}_i$ is the output of the model. For ease of
@@ -695,10 +676,9 @@ discuss its significance later. Congratulations, you know understand
 basic gradient descent!
 
 </div>
-```
+
 ## Optimizers and Learning Rates
 
-```{=html}
 <div class="flushleft">
 While gradient descent is a common optimizer and is easy to follow
 mathematically, it is unfortunately very expensive computationally and
@@ -735,8 +715,6 @@ a loss function (in this graphic represented as
 $J(\theta).$](dl/lr.png){#fig:lr width="1\\linewidth"}
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -758,10 +736,9 @@ $J(\theta).$](dl/lr.png){#fig:lr width="1\\linewidth"}
     optimal direction compared to GD?
 
 </div>
-```
+
 # Regularization
 
-```{=html}
 <div class="flushleft">
 We will now cover an incredibly important topic for deep learning:
 **regularization**. In ML, regularization often is applied in the form
@@ -771,10 +748,9 @@ learning to prevent overfitting, but comes about in more interesting and
 varied ways. We will quickly cover two common ones in shallow detail.
 
 </div>
-```
+
 ## Dropout
 
-```{=html}
 <div class="flushleft">
 **Dropout:** During each forward pass, a certain fraction of neurons are
 temporarily dropped from the neural network. The connections they have
@@ -817,10 +793,9 @@ expected distribution of values flowing from one layer to the next stays
 the same as it was during training time.
 
 </div>
-```
+
 ## Batch Normalization
 
-```{=html}
 <div class="flushleft">
 **Batchnorm:** Batchnorm, or batch normalization, is a very common
 technique used to regularize neural networks and improve training
@@ -867,8 +842,6 @@ are needed. Normalization plus scale and shift removes this problem, and
 thus batchnorm helps greatly with a network's convergence.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -883,10 +856,9 @@ thus batchnorm helps greatly with a network's convergence.
     works.
 
 </div>
-```
+
 # When to Use Deep Learning/Neural Networks
 
-```{=html}
 <div class="flushleft">
 While we have shown the great power and ability of neural networks and
 deep learning, with all this power comes great cost. Neural networks are
@@ -906,10 +878,9 @@ necessary and when a more lightweight solution will suffice. Always
 choose the right tool for the job.
 
 </div>
-```
+
 # Conclusion (DL)
 
-```{=html}
 <div class="flushleft">
 This section covered the fundamental concepts of deep learning, with a
 heavy focus on neural networks. We also introduced important concepts
@@ -922,4 +893,3 @@ goal. Understanding how they work and how to train them is critical to
 evaluating these systems.
 
 </div>
-```

@@ -1,4 +1,5 @@
-n---nlayout: page
+n---
+layout: page
 title: Computer Vision
 permalink: /cv
 nav_order: 3
@@ -8,7 +9,6 @@ description: Computer Vision Unit
 
 ## Problem Definition
 
-```{=html}
 <div class="flushleft">
 Reinforcement Learning is a subfield of AI that concerns itself with
 optimizing behavior of **agents** in **environments** using **rewards**.
@@ -44,10 +44,9 @@ subcategories, and end with a couple algorithms and their
 strengths/weaknesses.
 
 </div>
-```
+
 ## Common Symbols and Definitions
 
-```{=html}
 <div class="flushleft">
 Here are some common symbols used in RL and their meanings. Analogies
 have been provided for ease of understanding.
@@ -160,10 +159,9 @@ have been provided for ease of understanding.
     can think of it as "recording" an agent's playthrough of World 1-1.
 
 </div>
-```
+
 ## Markov Decision Process
 
-```{=html}
 <div class="flushleft">
 I mentioned earlier that there were a few restrictions to defining
 something as an RL problem. The **Markovian property** is one of them.
@@ -218,10 +216,9 @@ how it will transition. Everything is captured in this clever definition
 of a state.
 
 </div>
-```
+
 ## On vs. Off-Policy RL
 
-```{=html}
 <div class="flushleft">
 A short but important note on the terms **on-policy** and **off-policy**
 RL. If you decide to pursue RL on a deeper level, the distinction will
@@ -254,8 +251,6 @@ algorithms, while more sample efficient, tend to be less stable and
 require a few tricks to work properly.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -276,12 +271,11 @@ require a few tricks to work properly.
     question)?
 
 </div>
-```
+
 # Imitation Learning
 
 ## Basic Behavior Cloning
 
-```{=html}
 <div class="flushleft">
 Taking a step back from the plethora of notation, we will approach RL
 somewhat naively through **behavior cloning**, one of the simplest forms
@@ -349,10 +343,9 @@ We now have a policy that can accept a state, and act accordingly. This
 all seems much too simple though. What is the drawback?
 
 </div>
-```
+
 ## Problems with Behavior Cloning
 
-```{=html}
 <div class="flushleft">
 There are two compounding problems with behavior cloning that make a
 basic implementation mostly unviable for complex situations.
@@ -399,12 +392,11 @@ the black dashed line represents what a simple policy will converge
 on.](rl/modeavg.png){#fig:modeavg width="0.9\\linewidth"}
 
 </div>
-```
+
 # Proofs for Problems with Behavior Cloning
 
 ## Mode Averaging
 
-```{=html}
 <div class="flushleft">
 Below is a walkthrough demonstrating how mode-averaging comes out as a
 problem in behavior cloning:
@@ -510,10 +502,9 @@ this that I suggest you read if you are very interested in this
 subsection of RL.
 
 </div>
-```
+
 # DAgger Algorithm
 
-```{=html}
 <div class="flushleft">
 DAgger seeks to preserve the core of behavior cloning learning by
 following an expert but making it so that we are not on a "precarious
@@ -559,8 +550,6 @@ a naive implementation. The next few sections will cover more "core" RL
 algorithms and analyze their strengths/weaknesses.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -581,12 +570,11 @@ algorithms and analyze their strengths/weaknesses.
     do you prevent it from happening?
 
 </div>
-```
+
 # Policy Gradient
 
 ## Basic Policy Gradient
 
-```{=html}
 <div class="flushleft">
 ![An illustration showing how the agent and environment communicate
 through actions, states, and rewards in a traditional RL setting. The
@@ -699,12 +687,11 @@ and over again $N$ times and perform an update. Perform many updates and
 you will get an agent that can play a complex game!
 
 </div>
-```
+
 # Advanced Policy Gradient Concepts
 
 ## Return-to-Go
 
-```{=html}
 <div class="flushleft">
 Despite seeming complex enough, Vanilla PG suffers from a few problems:
 The biggest of them being that Vanilla PG is a **high-variance
@@ -731,10 +718,9 @@ $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \na
 Notice that in the third summation, we changed from $t'=0$ to $t'=t$.
 
 </div>
-```
+
 ## Baseline Function
 
-```{=html}
 <div class="flushleft">
 Another way to reduce the variance of the estimator (without increasing
 the bias) is to subtract a **baseline function** ($b(s_t)$) from the
@@ -758,10 +744,9 @@ More complex baseline functions can be more effective, but begin to
 blend the line between PG and another RL algorithm (Actor-Critic).
 
 </div>
-```
+
 ## Natural Policy Gradient
 
-```{=html}
 <div class="flushleft">
 The final PG improvement we will be covering (in brief) is Natural
 Policy Gradient (NPG). A large issue that comes up within PG methods is
@@ -802,10 +787,9 @@ powerful. I suggest looking into both of these methods if you are
 interested in exploring policy gradient methods more.
 
 </div>
-```
+
 ## Proof for Gradient of the PG Objective
 
-```{=html}
 <div class="flushleft">
 Below is a walkthrough demonstrating how to calculate the gradient of
 the policy gradient objective function:
@@ -913,8 +897,6 @@ the impact is minimal.
 $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \nabla_\theta \mathrm{log}\pi_\theta(a_t^i|s_t^i)\sum_{t'=0}^T \gamma^{t'} r(s_{t'}^i, a_{t'}^i)\biggr]$$
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -949,12 +931,11 @@ $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \na
     -   Natural policy gradient/constrained optimization
 
 </div>
-```
+
 # Deep Q-Learning
 
 ## Q-Functions and Bellman Equations
 
-```{=html}
 <div class="flushleft">
 Q-Learning will introduce us to our first off-policy RL algorithm, and
 is the first step into a whole other realm of RL algorithms. Many of
@@ -1044,12 +1025,11 @@ This is naturally off-policy, as the policy that $\tau$ comes from and
 the policy that $Q^\pi$ operates off of do *not* need to be the same.
 
 </div>
-```
+
 # Making Q-Learning Work
 
 ## Replay Buffer and Memory
 
-```{=html}
 <div class="flushleft">
 One of the main benefits of an off-policy algorithm are that we can use
 data from old trajectories many times instead of once. Since the policy
@@ -1071,10 +1051,9 @@ disposal allows it to learn faster and have greater sample efficiency.
 $$\underset{\phi}{\mathrm{argmin}}\;\mathbb{E}_{\tau \sim \mathcal{D}}\biggl[\biggl(Q_\phi^\pi(s_t, a_t) - (r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1}))\biggr)^2\biggr]$$
 
 </div>
-```
+
 ## Optimization Stability and Polyak Averaging
 
-```{=html}
 <div class="flushleft">
 By now you may still have a little skepticism on how we can improve
 $Q^\pi_\phi$ if it is being compared not to a ground truth, but mainly
@@ -1101,10 +1080,9 @@ the speed at which $\hat{\phi}$ approaches the same weights and biases
 as $\phi$.
 
 </div>
-```
+
 ## Explore vs. Exploit and epsilon-Greedy Search
 
-```{=html}
 <div class="flushleft">
 One of the final small concepts to discuss is not actually unique to
 Q-Learning or even RL, but benefits them greatly and is worth talking
@@ -1146,8 +1124,6 @@ which paths to take. These paths can be much better in the long run for
 the agent. Perhaps there is a life lesson in here somewhere?
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -1178,10 +1154,9 @@ the agent. Perhaps there is a life lesson in here somewhere?
     how $\epsilon$-greedy search mitigates this issue.
 
 </div>
-```
+
 # When to Use Reinforcement Learning
 
-```{=html}
 <div class="flushleft">
 Deep reinforcement learning is relatively situational, and can be very
 unstable to train. It unfortunately takes a lot of compute,
@@ -1204,10 +1179,9 @@ article. A deeper understanding of RL requires a lot of math and
 reading, but you can do it!
 
 </div>
-```
+
 # Conclusion (RL)
 
-```{=html}
 <div class="flushleft">
 This section covered basic RL concepts, introducing common notation and
 4 major algorithms (Behavior Cloning, DAgger, Policy Gradient,
@@ -1220,4 +1194,3 @@ shocking to many. Understanding the basics of these algorithms can
 demystify their power and quell fears about their capabilities.
 
 </div>
-```

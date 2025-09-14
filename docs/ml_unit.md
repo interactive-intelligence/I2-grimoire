@@ -1,4 +1,5 @@
-n---nlayout: page
+n---
+layout: page
 title: Machine Learning
 permalink: /ml
 nav_order: 1
@@ -6,7 +7,6 @@ description: Machine Learning Unit
 ---
 # Introduction to Machine Learning
 
-```{=html}
 <div class="flushleft">
 Machine Learning (ML) is a powerful subset of artificial intelligence
 (AI) that empowers computers to learn from data and make predictions or
@@ -26,10 +26,9 @@ identify digits it has never encountered before, thus demonstrating its
 ability to generalize from the data it was trained on.
 
 </div>
-```
+
 ## Data Splitting: Train and Test Sets
 
-```{=html}
 <div class="flushleft">
 **Train/Test Split** refers to this method of dividing the dataset,
 typically using an 80-20 or 70-30 ratio. For example, in an 80-20 split,
@@ -67,10 +66,9 @@ ensures that models can be assessed on their ability to generalize,
 avoiding bias toward the data they were trained on.
 
 </div>
-```
+
 ## Regression and Classification Tasks
 
-```{=html}
 <div class="flushleft">
 Machine learning generally tackles two major types of problems:
 regression and classification.
@@ -88,12 +86,11 @@ features (like height, age, etc.) are used to predict an output, such as
 house prices or stock market trends.
 
 </div>
-```
+
 # Linear Regression: Regression
 
 ## Fundamentals of Linear Regression
 
-```{=html}
 <div class="flushleft">
 In machine learning, linear regression is one of the most fundamental
 algorithms. It tries to model the relationship between input features
@@ -116,10 +113,9 @@ target values in the training data. This is often done by minimizing the
 Sum of Squared Errors (SSE).
 
 </div>
-```
+
 ## Understanding Sum of Squared Errors (SSE)
 
-```{=html}
 <div class="flushleft">
 The **Sum of Squared Errors (SSE)** is a commonly used metric in
 regression analysis to quantify how well a model fits the observed data.
@@ -133,12 +129,11 @@ significantly to the total error).
 
 The formula for SSE is:
 
-```{=html}
 <div class="center">
 $SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$
 
 </div>
-```
+
 Where:
 
 -   $y_i$ represents the **actual value** for data point $i$,
@@ -165,10 +160,9 @@ values, indicating that the model is accurate and effectively capturing
 the patterns in the data.
 
 </div>
-```
+
 ## Minimizing SSE: Simple Case
 
-```{=html}
 <div class="flushleft">
 **Least Squares Regression** is one of the most widely used methods in
 statistics for finding the best-fitting line through a set of data
@@ -180,12 +174,11 @@ minimizes the overall prediction error across all data points.
 
 In simple linear regression, the model is expressed as:
 
-```{=html}
 <div class="center">
 $\hat{y} = w_0 + w_1x$
 
 </div>
-```
+
 Where:
 
 -   $w_0$ is the **intercept** of the line, representing the predicted
@@ -208,28 +201,24 @@ Mathematically, this optimization process requires taking the partial
 derivatives of SSE with respect to the weights (including the intercept)
 and setting them to zero. This gives us the **normal equations**:
 
-```{=html}
 <div class="center">
 $w_0 = \frac{\sum y - w_1\sum x}{n}$
 
 </div>
-```
-```{=html}
 <div class="center">
 $w_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}$
 
 </div>
-```
+
 These equations provide the values of the intercept ($w_0$) and the
 slope ($w_1$) that minimize SSE. Once these values are calculated, the
 resulting regression line represents the best-fitting line for the data
 according to the least squares criterion.
 
 </div>
-```
+
 ## Minimizing SSE: General Case
 
-```{=html}
 <div class="flushleft">
 What if you had a model with many more input features, like the one we
 showed at the beginning of the article?
@@ -328,10 +317,9 @@ we have two other very common types of regression called Ridge and
 LASSO.
 
 </div>
-```
+
 ## Ridge and LASSO Regressions
 
-```{=html}
 <div class="flushleft">
 We must first quickly introduce a concept called **regularization**.
 Quite often, you will find that the weights estimated by
@@ -446,8 +434,6 @@ only use relevant features for the final output (perhaps due to
 computational constraints).
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -482,12 +468,11 @@ computational constraints).
     regression.
 
 </div>
-```
+
 # Logistic Regression: Classification
 
 ## Fundamentals of Logistic Regression
 
-```{=html}
 <div class="flushleft">
 Logistic regression, despite its name, is a classification algorithm
 used to predict a binary outcome---often represented as a "yes/no" or
@@ -503,12 +488,11 @@ tells us how likely the input belongs to one of two possible classes,
 usually denoted as 1 (positive class) or 0 (negative class). The sigmoid
 function is defined as:
 
-```{=html}
 <div class="center">
 $P(y=1|x) = \frac{1}{1 + e^{-(b + w^{\top}x)}}$
 
 </div>
-```
+
 Where:
 
 -   $w$ is the **weight vector**, which defines the importance of each
@@ -521,10 +505,9 @@ Where:
     squeezed between 0 and 1.
 
 </div>
-```
+
 ## The Sigmoid Function and Its Role
 
-```{=html}
 <div class="flushleft">
 ![A graph showing the sigmoid
 function.](ml/sigmoid_function.png){#fig:sigmoid_function
@@ -551,10 +534,9 @@ probability is greater than 0.5, we predict class 1, and if it is less
 than 0.5, we predict class 0.
 
 </div>
-```
+
 ## Training with the Log-Likelihood Loss
 
-```{=html}
 <div class="flushleft">
 To make logistic regression work effectively, we need to find the best
 values for the weights $w$ and bias $b$. This is done by minimizing the
@@ -569,10 +551,9 @@ weights are fine-tuned to give the highest probability for the correct
 class as often as possible.
 
 </div>
-```
+
 ## Extensions to Multiclass Classification
 
-```{=html}
 <div class="flushleft">
 While logistic regression is primarily used for binary classification,
 it can be extended to handle multiple classes through methods such as
@@ -582,10 +563,9 @@ input belongs to one particular class or any of the others. The model
 with the highest probability ultimately decides the final class label.
 
 </div>
-```
+
 ## Why It's Called "Regression"
 
-```{=html}
 <div class="flushleft">
 The term "logistic regression" comes from its similarity to **linear
 regression**. Both methods start by calculating a linear combination of
@@ -596,8 +576,6 @@ difference is crucial to understanding why logistic regression is a
 classification algorithm despite having "regression" in its name.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -608,12 +586,11 @@ classification algorithm despite having "regression" in its name.
     either class, what must have $b + w^{\top}x$ have been?
 
 </div>
-```
+
 # K-Means Clustering: Unsupervised Learning
 
 ## Introduction to Unsupervised Learning
 
-```{=html}
 <div class="flushleft">
 In contrast to supervised learning, which learns from labeled data,
 **unsupervised learning** operates on **unlabeled data** and aims to
@@ -625,10 +602,9 @@ methods where there is a clear "right answer", the objective here is to
 let the algorithm uncover these clusters on its own.
 
 </div>
-```
+
 ## How K-Means Clustering Works
 
-```{=html}
 <div class="flushleft">
 At its core, k-means clustering is about finding the best way to group
 data points. This process involves iteratively assigning data points to
@@ -662,10 +638,9 @@ between each data point and its cluster's centroid. This ensures that
 points in the same cluster are as close to each other as possible.
 
 </div>
-```
+
 ## Minimizing Within-Cluster Distance
 
-```{=html}
 <div class="flushleft">
 In k-means clustering, the objective is to reduce the **within-cluster
 variance**, or in simpler terms, the total distance between the data
@@ -687,10 +662,9 @@ within the same cluster are tightly packed around their centroid, making
 the clustering meaningful.
 
 </div>
-```
+
 ## Choosing the Number of Clusters
 
-```{=html}
 <div class="flushleft">
 A critical decision in k-means clustering is determining the value of
 $k$, or how many clusters the data should be divided into. Often, this
@@ -711,10 +685,9 @@ compared to other clusters. Higher silhouette scores indicate
 better-defined clusters.
 
 </div>
-```
+
 ## Limitations of K-Means Clustering
 
-```{=html}
 <div class="flushleft">
 While k-means is an effective clustering algorithm, it comes with
 several limitations:
@@ -741,8 +714,6 @@ the data is well-structured and the number of clusters is approximately
 known.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -762,12 +733,11 @@ known.
     initialization?
 
 </div>
-```
+
 # K-Means vs. K-Medians Clustering
 
 ## Introduction to K-Medians Clustering
 
-```{=html}
 <div class="flushleft">
 While **k-means** is a widely used method for clustering, an alternative
 approach is **k-medians clustering**, which offers a different way of
@@ -786,10 +756,9 @@ stable representation of the typical cluster member in datasets with
 noisy or skewed distributions.
 
 </div>
-```
+
 ## K-Medians Use Cases
 
-```{=html}
 <div class="flushleft">
 **K-medians** clustering is especially useful in situations where the
 data contains significant **outliers** or when using non-Euclidean
@@ -809,10 +778,9 @@ behind k-means (such as normal distribution of data or minimal outliers)
 do not hold.
 
 </div>
-```
+
 ## Key Differences Between K-Means and K-Medians
 
-```{=html}
 <div class="flushleft">
 The fundamental difference between **k-means** and **k-medians** lies in
 how they compute the cluster centroids and the distance metrics they
@@ -844,8 +812,6 @@ offers a more resilient solution for datasets with irregularities or
 noise.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -859,12 +825,11 @@ noise.
     of these algorithms will work well
 
 </div>
-```
+
 # Other ML Concepts
 
 ## Bias-Variance Tradeoff
 
-```{=html}
 <div class="flushleft">
 This is a concept that doesn't really fit anywhere else, but is
 incredibly important to talk about. The bias-variance tradeoff heavily
@@ -922,10 +887,9 @@ variance for model fitting.](ml/biasvariance.jpg){#fig:biasvariance
 width="0.8\\linewidth"}
 
 </div>
-```
+
 ## Convexity
 
-```{=html}
 <div class="flushleft">
 Convexity is important for ML models as well. So far, the linear models
 we have shown you are all **convex**. What this means is that we can
@@ -957,8 +921,6 @@ weights that fit the data as well as possible for the model's complexity
 class.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -975,10 +937,9 @@ class.
     problems? Give reasoning (does not need to be in proof form)
 
 </div>
-```
+
 # When to Use Machine Learning Algorithms
 
-```{=html}
 <div class="flushleft">
 Machine learning models are widely used in applications like image
 recognition, natural language processing, and predictive analytics.
@@ -992,10 +953,9 @@ valuable when you want to find hidden patterns in the data without
 labeled outcomes.
 
 </div>
-```
+
 # Conclusion (ML)
 
-```{=html}
 <div class="flushleft">
 This section covered the fundamental concepts of machine learning, with
 a focus on supervised learning (linear regression) and unsupervised
@@ -1010,4 +970,3 @@ modern systems. More often than not, Occam's Razor holds true: Don't use
 more than necessary and overcomplicate things.
 
 </div>
-```

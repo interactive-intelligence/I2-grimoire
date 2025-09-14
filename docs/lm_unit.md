@@ -1,4 +1,5 @@
-n---nlayout: page
+n---
+layout: page
 title: Lanuguage Modeling
 permalink: /lm
 nav_order: 4
@@ -6,7 +7,6 @@ description: Language Modeling Unit
 ---
 # Introduction to Language Modeling
 
-```{=html}
 <div class="flushleft">
 Language Modeling (LM) is about building systems that can understand,
 generate, or transform human language. At its simplest, a language model
@@ -17,12 +17,11 @@ translation, text summarization, and search engines.
 
 Let's consider an example:
 
-```{=html}
 <div class="center">
 *"The quick brown fox jumps \_\_\_."*
 
 </div>
-```
+
 Given this sentence, a language model would likely predict the word
 "over" as the next word, drawing on patterns it has learned from
 analyzing text. By recognizing and using patterns in language, these
@@ -48,10 +47,9 @@ of an entire sequence is determined by multiplying the probabilities of
 each word, one after another, given their context.
 
 </div>
-```
+
 ## How Are Language Models Trained?
 
-```{=html}
 <div class="flushleft">
 To train a language model, we show it large amounts of text and teach it
 to minimize its prediction errors. Specifically, we compare the words it
@@ -67,10 +65,9 @@ becomes. Training involves minimizing this loss so the model becomes
 better at predicting language patterns.
 
 </div>
-```
+
 ## Important Concepts in Language modeling
 
-```{=html}
 <div class="flushleft">
 Below are some of the essentials of language modeling:
 
@@ -90,8 +87,6 @@ We want to understand the theoretical foundations of language models,
 how they're built and trained, and their real-world impact.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -103,12 +98,11 @@ how they're built and trained, and their real-world impact.
     understanding language compared to traditional rule-based systems?
 
 </div>
-```
+
 # Foundational Concepts
 
 ## Tokenization: The First Step
 
-```{=html}
 <div class="flushleft">
 Tokenization breaks raw text into smaller units called **tokens**, which
 are the building blocks for language models. Tokenization is essential
@@ -148,8 +142,6 @@ as \[\"transform\", \"ational\"\], capturing semantic and morphological
 relationships.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -163,10 +155,9 @@ relationships.
     which tokenization approach would likely work best and why?
 
 </div>
-```
+
 ## Embeddings: Representing Tokens Numerically
 
-```{=html}
 <div class="flushleft">
 After tokenization, tokens are represented as discrete symbols, which
 must be converted into numerical vectors for processing by language
@@ -237,8 +228,6 @@ relationships with other tokens.
     in dense vector spaces.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -257,10 +246,9 @@ relationships with other tokens.
     might you employ to make embeddings effective in this context?
 
 </div>
-```
+
 ## Sequence Modeling: The Core Objective
 
-```{=html}
 <div class="flushleft">
 At the heart of language modeling lies the task of sequence prediction,
 which involves estimating the probability of a sequence of tokens.
@@ -353,8 +341,6 @@ understanding how language models generate coherent and contextually
 relevant outputs.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -369,12 +355,11 @@ relevant outputs.
     What are the trade-offs?
 
 </div>
-```
+
 # Core Architectures of Language Models
 
 ## Recurrent Neural Networks (RNNs)
 
-```{=html}
 <div class="flushleft">
 **Recurrent Neural Networks (RNNs)** are designed to process sequential
 data by maintaining a hidden state that evolves over time. The hidden
@@ -428,10 +413,9 @@ have largely been replaced by architectures like Transformers, which
 overcome the limitations of sequential processing.
 
 </div>
-```
+
 ## Transformers: A Paradigm Shift
 
-```{=html}
 <div class="flushleft">
 **Transformers** revolutionized language modeling by eliminating the
 need for sequential processing, enabling parallel computation and
@@ -539,8 +523,6 @@ relationships between tokens. This capability enables deep contextual
 understanding across an entire sequence.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -558,10 +540,9 @@ understanding across an entire sequence.
     issues would arise without them?
 
 </div>
-```
+
 # NLP Tasks Enabled by Language Models
 
-```{=html}
 <div class="flushleft">
 Language models empower a diverse array of natural language processing
 (NLP) tasks, leveraging their ability to understand and generate text.
@@ -613,8 +594,6 @@ multiple tasks with minimal task-specific customization demonstrates
 their adaptability and utility in real-world applications.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -625,12 +604,11 @@ their adaptability and utility in real-world applications.
     sentiment analysis?
 
 </div>
-```
+
 # Advanced Topics in Language Modeling
 
 ## Challenges in Large Language Models (LLMs)
 
-```{=html}
 <div class="flushleft">
 The advent of large language models (LLMs) such as GPT-4 has unlocked
 unprecedented capabilities in natural language understanding and
@@ -749,10 +727,9 @@ harm. This balance is essential for their continued advancement and
 integration into critical societal functions.
 
 </div>
-```
+
 ## Reinforcement Learning with Human Feedback (RLHF)
 
-```{=html}
 <div class="flushleft">
 Reinforcement Learning with Human Feedback (RLHF) enhances language
 model alignment with user expectations by incorporating human-provided
@@ -827,8 +804,6 @@ language models, enabling them to deliver high-quality, aligned outputs
 in complex real-world applications.
 
 </div>
-```
-```{=html}
 <div class="questionbox">
 **Synthesis Questions:**
 
@@ -845,10 +820,9 @@ in complex real-world applications.
     limitations of each approach?
 
 </div>
-```
+
 # When to Use Language Models
 
-```{=html}
 <div class="flushleft">
 Language modeling has taken the world by storm, for those both in and
 out of the "AI" space. Advances within LM have allowed for the advent of
@@ -863,10 +837,9 @@ pretrained models can be found and used quite easily on sites like
 [HuggingFace](https://huggingface.co/models).
 
 </div>
-```
+
 # Conclusion (LM)
 
-```{=html}
 <div class="flushleft">
 By delving into foundational concepts, core architectures, and advanced
 techniques like Reinforcement Learning with Human Feedback (RLHF), this
@@ -890,4 +863,3 @@ implications will be crucial for building intelligent, responsible, and
 impactful NLP systems.
 
 </div>
-```
