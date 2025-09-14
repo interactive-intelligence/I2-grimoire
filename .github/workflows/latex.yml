@@ -53,7 +53,7 @@ jobs:
         sed -e 's/{{unit}}/ml/g' md_template.tex > ml_unit.tex
         sed -e 's/{{unit}}/rl/g' md_template.tex > cv_unit.tex
         echo 'Running Pandoc...'
-        parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {} ::: cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
+        parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {}.tex ::: cv_unit dl_unit lm_unit ml_unit rl_unit
         # Add header to each file
         sed -i -e '1i\n---nlayout: page\ntitle: Computer Vision\npermalink: /cv\nnav_order: 3\ndescription: Computer Vision Unit\n---' cv_unit.md
         sed -i -e '1i\n---nlayout: page\ntitle: Deep Learning\npermalink: /ml\nnav_order: 2\ndescription: Deep Learning Unit\n---' dl_unit.md
