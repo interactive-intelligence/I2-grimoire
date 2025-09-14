@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Deep Learning
-permalink: /ml
+permalink: /dl
 nav_order: 3
 description: Deep Learning Unit
 ---

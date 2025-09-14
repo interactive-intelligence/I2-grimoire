@@ -9,3 +9,6 @@ aux_links:
   Intro Course: https://course.uw-i2.org
   
 search_enabled: false
+
+kramdown:
+  table_extension: false

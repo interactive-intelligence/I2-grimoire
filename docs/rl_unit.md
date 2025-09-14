@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Reinforcement Learning
-permalink: /ml
+permalink: /rl
 nav_order: 6
 description: Reinforcement Learning Unit ---
 ::: {style="background-color: neuripscolor"}
