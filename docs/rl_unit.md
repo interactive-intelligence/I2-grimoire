@@ -283,15 +283,15 @@ of RL. Rewards are not even needed in this problem formulation, and it
 blurs the lines between supervised learning and reinforcement learning.
 
 In this problem formulation, we assume we have an expert from which we
-get many $(s^*, a^*)$ pairs. The superscript stars denote that this
+get many $(s^{*}, a^{*})$ pairs. The superscript stars denote that this
 information is "optimal". We assume that the expert has solved the
 problem perfectly. For example, we would allow a human with a remote
 control to operate a robotic arm and perform a task. The telemetry data
 would be recorded and this dataset is referred to as $\mathcal{D}$, from
-which we can sample $(s^*, a^*)$ pairs. We can now write an optimization
-objective:
+which we can sample $(s^{*}, a^{*})$ pairs. We can now write an
+optimization objective:
 
-$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr]$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr]$$
 
 This seems complicated so let's break it down:
 
@@ -307,37 +307,38 @@ $$\underset{x}{\textrm{argmax}}\biggl[-x^2\biggr] = 0$$
 0 is the value of $x$ that maximizes $-x^2$, so
 $\underset{x}{\textrm{argmax}}$ = 0.
 
-$$\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\cdot]$$ $$\downarrow$$
-$$\underset{\theta}{\textrm{argmax}}\biggl[ \mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\cdot] \biggr]$$
+$$\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\cdot]$$ $$\downarrow$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[ \mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\cdot] \biggr]$$
 
 A subscript of an expectation can be somewhat ambiguous, and mean
 slightly different things depending on context. In this case, we are
-defining where $s^*$ and $a^*$ come from (the expert distribution
+defining where $s^{*}$ and $a^{*}$ come from (the expert distribution
 $\mathcal{D}$). This becomes important because these two variables are
 part of the final term we introduce:
 
-$$\mathrm{log}\pi_\theta(a^*|s^*)$$ $$\downarrow$$
-$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr]$$
+$$\mathrm{log}\pi_\theta(a^{*}|s^{*})$$ $$\downarrow$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr]$$
 
 $\pi_\theta$ is the policy, parameterized by $\theta$. What this means
 is that if this policy is represented by a neural network, *then
-$\theta$ are the weights and biases*. $\mathrm{log}\pi_\theta(a^*|s^*)$
-is the "log-probability" of the model choosing $a^*$ given $s^*$. The
-highest this probability can be is 1. Note that the logarithm of 1
-evaluates to 0. Anything below 1 will evaluate to be exponentially more
-negative/worse. So if we wish to find the weights and biases ($\theta$)
-that maximize $\mathrm{log}\pi_\theta(a^*|s^*)$, we need to select
-weights and biases that assign a probability of 1 to $a^*$ given $s^*$
-and 0 to all other actions. We know that $a^*$ and $s^*$ come from an
-expert distribution $\mathcal{D}$ thanks to the subscript. Therefore if
-we find $\theta$, we have a policy that will act optimally given the
-states it has seen! This notation may seem heavy, but it is a primer for
-more complex algorithms.
+$\theta$ are the weights and biases*.
+$\mathrm{log}\pi_\theta(a^{*}|s^{*})$ is the "log-probability" of the
+model choosing $a^{*}$ given $s^{*}$. The highest this probability can
+be is 1. Note that the logarithm of 1 evaluates to 0. Anything below 1
+will evaluate to be exponentially more negative/worse. So if we wish to
+find the weights and biases ($\theta$) that maximize
+$\mathrm{log}\pi_\theta(a^{*}|s^{*})$, we need to select weights and
+biases that assign a probability of 1 to $a^{*}$ given $s^{*}$ and 0 to
+all other actions. We know that $a^{*}$ and $s^{*}$ come from an expert
+distribution $\mathcal{D}$ thanks to the subscript. Therefore if we find
+$\theta$, we have a policy that will act optimally given the states it
+has seen! This notation may seem heavy, but it is a primer for more
+complex algorithms.
 
 How this is implemented in code is quite simple. We simply take every
-$(s^*,a^*) \sim \mathcal{D}$ pair and label the $s^*$ as the data and
-the $a^*$ as the label. We then train a neural network on this data
-(input dimensionality is the dimensionality of $s$, output
+$(s^{*},a^{*}) \sim \mathcal{D}$ pair and label the $s^{*}$ as the data
+and the $a^{*}$ as the label. We then train a neural network on this
+data (input dimensionality is the dimensionality of $s$, output
 dimensionality is the dimensionality of $a$), and call it $\pi_\theta$.
 We now have a policy that can accept a state, and act accordingly. This
 all seems much too simple though. What is the drawback?
@@ -353,7 +354,7 @@ basic implementation mostly unviable for complex situations.
 The first is that it has **quadratically compounding error**. There is a
 proof for this, but it is also intuitive. Say, due to physical forces or
 minor perturbations, that a robot cloning the behavior of a human gets
-0.1cm off from where it should be after taking action $a_t^*$ at $s_t$
+0.1cm off from where it should be after taking action $a_t^{*}$ at $s_t$
 (optimal action at state $s_t)$. We are now in dangerous territory, as
 the state the robot is in currently is not found in any training
 example. As a result, the robot takes a sub-optimal action and ends up
@@ -403,38 +404,38 @@ problem in behavior cloning:
 
 Take our original behavior cloning objective
 
-$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr]$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr]$$
 
 We define $\pi_e$ as the expert policy. Under the expectation
-$\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}$,
-$\mathrm{log}\pi_e(a^*|s^*) = 0$ is always true. This is because the
-expert policy will always assign $a^*$ (optimal action) a probability of
-1 given a state $s^*$. $\pi_e(a^*|s^*) = 1$, $\mathrm{log}(1) = 0$, so
-$\mathrm{log}\pi_e(a^*|s^*) = 0$. We can therefore insert into the
-equation:
+$\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}$,
+$\mathrm{log}\pi_e(a^{*}|s^{*}) = 0$ is always true. This is because the
+expert policy will always assign $a^{*}$ (optimal action) a probability
+of 1 given a state $s^{*}$. $\pi_e(a^{*}|s^{*}) = 1$,
+$\mathrm{log}(1) = 0$, so $\mathrm{log}\pi_e(a^{*}|s^{*}) = 0$. We can
+therefore insert into the equation:
 
-$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*) - \mathrm{log}\pi_e(a^*|s^*)]\biggr]$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*}) - \mathrm{log}\pi_e(a^{*}|s^{*})]\biggr]$$
 
 Split the expectation into two nested expectations.
-$(s^*,a^*) \sim \mathcal{D}$ can be rewritten as
-$s^* \sim p_{\pi_e}(\cdot)$ followed by $a^* \sim \pi_e(\cdot|s^*)$. In
-english, this means we get a state $s^*$ by sampling from possible
-states the expert ($\pi_e$) has explored and then sample the action
-$a^*$ from the policy $\pi_e$ given that it considers $s^*$. The end
-result is the same, as we have the variables $s^*$ and $a^*$ to use, and
-they come from the expert.
+$(s^{*},a^{*}) \sim \mathcal{D}$ can be rewritten as
+$s^{*} \sim p_{\pi_e}(\cdot)$ followed by
+$a^{*} \sim \pi_e(\cdot|s^{*})$. In english, this means we get a state
+$s^{*}$ by sampling from possible states the expert ($\pi_e$) has
+explored and then sample the action $a^{*}$ from the policy $\pi_e$
+given that it considers $s^{*}$. The end result is the same, as we have
+the variables $s^{*}$ and $a^{*}$ to use, and they come from the expert.
 
-$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\pi_\theta(a^*|s^*) - \mathrm{log}\pi_e(a^*|s^*)]]\biggr]$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\pi_\theta(a^{*}|s^{*}) - \mathrm{log}\pi_e(a^{*}|s^{*})]]\biggr]$$
 
 Invert the whole expression from an argmax to an argmin by multiplying
 by -1, which carries through all the expectations because
 $a\mathbb{E}[X] = \mathbb{E}[aX]$.
 
-$$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\pi_e(a^*|s^*) - \mathrm{log}\pi_\theta(a^*|s^*)]]\biggr]$$
+$$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\pi_e(a^{*}|s^{*}) - \mathrm{log}\pi_\theta(a^{*}|s^{*})]]\biggr]$$
 
 Use properties of logarithms to rewrite the innermost term:
 
-$$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\frac{\pi_e(a^*|s^*)}{\pi_\theta(a^*|s^*)}]]\biggr]$$
+$$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\frac{\pi_e(a^{*}|s^{*})}{\pi_\theta(a^{*}|s^{*})}]]\biggr]$$
 
 For the final step, we must introduce the concept of F-divergence. An
 F-divergence is, in simple terms, a function that measures the
@@ -466,14 +467,14 @@ $$\begin{aligned}
 We can apply the definition of forward KL divergence to the inner
 expectation shown before.
 
-$$\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\frac{\pi_e(a^*|s^*)}{\pi_\theta(a^*|s^*)}] = D_{KL}(\pi_e(\cdot|s^*),\pi_\theta(\cdot|s^*))$$
+$$\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\frac{\pi_e(a^{*}|s^{*})}{\pi_\theta(a^{*}|s^{*})}] = D_{KL}(\pi_e(\cdot|s^{*}),\pi_\theta(\cdot|s^{*}))$$
 
 We are in this expression calculating the KL divergence between the
-expert policy action distribution given state $s^*$ and the agent's
-action distribution given state $s^*$. We can now insert this back into
-the original equation and draw some insights:
+expert policy action distribution given state $s^{*}$ and the agent's
+action distribution given state $s^{*}$. We can now insert this back
+into the original equation and draw some insights:
 
-$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr] = \underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[D_{KL}(\pi_e(\cdot|s^*),\pi_\theta(\cdot|s^*))]\biggr]$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr] = \underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[D_{KL}(\pi_e(\cdot|s^{*}),\pi_\theta(\cdot|s^{*}))]\biggr]$$
 
 We now see the original behavior cloning problem formulation written as
 an F-divergence (more specifically, KL divergence) minimization problem.
@@ -523,7 +524,7 @@ A basic DAgger algorithm will look like the following:
     sequence
 
 3.  Have a human label each $s_t \in \tau$ with the optimal action
-    $a^*$. Call all these $(s, a)$ pairs $\mathcal{D}_{\pi_\theta}$
+    $a^{*}$. Call all these $(s, a)$ pairs $\mathcal{D}_{\pi_\theta}$
 
 4.  Add $\mathcal{D}_{\pi_\theta}$, or the new state action pairs, to
     $\mathcal{D}$.
@@ -557,7 +558,7 @@ algorithms and analyze their strengths/weaknesses.
 
     -   $(s_t, a_t)$
 
-    -   $(s^*, a^*)$
+    -   $(s^{*}, a^{*})$
 
     -   $\mathcal{D}$
 
@@ -993,13 +994,13 @@ The recursive nature of the Q-function means it can be called a
 **Bellman equation**. This being true is a necessary condition for
 optimal behavior. If we got our hands on a "perfect" Q-function like
 this, where $Q_\phi^\pi(s_t, a_t)$ *is really always equal to*
-$r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})$, then we call it $Q^*$ and
-can simply query it for the best action in any state. We would be able
-to act optimally always. However, this is not what we have our hands on.
-We have a neural network that needs to be trained to have similar
-behavior to the perfect $Q^*$. How can we accomplish this? It seems
-impossible due to the recursive nature of the equation. However, we can
-employ a trick here.
+$r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})$, then we call it $Q^{*}$
+and can simply query it for the best action in any state. We would be
+able to act optimally always. However, this is not what we have our
+hands on. We have a neural network that needs to be trained to have
+similar behavior to the perfect $Q^{*}$. How can we accomplish this? It
+seems impossible due to the recursive nature of the equation. However,
+we can employ a trick here.
 
 We would like it to be true that
 $Q_\phi^\pi(s_t, a_t) = r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})$.
