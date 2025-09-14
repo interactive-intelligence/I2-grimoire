@@ -145,20 +145,21 @@ jobs:
         </ul>
 
         ## NEW: Experimental web version
+        - TOC
         {:toc}
         EOF
 
-        # Mathjax rendering
+        # Mathjax rendering, ignore parbox
         cat << EOF > _includes/head_custom.html
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
         <script>
         window.MathJax = {
           tex: {
-            // macros: {
-            //   // Ignore parbox
-            //   parbox: ["#2", 2]
-            // },
-            inlineMath: {'[+]': [['$', '$']]}
+            macros: {
+              parbox: ["#2", 2]
+            },
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true
           }
         };
         </script>
