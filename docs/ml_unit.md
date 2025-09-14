@@ -366,8 +366,8 @@ But first, what are the L2 and L1 norms? These norms are mathematical
 functions that map from vector space to scalar space
 ($\mathbb{R}^n \rightarrow \mathbb{R})$. They are defined as such:
 
-$$||\textbf{x}||_2 = \sqrt{\sum_{i=1}^n x_i^2}$$
-$$||\textbf{x}||_1 = \sum_{i=1}^n |x_i|$$
+$$\|\textbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2}$$
+$$\|\textbf{x}\|_1 = \sum_{i=1}^n \vert x_i \vert$$
 
 So the L2 norm is the square root of the sum of squared elements from
 the vector, and the L1 norm is the sum of the absolute value of elements
@@ -379,8 +379,8 @@ $||\hat{\textbf{w}}||_2$ or $||\hat{\textbf{w}}||_1$ along with the
 original SSE objective. We therefore write our two new optimization
 objectives down:
 
-$$Ridge\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2$$
-$$LASSO\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_1$$
+$$Ridge\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2$$
+$$LASSO\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1$$
 
 The $\lambda$ term allows us to control how much regularization we want.
 A small number makes the mode kind of "care" about keeping its weights
@@ -489,7 +489,7 @@ usually denoted as 1 (positive class) or 0 (negative class). The sigmoid
 function is defined as:
 
 <div markdown="1" class="center">
-$P(y=1|x) = \frac{1}{1 + e^{-(b + w^{\top}x)}}$
+$P(y=1 \mid x) = \frac{1}{1 + e^{-(b + w^{\top}x)}}$
 
 </div>
 

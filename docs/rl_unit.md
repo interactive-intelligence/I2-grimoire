@@ -4,58 +4,6 @@ title: Reinforcement Learning
 permalink: /rl
 nav_order: 6
 description: Reinforcement Learning Unit ---
-::: {style="background-color: neuripscolor"}
-**Interactive Intelligence (I2) Grimoire**
-:::
-
-<div markdown="1" class="center">
-REINFORCEMENT LEARNING UNIT
-
-</div>
-
-\
-`v1.0`
-
-# The I2 Grimoire: REINFORCEMENT LEARNING {#the-i2-grimoire-reinforcement-learning .unnumbered}
-
-This is the REINFORCEMENT LEARNING unit of the I2 Grimoire book. Find
-the full book and other units on our website:
-<https://grimoire.uw-i2.org>.
-
-We are Interactive Intelligence, an organization of interdisciplinary
-thinkers that seek to probe intelligence through the intersection of AI,
-neuroscience, and related fields. This book serves as a launchpad for
-the basic theory that underlies major AI systems and covers five large
-(intersecting) spheres: Machine Learning, Deep Learning, Computer
-Vision, Reinforcement Learning, and Language Modeling. While by no means
-a thorough overview of any one of these fields, this book serves as a
-starting point that will paint a large picture in your mind about the
-five aforementioned topics. This book is written in layman's english,
-and introduces some complex (but core) math while explaining as much
-intuition behind it as possible. Regardless of your background, there is
-something interesting you will learn in these pages. Feel free to
-explore sections that interest you, backtracking if you encounter
-unfamiliar concepts.
-
-This book is a culmination of many months of work by very talented
-students from the University of Washington. It was entirely created by
-I2 members, and we hope that you enjoy what we have written on these
-pages and leave better equipped to navigate this world we share with AI
-algorithms.
-
-## Additional Information {#additional-information .unnumbered}
-
-This book was written to pair with the Interactive Intelligence intro to
-NeuroAI course, which lives here: [Interactive Intelligence Intro to
-NeuroAI Course Website](https://course.uw-i2.org/). There are questions
-associated with some sections, which serve as optional exercises for you
-to test your understanding. If you have questions or comments on the
-information in this book, please contact
-[`varunananth1@gmail.com`](mailto:varunananth1@gmail.com)\
-![image](other/i2-brain.png)
-
-# REINFORCEMENT LEARNING {#reinforcement-learning .unnumbered}
-
 # What is Reinforcement Learning?
 
 ## Problem Definition
@@ -1245,7 +1193,3 @@ shocking to many. Understanding the basics of these algorithms can
 demystify their power and quell fears about their capabilities.
 
 </div>
-
-# Thank You for Reading :) {#thank-you-for-reading .unnumbered}
-
-\- The Interactive Intelligence Team
