@@ -186,7 +186,7 @@ jobs:
         EOF
 
         # Copy over pages
-        cp -r /tmp/docs .
+        cp -r /tmp/pages .
         cp -r /tmp/assets/* .
         
         # Add and commit changes
