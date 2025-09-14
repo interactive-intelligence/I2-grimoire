@@ -50,9 +50,8 @@ effect of others to try and draw out a feature. For example, the kernel
 in the image below is attempting to extract an "ear" feature from a
 section of the input image.
 
-![Illustration of feature extraction using
-kernel](cv/kernelextraction.png){#fig:kernelextraction
-width="1\\linewidth"}
+![Figure 1: Illustration of feature extraction using
+kernel](cv/kernelextraction.png){#fig:kernelextraction width="100%"}
 
 The solution to the calculation is then placed back into a new, usually
 smaller, matrix that will ultimately become a representation of where
@@ -61,9 +60,9 @@ the features we are searching for within the image exist. We call this a
 image, then an "ear" kernel applied to that image will result in a
 feature map that has high values in the top left where the ear was.
 
-![Illustration of the work done in a convolutional
+![Figure 2: Illustration of the work done in a convolutional
 layer](cv/imagetokerneltosmallmatrix.png){#fig:imagetokerneltosmallmatrix
-width="0.75\\linewidth"}
+width="75%"}
 
 The formula for the convolutional layer's calculation is a dot product
 calculation, where a filter (a.k.a kernel) $F$ is applied to an image in
@@ -113,11 +112,11 @@ of the kernel, the sections that the kernel is applied to do not
 overlap. In the above image, the stride is 2. Observe more examples of
 strides that are depicted in Figures 3 and 4 below.
 
-![Illustration depicting a stride of 1
-pixel](cv/stridedepict.png){#fig:stridedepict width="1\\linewidth"}
+![Figure 3: Illustration depicting a stride of 1
+pixel](cv/stridedepict.png){#fig:stridedepict width="100%"}
 
-![Illustration depicting a stride of 2
-pixels](cv/stride2eg.png){#fig:stride2eg width="1\\linewidth"}
+![Figure 4: Illustration depicting a stride of 2
+pixels](cv/stride2eg.png){#fig:stride2eg width="100%"}
 
 Padding, on the other hand, refers to extra pixels around the edges of a
 kernel. These extra pixels, usually having a value of 0, control the
@@ -189,15 +188,15 @@ of a 2-dimensional filter. For a feature map having dimensions
 $h \times w \times c$, the dimensions of the map after pooling would be
 $$\biggl( \frac{h - f + 1}{s} \times \frac{w - f + 1}{s} \times c \biggr)$$
 Note that $f$ is the size of the filter used and $s$ denotes the length
-of the stride used.
+of the stride used.\
 
 A common technique used for the pooling layer is **max pooling**. This
 operation takes the maximum value in a given section of the feature map
 and selects that number to represent the section in the summarized map,
 as seen in the figure below.
 
-![Illustration of the max pooling
-operation](cv/maxpooling.png){#fig:maxpooling width="0.75\\linewidth"}
+![Figure 5: Illustration of the max pooling
+operation](cv/maxpooling.png){#fig:maxpooling width="75%"}
 
 If we take the section of the map that the max pooling operation is
 being done on as $Z(i, j)$, we get the following formula for the
@@ -262,8 +261,8 @@ optimization, and **dropout** for regularization.
 See the figure below for an overview of the entire architecture of a
 Convolutional Neural Network.
 
-![Illustration of complete architecture of
-CNN](cv/full_cnn.png){#fig:full_cnn width="1\\linewidth"}
+![Figure 6: Illustration of complete architecture of
+CNN](cv/full_cnn.png){#fig:full_cnn width="100%"}
 
 </div>
 <div markdown="1" class="questionbox">
@@ -315,7 +314,7 @@ one of the core techniques of self-supervised learning. Contrastive
 learning works to train the model to distinguish between similar and
 dissimilar points. Using this training, the model can determine which
 points should have the same label and which should have different
-labels.
+labels.\
 
 To implement contrastive learning, the model typically uses pairs or
 groups of data points. For example, in image data, the model might be
@@ -323,7 +322,7 @@ given two views of the same image with slight transformations---like
 rotations, cropping, or color adjustments---as \"positive\" pairs. It
 then receives unrelated images as \"negative\" pairs. The model is
 trained to bring the positive pairs closer together in its internal
-representation space while pushing the negative pairs further apart.
+representation space while pushing the negative pairs further apart.\
 
 Another popular method is called **predictive tasks**. In this
 technique, the model is given a scenario in which it must predict the
@@ -390,9 +389,9 @@ Another method used in computer vision models is **image segmentation**.
 This approach focuses on identifying groups of pixels that belong
 together and works to separate individual objects in images.
 
-![Illustration of high-level image
+![Figure 7: Illustration of high-level image
 segmentation](cv/segmentation-tiger.png){#fig:segmentation-tiger
-width="0.75\\linewidth"}
+width="75%"}
 
 By combining individual pixels into groups, image segmentation allows
 for faster, more efficient image processing. It also allows for more
@@ -412,7 +411,7 @@ together for a shared characteristic, such as color or texture. The
 model then is able to treat each superpixel as its own pixel,
 drastically reducing the amount of data taken in by the model. This
 reduction in the number of segments that need to be processed leads to
-more efficient algorithms.
+more efficient algorithms.\
 
 Superpixels are grouped in several ways. Superpixels are designed to
 maintain the spatial distance and positioning of their pixels. Therefore
@@ -426,7 +425,7 @@ same texture, which focuses on the texture features of pixels,
 clustering them based on patterns and variations in surface properties.
 These different grouping methods enhance the ability of superpixels to
 capture meaningful segments of an image, facilitating more efficient and
-accurate image analysis.
+accurate image analysis.\
 
 Segmentation is also used to identify separate entities in images,
 entities that are larger than a few pixels. There are two main entity

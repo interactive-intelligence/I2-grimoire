@@ -53,110 +53,107 @@ have been provided for ease of understanding.
 
 **State**: $s \in \mathcal{S}$
 
--   Most commonly represented as a vector, a state is a snapshot of the
-    world at some timestep $t$ (often denoted as $s_t$). A state records
-    important information about the current frozen moment in time that
-    often determines what will happen next. The way the vectors
-    represent the state is a choice dependent on the problem.
+- Most commonly represented as a vector, a state is a snapshot of the
+  world at some timestep $t$ (often denoted as $s_t$). A state records
+  important information about the current frozen moment in time that
+  often determines what will happen next. The way the vectors represent
+  the state is a choice dependent on the problem.
 
--   An example of a state from the game Pong would be a vector holding
-    the y-positions of the paddles, the velocity of the paddles, the
-    position of the ball, and the velocity of the ball. It could also
-    contain the score. Note that just raw positions are not "good
-    enough" to comprise a state, because it would be difficult to
-    determine what could happen next from just positions (i.e. The ball
-    is at (0,0). Is it moving left or right?)
+- An example of a state from the game Pong would be a vector holding the
+  y-positions of the paddles, the velocity of the paddles, the position
+  of the ball, and the velocity of the ball. It could also contain the
+  score. Note that just raw positions are not "good enough" to comprise
+  a state, because it would be difficult to determine what could happen
+  next from just positions (i.e. The ball is at (0,0). Is it moving left
+  or right?)
 
 **Action**: $a \in \mathcal{A}$
 
--   An action is a choice that the agent (see below) makes within the
-    environment that often influences the subsequent state. Actions are
-    taken at a time $t$ and are denoted as $a_t$. Actions can be
-    represented as scalars between a range (0-1), a one-hot encoded
-    vector (\[1,0,0,0\]), or an unbounded vector (\[0.5, -3, 2,
-    0.001\]). The choice of how an action is represented depends on the
-    problem.
+- An action is a choice that the agent (see below) makes within the
+  environment that often influences the subsequent state. Actions are
+  taken at a time $t$ and are denoted as $a_t$. Actions can be
+  represented as scalars between a range (0-1), a one-hot encoded vector
+  (\[1,0,0,0\]), or an unbounded vector (\[0.5, -3, 2, 0.001\]). The
+  choice of how an action is represented depends on the problem.
 
--   An example of an action from the game Pong would be a number between
-    -1 and 1 determining the speed of vertical movement for the next
-    timestep. Note that this implicitly encodes the "do nothing action"
-    of 0 (standing still).
+- An example of an action from the game Pong would be a number between
+  -1 and 1 determining the speed of vertical movement for the next
+  timestep. Note that this implicitly encodes the "do nothing action" of
+  0 (standing still).
 
 **Agent**:
 
--   An agent is an actor that takes in the current state of the
-    environment and acts optimally (or tries to) in order to maximize
-    reward.
+- An agent is an actor that takes in the current state of the
+  environment and acts optimally (or tries to) in order to maximize
+  reward.
 
--   An example of an agent would be Mario, the character.
+- An example of an agent would be Mario, the character.
 
 **Policy:** $\pi$
 
--   A policy is a function that outputs action(s) given the state of the
-    environment. Agents and policies are closely tied together because
-    the *job of an agent is to learn a good policy*. There are two main
-    types of policies. **Deterministic policies** are represented as
-    $\pi(s) \rightarrow a$, meaning that there is a mapping between each
-    state of the world and the best action to take at that time. A
-    **stochastic policy** can be defined as $\pi(a_t|s_t)$. This means
-    that given a state at time $t$, a policy will give you a
-    distribution over all possible actions, with probabilities
-    corresponding to how good that action is at that timestep. The agent
-    can then select an action based on these probabilities.
+- A policy is a function that outputs action(s) given the state of the
+  environment. Agents and policies are closely tied together because the
+  *job of an agent is to learn a good policy*. There are two main types
+  of policies. **Deterministic policies** are represented as
+  $\pi(s) \rightarrow a$, meaning that there is a mapping between each
+  state of the world and the best action to take at that time. A
+  **stochastic policy** can be defined as $\pi(a_t|s_t)$. This means
+  that given a state at time $t$, a policy will give you a distribution
+  over all possible actions, with probabilities corresponding to how
+  good that action is at that timestep. The agent can then select an
+  action based on these probabilities.
 
--   An example of a policy would be *how Mario behaves* based on his
-    surroundings. Note the difference between this and the character
-    Mario. It is similar to the difference between policy and agent.
+- An example of a policy would be *how Mario behaves* based on his
+  surroundings. Note the difference between this and the character
+  Mario. It is similar to the difference between policy and agent.
 
 **Environment**:
 
--   A space, the world, that the agent can interact with and influence.
-    Can be thought of as "all possible states". Also implicitly contains
-    **transition dynamics**, or probability distributions of future
-    states depending on the current state and action
-    ($p(s_{t+1}|s_t,a_t)$)
+- A space, the world, that the agent can interact with and influence.
+  Can be thought of as "all possible states". Also implicitly contains
+  **transition dynamics**, or probability distributions of future states
+  depending on the current state and action ($p(s_{t+1}|s_t,a_t)$)
 
--   An example of an environment would be World 1-1 from Mario. Not just
-    a snapshot of the world at a time $t$, but the idea of this "level"
-    to beat. Transition dynamics for this environment would be the
-    physics engine and enemy movement.
+- An example of an environment would be World 1-1 from Mario. Not just a
+  snapshot of the world at a time $t$, but the idea of this "level" to
+  beat. Transition dynamics for this environment would be the physics
+  engine and enemy movement.
 
 **Reward**: $r$
 
--   Perhaps one of the most important terms. A reward is a scalar value
-    given to the agent after it takes an action, determined through a
-    **reward function** that considers the state-action pair at time $t$
-    and its "optimality". This is represented as $R(s_t, a_t) = r_t$.
-    Generally, the higher $r$ is, the better the action $a_t$ the agent
-    took based on state $s_t$. This reward value serves as a learning
-    signal for the agent, and is used to update its parameters to
-    improve performance on future actions.
+- Perhaps one of the most important terms. A reward is a scalar value
+  given to the agent after it takes an action, determined through a
+  **reward function** that considers the state-action pair at time $t$
+  and its "optimality". This is represented as $R(s_t, a_t) = r_t$.
+  Generally, the higher $r$ is, the better the action $a_t$ the agent
+  took based on state $s_t$. This reward value serves as a learning
+  signal for the agent, and is used to update its parameters to improve
+  performance on future actions.
 
--   For example, if Mario is standing next to lava (state $s_t$) and he
-    took the action "go forward", the reward $r_t$ as determined by
-    $r(s_t, a_t)$ would be very low, perhaps even negative. Mario dies,
-    and the agent tries again. Once this same lava pit is reached, Mario
-    instead takes the "jump" action and lands on the other side of the
-    lava pit safely. Since he moved closer to his goal, the reward
-    function spits out a high reward. This reinforces the rule "If next
-    to lava, then jump". *Through this trial and error, the policy is
-    slowly updated until Mario is able to maximize reward by beating the
-    level!*
+- For example, if Mario is standing next to lava (state $s_t$) and he
+  took the action "go forward", the reward $r_t$ as determined by
+  $r(s_t, a_t)$ would be very low, perhaps even negative. Mario dies,
+  and the agent tries again. Once this same lava pit is reached, Mario
+  instead takes the "jump" action and lands on the other side of the
+  lava pit safely. Since he moved closer to his goal, the reward
+  function spits out a high reward. This reinforces the rule "If next to
+  lava, then jump". *Through this trial and error, the policy is slowly
+  updated until Mario is able to maximize reward by beating the level!*
 
 **Trajectory**: $\tau$
 
--   A compact way to represent the path an agent took through the
-    environment during one **episode** and the rewards it received for
-    doing so. An episode begins with the very first state $s_0$ and
-    continues until the agent dies, reaches its goal, or runs out of
-    time. Trajectories are useful because they store enough information
-    to "replay" the episode entirely. For an episode of length $T$, the
-    trajectory would be
-    $\tau = (s_0, a_0, r_0, s_1, a_1, r_1,...,s_T, a_T, r_T)$.
+- A compact way to represent the path an agent took through the
+  environment during one **episode** and the rewards it received for
+  doing so. An episode begins with the very first state $s_0$ and
+  continues until the agent dies, reaches its goal, or runs out of time.
+  Trajectories are useful because they store enough information to
+  "replay" the episode entirely. For an episode of length $T$, the
+  trajectory would be
+  $\tau = (s_0, a_0, r_0, s_1, a_1, r_1,...,s_T, a_T, r_T)$.
 
--   A trajectory in Mario would record every frame of the game, every
-    action taken at each timestep, and the rewards given to Mario. You
-    can think of it as "recording" an agent's playthrough of World 1-1.
+- A trajectory in Mario would record every frame of the game, every
+  action taken at each timestep, and the rewards given to Mario. You can
+  think of it as "recording" an agent's playthrough of World 1-1.
 
 </div>
 
@@ -257,14 +254,14 @@ require a few tricks to work properly.
 1.  Think of a video game, board game, or puzzle that you like. Then do
     the following:
 
-    -   Define the environment, and agent. What is the positive reward
-        that the agent should chase? Try to tie this to a mathematically
-        calculable formula (i.e. $r = \frac{1}{d}$ where $d$ is the
-        distance to the flagpole).
+    - Define the environment, and agent. What is the positive reward
+      that the agent should chase? Try to tie this to a mathematically
+      calculable formula (i.e. $r = \frac{1}{d}$ where $d$ is the
+      distance to the flagpole).
 
-    -   Define as concretely as possible a representation of states and
-        actions for this environment/agent. Can you show that the states
-        you chose could form an MDP?
+    - Define as concretely as possible a representation of states and
+      actions for this environment/agent. Can you show that the states
+      you chose could form an MDP?
 
 2.  Do you think an on-policy or off-policy algorithm would suit your
     problem better (there is no right answer for this one, it is a hard
@@ -386,11 +383,11 @@ of Gaussians, for example, can have $\geq$ 1 peak. This prevents the
 mode averaging problem but increases the complexity of your model by a
 lot.
 
-![An illustration demonstrating the issues that arise from
+![Figure 1: An illustration demonstrating the issues that arise from
 mode-averaging within behavior cloning algorithms. The green and blue
 peaks represent choosing to go left or right around the obstacle, and
 the black dashed line represents what a simple policy will converge
-on.](rl/modeavg.png){#fig:modeavg width="0.9\\linewidth"}
+on.](rl/modeavg.png){#fig:modeavg width="90%"}
 
 </div>
 
@@ -488,13 +485,13 @@ clearly in the equation makes this an unavoidable fact. This gives us a
 much more concrete basis for why we should expect to observe the
 crashing behavior discussed earlier!
 
-![The blue curve is our single-mode Gaussian decision policy and the
-bimodal orange line is our expert policy (can go left or right around
-the tree). The top graph shows what we would like to happen, which is
-choosing a mode and sticking with it. However, the bottom graph shows
-what actually happens when we minimize forward KL divergence. This is
-mode-averaging behavior (crashing into the
-tree).](rl/diffkl.png){#fig:diffkl width="0.7\\linewidth"}
+![Figure 2: The blue curve is our single-mode Gaussian decision policy
+and the bimodal orange line is our expert policy (can go left or right
+around the tree). The top graph shows what we would like to happen,
+which is choosing a mode and sticking with it. However, the bottom graph
+shows what actually happens when we minimize forward KL divergence. This
+is mode-averaging behavior (crashing into the
+tree).](rl/diffkl.png){#fig:diffkl width="70%"}
 
 This analysis also gives us another avenue by which to improve behavior
 cloning instead of selecting a more expressive policy class: Find ways
@@ -539,12 +536,12 @@ ledge" that behavior cloning usually creates. A human adding corrective
 labels at critical failure points lets the agent know what to do at
 those points to get back on track.
 
-![A visualization of how DAgger helps keep the agent performing well. We
-first see the agent ($\hat{x}$) deviate from the expert ($x$), but we
-then take these observations of where the agent failed and give it
-instructions on how to get back on track. With enough iterations, a lot
-of failure cases can be mitigated.](rl/daggerviz.png){#fig:daggerviz
-width="0.7\\linewidth"}
+![Figure 3: A visualization of how DAgger helps keep the agent
+performing well. We first see the agent ($\hat{x}$) deviate from the
+expert ($x$), but we then take these observations of where the agent
+failed and give it instructions on how to get back on track. With enough
+iterations, a lot of failure cases can be
+mitigated.](rl/daggerviz.png){#fig:daggerviz width="70%"}
 
 Behavior cloning is a section of RL that may seem simple at first, but
 can be quite involved when you try to solve the problems that come with
@@ -557,11 +554,11 @@ algorithms and analyze their strengths/weaknesses.
 
 1.  Write definitions for the following symbols:
 
-    -   $(s_t, a_t)$
+    - $(s_t, a_t)$
 
-    -   $(s^\ast, a^\ast)$
+    - $(s^\ast, a^\ast)$
 
-    -   $\mathcal{D}$
+    - $\mathcal{D}$
 
 2.  What does the $\theta$ in $\pi_\theta$ represent?
 
@@ -578,10 +575,10 @@ algorithms and analyze their strengths/weaknesses.
 ## Basic Policy Gradient
 
 <div markdown="1" class="flushleft">
-![An illustration showing how the agent and environment communicate
-through actions, states, and rewards in a traditional RL setting. The
-subscript $t$ is for timestep.](rl/rlsystem.png){#fig:rlsystem
-width="0.7\\linewidth"}
+![Figure 4: An illustration showing how the agent and environment
+communicate through actions, states, and rewards in a traditional RL
+setting. The subscript $t$ is for
+timestep.](rl/rlsystem.png){#fig:rlsystem width="70%"}
 
 Let's start by introducing a new problem scenario. in this hypothetical,
 we do *not* have an expert to learn from. Instead, we receive
@@ -772,15 +769,15 @@ us in a better direction without sacrificing step size! The
 implementation of this is beyond the scope of the article so we will not
 be covering it.
 
-![There are a few items in this diagram. The parabola and tangent show
-the issues of large gradient steps when you have only a monte-carlo
-approximation to the true gradient. You can wildly overshoot where you
-should be ($\theta_{i+1}$).The dimensions of the stretched oval
-represent the parameters of the policy, and how steps in the wrong
+![Figure 5: There are a few items in this diagram. The parabola and
+tangent show the issues of large gradient steps when you have only a
+monte-carlo approximation to the true gradient. You can wildly overshoot
+where you should be ($\theta_{i+1}$).The dimensions of the stretched
+oval represent the parameters of the policy, and how steps in the wrong
 direction can be disastrous since the policy is very sensitive to small
 parameter shifts. What we don't have in RL is an easy objective to
 optimize on like the circle. These problems together are why NPG is
-useful.](rl/npg.png){#fig:npg width="0.9\\linewidth"}
+useful.](rl/npg.png){#fig:npg width="90%"}
 
 Very advanced PG methods build off of NPG, and include trust region
 policy optimization (TRPO) and proximal policy optimization (PPO). PPO
@@ -907,15 +904,15 @@ $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \na
 2.  Answer the following questions about $\gamma$, a term within the
     formulation for infinite-horizon discounted return.
 
-    -   What is $\gamma$?
+    - What is $\gamma$?
 
-    -   What would a low value of $\gamma$ do to rewards in the far
-        future?
+    - What would a low value of $\gamma$ do to rewards in the far
+      future?
 
-    -   Give one scenario where a low $\gamma$ is good, and one where a
-        high $\gamma$ is good.
+    - Give one scenario where a low $\gamma$ is good, and one where a
+      high $\gamma$ is good.
 
-    -   Why cant $\gamma$ be $\geq$ 1?
+    - Why cant $\gamma$ be $\geq$ 1?
 
 3.  What is $J(\theta)$, and what do we want to do with it?
 
@@ -926,11 +923,11 @@ $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \na
 5.  Explain how the following "tricks" reduce the variance of policy
     gradient and make it more stable.
 
-    -   Return-to-Go
+    - Return-to-Go
 
-    -   Baseline functions
+    - Baseline functions
 
-    -   Natural policy gradient/constrained optimization
+    - Natural policy gradient/constrained optimization
 
 </div>
 
@@ -961,12 +958,11 @@ Note that the state-action pair $(s_t, a_t)$ is given to the equation,
 but all other state-action pairs come about as a consequence of
 following policy $\pi_\theta$ afterwards.
 
-![A visualization of what the Q-function takes into account. It averages
-the rewards from time $t$ and forward across considers many paths that
-policy $\pi_\theta$ could theoretically take. The output of a Q-function
-is called a Q-value. It signifies the "quality" of the given
-state-action pair.](rl/qlearning.png){#fig:qlearning
-width="0.7\\linewidth"}
+![Figure 6: A visualization of what the Q-function takes into account.
+It averages the rewards from time $t$ and forward across considers many
+paths that policy $\pi_\theta$ could theoretically take. The output of a
+Q-function is called a Q-value. It signifies the "quality" of the given
+state-action pair.](rl/qlearning.png){#fig:qlearning width="70%"}
 
 This might seem somewhat arbitrary, but it is an intuitive way to think
 about navigating an environment. Think about yourself. You evaluate what
@@ -1137,10 +1133,10 @@ the agent. Perhaps there is a life lesson in here somewhere?
     $$V^\pi(s) = \mathbb{E}_{\pi_\theta} \biggl[ \sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t = s\biggr]$$
     Do the following:
 
-    -   Compare and contrast this function to the Q-function. What
-        purpose do you think it could serve?
+    - Compare and contrast this function to the Q-function. What purpose
+      do you think it could serve?
 
-    -   Prove that this is a Bellman equation.
+    - Prove that this is a Bellman equation.
 
 3.  What is "surprise" or TD-error? Why does minimizing it allow us to
     learn a good Q-function?

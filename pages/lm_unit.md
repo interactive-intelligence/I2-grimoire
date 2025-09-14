@@ -27,11 +27,11 @@ Given this sentence, a language model would likely predict the word
 analyzing text. By recognizing and using patterns in language, these
 models can:
 
--   Complete sentences.
+- Complete sentences.
 
--   Understand context.
+- Understand context.
 
--   Generate coherent responses or paragraphs.
+- Generate coherent responses or paragraphs.
 
 These are examples of text-generation tasks, where language models
 predict or create text based on input. Language models also support
@@ -71,17 +71,17 @@ better at predicting language patterns.
 <div markdown="1" class="flushleft">
 Below are some of the essentials of language modeling:
 
--   **Core Concepts** like tokenization, embeddings, and sequence
-    modeling.
+- **Core Concepts** like tokenization, embeddings, and sequence
+  modeling.
 
--   **Architectures** such as Recurrent Neural Networks (RNNs), Long
-    Short-Term Memory networks (LSTMs), and Transformers.
+- **Architectures** such as Recurrent Neural Networks (RNNs), Long
+  Short-Term Memory networks (LSTMs), and Transformers.
 
--   **Applications** in areas like chatbots, translation, and sentiment
-    analysis.
+- **Applications** in areas like chatbots, translation, and sentiment
+  analysis.
 
--   **Challenges** like managing bias, hallucinations, and the scale of
-    large models.
+- **Challenges** like managing bias, hallucinations, and the scale of
+  large models.
 
 We want to understand the theoretical foundations of language models,
 how they're built and trained, and their real-world impact.
@@ -109,31 +109,31 @@ are the building blocks for language models. Tokenization is essential
 because language models cannot directly process text; they operate on
 numerical data. The granularity of tokens varies:
 
--   **Word-level Tokenization:** Splits text into individual words or
-    phrases.
+- **Word-level Tokenization:** Splits text into individual words or
+  phrases.
 
--   **Character-level Tokenization:** Breaks text into single
-    characters, useful for languages with complex morphologies.
+- **Character-level Tokenization:** Breaks text into single characters,
+  useful for languages with complex morphologies.
 
--   **Subword Tokenization:** Balances granularity and vocabulary
-    efficiency, often employed in modern models like BERT and GPT.
+- **Subword Tokenization:** Balances granularity and vocabulary
+  efficiency, often employed in modern models like BERT and GPT.
 
 **Examples of Tokenization:**
 
--   Word-level:
+- Word-level:
 
-                Sentence: "Arya is amazing!"
-                Tokens: ["Arya", "is", "amazing", "!"]
+              Sentence: "Arya is amazing!"
+              Tokens: ["Arya", "is", "amazing", "!"]
 
--   Character-level:
+- Character-level:
 
-                Sentence: "Arya"
-                Tokens: ["A", "r", "y", "a"]
+              Sentence: "Arya"
+              Tokens: ["A", "r", "y", "a"]
 
--   Subword-level:
+- Subword-level:
 
-                Sentence: "unbelievable"
-                Tokens: ["un", "believable"]
+              Sentence: "unbelievable"
+              Tokens: ["un", "believable"]
 
 Algorithms like Byte Pair Encoding (BPE) and WordPiece generate subword
 tokens, enabling the model to handle unseen words by breaking them into
@@ -178,16 +178,16 @@ efficient downstream processing.
 
 **Key Properties of Embeddings:**
 
--   **Semantic Similarity:** Tokens with similar meanings have similar
-    embeddings, enabling the model to capture linguistic relationships.
-    Cosine similarity is preferred as it focuses on the angular distance
-    between vectors, ignoring magnitude differences that may arise due
-    to varying token frequencies.
+- **Semantic Similarity:** Tokens with similar meanings have similar
+  embeddings, enabling the model to capture linguistic relationships.
+  Cosine similarity is preferred as it focuses on the angular distance
+  between vectors, ignoring magnitude differences that may arise due to
+  varying token frequencies.
 
--   **Contextual Adaptability:** Contextual embeddings dynamically
-    adjust based on sentence context, allowing the model to handle
-    polysemous words (e.g., "bank" can refer to a financial institution
-    or a riverbank).
+- **Contextual Adaptability:** Contextual embeddings dynamically adjust
+  based on sentence context, allowing the model to handle polysemous
+  words (e.g., "bank" can refer to a financial institution or a
+  riverbank).
 
 **Mathematical Representation:**
 $$\text{Embedding}(\text{token}) = \mathbf{e} \in \mathbb{R}^d$$ where
@@ -197,35 +197,35 @@ relationships with other tokens.
 
 **Types of Embeddings:**
 
--   **Pre-trained Static Embeddings:**
+- **Pre-trained Static Embeddings:**
 
-    -   **Word2Vec:** Learns embeddings by maximizing the cosine
-        similarity between words appearing in similar contexts.
+  - **Word2Vec:** Learns embeddings by maximizing the cosine similarity
+    between words appearing in similar contexts.
 
-    -   **GloVe (Global Vectors):** Embeds words by factorizing a
-        co-occurrence matrix to capture statistical properties of word
-        distributions.
+  - **GloVe (Global Vectors):** Embeds words by factorizing a
+    co-occurrence matrix to capture statistical properties of word
+    distributions.
 
-    -   **FastText:** Enhances embeddings by incorporating subword
-        information, improving robustness for rare and out-of-vocabulary
-        words.
+  - **FastText:** Enhances embeddings by incorporating subword
+    information, improving robustness for rare and out-of-vocabulary
+    words.
 
--   **Contextual Embeddings:** Advanced models like BERT (Bidirectional
-    Encoder Representations from Transformers) and GPT (Generative
-    Pre-trained Transformers) generate embeddings that depend on the
-    surrounding context of a token. For example:
+- **Contextual Embeddings:** Advanced models like BERT (Bidirectional
+  Encoder Representations from Transformers) and GPT (Generative
+  Pre-trained Transformers) generate embeddings that depend on the
+  surrounding context of a token. For example:
 
-                Sentence: "The bank is on the riverbank."
+              Sentence: "The bank is on the riverbank."
 
-    The embedding for the word "bank" differs in the financial and river
-    contexts, reflecting its contextual meaning.
+  The embedding for the word "bank" differs in the financial and river
+  contexts, reflecting its contextual meaning.
 
--   **Embedding Arithmetic:** A unique property of embeddings is their
-    ability to encode semantic relationships through arithmetic
-    operations. For instance:
-    $$\text{Embedding}(\text{king}) - \text{Embedding}(\text{man}) + \text{Embedding}(\text{woman}) \approx \text{Embedding}(\text{queen})$$
-    This illustrates how embeddings capture relationships between words
-    in dense vector spaces.
+- **Embedding Arithmetic:** A unique property of embeddings is their
+  ability to encode semantic relationships through arithmetic
+  operations. For instance:
+  $$\text{Embedding}(\text{king}) - \text{Embedding}(\text{man}) + \text{Embedding}(\text{woman}) \approx \text{Embedding}(\text{queen})$$
+  This illustrates how embeddings capture relationships between words in
+  dense vector spaces.
 
 </div>
 <div markdown="1" class="questionbox">
@@ -260,10 +260,10 @@ mathematically expressed as:
 
 $$P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t | x_{<t})$$ Here:
 
--   $x_t$ represents the current token at time step $t$.
+- $x_t$ represents the current token at time step $t$.
 
--   $x_{<t}$ denotes all tokens preceding $x_t$ (i.e., the context or
-    history).
+- $x_{<t}$ denotes all tokens preceding $x_t$ (i.e., the context or
+  history).
 
 Let us break down the sequence $P(\text{"The quick brown fox jumps"})$
 step by step using the chain rule of probability. Here, the sequence
@@ -284,15 +284,15 @@ token given the tokens that precede it in the sequence.
 
 **Step-by-Step Calculation (Hypothetical Probabilities):**
 
--   $P(\text{"The"}) = 0.4$
+- $P(\text{"The"}) = 0.4$
 
--   $P(\text{"quick"} \mid \text{"The"}) = 0.3$
+- $P(\text{"quick"} \mid \text{"The"}) = 0.3$
 
--   $P(\text{"brown"} \mid \text{"The quick"}) = 0.2$
+- $P(\text{"brown"} \mid \text{"The quick"}) = 0.2$
 
--   $P(\text{"fox"} \mid \text{"The quick brown"}) = 0.5$
+- $P(\text{"fox"} \mid \text{"The quick brown"}) = 0.5$
 
--   $P(\text{"jumps"} \mid \text{"The quick brown fox"}) = 0.6$
+- $P(\text{"jumps"} \mid \text{"The quick brown fox"}) = 0.6$
 
 Thus, the joint probability of the entire sequence is calculated as:
 $$P(\text{"The quick brown fox jumps"}) = 0.4 \cdot 0.3 \cdot 0.2 \cdot 0.5 \cdot 0.6 = 0.0072$$
@@ -321,13 +321,13 @@ patterns.
 
 **Key Insights:**
 
--   The sequence prediction task assumes a left-to-right (or
-    autoregressive) approach for models like GPT or a bidirectional
-    approach for models like BERT.
+- The sequence prediction task assumes a left-to-right (or
+  autoregressive) approach for models like GPT or a bidirectional
+  approach for models like BERT.
 
--   Accurate modeling of $P(x_t | x_{<t})$ requires capturing long-range
-    dependencies, grammatical structure, and semantic coherence within
-    the sequence.
+- Accurate modeling of $P(x_t | x_{<t})$ requires capturing long-range
+  dependencies, grammatical structure, and semantic coherence within the
+  sequence.
 
 **Illustrative Example:** Consider the sentence:
 
@@ -367,12 +367,12 @@ state $h_t$ at time step $t$ encodes information from both the current
 input token $x_t$ and the previous hidden state $h_{t-1}$. This can be
 expressed as: $$h_t = f(W_x x_t + W_h h_{t-1} + b)$$ Here:
 
--   $W_x$ and $W_h$ are weight matrices for the input and hidden state,
-    respectively.
+- $W_x$ and $W_h$ are weight matrices for the input and hidden state,
+  respectively.
 
--   $b$ is a bias term.
+- $b$ is a bias term.
 
--   $f$ is a non-linear activation function, often $tanh$ or $ReLU$.
+- $f$ is a non-linear activation function, often $tanh$ or $ReLU$.
 
 RNNs capture sequential dependencies effectively for short sequences.
 However, they struggle with long-term dependencies due to the
@@ -382,23 +382,23 @@ update weights during backpropagation.
 **Extensions to RNNs:** To address the limitations of vanilla RNNs, two
 popular architectures were developed:
 
--   **Long Short-Term Memory (LSTM):** LSTMs introduce memory cells and
-    gating mechanisms to better capture long-term dependencies. The
-    gates include:
+- **Long Short-Term Memory (LSTM):** LSTMs introduce memory cells and
+  gating mechanisms to better capture long-term dependencies. The gates
+  include:
 
-    -   *Forget Gate:* Decides which information to discard.
+  - *Forget Gate:* Decides which information to discard.
 
-    -   *Input Gate:* Determines what new information to store.
+  - *Input Gate:* Determines what new information to store.
 
-    -   *Output Gate:* Controls what information to output.
+  - *Output Gate:* Controls what information to output.
 
-    The update equations for LSTMs enable the model to selectively
-    retain relevant information, mitigating vanishing gradients.
+  The update equations for LSTMs enable the model to selectively retain
+  relevant information, mitigating vanishing gradients.
 
--   **Gated Recurrent Units (GRU):** GRUs are a simplified variant of
-    LSTMs that merge the forget and input gates into a single *update
-    gate*, reducing the number of parameters. GRUs are computationally
-    efficient while maintaining performance on many tasks.
+- **Gated Recurrent Units (GRU):** GRUs are a simplified variant of
+  LSTMs that merge the forget and input gates into a single *update
+  gate*, reducing the number of parameters. GRUs are computationally
+  efficient while maintaining performance on many tasks.
 
 **Illustrative Example:** For a sequence of tokens:
 
@@ -433,47 +433,47 @@ The generic attention operation is defined as:
 $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
 Here:
 
--   $Q$ (Query), $K$ (Key), and $V$ (Value) are projections of the input
-    sequence, computed using learned weight matrices.
+- $Q$ (Query), $K$ (Key), and $V$ (Value) are projections of the input
+  sequence, computed using learned weight matrices.
 
--   $d_k$ is the dimensionality of the Key vectors, and the term
-    $\frac{1}{\sqrt{d_k}}$ scales the dot product to prevent large
-    values from dominating the softmax.
+- $d_k$ is the dimensionality of the Key vectors, and the term
+  $\frac{1}{\sqrt{d_k}}$ scales the dot product to prevent large values
+  from dominating the softmax.
 
--   The output is a weighted sum of the Value vectors, where weights are
-    determined by the similarity of Query and Key vectors.
+- The output is a weighted sum of the Value vectors, where weights are
+  determined by the similarity of Query and Key vectors.
 
 **Intuitive Explanation of $Q$, $K$, and $V$:**
 
 To understand the roles of $Q$, $K$, and $V$ in self-attention:
 
--   **Query ($Q$):** Represents the token that is \"asking the
-    question,\" focusing on specific relationships or dependencies.
+- **Query ($Q$):** Represents the token that is \"asking the question,\"
+  focusing on specific relationships or dependencies.
 
--   **Key ($K$):** Represents all tokens in the sequence and acts as a
-    \"key\" to determine the relevance of other tokens to the query.
+- **Key ($K$):** Represents all tokens in the sequence and acts as a
+  \"key\" to determine the relevance of other tokens to the query.
 
--   **Value ($V$):** Contains the actual content or information of each
-    token, which is weighted by the relevance (computed from $Q$ and
-    $K$) and aggregated to produce the final output.
+- **Value ($V$):** Contains the actual content or information of each
+  token, which is weighted by the relevance (computed from $Q$ and $K$)
+  and aggregated to produce the final output.
 
 **Key Features of Transformers:**
 
--   **Parallelism:** Unlike RNNs, which process tokens sequentially,
-    Transformers compute attention for all tokens simultaneously,
-    significantly speeding up training on large datasets.
+- **Parallelism:** Unlike RNNs, which process tokens sequentially,
+  Transformers compute attention for all tokens simultaneously,
+  significantly speeding up training on large datasets.
 
--   **Positional Encodings:** Since Transformers do not have inherent
-    sequential processing, they use positional encodings to inject
-    information about the order of tokens. Without positional encodings,
-    Transformers would treat sequences as bags of tokens, losing
-    critical information about token order and sequence structure. These
-    encodings are added to the token embeddings and are typically
-    derived from sinusoidal functions or learned directly:
-    $$\text{PE}_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right), \quad
-            \text{PE}_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right)$$
-    where $pos$ is the position, $i$ is the dimension index, and $d$ is
-    the embedding size.
+- **Positional Encodings:** Since Transformers do not have inherent
+  sequential processing, they use positional encodings to inject
+  information about the order of tokens. Without positional encodings,
+  Transformers would treat sequences as bags of tokens, losing critical
+  information about token order and sequence structure. These encodings
+  are added to the token embeddings and are typically derived from
+  sinusoidal functions or learned directly:
+  $$\text{PE}_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right), \quad
+          \text{PE}_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right)$$
+  where $pos$ is the position, $i$ is the dimension index, and $d$ is
+  the embedding size.
 
 **Multi-Head Attention:** To capture relationships across different
 subspaces, Transformers use multiple attention heads:
@@ -487,14 +487,14 @@ aspects of the input sequence. For a single head, the computation is as
 follows: $$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
 where:
 
--   $W_i^Q, W_i^K, W_i^V$ are learned weight matrices specific to head
-    $i$.
+- $W_i^Q, W_i^K, W_i^V$ are learned weight matrices specific to head
+  $i$.
 
--   $Q, K, V$ are query, key, and value matrices derived from the input
-    embeddings.
+- $Q, K, V$ are query, key, and value matrices derived from the input
+  embeddings.
 
--   $\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$,
-    as explained earlier.
+- $\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$,
+  as explained earlier.
 
 After computing the attention for all heads, the outputs are
 concatenated and linearly transformed:
@@ -502,7 +502,7 @@ $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)
 where $W^O$ is a learned projection matrix. This design allows
 Transformers to capture multiple relational patterns simultaneously.
 
-![Multi-Head Attention Mechanism: Each head captures unique
+![Figure 1: Multi-Head Attention Mechanism: Each head captures unique
 relationships and combines them for comprehensive
 context.](lm/multi_head_attention_example.png){#fig:multi_head_attention_example
 width="\\linewidth"}
@@ -548,39 +548,39 @@ Language models empower a diverse array of natural language processing
 (NLP) tasks, leveraging their ability to understand and generate text.
 Below are some key applications:
 
--   **Text Generation:** Create coherent and contextually relevant text
-    by predicting tokens one step at a time.
+- **Text Generation:** Create coherent and contextually relevant text by
+  predicting tokens one step at a time.
 
--   **Machine Translation:** Convert text from one language to another
-    using sequence-to-sequence models, e.g., translating \"Hello,
-    world!\" to \"Bonjour, le monde!\".
+- **Machine Translation:** Convert text from one language to another
+  using sequence-to-sequence models, e.g., translating \"Hello, world!\"
+  to \"Bonjour, le monde!\".
 
--   **Sentiment Analysis:** Analyze the sentiment of a sentence or
-    document, categorizing it as positive, negative, or neutral. For
-    instance:
+- **Sentiment Analysis:** Analyze the sentiment of a sentence or
+  document, categorizing it as positive, negative, or neutral. For
+  instance:
 
-                Input: "The movie was fantastic!"
-                Output: Positive Sentiment
+              Input: "The movie was fantastic!"
+              Output: Positive Sentiment
 
--   **Summarization:** Generate concise and informative summaries of
-    longer texts, enabling efficient content consumption. For example:
+- **Summarization:** Generate concise and informative summaries of
+  longer texts, enabling efficient content consumption. For example:
 
-                Input: A detailed news article.
-                Output: "Key highlights of today's global summit..."
+              Input: A detailed news article.
+              Output: "Key highlights of today's global summit..."
 
--   **Named Entity Recognition (NER):** Identify and classify entities
-    such as names, dates, locations, and organizations within text. For
-    example:
+- **Named Entity Recognition (NER):** Identify and classify entities
+  such as names, dates, locations, and organizations within text. For
+  example:
 
-                Input: "Elon Musk was born in South Africa."
-                Output: [Elon Musk: PERSON, South Africa: LOCATION]
+              Input: "Elon Musk was born in South Africa."
+              Output: [Elon Musk: PERSON, South Africa: LOCATION]
 
--   **Question Answering (QA):** Respond to user queries by extracting
-    or generating answers based on a given context. For instance:
+- **Question Answering (QA):** Respond to user queries by extracting or
+  generating answers based on a given context. For instance:
 
-                Context: "The capital of France is Paris."
-                Question: "What is the capital of France?"
-                Answer: "Paris"
+              Context: "The capital of France is Paris."
+              Question: "What is the capital of France?"
+              Answer: "Paris"
 
 **Example: Text Generation in Action**
 
@@ -620,73 +620,72 @@ discourse, where the stakes are high.
 
 **Challenges:**
 
--   **Hallucination:** LLMs sometimes generate information that appears
-    plausible but is factually incorrect or fabricated. This occurs
-    because models optimize for fluency and coherence rather than
-    factual accuracy.
+- **Hallucination:** LLMs sometimes generate information that appears
+  plausible but is factually incorrect or fabricated. This occurs
+  because models optimize for fluency and coherence rather than factual
+  accuracy.
 
-    **Example:**
+  **Example:**
 
-                Prompt: "Who is the President of Mars?"
-                Model Output: "John Carter, elected in 2024."
+              Prompt: "Who is the President of Mars?"
+              Model Output: "John Carter, elected in 2024."
 
-    The model confidently provides an answer to an implausible prompt,
-    demonstrating its tendency to prioritize coherence over factual
-    correctness. In critical contexts, such as medical or legal advice,
-    hallucinations could lead to harmful decisions or misinformation.
+  The model confidently provides an answer to an implausible prompt,
+  demonstrating its tendency to prioritize coherence over factual
+  correctness. In critical contexts, such as medical or legal advice,
+  hallucinations could lead to harmful decisions or misinformation.
 
--   **Bias and Fairness:** LLMs may inadvertently reinforce or amplify
-    societal biases embedded in their training data.
+- **Bias and Fairness:** LLMs may inadvertently reinforce or amplify
+  societal biases embedded in their training data.
 
-    -   **Gender and Occupational Bias:** For example:
+  - **Gender and Occupational Bias:** For example:
 
-                        Prompt: "The doctor is..."
-                        Potential Output: "...he is a skilled surgeon."
+                    Prompt: "The doctor is..."
+                    Potential Output: "...he is a skilled surgeon."
 
-        This output reflects a gender bias learned from historical data.
+    This output reflects a gender bias learned from historical data.
 
-    -   **Cultural or Linguistic Biases:** Cultural or linguistic biases
-        may arise when training data predominantly represents one
-        demographic, leading to underperformance on underrepresented
-        groups. For example, a model trained mostly on English data
-        might struggle with accurately processing idiomatic expressions
-        or nuanced syntax in less-represented languages.
+  - **Cultural or Linguistic Biases:** Cultural or linguistic biases may
+    arise when training data predominantly represents one demographic,
+    leading to underperformance on underrepresented groups. For example,
+    a model trained mostly on English data might struggle with
+    accurately processing idiomatic expressions or nuanced syntax in
+    less-represented languages.
 
-    In sensitive domains like healthcare, biased outputs could worsen
-    disparities and harm underrepresented groups.
+  In sensitive domains like healthcare, biased outputs could worsen
+  disparities and harm underrepresented groups.
 
--   **Scaling Costs:** The performance of LLMs often scales with size,
-    but this comes at a steep cost. Larger models demand exponentially
-    more computational resources, including memory, processing power,
-    and energy. This makes training and deployment prohibitively
-    expensive for many organizations, potentially creating accessibility
-    barriers.
+- **Scaling Costs:** The performance of LLMs often scales with size, but
+  this comes at a steep cost. Larger models demand exponentially more
+  computational resources, including memory, processing power, and
+  energy. This makes training and deployment prohibitively expensive for
+  many organizations, potentially creating accessibility barriers.
 
--   **Explainability and Interpretability:** Understanding why LLMs
-    produce specific outputs remains a challenge, limiting trust in
-    high-stakes applications such as medical or legal systems. Without
-    transparent decision-making processes, users may hesitate to rely on
-    LLMs for critical decisions.
+- **Explainability and Interpretability:** Understanding why LLMs
+  produce specific outputs remains a challenge, limiting trust in
+  high-stakes applications such as medical or legal systems. Without
+  transparent decision-making processes, users may hesitate to rely on
+  LLMs for critical decisions.
 
--   **Ethical Considerations:** Misuse of LLMs for generating
-    disinformation, spam, or harmful content raises ethical concerns
-    that demand stringent safeguards. The potential for misuse
-    underscores the importance of establishing rigorous monitoring
-    systems and access restrictions to mitigate harmful applications.
-    For example, LLMs could be used to:
+- **Ethical Considerations:** Misuse of LLMs for generating
+  disinformation, spam, or harmful content raises ethical concerns that
+  demand stringent safeguards. The potential for misuse underscores the
+  importance of establishing rigorous monitoring systems and access
+  restrictions to mitigate harmful applications. For example, LLMs could
+  be used to:
 
-    -   **Spread Disinformation:** Automate the creation of false
-        narratives or propaganda.
+  - **Spread Disinformation:** Automate the creation of false narratives
+    or propaganda.
 
-    -   **Commit Fraud:** Generate phishing emails or impersonations.
+  - **Commit Fraud:** Generate phishing emails or impersonations.
 
-    -   **Produce Harmful Content:** Generate hate speech or incite
-        violence.
+  - **Produce Harmful Content:** Generate hate speech or incite
+    violence.
 
-    Monitoring systems should include real-time detection of misuse
-    patterns and proactive countermeasures such as content moderation
-    pipelines. Access restrictions can involve role-based permissions or
-    licensing to prevent unauthorized deployments.
+  Monitoring systems should include real-time detection of misuse
+  patterns and proactive countermeasures such as content moderation
+  pipelines. Access restrictions can involve role-based permissions or
+  licensing to prevent unauthorized deployments.
 
 Addressing these challenges is critical to ensuring that LLMs remain
 reliable, ethical, and accessible.
@@ -695,31 +694,31 @@ reliable, ethical, and accessible.
 several countermeasures to address these challenges and minimize their
 impact:
 
--   **Explainable AI:** Techniques such as attention visualization,
-    saliency maps, and counterfactual reasoning help illuminate why a
-    model generates specific outputs, improving transparency and trust.
+- **Explainable AI:** Techniques such as attention visualization,
+  saliency maps, and counterfactual reasoning help illuminate why a
+  model generates specific outputs, improving transparency and trust.
 
--   **Dataset Auditing:** Regular audits of training datasets can
-    uncover and correct biases, ensuring balanced representation.
+- **Dataset Auditing:** Regular audits of training datasets can uncover
+  and correct biases, ensuring balanced representation.
 
--   **Content Moderation Pipelines:** Automated tools combined with
-    human review can filter out harmful or misleading outputs before
-    they reach users.
+- **Content Moderation Pipelines:** Automated tools combined with human
+  review can filter out harmful or misleading outputs before they reach
+  users.
 
--   **Fine-Tuning:** Tailoring LLMs on domain-specific, curated datasets
-    can reduce hallucinations and improve accuracy in specialized tasks.
+- **Fine-Tuning:** Tailoring LLMs on domain-specific, curated datasets
+  can reduce hallucinations and improve accuracy in specialized tasks.
 
--   **Post-Processing Techniques:** Verification layers, such as
-    fact-checking modules or ensemble approaches, can refine outputs and
-    filter incorrect or harmful information.
+- **Post-Processing Techniques:** Verification layers, such as
+  fact-checking modules or ensemble approaches, can refine outputs and
+  filter incorrect or harmful information.
 
--   **Efficient Architectures:** Exploring model compression techniques
-    like pruning and distillation can reduce computational costs without
-    sacrificing performance.
+- **Efficient Architectures:** Exploring model compression techniques
+  like pruning and distillation can reduce computational costs without
+  sacrificing performance.
 
--   **Governance and Usage Guidelines:** Clear ethical standards,
-    supported by audits and enforcement mechanisms, ensure responsible
-    use of LLMs.
+- **Governance and Usage Guidelines:** Clear ethical standards,
+  supported by audits and enforcement mechanisms, ensure responsible use
+  of LLMs.
 
 By addressing these challenges and adopting mitigation strategies, LLMs
 can be deployed responsibly to maximize their benefits while minimizing
@@ -747,38 +746,38 @@ reliable behavior is critical.
 
 **Key Steps in RLHF:**
 
--   **Collect Human Feedback:** Human annotators evaluate and rank
-    multiple outputs generated by the base model for a given prompt.
+- **Collect Human Feedback:** Human annotators evaluate and rank
+  multiple outputs generated by the base model for a given prompt.
 
--   **Train the Reward Model:** The feedback trains a model to score
-    outputs based on alignment with human preferences.
+- **Train the Reward Model:** The feedback trains a model to score
+  outputs based on alignment with human preferences.
 
--   **Fine-Tune the Base Model:** Reinforcement learning algorithms like
-    **Proximal Policy Optimization (PPO)** optimize the base model to
-    produce outputs that maximize the reward signal.
+- **Fine-Tune the Base Model:** Reinforcement learning algorithms like
+  **Proximal Policy Optimization (PPO)** optimize the base model to
+  produce outputs that maximize the reward signal.
 
 **Example: Ranking Outputs for a Controversial Prompt**
 
 Consider the prompt: *\"What are the benefits and drawbacks of AI in the
 military?\"* The model generates three outputs:
 
--   **Output 1:** Balanced and nuanced, highlighting both advantages
-    (e.g., precision, reduced casualties) and ethical concerns (e.g.,
-    autonomy, accountability).
+- **Output 1:** Balanced and nuanced, highlighting both advantages
+  (e.g., precision, reduced casualties) and ethical concerns (e.g.,
+  autonomy, accountability).
 
--   **Output 2:** Overly dismissive, focusing only on the dangers of AI
-    in the military.
+- **Output 2:** Overly dismissive, focusing only on the dangers of AI in
+  the military.
 
--   **Output 3:** Optimistic but one-sided, emphasizing efficiency and
-    precision without addressing ethical challenges.
+- **Output 3:** Optimistic but one-sided, emphasizing efficiency and
+  precision without addressing ethical challenges.
 
 **Annotator Rankings:**
 
--   Rank 1: Output 1 (balanced and nuanced).
+- Rank 1: Output 1 (balanced and nuanced).
 
--   Rank 2: Output 2 (valid concern but lacks nuance).
+- Rank 2: Output 2 (valid concern but lacks nuance).
 
--   Rank 3: Output 3 (lacks ethical considerations).
+- Rank 3: Output 3 (lacks ethical considerations).
 
 The reward model uses these rankings to train the base model to
 prioritize nuanced and balanced outputs over simplistic or biased
@@ -790,14 +789,14 @@ trustworthiness in real-world applications.
 
 **Benefits of RLHF:**
 
--   **Improves Relevance:** Outputs are more contextually accurate and
-    user-specific.
+- **Improves Relevance:** Outputs are more contextually accurate and
+  user-specific.
 
--   **Reduces Harmful Outputs:** Penalizes toxic, biased, or harmful
-    content.
+- **Reduces Harmful Outputs:** Penalizes toxic, biased, or harmful
+  content.
 
--   **Aligns with Human Values:** Reflects human values more closely
-    through iterative feedback.
+- **Aligns with Human Values:** Reflects human values more closely
+  through iterative feedback.
 
 RLHF is a critical tool for enhancing the usability and safety of large
 language models, enabling them to deliver high-quality, aligned outputs

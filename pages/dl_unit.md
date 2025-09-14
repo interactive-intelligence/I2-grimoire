@@ -28,9 +28,8 @@ and the axons as edges.
 
 The figure below shows how a graph like this might appear.
 
-![A visualization of neural
-networks](dl/neuralnetwork.png){#fig:neuralnetwork
-width="0.5\\linewidth"}
+![Figure 1: A visualization of neural
+networks](dl/neuralnetwork.png){#fig:neuralnetwork width="50%"}
 
 </div>
 <div markdown="1" class="flushleft">
@@ -50,8 +49,8 @@ into the input layer of the model.
 
 </div>
 
-![Visualization of how images are converted into
-vectors](dl/img-vector.png){#fig:img-vector width="1\\linewidth"}
+![Figure 2: Visualization of how images are converted into
+vectors](dl/img-vector.png){#fig:img-vector width="100%"}
 
 <div markdown="1" class="flushleft">
 Next are the **hidden layers**, which are yellow in the first image.
@@ -137,10 +136,9 @@ Have the three pink neurons be $a_1$, $a_2$, $a_3$. Only consider the
 top yellow neuron, and call it $z$. The arrow connecting $a_x$ to $z$ is
 called $w_x$. The bias for the neuron $z$ is $b$.
 
-![An illustration of weights and biases connecting the first layer of
-our neural network to the first neuron of the second (hidden)
-layer.](dl/connectivity_basic.png){#fig:connectivity_basic
-width="0.5\\linewidth"}
+![Figure 3: An illustration of weights and biases connecting the first
+layer of our neural network to the first neuron of the second (hidden)
+layer.](dl/connectivity_basic.png){#fig:connectivity_basic width="50%"}
 
 $$z = (w_1a_1 + w_2a_2 + w_3a_3) + b$$
 
@@ -259,9 +257,9 @@ that *there is no way to draw a line that cleanly separates the
 classes.* In other words, the XOR classification problem is **not
 linearly separable**.
 
-![Illustration of the XOR function, and how you cannot draw a single
-line that separates the classes (white and black
-dots).](dl/xor.png){#fig:xor width="0.5\\linewidth"}
+![Figure 4: Illustration of the XOR function, and how you cannot draw a
+single line that separates the classes (white and black
+dots).](dl/xor.png){#fig:xor width="50%"}
 
 XOR is a simple boolean operation, as we move to complex problems like
 animal classification and speech recognition, how can perceptrons hope
@@ -308,24 +306,24 @@ with nonlinearities (shocker!).
 
 1.  Define the following words:
 
-    -   Neuron
+    - Neuron
 
-    -   Layer
+    - Layer
 
-    -   Hidden Layer
+    - Hidden Layer
 
-    -   Weight
+    - Weight
 
-    -   Bias
+    - Bias
 
 2.  If you have a neural network with an input dimension of 3, a hidden
     dimension of 4, and an output dimension of 1, then what would:
 
-    -   The dimension of $W$ between the input and hidden layers be?
+    - The dimension of $W$ between the input and hidden layers be?
 
-    -   The dimension of $W$ between the hidden and output layer be?
+    - The dimension of $W$ between the hidden and output layer be?
 
-    -   The dimension of $\textbf{b}$ for the hidden layer?
+    - The dimension of $\textbf{b}$ for the hidden layer?
 
 3.  Explain in your own words why a linear classifier (like a
     perceptron) cannot be used to solve the XOR problem
@@ -396,9 +394,8 @@ to train this arbitrarily large model.
 ## Common Activation Functions
 
 <div markdown="1" class="flushleft">
-![Plots of various activation
-functions](dl/activationfuncs.png){#fig:activationfuncs
-width="0.75\\linewidth"}
+![Figure 5: Plots of various activation
+functions](dl/activationfuncs.png){#fig:activationfuncs width="75%"}
 
 One commonly used activation function is the **sigmoid function**. This
 function squashes inputs into the range between 0 and 1. It is useful in
@@ -450,9 +447,9 @@ $$f(x)=
 
 1.  Define the following words:
 
-    -   Activation function
+    - Activation function
 
-    -   Logits
+    - Logits
 
 2.  Why are activation functions important for increasing the power of a
     neural network?
@@ -529,8 +526,8 @@ and associated graph below:
 
 $$f(x, y) = z = x^2 + y^2$$
 
-![Illustration of the function
-$f(x, y) = x^2 + y^2$](dl/x2y2.png){#fig:x2y2 width="0.5\\linewidth"}
+![Figure 6: Illustration of the function
+$f(x, y) = x^2 + y^2$](dl/x2y2.png){#fig:x2y2 width="50%"}
 
 The **gradient** of a multivariate function (denoted in this case as
 $\nabla f(x,y)$ or $\nabla z$) points you in the *direction of steepest
@@ -571,12 +568,12 @@ $$\begin{bmatrix}
 If we plot this as a vector on our previous graph:
 
 <figure id="fig:x2y2_2">
-<p><img src="dl/x2y2line.png" alt="image" /> <img
-src="dl/x2y2lineabove.png" alt="image" /></p>
-<figcaption>Illustration of the function <span
-class="math inline"><em>f</em>(<em>x</em>,<em>y</em>) = <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup></span>,
+<p><img src="dl/x2y2line.png" style="width:45.0%" alt="image" /> <img
+src="dl/x2y2lineabove.png" style="width:45.0%" alt="image" /></p>
+<figcaption>Figure 7: Illustration of the function <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup></span>,
 with a vector showing the direction of steepest ascent from point <span
-class="math inline">(1,1)</span></figcaption>
+class="math inline">(1, 1)</span></figcaption>
 </figure>
 
 So how does this relate to neural networks? Well, we can simply think of
@@ -710,9 +707,9 @@ way too long to converge, while a large learning rate may not converge
 at all! For an illustration of this, see Figure
 [8](#fig:lr){reference-type="ref" reference="fig:lr"}.
 
-![A demonstration of how different learning rates affect convergence of
-a loss function (in this graphic represented as
-$J(\theta).$](dl/lr.png){#fig:lr width="1\\linewidth"}
+![Figure 8: A demonstration of how different learning rates affect
+convergence of a loss function (in this graphic represented as
+$J(\theta).$](dl/lr.png){#fig:lr width="100%"}
 
 </div>
 <div markdown="1" class="questionbox">
@@ -763,8 +760,8 @@ be used by the network all the time. See Figure
 [9](#fig:dropout){reference-type="ref" reference="fig:dropout"} for a
 visual representation of this process.
 
-![Visualizing dropout in a fully connected neural
-network](dl/dropout.png){#fig:dropout width="1\\linewidth"}
+![Figure 9: Visualizing dropout in a fully connected neural
+network](dl/dropout.png){#fig:dropout width="100%"}
 
 Why would we do this? Well, if a network is allowed to use all of its
 neurons all of the time, there is no guarantee that the network will

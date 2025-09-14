@@ -44,18 +44,18 @@ it was trained on.
 In practice, the following steps are often taken when working with
 train/test splits:
 
--   **Step 1: Data Splitting.** Split the data into training and test
-    sets before training the model. This prevents any information from
-    the test set from leaking into the model.
+- **Step 1: Data Splitting.** Split the data into training and test sets
+  before training the model. This prevents any information from the test
+  set from leaking into the model.
 
--   **Step 2: Model Training.** Use the training set to build the
-    machine learning model by adjusting weights, minimizing errors, or
-    finding patterns.
+- **Step 2: Model Training.** Use the training set to build the machine
+  learning model by adjusting weights, minimizing errors, or finding
+  patterns.
 
--   **Step 3: Model Evaluation.** Once the model is trained, evaluate it
-    on the test set. Common evaluation metrics include accuracy,
-    precision, recall, and mean squared error, depending on the type of
-    model.
+- **Step 3: Model Evaluation.** Once the model is trained, evaluate it
+  on the test set. Common evaluation metrics include accuracy,
+  precision, recall, and mean squared error, depending on the type of
+  model.
 
 In some cases, a third subset called a **validation set** is also used.
 The validation set helps tune hyperparameters and prevent overfitting
@@ -98,14 +98,14 @@ and the target output by fitting a straight line to the data points. The
 general form of a linear regression model is:
 $$\hat{y} = b + w_1x_1 + w_2x_2 + ... + w_nx_n$$ Where:
 
--   $\hat{y}$ is the predicted output,
+- $\hat{y}$ is the predicted output,
 
--   $x_1, x_2, ..., x_n$ are the input features,
+- $x_1, x_2, ..., x_n$ are the input features,
 
--   $w_1, w_2, ..., w_n$ are the weights (coefficients) assigned to each
-    feature,
+- $w_1, w_2, ..., w_n$ are the weights (coefficients) assigned to each
+  feature,
 
--   $b$ is the intercept.
+- $b$ is the intercept.
 
 The goal of linear regression is to find the values of $w$ and $b$ that
 minimize the difference between the predicted values and the actual
@@ -136,12 +136,12 @@ $SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$
 
 Where:
 
--   $y_i$ represents the **actual value** for data point $i$,
+- $y_i$ represents the **actual value** for data point $i$,
 
--   $\hat{y}_i$ represents the **predicted value** from the model for
-    the same data point,
+- $\hat{y}_i$ represents the **predicted value** from the model for the
+  same data point,
 
--   $m$ is the **number of data points** in the dataset.
+- $m$ is the **number of data points** in the dataset.
 
 The concept of squaring the errors is essential because it penalizes
 larger deviations more than smaller ones. In other words, if a
@@ -149,9 +149,9 @@ prediction is far off from the actual value, its contribution to the SSE
 will be disproportionately larger, making it easier to identify large
 errors.
 
-![An illustration of two lines of fit that would produce a low and high
-SSE respectively. The line that fits the data better has a low
-SSE](ml/seefits.png){#fig:seefits width="0.45\\linewidth"}
+![Figure 1: An illustration of two lines of fit that would produce a low
+and high SSE respectively. The line that fits the data better has a low
+SSE](ml/seefits.png){#fig:seefits width="45%"}
 
 **The goal in regression** is to minimize SSE, because a lower SSE value
 indicates a better fit of the model to the data. A model with a small
@@ -181,15 +181,15 @@ $\hat{y} = w_0 + w_1x$
 
 Where:
 
--   $w_0$ is the **intercept** of the line, representing the predicted
-    value when the input $x = 0$,
+- $w_0$ is the **intercept** of the line, representing the predicted
+  value when the input $x = 0$,
 
--   $w_1$ is the **slope** or weight, representing the change in the
-    predicted value $\hat{y}$ for a one-unit change in the input $x$,
+- $w_1$ is the **slope** or weight, representing the change in the
+  predicted value $\hat{y}$ for a one-unit change in the input $x$,
 
--   $x$ is the input (or feature) variable, and
+- $x$ is the input (or feature) variable, and
 
--   $\hat{y}$ is the predicted value based on the input.
+- $\hat{y}$ is the predicted value based on the input.
 
 In the least squares method, the goal is to find the optimal values for
 $w_0$ and $w_1$ that minimize the SSE, ensuring that the line fits the
@@ -347,9 +347,9 @@ weights you find with ordinary linear regression tend to not generalize
 well.
 
 <figure id="fig:regression_comparison">
-<p><img src="ml/regression_comparison.png" alt="image" /> <span
-id="fig:regression_comparison"
-label="fig:regression_comparison"></span></p>
+<p><img src="ml/regression_comparison.png" style="width:85.0%"
+alt="image" /> <span id="fig:regression_comparison"
+data-label="fig:regression_comparison"></span></p>
 </figure>
 
 What can we do in this case? Well, we can penalize weights becoming too
@@ -366,8 +366,11 @@ But first, what are the L2 and L1 norms? These norms are mathematical
 functions that map from vector space to scalar space
 ($\mathbb{R}^n \rightarrow \mathbb{R})$. They are defined as such:
 
-$$\|\textbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2}$$
-$$\|\textbf{x}\|_1 = \sum_{i=1}^n \vert x_i \vert$$
+$$\begin{aligned}
+      \|\textbf{x}\|_2 &= \sqrt{\sum_{i=1}^n x_i^2} \\
+      \|\textbf{x}\|_1 &= \sum_{i=1}^n \vert x_i \vert
+    
+\end{aligned}$$
 
 So the L2 norm is the square root of the sum of squared elements from
 the vector, and the L1 norm is the sum of the absolute value of elements
@@ -379,8 +382,11 @@ $||\hat{\textbf{w}}||_2$ or $||\hat{\textbf{w}}||_1$ along with the
 original SSE objective. We therefore write our two new optimization
 objectives down:
 
-$$Ridge\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2$$
-$$LASSO\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1$$
+$$\begin{aligned}
+      Ridge\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
+      LASSO\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
+    
+\end{aligned}$$
 
 The $\lambda$ term allows us to control how much regularization we want.
 A small number makes the mode kind of "care" about keeping its weights
@@ -421,10 +427,10 @@ will exaggerate these effects, with incredibly high values for $\lambda$
 in LASSO regression resulting in only one or two features having
 non-zero weights.
 
-![Showing how the L1 and L2 norms influence $\hat{\textbf{w}}$ through
-the nature of their manifestations on the loss landscape as a
+![Figure 2: Showing how the L1 and L2 norms influence $\hat{\textbf{w}}$
+through the nature of their manifestations on the loss landscape as a
 hyperdiamond and hypersphere respectively](ml/l1_l2.jpg){#fig:l1_l2
-width="0.9\\linewidth"}
+width="90%"}
 
 Both of these regression variants have use cases where they shine, so no
 one is "better" than the other. Ridge regression should be used when you
@@ -443,13 +449,13 @@ computational constraints).
     (Assume $n$ is the dimensionality of the data and $m$ is the number
     of datapoints):
 
-    -   $\textbf{w}$
+    - $\textbf{w}$
 
-    -   $\hat{\textbf{w}}$
+    - $\hat{\textbf{w}}$
 
-    -   $X$
+    - $X$
 
-    -   $\textbf{y}$
+    - $\textbf{y}$
 
 3.  Rewrite the euclidean distance formula
     $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ using the L2-norm
@@ -495,23 +501,22 @@ $P(y=1 \mid x) = \frac{1}{1 + e^{-(b + w^{\top}x)}}$
 
 Where:
 
--   $w$ is the **weight vector**, which defines the importance of each
-    feature in the input.
+- $w$ is the **weight vector**, which defines the importance of each
+  feature in the input.
 
--   $b$ is the **bias term**, which adjusts the overall output of the
-    function.
+- $b$ is the **bias term**, which adjusts the overall output of the
+  function.
 
--   $e$ is Euler's number, and the exponent ensures that the output is
-    squeezed between 0 and 1.
+- $e$ is Euler's number, and the exponent ensures that the output is
+  squeezed between 0 and 1.
 
 </div>
 
 ## The Sigmoid Function and Its Role
 
 <div markdown="1" class="flushleft">
-![A graph showing the sigmoid
-function.](ml/sigmoid_function.png){#fig:sigmoid_function
-width="0.45\\linewidth"}
+![Figure 3: A graph showing the sigmoid
+function.](ml/sigmoid_function.png){#fig:sigmoid_function width="45%"}
 
 The sigmoid function plays a crucial role in logistic regression because
 it takes any input from the linear equation and converts it into a value
@@ -519,15 +524,15 @@ between 0 and 1. This value can be interpreted as a probability, helping
 us decide which class the input most likely belongs to. Here's how it
 works:
 
--   If the result of the linear equation ($b + w^{\top}x$) is a large
-    positive number, the sigmoid function outputs a value close to 1,
-    indicating that the input most likely belongs to class 1.
+- If the result of the linear equation ($b + w^{\top}x$) is a large
+  positive number, the sigmoid function outputs a value close to 1,
+  indicating that the input most likely belongs to class 1.
 
--   If the result is a large negative number, the sigmoid function
-    outputs a value close to 0, indicating class 0.
+- If the result is a large negative number, the sigmoid function outputs
+  a value close to 0, indicating class 0.
 
--   If the result is near 0, the sigmoid outputs a value close to 0.5,
-    meaning the input is equally likely to belong to either class.
+- If the result is near 0, the sigmoid outputs a value close to 0.5,
+  meaning the input is equally likely to belong to either class.
 
 This probability can then be used to classify the input: if the
 probability is greater than 0.5, we predict class 1, and if it is less
@@ -616,22 +621,22 @@ similar to each other than to points in other clusters.
 The process of k-means clustering can be broken down into the following
 steps:
 
--   **Step 1: Initialization.** The algorithm begins by randomly
-    selecting $k$ initial cluster centroids from the dataset. These
-    centroids act as the starting points for the clusters.
+- **Step 1: Initialization.** The algorithm begins by randomly selecting
+  $k$ initial cluster centroids from the dataset. These centroids act as
+  the starting points for the clusters.
 
--   **Step 2: Assignment.** Each data point is assigned to the nearest
-    centroid based on a distance metric, typically Euclidean distance.
-    This forms $k$ clusters of data points, with each point belonging to
-    the cluster whose centroid is closest.
+- **Step 2: Assignment.** Each data point is assigned to the nearest
+  centroid based on a distance metric, typically Euclidean distance.
+  This forms $k$ clusters of data points, with each point belonging to
+  the cluster whose centroid is closest.
 
--   **Step 3: Update.** Once the points are assigned to clusters, the
-    centroids of the clusters are recalculated. The new centroid is the
-    mean of all the data points in the cluster.
+- **Step 3: Update.** Once the points are assigned to clusters, the
+  centroids of the clusters are recalculated. The new centroid is the
+  mean of all the data points in the cluster.
 
--   **Step 4: Repeat.** Steps 2 and 3 are repeated until the centroids
-    no longer move significantly, or the cluster assignments do not
-    change. This indicates that the algorithm has converged.
+- **Step 4: Repeat.** Steps 2 and 3 are repeated until the centroids no
+  longer move significantly, or the cluster assignments do not change.
+  This indicates that the algorithm has converged.
 
 The goal of this process is to minimize the sum of squared distances
 between each data point and its cluster's centroid. This ensures that
@@ -649,13 +654,13 @@ minimize is called the **sum of squared errors** (SSE), which measures
 how far the data points are from their respective cluster centroids:
 $$SSE = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2$$ Where:
 
--   $x_i$ represents a data point,
+- $x_i$ represents a data point,
 
--   $\mu_j$ is the centroid of cluster $j$,
+- $\mu_j$ is the centroid of cluster $j$,
 
--   $C_j$ represents the set of points assigned to cluster $j$,
+- $C_j$ represents the set of points assigned to cluster $j$,
 
--   $\|\cdot\|^2$ is the squared Euclidean distance.
+- $\|\cdot\|^2$ is the squared Euclidean distance.
 
 By minimizing the SSE, k-means clustering ensures that data points
 within the same cluster are tightly packed around their centroid, making
@@ -674,10 +679,9 @@ $k$, and the results are plotted. The "elbow" point on the plot
 represents the optimal number of clusters---beyond this point,
 increasing $k$ provides diminishing returns in terms of reducing SSE.
 
-![An example of a graph showing SSE vs. $k$, and the elbow that can be
-used to pick the optimal
-$k$.](ml/SSEkElbowmethod.png){#fig:SSEkElbowmethod
-width="0.45\\linewidth"}
+![Figure 4: An example of a graph showing SSE vs. $k$, and the elbow
+that can be used to pick the optimal
+$k$.](ml/SSEkElbowmethod.png){#fig:SSEkElbowmethod width="45%"}
 
 Another method to determine $k$ is by using the **silhouette score**,
 which evaluates how similar a data point is to its assigned cluster
@@ -692,21 +696,20 @@ better-defined clusters.
 While k-means is an effective clustering algorithm, it comes with
 several limitations:
 
--   **Sensitivity to Initialization.** The algorithm is highly sensitive
-    to the initial placement of the centroids. Poor initial choices can
-    result in suboptimal clusters or even cause the algorithm to
-    converge to a local minimum. To address this, a more refined
-    initialization method, **K-Means++**, is often used to improve the
-    initial centroids.
+- **Sensitivity to Initialization.** The algorithm is highly sensitive
+  to the initial placement of the centroids. Poor initial choices can
+  result in suboptimal clusters or even cause the algorithm to converge
+  to a local minimum. To address this, a more refined initialization
+  method, **K-Means++**, is often used to improve the initial centroids.
 
--   **Fixed Number of Clusters.** K-means requires that $k$ be defined
-    ahead of time, which might not always be clear from the dataset.
-    This adds complexity to its usage.
+- **Fixed Number of Clusters.** K-means requires that $k$ be defined
+  ahead of time, which might not always be clear from the dataset. This
+  adds complexity to its usage.
 
--   **Sensitivity to Outliers.** K-means clustering can be significantly
-    impacted by outliers. Since the algorithm seeks to minimize
-    distances, outliers (data points far from the rest of the data) can
-    disproportionately affect the cluster centroids.
+- **Sensitivity to Outliers.** K-means clustering can be significantly
+  impacted by outliers. Since the algorithm seeks to minimize distances,
+  outliers (data points far from the rest of the data) can
+  disproportionately affect the cluster centroids.
 
 Despite these limitations, k-means remains a widely used and powerful
 clustering technique for discovering patterns in data, particularly when
@@ -791,19 +794,19 @@ as Manhattan distance).
 
 Here are key distinctions between the two methods:
 
--   **K-Means:** More sensitive to outliers because the mean is
-    influenced by extreme values. It is best suited for datasets where
-    the distance between points is naturally measured using Euclidean
-    distances, and when the data does not contain many outliers.
+- **K-Means:** More sensitive to outliers because the mean is influenced
+  by extreme values. It is best suited for datasets where the distance
+  between points is naturally measured using Euclidean distances, and
+  when the data does not contain many outliers.
 
--   **K-Medians:** More robust to outliers, as the median remains stable
-    even in the presence of extreme values. It is better suited for
-    datasets with skewed distributions or where minimizing absolute
-    differences is a priority.
+- **K-Medians:** More robust to outliers, as the median remains stable
+  even in the presence of extreme values. It is better suited for
+  datasets with skewed distributions or where minimizing absolute
+  differences is a priority.
 
-![ An image comparing and contrasted the clusters created from k-means
-and k-medians methods.](ml/K-clustering.png){#fig:K-clustering
-width="0.45\\linewidth"}
+![Figure 5: An image comparing and contrasted the clusters created from
+k-means and k-medians methods.](ml/K-clustering.png){#fig:K-clustering
+width="45%"}
 
 The choice between the two methods depends heavily on the nature of the
 dataset. K-means is computationally more efficient but may produce
@@ -882,9 +885,9 @@ you must pick a ML model that has enough expressive power to capture
 underlying trends, but is not so expressive that it suffers from high
 variance errors.
 
-![An illustration visualizing different balances between bias and
-variance for model fitting.](ml/biasvariance.jpg){#fig:biasvariance
-width="0.8\\linewidth"}
+![Figure 6: An illustration visualizing different balances between bias
+and variance for model fitting.](ml/biasvariance.jpg){#fig:biasvariance
+width="80%"}
 
 </div>
 
@@ -905,10 +908,10 @@ However, if the function you are optimizing on is non-convex, there is a
 chance that a lower valley exists somewhere on this SSE landscape, but
 you can never be 100% certain!
 
-![An illustration visualizing a convex function and a non-convex
-function. Also shown is the problem that comes with optimizing
-non-convex functions: getting stuck at a local
-minima.](ml/convexity.png){#fig:convexity width="0.8\\linewidth"}
+![Figure 7: An illustration visualizing a convex function and a
+non-convex function. Also shown is the problem that comes with
+optimizing non-convex functions: getting stuck at a local
+minima.](ml/convexity.png){#fig:convexity width="80%"}
 
 Figure [8](#fig:convexity){reference-type="ref"
 reference="fig:convexity"} illustrates this point. For the non-convex
