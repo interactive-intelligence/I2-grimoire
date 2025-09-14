@@ -45,18 +45,19 @@ jobs:
 
     - name: Convert latex to markdown
       run: |
-        sudo apt-get update && sudo apt-get install -y pandoc
+        sudo apt-get install -y pandoc
         # note: we reuse file_unit.tex as we don't need it anymore
         sed -e 's/{{unit}}/cv/g' md_template.tex > cv_unit.tex
         sed -e 's/{{unit}}/dl/g' md_template.tex > dl_unit.tex
         sed -e 's/{{unit}}/lm/g' md_template.tex > lm_unit.tex
         sed -e 's/{{unit}}/ml/g' md_template.tex > ml_unit.tex
         sed -e 's/{{unit}}/rl/g' md_template.tex > cv_unit.tex
+        echo 'Running Pandoc...'
         parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {} ::: cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
         # Add header to each file
         sed -i -e '1i\n---nlayout: page\ntitle: Computer Vision\npermalink: /cv\nnav_order: 3\ndescription: Computer Vision Unit\n---' cv_unit.md
         sed -i -e '1i\n---nlayout: page\ntitle: Deep Learning\npermalink: /ml\nnav_order: 2\ndescription: Deep Learning Unit\n---' dl_unit.md
-        sed -i -e '1i\n---nlayout: page\ntitle: Lanuguage Modeling\npermalink: /lm\nnav_order: 4\ndescription: Language Modeling Unit\n---' ml_unit.md
+        sed -i -e '1i\n---nlayout: page\ntitle: Lanuguage Modeling\npermalink: /lm\nnav_order: 4\ndescription: Language Modeling Unit\n---' lm_unit.md
         sed -i -e '1i\n---nlayout: page\ntitle: Machine Learning\npermalink: /ml\nnav_order: 1\ndescription: Machine Learning Unit\n---' ml_unit.md
         sed -i -e '1i\n---nlayout: page\ntitle: Reinforcement Learning\npermalink: /ml\nnav_order: 5\ndescription: Reinforcement Learning Unit\ ---' rl_unit.md
 
