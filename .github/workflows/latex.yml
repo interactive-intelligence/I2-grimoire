@@ -54,46 +54,11 @@ jobs:
         sed -e 's/{{unit}}/rl/g' md_template.tex > cv_unit.tex
         parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {} ::: cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
         # Add header to each file
-        sed -i -e '1i\
-        ---
-        layout: page\
-        title: Computer Vision\
-        permalink: /cv\
-        nav_order: 3\
-        description: Computer Vision Unit\
-        ---' cv_unit.md
-        sed -i -e '1i\
-        ---
-        layout: page\
-        title: Deep Learning\
-        permalink: /ml\
-        nav_order: 2\
-        description: Deep Learning Unit\
-        ---' dl_unit.md
-        sed -i -e '1i\
-        ---
-        layout: page\
-        title: Lanuguage Modeling\
-        permalink: /lm\
-        nav_order: 4\
-        description: Language Modeling Unit\
-        ---' ml_unit.md
-        sed -i -e '1i\
-        ---
-        layout: page\
-        title: Machine Learning\
-        permalink: /ml\
-        nav_order: 1\
-        description: Machine Learning Unit\
-        ---' ml_unit.md
-        sed -i -e '1i\
-        ---
-        layout: page\
-        title: Reinforcement Learning\
-        permalink: /ml\
-        nav_order: 5\
-        description: Reinforcement Learning Unit\
-        ---' rl_unit.md
+        sed -i -e '1i\n---nlayout: page\ntitle: Computer Vision\npermalink: /cv\nnav_order: 3\ndescription: Computer Vision Unit\n---' cv_unit.md
+        sed -i -e '1i\n---nlayout: page\ntitle: Deep Learning\npermalink: /ml\nnav_order: 2\ndescription: Deep Learning Unit\n---' dl_unit.md
+        sed -i -e '1i\n---nlayout: page\ntitle: Lanuguage Modeling\npermalink: /lm\nnav_order: 4\ndescription: Language Modeling Unit\n---' ml_unit.md
+        sed -i -e '1i\n---nlayout: page\ntitle: Machine Learning\npermalink: /ml\nnav_order: 1\ndescription: Machine Learning Unit\n---' ml_unit.md
+        sed -i -e '1i\n---nlayout: page\ntitle: Reinforcement Learning\npermalink: /ml\nnav_order: 5\ndescription: Reinforcement Learning Unit\ ---' rl_unit.md
 
     - name: Fetch Just the docs theme
       run: git clone https://github.com/just-the-docs/just-the-docs-template /tmp/just-the-docs
