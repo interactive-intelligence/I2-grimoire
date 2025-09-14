@@ -46,7 +46,7 @@ jobs:
     - name: Install pandoc
       uses: pandoc/actions/setup@v1
       with:
-        version: 3.7
+        version: 3.7.0.2
 
     - name: Convert latex to markdown
       run: |
