@@ -43,6 +43,14 @@ jobs:
         name: PDF
         path: main.pdf
 
+    - name: Disable man-db (improves performance)
+      run: |
+        sudo tee /etc/dpkg/dpkg.cfg.d/01_nodoc > /dev/null << 'EOF'
+        path-exclude /usr/share/doc/*
+        path-exclude /usr/share/man/*
+        path-exclude /usr/share/info/*
+        EOF
+
     - name: Install pandoc
       uses: pandoc/actions/setup@v1
       with:
