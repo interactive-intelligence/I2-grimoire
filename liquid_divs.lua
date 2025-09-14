@@ -12,7 +12,7 @@ function Div(div)
     local content = pandoc.write(pandoc.Pandoc(div.content), 'markdown')
 
     -- Construct the final HTML string.
-    local html_block = '<div class="' .. class_name .. '">\n' .. content .. '\n</div>'
+    local html_block = '<div markdown="1" class="' .. class_name .. '">\n' .. content .. '\n</div>'
 
     -- Return a RawBlock of HTML, which Pandoc will insert directly
     -- into the markdown output.
