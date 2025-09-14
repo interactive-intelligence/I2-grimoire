@@ -98,9 +98,9 @@
 \begin{flushleft}
     \large Taking a step back from the plethora of notation, we will approach RL somewhat naively through \textbf{behavior cloning}, one of the simplest forms of RL. Rewards are not even needed in this problem formulation, and it blurs the lines between supervised learning and reinforcement learning. \break
 
-    In this problem formulation, we assume we have an expert from which we get many $(s^*, a^*)$ pairs. The superscript stars denote that this information is ``optimal''. We assume that the expert has solved the problem perfectly. For example, we would allow a human with a remote control to operate a robotic arm and perform a task. The telemetry data would be recorded and this dataset is referred to as $\mathcal{D}$, from which we can sample $(s^*, a^*)$ pairs. We can now write an optimization objective:
+    In this problem formulation, we assume we have an expert from which we get many $(s^{*}, a^{*})$ pairs. The superscript stars denote that this information is ``optimal''. We assume that the expert has solved the problem perfectly. For example, we would allow a human with a remote control to operate a robotic arm and perform a task. The telemetry data would be recorded and this dataset is referred to as $\mathcal{D}$, from which we can sample $(s^{*}, a^{*})$ pairs. We can now write an optimization objective:
 
-    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr]$$
+    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr]$$
 
     This seems complicated so let's break it down:
 
@@ -113,26 +113,26 @@
 
     0 is the value of $x$ that maximizes $-x^2$, so $\underset{x}{\textrm{argmax}}$ = 0.
     
-    $$\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\cdot]$$
+    $$\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\cdot]$$
     $$\downarrow$$
-    $$\underset{\theta}{\textrm{argmax}}\biggl[ \mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\cdot] \biggr]$$
+    $$\underset{\theta}{\textrm{argmax}}\biggl[ \mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\cdot] \biggr]$$
 
-   A subscript of an expectation can be somewhat ambiguous, and mean slightly different things depending on context. In this case, we are defining where $s^*$ and $a^*$ come from (the expert distribution $\mathcal{D}$). This becomes important because these two variables are part of the final term we introduce:
+   A subscript of an expectation can be somewhat ambiguous, and mean slightly different things depending on context. In this case, we are defining where $s^{*}$ and $a^{*}$ come from (the expert distribution $\mathcal{D}$). This becomes important because these two variables are part of the final term we introduce:
 
-   $$\mathrm{log}\pi_\theta(a^*|s^*)$$
+   $$\mathrm{log}\pi_\theta(a^{*}|s^{*})$$
    $$\downarrow$$
-   $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr]$$
+   $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr]$$
 
-   $\pi_\theta$ is the policy, parameterized by $\theta$. What this means is that if this policy is represented by a neural network, \textit{then $\theta$ are the weights and biases}. $\mathrm{log}\pi_\theta(a^*|s^*)$ is the ``log-probability'' of the model choosing $a^*$ given $s^*$. The highest this probability can be is 1. Note that the logarithm of 1 evaluates to 0. Anything below 1 will evaluate to be exponentially more negative/worse. So if we wish to find the weights and biases ($\theta$) that maximize $\mathrm{log}\pi_\theta(a^*|s^*)$, we need to select weights and biases that assign a probability of 1 to $a^*$ given $s^*$ and 0 to all other actions. We know that $a^*$ and $s^*$ come from an expert distribution $\mathcal{D}$ thanks to the subscript. Therefore if we find $\theta$, we have a policy that will act optimally given the states it has seen! This notation may seem heavy, but it is a primer for more complex algorithms. \break
+   $\pi_\theta$ is the policy, parameterized by $\theta$. What this means is that if this policy is represented by a neural network, \textit{then $\theta$ are the weights and biases}. $\mathrm{log}\pi_\theta(a^{*}|s^{*})$ is the ``log-probability'' of the model choosing $a^{*}$ given $s^{*}$. The highest this probability can be is 1. Note that the logarithm of 1 evaluates to 0. Anything below 1 will evaluate to be exponentially more negative/worse. So if we wish to find the weights and biases ($\theta$) that maximize $\mathrm{log}\pi_\theta(a^{*}|s^{*})$, we need to select weights and biases that assign a probability of 1 to $a^{*}$ given $s^{*}$ and 0 to all other actions. We know that $a^{*}$ and $s^{*}$ come from an expert distribution $\mathcal{D}$ thanks to the subscript. Therefore if we find $\theta$, we have a policy that will act optimally given the states it has seen! This notation may seem heavy, but it is a primer for more complex algorithms. \break
 
-   How this is implemented in code is quite simple. We simply take every $(s^*,a^*) \sim \mathcal{D}$ pair and label the $s^*$ as the data and the $a^*$ as the label. We then train a neural network on this data (input dimensionality is the dimensionality of $s$, output dimensionality is the dimensionality of $a$), and call it $\pi_\theta$. We now have a policy that can accept a state, and act accordingly. This all seems much too simple though. What is the drawback?
+   How this is implemented in code is quite simple. We simply take every $(s^{*},a^{*}) \sim \mathcal{D}$ pair and label the $s^{*}$ as the data and the $a^{*}$ as the label. We then train a neural network on this data (input dimensionality is the dimensionality of $s$, output dimensionality is the dimensionality of $a$), and call it $\pi_\theta$. We now have a policy that can accept a state, and act accordingly. This all seems much too simple though. What is the drawback?
 \end{flushleft}
 
 \subsection{Problems with Behavior Cloning}
 \begin{flushleft}
     \large There are two compounding problems with behavior cloning that make a basic implementation mostly unviable for complex situations. \break
     
-    The first is that it has \textbf{quadratically compounding error}. There is a proof for this, but it is also intuitive. Say, due to physical forces or minor perturbations, that a robot cloning the behavior of a human gets 0.1cm off from where it should be after taking action $a_t^*$ at $s_t$ (optimal action at state $s_t)$. We are now in dangerous territory, as the state the robot is in currently is not found in any training example. As a result, the robot takes a sub-optimal action and ends up 1cm off track. It will be near impossible for the robot to complete its task after a few more missteps, and now it is grabbing your ear instead of the apple it was supposed to. Behavior cloning leads to \textit{very precarious paths to follow}. If the robot can stay perfectly on track and nothing new comes up, then it is able to complete the task perfectly. This is not really useful though. You may as well resort to optimal control theory for robotics, which give you much more guarantees and a little more flexibility. One way to mitigate this is to add lots of training examples, but to even begin to the solve the problem, you need an exorbitant amount of data. There are more intelligent ways to do this, like the DAgger algorithm discussed later. \break
+    The first is that it has \textbf{quadratically compounding error}. There is a proof for this, but it is also intuitive. Say, due to physical forces or minor perturbations, that a robot cloning the behavior of a human gets 0.1cm off from where it should be after taking action $a_t^{*}$ at $s_t$ (optimal action at state $s_t)$. We are now in dangerous territory, as the state the robot is in currently is not found in any training example. As a result, the robot takes a sub-optimal action and ends up 1cm off track. It will be near impossible for the robot to complete its task after a few more missteps, and now it is grabbing your ear instead of the apple it was supposed to. Behavior cloning leads to \textit{very precarious paths to follow}. If the robot can stay perfectly on track and nothing new comes up, then it is able to complete the task perfectly. This is not really useful though. You may as well resort to optimal control theory for robotics, which give you much more guarantees and a little more flexibility. One way to mitigate this is to add lots of training examples, but to even begin to the solve the problem, you need an exorbitant amount of data. There are more intelligent ways to do this, like the DAgger algorithm discussed later. \break
 
     The second problem is called \textbf{mode averaging}. If we have two paths around an obstacle, for example a tree, we can go around it to the left or to the right. A human knows there is no inherent difference between these two paths, and takes each one with equal probability. However, training a model on this data does not mean the model will also go around the tree in these two ways. Instead it \textit{averages} the two behaviors and ends up going straight into the tree. It is clear that this is sub-optimal behavior, but it is an unavoidable consequence if you have a policy with one mode. For example, a Gaussian policy has only one peak, and will pick one ``best'' action, which will be in between the two peaks of the expert distribution, and this means crashing. One way to mitigate this is to choose a more expressive policy class. A mixture of Gaussians, for example, can have $\geq$ 1 peak. This prevents the mode averaging problem but increases the complexity of your model by a lot.
 
@@ -149,10 +149,10 @@
 % \begin{flushleft}
 %     \large Below is a walkthrough demonstrating how basic behavior cloning has quadratically compounding error: \break
 
-%     To analyze the effects of deviation from the expert, we create a cost function that gives us 1 when the agent deviates from the expert and 0 otherwise. This will let us quantify the number of deviations from the expert throughout an episode. $a^*$ represents the action the expert policy ($\pi_e$) would take at time $t$: $a^* = \pi_e(s_t)$.
+%     To analyze the effects of deviation from the expert, we create a cost function that gives us 1 when the agent deviates from the expert and 0 otherwise. This will let us quantify the number of deviations from the expert throughout an episode. $a^{*}$ represents the action the expert policy ($\pi_e$) would take at time $t$: $a^{*} = \pi_e(s_t)$.
 
 %     $$c(s_t, a_t) = \begin{cases} 
-%           0, & \textrm{if } a_t = a^* \\
+%           0, & \textrm{if } a_t = a^{*} \\
 %           1, & \textrm{otherwise} 
 %        \end{cases}
 %     $$
@@ -160,12 +160,12 @@
 %     We also assume the ``worst case scenario'', meaning that once the agent takes a decision that takes it off of the path of the expert, we have no guarantees that it will ever find its way back on track and penalize it heavily. The earlier it goes off track, the higher the penalty. A mistake at time $t = 0$ will incur a penalty of 1 for each subsequent timestep until the episode ends. We say that an episode has length $H$. So:
 
 %     \begin{itemize}
-%         \item If $a_t \neq a^*$  when $t=0$ $\rightarrow$ Cost = $H$
-%         \item If $a_t \neq a^*$  when $t=1$ $\rightarrow$ Cost = $H-1$
-%         \item If $a_t \neq a^*$  when $t=2$ $\rightarrow$ Cost = $H-2$
+%         \item If $a_t \neq a^{*}$  when $t=0$ $\rightarrow$ Cost = $H$
+%         \item If $a_t \neq a^{*}$  when $t=1$ $\rightarrow$ Cost = $H-1$
+%         \item If $a_t \neq a^{*}$  when $t=2$ $\rightarrow$ Cost = $H-2$
 %         \item ...
-%         \item If $a_t \neq a^*$  when $t=H-1$ $\rightarrow$ Cost = $1$
-%         \item If $a_t \neq a^*$  when $t=H$ $\rightarrow$ Cost = $0$
+%         \item If $a_t \neq a^{*}$  when $t=H-1$ $\rightarrow$ Cost = $1$
+%         \item If $a_t \neq a^{*}$  when $t=H$ $\rightarrow$ Cost = $0$
 %     \end{itemize}
 
 %     We can write this in summation form as:
@@ -174,7 +174,7 @@
 
 %     Because we know that $\pi_\theta$ is somewhat imperfect, we assign a probability $\epsilon$ which represents the chance that the agent picks an action different from the expert:
 
-%     $$p(\pi_\theta(s_t) \neq a^*) = \epsilon$$
+%     $$p(\pi_\theta(s_t) \neq a^{*}) = \epsilon$$
 
 %     We finally take the expected value of the cost throughout an episode and bound it. We assume that $s_t$ and $a_t$ come from $\pi_\theta$:
 
@@ -206,23 +206,23 @@
 
     Take our original behavior cloning objective
 
-    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr]$$
+    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr]$$
 
-    We define $\pi_e$ as the expert policy. Under the expectation $\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}$, $\mathrm{log}\pi_e(a^*|s^*) = 0$ is always true. This is because the expert policy will always assign $a^*$ (optimal action) a probability of 1 given a state $s^*$. $\pi_e(a^*|s^*) = 1$, $\mathrm{log}(1) = 0$, so  $\mathrm{log}\pi_e(a^*|s^*) = 0$. We can therefore insert into the equation:
+    We define $\pi_e$ as the expert policy. Under the expectation $\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}$, $\mathrm{log}\pi_e(a^{*}|s^{*}) = 0$ is always true. This is because the expert policy will always assign $a^{*}$ (optimal action) a probability of 1 given a state $s^{*}$. $\pi_e(a^{*}|s^{*}) = 1$, $\mathrm{log}(1) = 0$, so  $\mathrm{log}\pi_e(a^{*}|s^{*}) = 0$. We can therefore insert into the equation:
 
-    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*) - \mathrm{log}\pi_e(a^*|s^*)]\biggr]$$
+    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*}) - \mathrm{log}\pi_e(a^{*}|s^{*})]\biggr]$$
 
-    Split the expectation into two nested expectations. $(s^*,a^*) \sim \mathcal{D}$ can be rewritten as $s^* \sim p_{\pi_e}(\cdot)$ followed by $a^* \sim \pi_e(\cdot|s^*)$. In english, this means we get a state $s^*$ by sampling from possible states the expert ($\pi_e$) has explored and then sample the action $a^*$ from the policy $\pi_e$ given that it considers $s^*$. The end result is the same, as we have the variables $s^*$ and $a^*$ to use, and they come from the expert.
+    Split the expectation into two nested expectations. $(s^{*},a^{*}) \sim \mathcal{D}$ can be rewritten as $s^{*} \sim p_{\pi_e}(\cdot)$ followed by $a^{*} \sim \pi_e(\cdot|s^{*})$. In english, this means we get a state $s^{*}$ by sampling from possible states the expert ($\pi_e$) has explored and then sample the action $a^{*}$ from the policy $\pi_e$ given that it considers $s^{*}$. The end result is the same, as we have the variables $s^{*}$ and $a^{*}$ to use, and they come from the expert.
 
-    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\pi_\theta(a^*|s^*) - \mathrm{log}\pi_e(a^*|s^*)]]\biggr]$$
+    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\pi_\theta(a^{*}|s^{*}) - \mathrm{log}\pi_e(a^{*}|s^{*})]]\biggr]$$
 
     Invert the whole expression from an argmax to an argmin by multiplying by -1, which carries through all the expectations because $a\mathbb{E}[X] = \mathbb{E}[aX]$.
 
-    $$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\pi_e(a^*|s^*) - \mathrm{log}\pi_\theta(a^*|s^*)]]\biggr]$$
+    $$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\pi_e(a^{*}|s^{*}) - \mathrm{log}\pi_\theta(a^{*}|s^{*})]]\biggr]$$
 
     Use properties of logarithms to rewrite the innermost term:
 
-    $$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\frac{\pi_e(a^*|s^*)}{\pi_\theta(a^*|s^*)}]]\biggr]$$
+    $$\underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\frac{\pi_e(a^{*}|s^{*})}{\pi_\theta(a^{*}|s^{*})}]]\biggr]$$
 
     For the final step, we must introduce the concept of F-divergence. An F-divergence is, in simple terms, a function that measures the ``distance'' between two functions. The general form of an F-divergence $D_f$ is:
 
@@ -244,11 +244,11 @@
 
     We can apply the definition of forward KL divergence to the inner expectation shown before.
 
-    $$\mathbb{E}_{a^* \sim \pi_e(\cdot|s^*)}[\mathrm{log}\frac{\pi_e(a^*|s^*)}{\pi_\theta(a^*|s^*)}] = D_{KL}(\pi_e(\cdot|s^*),\pi_\theta(\cdot|s^*))$$
+    $$\mathbb{E}_{a^{*} \sim \pi_e(\cdot|s^{*})}[\mathrm{log}\frac{\pi_e(a^{*}|s^{*})}{\pi_\theta(a^{*}|s^{*})}] = D_{KL}(\pi_e(\cdot|s^{*}),\pi_\theta(\cdot|s^{*}))$$
 
-    We are in this expression calculating the KL divergence between the expert policy action distribution given state $s^*$ and the agent's action distribution given state $s^*$. We can now insert this back into the original equation and draw some insights:
+    We are in this expression calculating the KL divergence between the expert policy action distribution given state $s^{*}$ and the agent's action distribution given state $s^{*}$. We can now insert this back into the original equation and draw some insights:
 
-    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^*,a^*) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^*|s^*)]\biggr] = \underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^* \sim p_{\pi_e}(\cdot)}[D_{KL}(\pi_e(\cdot|s^*),\pi_\theta(\cdot|s^*))]\biggr]$$
+    $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^{*},a^{*}) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^{*}|s^{*})]\biggr] = \underset{\theta}{\textrm{argmin}}\biggl[\mathbb{E}_{s^{*} \sim p_{\pi_e}(\cdot)}[D_{KL}(\pi_e(\cdot|s^{*}),\pi_\theta(\cdot|s^{*}))]\biggr]$$
 
     We now see the original behavior cloning problem formulation written as an F-divergence (more specifically, KL divergence) minimization problem. \textit{Since the F divergence is forward KL divergence, it is mode-averaging by nature}. In other words, trying to minimize the forward KL divergence between a multimodal expert policy $\pi_e$ and a single-mode actor policy $\pi_\theta$ will result in finding a policy that does not fit to either mode, but seeks to the mean of both. Seeing the KL divergence clearly in the equation makes this an unavoidable fact. This gives us a much more concrete basis for why we should expect to observe the crashing behavior discussed earlier!
 
@@ -270,7 +270,7 @@
     \begin{enumerate}
         \item Train $\pi_\theta$ (initial policy) on examples from $\mathcal{D}$, the dataset of examples from the expert
         \item Run the policy $\pi_\theta$ and record the trajectory $\tau = (s_0, a_0, s_1, a_1...)$ or the actions it takes in a sequence
-        \item Have a human label each $s_t \in \tau$ with the optimal action $a^*$. Call all these $(s, a)$ pairs $\mathcal{D}_{\pi_\theta}$
+        \item Have a human label each $s_t \in \tau$ with the optimal action $a^{*}$. Call all these $(s, a)$ pairs $\mathcal{D}_{\pi_\theta}$
         \item Add $\mathcal{D}_{\pi_\theta}$, or the new state action pairs, to $\mathcal{D}$. $\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}_{\pi_\theta}$. The datasets have been aggregated!
         \item Repeat until the agent behaves well.
     \end{enumerate}
@@ -293,7 +293,7 @@
     \item Write definitions for the following symbols:
     \begin{itemize}
         \item $(s_t, a_t)$
-        \item $(s^*, a^*)$
+        \item $(s^{*}, a^{*})$
         \item $\mathcal{D}$
     \end{itemize}
     \item What does the $\theta$ in $\pi_\theta$ represent?
@@ -508,7 +508,7 @@
     
     The ``$ s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_t)$'' part of the equation just shows where $s_{t+1}$ and $a_{t+1}$ come from: transition dynamics and the policy $\pi_\theta$ respectively. \break
     
-    The recursive nature of the Q-function means it can be called a \textbf{Bellman equation}. This being true is a necessary condition for optimal behavior. If we got our hands on a ``perfect'' Q-function like this, where $Q_\phi^\pi(s_t, a_t)$ \textit{is really always equal to} $r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})$, then we call it $Q^*$ and can simply query it for the best action in any state. We would be able to act optimally always. However, this is not what we have our hands on. We have a neural network that needs to be trained to have similar behavior to the perfect $Q^*$. How can we accomplish this? It seems impossible due to the recursive nature of the equation. However, we can employ a trick here. \break
+    The recursive nature of the Q-function means it can be called a \textbf{Bellman equation}. This being true is a necessary condition for optimal behavior. If we got our hands on a ``perfect'' Q-function like this, where $Q_\phi^\pi(s_t, a_t)$ \textit{is really always equal to} $r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})$, then we call it $Q^{*}$ and can simply query it for the best action in any state. We would be able to act optimally always. However, this is not what we have our hands on. We have a neural network that needs to be trained to have similar behavior to the perfect $Q^{*}$. How can we accomplish this? It seems impossible due to the recursive nature of the equation. However, we can employ a trick here. \break
     
     We would like it to be true that $Q_\phi^\pi(s_t, a_t) = r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})$. This is an \textit{equation}, so both sides are equal and their difference \textit{should} be 0. So if we make our ``surrogate goal'' to be minimizing the difference between the two sides, then the Q-function we learn will obey this recursive property (to some degree) implicitly! We define this difference as ``surprise'', or TD-error, and denote it as $\delta$. We also square the difference to ensure it is always positive. \break
     
