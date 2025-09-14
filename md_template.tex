@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float}   
+\usepackage{media9} 
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{geometry}[0.05in]
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage[justification=centering]{caption}
+\usepackage{tcolorbox}
+\usepackage{comment}
+\usepackage{tikz}
+
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{TODO: #1}}}
+\newtcolorbox{questionbox}{colback=blue!5!white,colframe=blue!75!black}
+
+\usepackage{soul}
+\definecolor{Light}{rgb}{1, 0.9, 0.9}
+\sethlcolor{Light}
+\newcommand{\hltexttt}[1]{\texttt{\hl{#1}}}
+\usetikzlibrary{decorations.text}
+
+% Define colors (adjust the RGB values to your liking)
+\definecolor{neuripscolor}{rgb}{0,0,0}
+
+% argmin, argmax
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+\begin{document}
+
+\centering
+\include{{{unit}}}
+
+\end{document}
