@@ -145,8 +145,7 @@ jobs:
         </ul>
 
         ## NEW: Experimental web version
-        - TOC
-        {:toc}
+        Use the navigation bar to explore the experimental web version
         EOF
 
         # Mathjax rendering, ignore parbox
@@ -158,7 +157,7 @@ jobs:
             macros: {
               parbox: ["#2", 2]
             },
-            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            inlineMath: [['$', '$']],
             processEscapes: true
           }
         };
