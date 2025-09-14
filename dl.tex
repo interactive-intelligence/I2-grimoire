@@ -433,10 +433,10 @@
     Updating the moving average:
     $$\mu = \alpha \mu + (1-\alpha)\mu_{batch}$$
     $$\sigma = \alpha \sigma + (1-\alpha)\sigma_{batch}$$
-    Normalize $x_i$ to $\Tilde{x}_i$ using the moving average:
-    $$\Tilde{x}_i = \frac{x_i - \mu}{\sigma}$$
+    Normalize $x_i$ to $\tilde{x}_i$ using the moving average:
+    $$\tilde{x}_i = \frac{x_i - \mu}{\sigma}$$
     Scale and shift before sending values to next layer:
-    $$x_i^{output} = \gamma\Tilde{x}_i + \beta$$
+    $$x_i^{output} = \gamma\tilde{x}_i + \beta$$
     
     Mean-centered and evenly varied data allows gradient descent to descend the weights smoothly down to a optimal minimum. If two features input into a neural network were on wildly different scales (e.g. House price vs. number of bedrooms), then optimization becomes clunky. Making a large shift in weights is necessary to process highly varied housing prices, but this same shift negatively affects how the network processes the more tame ``number of bedrooms'' feature since more precise changes are needed. Normalization plus scale and shift removes this problem, and thus batchnorm helps greatly with a network's convergence.
 \end{flushleft}
