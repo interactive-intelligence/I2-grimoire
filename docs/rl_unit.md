@@ -3,7 +3,8 @@ layout: page
 title: Reinforcement Learning
 permalink: /rl
 nav_order: 6
-description: Reinforcement Learning Unit ---
+description: Reinforcement Learning Unit
+---
 # What is Reinforcement Learning?
 
 ## Problem Definition
