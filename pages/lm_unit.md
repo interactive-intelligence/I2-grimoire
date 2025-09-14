@@ -258,7 +258,7 @@ iterative, generating one token at a time, which allows these models to
 produce coherent sequences of text. Sequence prediction can be
 mathematically expressed as:
 
-$$P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t | x_{<t})$$ Here:
+$$P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t \mid x_{<t})$$ Here:
 
 - $x_t$ represents the current token at time step $t$.
 
