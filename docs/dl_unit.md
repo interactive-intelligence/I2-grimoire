@@ -2,7 +2,7 @@
 layout: page
 title: Deep Learning
 permalink: /ml
-nav_order: 2
+nav_order: 3
 description: Deep Learning Unit
 ---
 # Introduction to Neural Networks

@@ -2,7 +2,7 @@
 layout: page
 title: Language Modeling
 permalink: /lm
-nav_order: 4
+nav_order: 5
 description: Language Modeling Unit
 ---
 # Introduction to Language Modeling

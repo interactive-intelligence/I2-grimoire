@@ -2,7 +2,7 @@
 layout: page
 title: Machine Learning
 permalink: /ml
-nav_order: 1
+nav_order: 2
 description: Machine Learning Unit
 ---
 # Introduction to Machine Learning

@@ -2,7 +2,7 @@
 layout: page
 title: Computer Vision
 permalink: /cv
-nav_order: 3
+nav_order: 4
 description: Computer Vision Unit
 ---
 # What is Reinforcement Learning?

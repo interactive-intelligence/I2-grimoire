@@ -1,6 +1,7 @@
 ---
 title: I2 Grimoire
-layout: minimal
+layout: home
+nav_order: 1
 ---
 # I2 Grimoire 📚
 

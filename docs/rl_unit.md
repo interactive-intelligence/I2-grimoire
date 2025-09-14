@@ -2,7 +2,7 @@
 layout: page
 title: Reinforcement Learning
 permalink: /ml
-nav_order: 5
+nav_order: 6
 description: Reinforcement Learning Unit ---
 ::: {style="background-color: neuripscolor"}
 **Interactive Intelligence (I2) Grimoire**
