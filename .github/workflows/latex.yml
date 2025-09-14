@@ -51,7 +51,7 @@ jobs:
         sed -e 's/{{unit}}/dl/g' md_template.tex > dl_unit.tex
         sed -e 's/{{unit}}/lm/g' md_template.tex > lm_unit.tex
         sed -e 's/{{unit}}/ml/g' md_template.tex > ml_unit.tex
-        sed -e 's/{{unit}}/rl/g' md_template.tex > cv_unit.tex
+        sed -e 's/{{unit}}/rl/g' md_template.tex > rl_unit.tex
         echo 'Running Pandoc...'
         parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {}.tex ::: cv_unit dl_unit lm_unit ml_unit rl_unit
         # Add header to each file

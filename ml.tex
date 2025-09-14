@@ -186,13 +186,13 @@ This train/test split method is fundamental to machine learning as it ensures th
 
     But first, what are the L2 and L1 norms? These norms are mathematical functions that map from vector space to scalar space ($\mathbb{R}^n \rightarrow \mathbb{R})$. They are defined as such:
 
-    $$||\textbf{x}||_2 = \sqrt{\sum_{i=1}^n x_i^2}$$
-    $$||\textbf{x}||_1 = \sum_{i=1}^n |x_i|$$
+    $$\|\textbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2}$$
+    $$\|\textbf{x}\|_1 = \sum_{i=1}^n \vert x_i \vert$$
 
     So the L2 norm is the square root of the sum of squared elements from the vector, and the L1 norm is the sum of the absolute value of elements from the vector. These are our regularizers. If we calculate these norms on $\hat{\textbf{w}}$, you can see that the result gets larger if the elements of $\hat{\textbf{w}}$ are large/unbalanced (something we don't want). We want to find a solution that attempts to minimize $||\hat{\textbf{w}}||_2$ or $||\hat{\textbf{w}}||_1$ along with the original SSE objective. We therefore write our two new optimization objectives down:
 
-    $$Ridge\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2$$
-    $$LASSO\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_1$$
+    $$Ridge\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2$$
+    $$LASSO\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1$$
 
     The $\lambda$ term allows us to control how much regularization we want. A small number makes the mode kind of ``care'' about keeping its weights down. A large value forces the model to keep its weights down at the expense of weights that actually fit the data. Finding the right value for $\lambda$ is a balancing act. \break
 
@@ -239,7 +239,7 @@ This train/test split method is fundamental to machine learning as it ensures th
     The fundamental idea behind logistic regression is to use a \textbf{sigmoid function} to transform the output of a linear equation (a combination of input variables) into a probability between 0 and 1. The probability tells us how likely the input belongs to one of two possible classes, usually denoted as 1 (positive class) or 0 (negative class). The sigmoid function is defined as:
 
     \begin{center}
-        \( P(y=1|x) = \frac{1}{1 + e^{-(b + w^{\top}x)}} \)
+        \( P(y=1 \mid x) = \frac{1}{1 + e^{-(b + w^{\top}x)}} \)
     \end{center}
     
     Where:
