@@ -70,7 +70,7 @@ jobs:
         mv main.pdf cv_unit.pdf dl_unit.pdf lm_unit.pdf ml_unit.pdf rl_unit.pdf /tmp
         mkdir /tmp/docs
         mv cv_unit.md dl_unit.md lm_unit.md ml_unit.md rl_unit.md /tmp/docs
-        cp cv dl ml lm other rl /tmp/docs
+        cp -r cv dl ml lm other rl /tmp/docs
 
         # Remove generated tex files
         rm cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
