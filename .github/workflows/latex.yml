@@ -55,11 +55,11 @@ jobs:
         echo 'Running Pandoc...'
         parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {}.tex ::: cv_unit dl_unit lm_unit ml_unit rl_unit
         # Add header to each file
-        sed -i -e '1i\n---\nlayout: page\ntitle: Computer Vision\npermalink: /cv\nnav_order: 3\ndescription: Computer Vision Unit\n---' cv_unit.md
-        sed -i -e '1i\n---\nlayout: page\ntitle: Deep Learning\npermalink: /ml\nnav_order: 2\ndescription: Deep Learning Unit\n---' dl_unit.md
-        sed -i -e '1i\n---\nlayout: page\ntitle: Lanuguage Modeling\npermalink: /lm\nnav_order: 4\ndescription: Language Modeling Unit\n---' lm_unit.md
-        sed -i -e '1i\n---\nlayout: page\ntitle: Machine Learning\npermalink: /ml\nnav_order: 1\ndescription: Machine Learning Unit\n---' ml_unit.md
-        sed -i -e '1i\n---\nlayout: page\ntitle: Reinforcement Learning\npermalink: /ml\nnav_order: 5\ndescription: Reinforcement Learning Unit\ ---' rl_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Computer Vision\npermalink: /cv\nnav_order: 3\ndescription: Computer Vision Unit\n---' cv_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Deep Learning\npermalink: /ml\nnav_order: 2\ndescription: Deep Learning Unit\n---' dl_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Language Modeling\npermalink: /lm\nnav_order: 4\ndescription: Language Modeling Unit\n---' lm_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Machine Learning\npermalink: /ml\nnav_order: 1\ndescription: Machine Learning Unit\n---' ml_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Reinforcement Learning\npermalink: /ml\nnav_order: 5\ndescription: Reinforcement Learning Unit\ ---' rl_unit.md
 
     - name: Fetch Just the docs theme
       run: git clone https://github.com/just-the-docs/just-the-docs-template /tmp/just-the-docs
