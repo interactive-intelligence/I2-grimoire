@@ -150,7 +150,6 @@ jobs:
 
         # styles and mathjax rendering, ignore parbox
         cat << EOF > _includes/head_custom.html
-        <script>
         <style>
         .questionbox {
           background-color: #e3ddfc;
@@ -160,16 +159,18 @@ jobs:
           margin: 16px 0;
         }
         </style>
+        <script>
         window.MathJax = {
           tex: {
             macros: {
               parbox: ["#2", 2]
             },
-            inlineMath: [['$','$']],
+            inlineMath: {'[+]': [['$', '$'], ['\\(', '\\)']]},
+            processEscapes: true,
           }
         };
         </script>
-        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
         EOF
 
         # Copy over pages
