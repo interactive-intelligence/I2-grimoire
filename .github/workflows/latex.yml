@@ -44,7 +44,6 @@ jobs:
         path: main.pdf
 
     - name: Convert latex to markdown
-      uses: pandoc/actions@v1.2.0
       run: |
         sudo apt-get update && sudo apt-get install -y pandoc
         # note: we reuse file_unit.tex as we don't need it anymore
