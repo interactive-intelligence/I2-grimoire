@@ -55,11 +55,11 @@ jobs:
         echo 'Running Pandoc...'
         parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {}.tex ::: cv_unit dl_unit lm_unit ml_unit rl_unit
         # Add header to each file
-        sed -i -e '1i---\nlayout: page\ntitle: Computer Vision\npermalink: /cv\nnav_order: 3\ndescription: Computer Vision Unit\n---' cv_unit.md
-        sed -i -e '1i---\nlayout: page\ntitle: Deep Learning\npermalink: /ml\nnav_order: 2\ndescription: Deep Learning Unit\n---' dl_unit.md
-        sed -i -e '1i---\nlayout: page\ntitle: Language Modeling\npermalink: /lm\nnav_order: 4\ndescription: Language Modeling Unit\n---' lm_unit.md
-        sed -i -e '1i---\nlayout: page\ntitle: Machine Learning\npermalink: /ml\nnav_order: 1\ndescription: Machine Learning Unit\n---' ml_unit.md
-        sed -i -e '1i---\nlayout: page\ntitle: Reinforcement Learning\npermalink: /ml\nnav_order: 5\ndescription: Reinforcement Learning Unit\ ---' rl_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Machine Learning\npermalink: /ml\nnav_order: 2\ndescription: Machine Learning Unit\n---' ml_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Deep Learning\npermalink: /ml\nnav_order: 3\ndescription: Deep Learning Unit\n---' dl_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Computer Vision\npermalink: /cv\nnav_order: 4\ndescription: Computer Vision Unit\n---' cv_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Language Modeling\npermalink: /lm\nnav_order: 5\ndescription: Language Modeling Unit\n---' lm_unit.md
+        sed -i -e '1i---\nlayout: page\ntitle: Reinforcement Learning\npermalink: /ml\nnav_order: 6\ndescription: Reinforcement Learning Unit\ ---' rl_unit.md
 
     - name: Fetch Just the docs theme
       run: git clone https://github.com/just-the-docs/just-the-docs-template /tmp/just-the-docs
@@ -68,9 +68,9 @@ jobs:
       run: |
         # Move the PDF to a temporary location
         mv main.pdf cv_unit.pdf dl_unit.pdf lm_unit.pdf ml_unit.pdf rl_unit.pdf /tmp
-        mkdir /tmp/docs
+        mkdir /tmp/docs /tmp/assets
         mv cv_unit.md dl_unit.md lm_unit.md ml_unit.md rl_unit.md /tmp/docs
-        cp -r cv dl ml lm other rl /tmp/docs
+        cp -r cv dl ml lm other rl /tmp/assets
 
         # Remove generated tex files
         rm cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
@@ -114,7 +114,6 @@ jobs:
         title: I2 Grimoire
         description: The I2 textbook on Artificial Intelligence
         theme: just-the-docs
-        latex: mathjax
 
         url: https://grimoire.uw-i2.org
 
@@ -128,7 +127,8 @@ jobs:
         cat << EOF > index.md
         ---
         title: I2 Grimoire
-        layout: minimal
+        layout: home
+        nav_order: 1
         ---
         # I2 Grimoire 📚
 
@@ -145,8 +145,16 @@ jobs:
         </ul>
         EOF
 
+        # Mathjax rendering
+        mkdir _includes
+        cat << EOF > _includes/head_custom.html
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        EOF
+
         # Copy over pages
         cp -r /tmp/docs .
+        cp -r /tmp/assets/* .
         
         # Add and commit changes
         git add .
