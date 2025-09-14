@@ -857,10 +857,10 @@ $$\sigma_{batch} = \sqrt{\frac{1}{m}\sum_{i=1}^m (x_i - \mu_{batch})}$$
 Updating the moving average:
 $$\mu = \alpha \mu + (1-\alpha)\mu_{batch}$$
 $$\sigma = \alpha \sigma + (1-\alpha)\sigma_{batch}$$ Normalize $x_i$ to
-$\Tilde{x}_i$ using the moving average:
-$$\Tilde{x}_i = \frac{x_i - \mu}{\sigma}$$ Scale and shift before
+$\tilde{x}_i$ using the moving average:
+$$\tilde{x}_i = \frac{x_i - \mu}{\sigma}$$ Scale and shift before
 sending values to next layer:
-$$x_i^{output} = \gamma\Tilde{x}_i + \beta$$
+$$x_i^{output} = \gamma\tilde{x}_i + \beta$$
 
 Mean-centered and evenly varied data allows gradient descent to descend
 the weights smoothly down to a optimal minimum. If two features input
