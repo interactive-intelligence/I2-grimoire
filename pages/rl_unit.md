@@ -384,12 +384,13 @@ mode averaging problem but increases the complexity of your model by a
 lot.
 
 <figure id="fig:modeavg" data-latex-placement="H">
-<img src="rl/modeavg.png" style="width:90.0%" />
-<figcaption>An illustration demonstrating the issues that arise from
-mode-averaging within behavior cloning algorithms. The green and blue
-peaks represent choosing to go left or right around the obstacle, and
-the black dashed line represents what a simple policy will converge
-on.</figcaption>
+<img src="rl/modeavg.png" style="width:90.0%"
+alt="Figure 1: An illustration demonstrating the issues that arise from mode-averaging within behavior cloning algorithms. The green and blue peaks represent choosing to go left or right around the obstacle, and the black dashed line represents what a simple policy will converge on." />
+<figcaption aria-hidden="true">Figure 1: An illustration demonstrating
+the issues that arise from mode-averaging within behavior cloning
+algorithms. The green and blue peaks represent choosing to go left or
+right around the obstacle, and the black dashed line represents what a
+simple policy will converge on.</figcaption>
 </figure>
 
 </div>
@@ -489,13 +490,15 @@ much more concrete basis for why we should expect to observe the
 crashing behavior discussed earlier!
 
 <figure id="fig:diffkl" data-latex-placement="H">
-<img src="rl/diffkl.png" style="width:70.0%" />
-<figcaption>The blue curve is our single-mode Gaussian decision policy
-and the bimodal orange line is our expert policy (can go left or right
-around the tree). The top graph shows what we would like to happen,
-which is choosing a mode and sticking with it. However, the bottom graph
-shows what actually happens when we minimize forward KL divergence. This
-is mode-averaging behavior (crashing into the tree).</figcaption>
+<img src="rl/diffkl.png" style="width:70.0%"
+alt="Figure 2: The blue curve is our single-mode Gaussian decision policy and the bimodal orange line is our expert policy (can go left or right around the tree). The top graph shows what we would like to happen, which is choosing a mode and sticking with it. However, the bottom graph shows what actually happens when we minimize forward KL divergence. This is mode-averaging behavior (crashing into the tree)." />
+<figcaption aria-hidden="true">Figure 2: The blue curve is our
+single-mode Gaussian decision policy and the bimodal orange line is our
+expert policy (can go left or right around the tree). The top graph
+shows what we would like to happen, which is choosing a mode and
+sticking with it. However, the bottom graph shows what actually happens
+when we minimize forward KL divergence. This is mode-averaging behavior
+(crashing into the tree).</figcaption>
 </figure>
 
 This analysis also gives us another avenue by which to improve behavior
@@ -542,9 +545,10 @@ labels at critical failure points lets the agent know what to do at
 those points to get back on track.
 
 <figure id="fig:daggerviz" data-latex-placement="H">
-<img src="rl/daggerviz.png" style="width:70.0%" />
-<figcaption>A visualization of how DAgger helps keep the agent
-performing well. We first see the agent (<span
+<img src="rl/daggerviz.png" style="width:70.0%"
+alt="Figure 3: A visualization of how DAgger helps keep the agent performing well. We first see the agent (\hat{x}) deviate from the expert (x), but we then take these observations of where the agent failed and give it instructions on how to get back on track. With enough iterations, a lot of failure cases can be mitigated." />
+<figcaption aria-hidden="true">Figure 3: A visualization of how DAgger
+helps keep the agent performing well. We first see the agent (<span
 class="math inline"><em>x̂</em></span>) deviate from the expert (<span
 class="math inline"><em>x</em></span>), but we then take these
 observations of where the agent failed and give it instructions on how
@@ -585,11 +589,12 @@ algorithms and analyze their strengths/weaknesses.
 
 <div markdown="1" class="flushleft">
 <figure id="fig:rlsystem" data-latex-placement="H">
-<img src="rl/rlsystem.png" style="width:70.0%" />
-<figcaption>An illustration showing how the agent and environment
-communicate through actions, states, and rewards in a traditional RL
-setting. The subscript <span class="math inline"><em>t</em></span> is
-for timestep.</figcaption>
+<img src="rl/rlsystem.png" style="width:70.0%"
+alt="Figure 4: An illustration showing how the agent and environment communicate through actions, states, and rewards in a traditional RL setting. The subscript t is for timestep." />
+<figcaption aria-hidden="true">Figure 4: An illustration showing how the
+agent and environment communicate through actions, states, and rewards
+in a traditional RL setting. The subscript <span
+class="math inline"><em>t</em></span> is for timestep.</figcaption>
 </figure>
 
 Let's start by introducing a new problem scenario. in this hypothetical,
@@ -782,11 +787,12 @@ implementation of this is beyond the scope of the article so we will not
 be covering it.
 
 <figure id="fig:npg" data-latex-placement="H">
-<img src="rl/npg.png" style="width:90.0%" />
-<figcaption>There are a few items in this diagram. The parabola and
-tangent show the issues of large gradient steps when you have only a
-monte-carlo approximation to the true gradient. You can wildly overshoot
-where you should be (<span
+<img src="rl/npg.png" style="width:90.0%"
+alt="Figure 5: There are a few items in this diagram. The parabola and tangent show the issues of large gradient steps when you have only a monte-carlo approximation to the true gradient. You can wildly overshoot where you should be (\theta_{i+1}).The dimensions of the stretched oval represent the parameters of the policy, and how steps in the wrong direction can be disastrous since the policy is very sensitive to small parameter shifts. What we don’t have in RL is an easy objective to optimize on like the circle. These problems together are why NPG is useful." />
+<figcaption aria-hidden="true">Figure 5: There are a few items in this
+diagram. The parabola and tangent show the issues of large gradient
+steps when you have only a monte-carlo approximation to the true
+gradient. You can wildly overshoot where you should be (<span
 class="math inline"><em>θ</em><sub><em>i</em> + 1</sub></span>).The
 dimensions of the stretched oval represent the parameters of the policy,
 and how steps in the wrong direction can be disastrous since the policy
@@ -975,9 +981,10 @@ but all other state-action pairs come about as a consequence of
 following policy $\pi_\theta$ afterwards.
 
 <figure id="fig:qlearning" data-latex-placement="H">
-<img src="rl/qlearning.png" style="width:70.0%" />
-<figcaption>A visualization of what the Q-function takes into account.
-It averages the rewards from time <span
+<img src="rl/qlearning.png" style="width:70.0%"
+alt="Figure 6: A visualization of what the Q-function takes into account. It averages the rewards from time t and forward across considers many paths that policy \pi_\theta could theoretically take. The output of a Q-function is called a Q-value. It signifies the “quality” of the given state-action pair." />
+<figcaption aria-hidden="true">Figure 6: A visualization of what the
+Q-function takes into account. It averages the rewards from time <span
 class="math inline"><em>t</em></span> and forward across considers many
 paths that policy <span
 class="math inline"><em>π</em><sub><em>θ</em></sub></span> could

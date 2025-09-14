@@ -51,8 +51,10 @@ in the image below is attempting to extract an "ear" feature from a
 section of the input image.
 
 <figure id="fig:kernelextraction" data-latex-placement="H">
-<img src="cv/kernelextraction.png" style="width:100.0%" />
-<figcaption>Illustration of feature extraction using kernel</figcaption>
+<img src="cv/kernelextraction.png" style="width:100.0%"
+alt="Figure 1: Illustration of feature extraction using kernel" />
+<figcaption aria-hidden="true">Figure 1: Illustration of feature
+extraction using kernel</figcaption>
 </figure>
 
 The solution to the calculation is then placed back into a new, usually
@@ -63,9 +65,10 @@ image, then an "ear" kernel applied to that image will result in a
 feature map that has high values in the top left where the ear was.
 
 <figure id="fig:imagetokerneltosmallmatrix" data-latex-placement="H">
-<img src="cv/imagetokerneltosmallmatrix.png" style="width:75.0%" />
-<figcaption>Illustration of the work done in a convolutional
-layer</figcaption>
+<img src="cv/imagetokerneltosmallmatrix.png" style="width:75.0%"
+alt="Figure 2: Illustration of the work done in a convolutional layer" />
+<figcaption aria-hidden="true">Figure 2: Illustration of the work done
+in a convolutional layer</figcaption>
 </figure>
 
 The formula for the convolutional layer's calculation is a dot product
@@ -117,13 +120,17 @@ overlap. In the above image, the stride is 2. Observe more examples of
 strides that are depicted in Figures 3 and 4 below.
 
 <figure id="fig:stridedepict" data-latex-placement="H">
-<img src="cv/stridedepict.png" style="width:100.0%" />
-<figcaption>Illustration depicting a stride of 1 pixel</figcaption>
+<img src="cv/stridedepict.png" style="width:100.0%"
+alt="Figure 3: Illustration depicting a stride of 1 pixel" />
+<figcaption aria-hidden="true">Figure 3: Illustration depicting a stride
+of 1 pixel</figcaption>
 </figure>
 
 <figure id="fig:stride2eg" data-latex-placement="H">
-<img src="cv/stride2eg.png" style="width:100.0%" />
-<figcaption>Illustration depicting a stride of 2 pixels</figcaption>
+<img src="cv/stride2eg.png" style="width:100.0%"
+alt="Figure 4: Illustration depicting a stride of 2 pixels" />
+<figcaption aria-hidden="true">Figure 4: Illustration depicting a stride
+of 2 pixels</figcaption>
 </figure>
 
 Padding, on the other hand, refers to extra pixels around the edges of a
@@ -204,8 +211,10 @@ and selects that number to represent the section in the summarized map,
 as seen in the figure below.
 
 <figure id="fig:maxpooling" data-latex-placement="H">
-<img src="cv/maxpooling.png" style="width:75.0%" />
-<figcaption>Illustration of the max pooling operation</figcaption>
+<img src="cv/maxpooling.png" style="width:75.0%"
+alt="Figure 5: Illustration of the max pooling operation" />
+<figcaption aria-hidden="true">Figure 5: Illustration of the max pooling
+operation</figcaption>
 </figure>
 
 If we take the section of the map that the max pooling operation is
@@ -272,8 +281,10 @@ See the figure below for an overview of the entire architecture of a
 Convolutional Neural Network.
 
 <figure id="fig:full_cnn" data-latex-placement="H">
-<img src="cv/full_cnn.png" style="width:100.0%" />
-<figcaption>Illustration of complete architecture of CNN</figcaption>
+<img src="cv/full_cnn.png" style="width:100.0%"
+alt="Figure 6: Illustration of complete architecture of CNN" />
+<figcaption aria-hidden="true">Figure 6: Illustration of complete
+architecture of CNN</figcaption>
 </figure>
 
 </div>
@@ -402,8 +413,10 @@ This approach focuses on identifying groups of pixels that belong
 together and works to separate individual objects in images.
 
 <figure id="fig:segmentation-tiger" data-latex-placement="H">
-<img src="cv/segmentation-tiger.png" style="width:75.0%" />
-<figcaption>Illustration of high-level image segmentation</figcaption>
+<img src="cv/segmentation-tiger.png" style="width:75.0%"
+alt="Figure 7: Illustration of high-level image segmentation" />
+<figcaption aria-hidden="true">Figure 7: Illustration of high-level
+image segmentation</figcaption>
 </figure>
 
 By combining individual pixels into groups, image segmentation allows

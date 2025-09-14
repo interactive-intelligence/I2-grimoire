@@ -150,10 +150,11 @@ will be disproportionately larger, making it easier to identify large
 errors.
 
 <figure id="fig:seefits" data-latex-placement="H">
-<img src="ml/seefits.png" style="width:45.0%" />
-<figcaption>An illustration of two lines of fit that would produce a low
-and high SSE respectively. The line that fits the data better has a low
-SSE</figcaption>
+<img src="ml/seefits.png" style="width:45.0%"
+alt="Figure 1: An illustration of two lines of fit that would produce a low and high SSE respectively. The line that fits the data better has a low SSE" />
+<figcaption aria-hidden="true">Figure 1: An illustration of two lines of
+fit that would produce a low and high SSE respectively. The line that
+fits the data better has a low SSE</figcaption>
 </figure>
 
 **The goal in regression** is to minimize SSE, because a lower SSE value
@@ -431,11 +432,12 @@ in LASSO regression resulting in only one or two features having
 non-zero weights.
 
 <figure id="fig:l1_l2" data-latex-placement="H">
-<img src="ml/l1_l2.jpg" style="width:90.0%" />
-<figcaption>Showing how the L1 and L2 norms influence <span
-class="math inline">$\hat{\textbf{w}}$</span> through the nature of
-their manifestations on the loss landscape as a hyperdiamond and
-hypersphere respectively</figcaption>
+<img src="ml/l1_l2.jpg" style="width:90.0%"
+alt="Figure 2: Showing how the L1 and L2 norms influence \hat{\textbf{w}} through the nature of their manifestations on the loss landscape as a hyperdiamond and hypersphere respectively" />
+<figcaption aria-hidden="true">Figure 2: Showing how the L1 and L2 norms
+influence <span class="math inline">$\hat{\textbf{w}}$</span> through
+the nature of their manifestations on the loss landscape as a
+hyperdiamond and hypersphere respectively</figcaption>
 </figure>
 
 Both of these regression variants have use cases where they shine, so no
@@ -522,8 +524,10 @@ Where:
 
 <div markdown="1" class="flushleft">
 <figure id="fig:sigmoid_function" data-latex-placement="H">
-<img src="ml/sigmoid_function.png" style="width:45.0%" />
-<figcaption>A graph showing the sigmoid function.</figcaption>
+<img src="ml/sigmoid_function.png" style="width:45.0%"
+alt="Figure 3: A graph showing the sigmoid function." />
+<figcaption aria-hidden="true">Figure 3: A graph showing the sigmoid
+function.</figcaption>
 </figure>
 
 The sigmoid function plays a crucial role in logistic regression because
@@ -688,10 +692,11 @@ represents the optimal number of clusters---beyond this point,
 increasing $k$ provides diminishing returns in terms of reducing SSE.
 
 <figure id="fig:SSEkElbowmethod" data-latex-placement="H">
-<img src="ml/SSEkElbowmethod.png" style="width:45.0%" />
-<figcaption>An example of a graph showing SSE vs. <span
-class="math inline"><em>k</em></span>, and the elbow that can be used to
-pick the optimal <span
+<img src="ml/SSEkElbowmethod.png" style="width:45.0%"
+alt="Figure 4: An example of a graph showing SSE vs. k, and the elbow that can be used to pick the optimal k." />
+<figcaption aria-hidden="true">Figure 4: An example of a graph showing
+SSE vs. <span class="math inline"><em>k</em></span>, and the elbow that
+can be used to pick the optimal <span
 class="math inline"><em>k</em></span>.</figcaption>
 </figure>
 
@@ -817,9 +822,11 @@ Here are key distinctions between the two methods:
   differences is a priority.
 
 <figure id="fig:K-clustering" data-latex-placement="H">
-<img src="ml/K-clustering.png" style="width:45.0%" />
-<figcaption> An image comparing and contrasted the clusters created from
-k-means and k-medians methods.</figcaption>
+<img src="ml/K-clustering.png" style="width:45.0%"
+alt="Figure 5: An image comparing and contrasted the clusters created from k-means and k-medians methods." />
+<figcaption aria-hidden="true">Figure 5: An image comparing and
+contrasted the clusters created from k-means and k-medians
+methods.</figcaption>
 </figure>
 
 The choice between the two methods depends heavily on the nature of the
@@ -900,9 +907,11 @@ underlying trends, but is not so expressive that it suffers from high
 variance errors.
 
 <figure id="fig:biasvariance" data-latex-placement="H">
-<img src="ml/biasvariance.jpg" style="width:80.0%" />
-<figcaption>An illustration visualizing different balances between bias
-and variance for model fitting.</figcaption>
+<img src="ml/biasvariance.jpg" style="width:80.0%"
+alt="Figure 6: An illustration visualizing different balances between bias and variance for model fitting." />
+<figcaption aria-hidden="true">Figure 6: An illustration visualizing
+different balances between bias and variance for model
+fitting.</figcaption>
 </figure>
 
 </div>
@@ -925,11 +934,12 @@ chance that a lower valley exists somewhere on this SSE landscape, but
 you can never be 100% certain!
 
 <figure id="fig:convexity" data-latex-placement="H">
-<img src="ml/convexity.png" style="width:80.0%" />
-<figcaption>An illustration visualizing a convex function and a
-non-convex function. Also shown is the problem that comes with
-optimizing non-convex functions: getting stuck at a local
-minima.</figcaption>
+<img src="ml/convexity.png" style="width:80.0%"
+alt="Figure 7: An illustration visualizing a convex function and a non-convex function. Also shown is the problem that comes with optimizing non-convex functions: getting stuck at a local minima." />
+<figcaption aria-hidden="true">Figure 7: An illustration visualizing a
+convex function and a non-convex function. Also shown is the problem
+that comes with optimizing non-convex functions: getting stuck at a
+local minima.</figcaption>
 </figure>
 
 Figure [8](#fig:convexity){reference-type="ref"

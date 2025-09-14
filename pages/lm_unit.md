@@ -503,9 +503,11 @@ where $W^O$ is a learned projection matrix. This design allows
 Transformers to capture multiple relational patterns simultaneously.
 
 <figure id="fig:multi_head_attention_example" data-latex-placement="H">
-<img src="lm/multi_head_attention_example.png" />
-<figcaption>Multi-Head Attention Mechanism: Each head captures unique
-relationships and combines them for comprehensive context.</figcaption>
+<img src="lm/multi_head_attention_example.png"
+alt="Figure 1: Multi-Head Attention Mechanism: Each head captures unique relationships and combines them for comprehensive context." />
+<figcaption aria-hidden="true">Figure 1: Multi-Head Attention Mechanism:
+Each head captures unique relationships and combines them for
+comprehensive context.</figcaption>
 </figure>
 
 **Applications and Impact:** The introduction of Transformers has led to

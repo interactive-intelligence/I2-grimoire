@@ -29,8 +29,10 @@ and the axons as edges.
 The figure below shows how a graph like this might appear.
 
 <figure id="fig:neuralnetwork" data-latex-placement="H">
-<img src="dl/neuralnetwork.png" style="width:50.0%" />
-<figcaption>A visualization of neural networks</figcaption>
+<img src="dl/neuralnetwork.png" style="width:50.0%"
+alt="Figure 1: A visualization of neural networks" />
+<figcaption aria-hidden="true">Figure 1: A visualization of neural
+networks</figcaption>
 </figure>
 
 </div>
@@ -52,9 +54,10 @@ into the input layer of the model.
 </div>
 
 <figure id="fig:img-vector" data-latex-placement="H">
-<img src="dl/img-vector.png" style="width:100.0%" />
-<figcaption>Visualization of how images are converted into
-vectors</figcaption>
+<img src="dl/img-vector.png" style="width:100.0%"
+alt="Figure 2: Visualization of how images are converted into vectors" />
+<figcaption aria-hidden="true">Figure 2: Visualization of how images are
+converted into vectors</figcaption>
 </figure>
 
 <div markdown="1" class="flushleft">
@@ -142,10 +145,11 @@ top yellow neuron, and call it $z$. The arrow connecting $a_x$ to $z$ is
 called $w_x$. The bias for the neuron $z$ is $b$.
 
 <figure id="fig:connectivity_basic" data-latex-placement="H">
-<img src="dl/connectivity_basic.png" style="width:50.0%" />
-<figcaption>An illustration of weights and biases connecting the first
-layer of our neural network to the first neuron of the second (hidden)
-layer.</figcaption>
+<img src="dl/connectivity_basic.png" style="width:50.0%"
+alt="Figure 3: An illustration of weights and biases connecting the first layer of our neural network to the first neuron of the second (hidden) layer." />
+<figcaption aria-hidden="true">Figure 3: An illustration of weights and
+biases connecting the first layer of our neural network to the first
+neuron of the second (hidden) layer.</figcaption>
 </figure>
 
 $$z = (w_1a_1 + w_2a_2 + w_3a_3) + b$$
@@ -266,10 +270,11 @@ classes.* In other words, the XOR classification problem is **not
 linearly separable**.
 
 <figure id="fig:xor" data-latex-placement="H">
-<img src="dl/xor.png" style="width:50.0%" />
-<figcaption>Illustration of the XOR function, and how you cannot draw a
-single line that separates the classes (white and black
-dots).</figcaption>
+<img src="dl/xor.png" style="width:50.0%"
+alt="Figure 4: Illustration of the XOR function, and how you cannot draw a single line that separates the classes (white and black dots)." />
+<figcaption aria-hidden="true">Figure 4: Illustration of the XOR
+function, and how you cannot draw a single line that separates the
+classes (white and black dots).</figcaption>
 </figure>
 
 XOR is a simple boolean operation, as we move to complex problems like
@@ -406,8 +411,10 @@ to train this arbitrarily large model.
 
 <div markdown="1" class="flushleft">
 <figure id="fig:activationfuncs" data-latex-placement="H">
-<img src="dl/activationfuncs.png" style="width:75.0%" />
-<figcaption>Plots of various activation functions</figcaption>
+<img src="dl/activationfuncs.png" style="width:75.0%"
+alt="Figure 5: Plots of various activation functions" />
+<figcaption aria-hidden="true">Figure 5: Plots of various activation
+functions</figcaption>
 </figure>
 
 One commonly used activation function is the **sigmoid function**. This
@@ -540,8 +547,10 @@ and associated graph below:
 $$f(x, y) = z = x^2 + y^2$$
 
 <figure id="fig:x2y2" data-latex-placement="H">
-<img src="dl/x2y2.png" style="width:50.0%" />
-<figcaption>Illustration of the function <span
+<img src="dl/x2y2.png" style="width:50.0%"
+alt="Figure 6: Illustration of the function f(x, y) = x^2 + y^2" />
+<figcaption aria-hidden="true">Figure 6: Illustration of the function
+<span
 class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup></span></figcaption>
 </figure>
 
@@ -586,7 +595,7 @@ If we plot this as a vector on our previous graph:
 <figure id="fig:x2y2_2" data-latex-placement="H">
 <p><img src="dl/x2y2line.png" style="width:45.0%" alt="image" /> <img
 src="dl/x2y2lineabove.png" style="width:45.0%" alt="image" /></p>
-<figcaption>Illustration of the function <span
+<figcaption>Figure 7: Illustration of the function <span
 class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup></span>,
 with a vector showing the direction of steepest ascent from point <span
 class="math inline">(1, 1)</span></figcaption>
@@ -724,9 +733,11 @@ at all! For an illustration of this, see Figure
 [8](#fig:lr){reference-type="ref" reference="fig:lr"}.
 
 <figure id="fig:lr" data-latex-placement="H">
-<img src="dl/lr.png" style="width:100.0%" />
-<figcaption>A demonstration of how different learning rates affect
-convergence of a loss function (in this graphic represented as <span
+<img src="dl/lr.png" style="width:100.0%"
+alt="Figure 8: A demonstration of how different learning rates affect convergence of a loss function (in this graphic represented as J(\theta)." />
+<figcaption aria-hidden="true">Figure 8: A demonstration of how
+different learning rates affect convergence of a loss function (in this
+graphic represented as <span
 class="math inline"><em>J</em>(<em>θ</em>).</span></figcaption>
 </figure>
 
@@ -780,9 +791,10 @@ be used by the network all the time. See Figure
 visual representation of this process.
 
 <figure id="fig:dropout" data-latex-placement="H">
-<img src="dl/dropout.png" style="width:100.0%" />
-<figcaption>Visualizing dropout in a fully connected neural
-network</figcaption>
+<img src="dl/dropout.png" style="width:100.0%"
+alt="Figure 9: Visualizing dropout in a fully connected neural network" />
+<figcaption aria-hidden="true">Figure 9: Visualizing dropout in a fully
+connected neural network</figcaption>
 </figure>
 
 Why would we do this? Well, if a network is allowed to use all of its
