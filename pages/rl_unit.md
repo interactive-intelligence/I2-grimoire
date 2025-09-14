@@ -383,11 +383,14 @@ of Gaussians, for example, can have $\geq$ 1 peak. This prevents the
 mode averaging problem but increases the complexity of your model by a
 lot.
 
-![Figure 1: An illustration demonstrating the issues that arise from
+<figure id="fig:modeavg" data-latex-placement="H">
+<img src="rl/modeavg.png" style="width:90.0%" />
+<figcaption>An illustration demonstrating the issues that arise from
 mode-averaging within behavior cloning algorithms. The green and blue
 peaks represent choosing to go left or right around the obstacle, and
 the black dashed line represents what a simple policy will converge
-on.](rl/modeavg.png){#fig:modeavg width="90%"}
+on.</figcaption>
+</figure>
 
 </div>
 
@@ -453,14 +456,14 @@ $$\mathrm{Forward\;KL\;Divergence} = D_{KL}(p(x),q(x)) = \mathbb{E}_{p(x)} \bigg
 A quick proof of this fact is shown below. We use the property that
 $\mathbb{E}_{q(x)}[p(x)] = \int p(x)q(x)\;dx$.
 
-$$\begin{aligned}
+$$\begin{align*}
         \textrm{Given: }f(x) \leftarrow x\mathrm{log}x \\
         D_f(p(x),q(x))\ &= \mathbb{E}_{q(x)} \biggl[ \frac{p(x)}{q(x)}\mathrm{log}\frac{p(x)}{q(x)}\biggr]\\
         &= \int \frac{p(x)}{q(x)}\mathrm{log}\frac{p(x)}{q(x)}q(x)\;dx\\
         &= \int p(x)\mathrm{log}\frac{p(x)}{q(x)}\;dx\\
         D_{KL}(p(x),q(x)) &= \mathbb{E}_{p(x)} \biggl[\mathrm{log}\frac{p(x)}{q(x)}\biggr]
     
-\end{aligned}$$
+\end{align*}$$
 
 We can apply the definition of forward KL divergence to the inner
 expectation shown before.
@@ -485,13 +488,15 @@ clearly in the equation makes this an unavoidable fact. This gives us a
 much more concrete basis for why we should expect to observe the
 crashing behavior discussed earlier!
 
-![Figure 2: The blue curve is our single-mode Gaussian decision policy
+<figure id="fig:diffkl" data-latex-placement="H">
+<img src="rl/diffkl.png" style="width:70.0%" />
+<figcaption>The blue curve is our single-mode Gaussian decision policy
 and the bimodal orange line is our expert policy (can go left or right
 around the tree). The top graph shows what we would like to happen,
 which is choosing a mode and sticking with it. However, the bottom graph
 shows what actually happens when we minimize forward KL divergence. This
-is mode-averaging behavior (crashing into the
-tree).](rl/diffkl.png){#fig:diffkl width="70%"}
+is mode-averaging behavior (crashing into the tree).</figcaption>
+</figure>
 
 This analysis also gives us another avenue by which to improve behavior
 cloning instead of selecting a more expressive policy class: Find ways
@@ -536,12 +541,16 @@ ledge" that behavior cloning usually creates. A human adding corrective
 labels at critical failure points lets the agent know what to do at
 those points to get back on track.
 
-![Figure 3: A visualization of how DAgger helps keep the agent
-performing well. We first see the agent ($\hat{x}$) deviate from the
-expert ($x$), but we then take these observations of where the agent
-failed and give it instructions on how to get back on track. With enough
-iterations, a lot of failure cases can be
-mitigated.](rl/daggerviz.png){#fig:daggerviz width="70%"}
+<figure id="fig:daggerviz" data-latex-placement="H">
+<img src="rl/daggerviz.png" style="width:70.0%" />
+<figcaption>A visualization of how DAgger helps keep the agent
+performing well. We first see the agent (<span
+class="math inline"><em>x̂</em></span>) deviate from the expert (<span
+class="math inline"><em>x</em></span>), but we then take these
+observations of where the agent failed and give it instructions on how
+to get back on track. With enough iterations, a lot of failure cases can
+be mitigated.</figcaption>
+</figure>
 
 Behavior cloning is a section of RL that may seem simple at first, but
 can be quite involved when you try to solve the problems that come with
@@ -575,10 +584,13 @@ algorithms and analyze their strengths/weaknesses.
 ## Basic Policy Gradient
 
 <div markdown="1" class="flushleft">
-![Figure 4: An illustration showing how the agent and environment
+<figure id="fig:rlsystem" data-latex-placement="H">
+<img src="rl/rlsystem.png" style="width:70.0%" />
+<figcaption>An illustration showing how the agent and environment
 communicate through actions, states, and rewards in a traditional RL
-setting. The subscript $t$ is for
-timestep.](rl/rlsystem.png){#fig:rlsystem width="70%"}
+setting. The subscript <span class="math inline"><em>t</em></span> is
+for timestep.</figcaption>
+</figure>
 
 Let's start by introducing a new problem scenario. in this hypothetical,
 we do *not* have an expert to learn from. Instead, we receive
@@ -769,15 +781,19 @@ us in a better direction without sacrificing step size! The
 implementation of this is beyond the scope of the article so we will not
 be covering it.
 
-![Figure 5: There are a few items in this diagram. The parabola and
+<figure id="fig:npg" data-latex-placement="H">
+<img src="rl/npg.png" style="width:90.0%" />
+<figcaption>There are a few items in this diagram. The parabola and
 tangent show the issues of large gradient steps when you have only a
 monte-carlo approximation to the true gradient. You can wildly overshoot
-where you should be ($\theta_{i+1}$).The dimensions of the stretched
-oval represent the parameters of the policy, and how steps in the wrong
-direction can be disastrous since the policy is very sensitive to small
-parameter shifts. What we don't have in RL is an easy objective to
-optimize on like the circle. These problems together are why NPG is
-useful.](rl/npg.png){#fig:npg width="90%"}
+where you should be (<span
+class="math inline"><em>θ</em><sub><em>i</em> + 1</sub></span>).The
+dimensions of the stretched oval represent the parameters of the policy,
+and how steps in the wrong direction can be disastrous since the policy
+is very sensitive to small parameter shifts. What we don’t have in RL is
+an easy objective to optimize on like the circle. These problems
+together are why NPG is useful.</figcaption>
+</figure>
 
 Very advanced PG methods build off of NPG, and include trust region
 policy optimization (TRPO) and proximal policy optimization (PPO). PPO
@@ -813,17 +829,17 @@ The term $p_\theta(\tau)$ is the probability of encountering trajectory
 $\tau$ while the policy has parameters $\theta$. Now let's introduce the
 gradient and move it inside the integral:
 
-$$\begin{aligned}
+$$\begin{align*}
         \nabla_\theta J(\theta) &= \nabla_\theta\int R(\tau)p_{\theta}(\tau)\;d\tau \\
         \nabla_\theta J(\theta) &= \int \nabla_\theta R(\tau)p_{\theta}(\tau)\;d\tau
     
-\end{aligned}$$
+\end{align*}$$
 
 Now what do we do? Here is where something called the "REINFORCE" trick
 comes into play I will break it down very clearly below and then explain
 how it works:
 
-$$\begin{aligned}
+$$\begin{align*}
         \nabla_\theta J(\theta) &= \int \nabla_\theta R(\tau)p_{\theta}(\tau)\;d\tau \\
         &= \int \nabla_\theta p_{\theta}(\tau)R(\tau)\;d\tau \\
         &= \int \frac{p_{\theta}(\tau)}{p_{\theta}(\tau)}\nabla_\theta p_{\theta}(\tau) R(\tau)\;d\tau \\
@@ -831,7 +847,7 @@ $$\begin{aligned}
         &= \int p_{\theta}(\tau) \nabla_\theta \mathrm{log}(p_\theta(\tau)) R(\tau)\;d\tau \\
         \nabla_\theta J(\theta) &= \mathbb{E}_{\tau \sim p_\theta(\tau)}[\nabla_\theta \mathrm{log}(p_\theta(\tau)) R(\tau)] 
     
-\end{aligned}$$
+\end{align*}$$
 
 We first multiply by $\frac{p_{\theta}(\tau)}{p_{\theta}(\tau)}$, which
 is equivalent to one and does not imbalance the equation. We then use
@@ -864,12 +880,12 @@ The properties of logarithms
 ($\mathrm{log}(ab) = \mathrm{log}(a) + \mathrm{log}(b)$) transform this
 product into an easy-to-derive sum. We now apply the gradient:
 
-$$\begin{aligned}
+$$\begin{align*}
         \nabla_\theta \mathrm{log}(p_\theta(\tau)) &= \nabla_\theta \biggl(\mathrm{log}(p(s_0)) + \sum_{t=0}^{T-1} \mathrm{log}(\pi_\theta(a_t|s_t)) + \mathrm{log}(p(s_{t+1}|s_t,a_t))\biggr)\\
         &= \nabla_\theta \mathrm{log}(p(s_0)) + \sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t)) + \nabla_\theta\mathrm{log}(p(s_{t+1}|s_t,a_t)) \\
         &= \sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t))
     
-\end{aligned}$$
+\end{align*}$$
 
 When we take the gradient with respect to $\theta$ ($\nabla_\theta$), we
 can eliminate any terms that do not concern $\theta$. This is how we
@@ -880,12 +896,12 @@ environment dynamics at all with this approach! Now we plug
 $\nabla_\theta \mathrm{log}(p_\theta(\tau))$ back into the larger
 equation, and expand $R(\tau)$:
 
-$$\begin{aligned}
+$$\begin{align*}
         \nabla_\theta J(\theta) &= \mathbb{E}_{\tau \sim p_\theta(\tau)}[\nabla_\theta \mathrm{log}(p_\theta(\tau)) R(\tau)] \\
         &= \mathbb{E}_{\tau \sim p_\theta(\tau)}\biggl[\sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t))R(\tau)\biggr]\\
         &= \mathbb{E}_{\tau \sim p_\theta(\tau)}\biggl[\sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t))\sum_{t'=0}^T \gamma^{t'} r(s_{t'}, a_{t'})\biggr]
     
-\end{aligned}$$
+\end{align*}$$
 
 And now, we create a Monte-Carlo approximation to the expectation by
 sampling trajectories, and we arrive at the PG gradient we introduced
@@ -958,11 +974,16 @@ Note that the state-action pair $(s_t, a_t)$ is given to the equation,
 but all other state-action pairs come about as a consequence of
 following policy $\pi_\theta$ afterwards.
 
-![Figure 6: A visualization of what the Q-function takes into account.
-It averages the rewards from time $t$ and forward across considers many
-paths that policy $\pi_\theta$ could theoretically take. The output of a
-Q-function is called a Q-value. It signifies the "quality" of the given
-state-action pair.](rl/qlearning.png){#fig:qlearning width="70%"}
+<figure id="fig:qlearning" data-latex-placement="H">
+<img src="rl/qlearning.png" style="width:70.0%" />
+<figcaption>A visualization of what the Q-function takes into account.
+It averages the rewards from time <span
+class="math inline"><em>t</em></span> and forward across considers many
+paths that policy <span
+class="math inline"><em>π</em><sub><em>θ</em></sub></span> could
+theoretically take. The output of a Q-function is called a Q-value. It
+signifies the “quality” of the given state-action pair.</figcaption>
+</figure>
 
 This might seem somewhat arbitrary, but it is an intuitive way to think
 about navigating an environment. Think about yourself. You evaluate what
@@ -976,12 +997,12 @@ Now we can expand this intuition and equation into an update rule. With
 some algebraic manipulation, we find that the Q-function actually has a
 **recursive property**.
 
-$$\begin{aligned}
+$$\begin{align*}
         Q_\phi^\pi(s_t, a_t) &= \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t, a_t\biggr]\\
         & = r(s_t, a_t) + \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t+1}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_t) \biggr]\\
         & = r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})
     
-\end{aligned}$$
+\end{align*}$$
 
 The "$s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_t)$"
 part of the equation just shows where $s_{t+1}$ and $a_{t+1}$ come from:
@@ -1013,11 +1034,11 @@ $$\delta = \biggl(Q_\phi^\pi(s_t, a_t) - (r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t
 Again: minimizing $\delta$ will give us the ideal Q-function and allow
 the agent to navigate the environment while maximizing returns.
 
-$$\begin{aligned}
+$$\begin{align*}
         & \underset{\phi}{\mathrm{argmin}}\;\mathbb{E}_{\tau \sim \pi}[\delta]\\
         & \underset{\phi}{\mathrm{argmin}}\;\mathbb{E}_{\tau \sim \pi}\biggl[\biggl(Q_\phi^\pi(s_t, a_t) - (r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1}))\biggr)^2\biggr]
     
-\end{aligned}$$
+\end{align*}$$
 
 This is naturally off-policy, as the policy that $\tau$ comes from and
 the policy that $Q^\pi$ operates off of do *not* need to be the same.

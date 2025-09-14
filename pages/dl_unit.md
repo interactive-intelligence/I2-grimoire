@@ -28,8 +28,10 @@ and the axons as edges.
 
 The figure below shows how a graph like this might appear.
 
-![Figure 1: A visualization of neural
-networks](dl/neuralnetwork.png){#fig:neuralnetwork width="50%"}
+<figure id="fig:neuralnetwork" data-latex-placement="H">
+<img src="dl/neuralnetwork.png" style="width:50.0%" />
+<figcaption>A visualization of neural networks</figcaption>
+</figure>
 
 </div>
 <div markdown="1" class="flushleft">
@@ -49,8 +51,11 @@ into the input layer of the model.
 
 </div>
 
-![Figure 2: Visualization of how images are converted into
-vectors](dl/img-vector.png){#fig:img-vector width="100%"}
+<figure id="fig:img-vector" data-latex-placement="H">
+<img src="dl/img-vector.png" style="width:100.0%" />
+<figcaption>Visualization of how images are converted into
+vectors</figcaption>
+</figure>
 
 <div markdown="1" class="flushleft">
 Next are the **hidden layers**, which are yellow in the first image.
@@ -136,9 +141,12 @@ Have the three pink neurons be $a_1$, $a_2$, $a_3$. Only consider the
 top yellow neuron, and call it $z$. The arrow connecting $a_x$ to $z$ is
 called $w_x$. The bias for the neuron $z$ is $b$.
 
-![Figure 3: An illustration of weights and biases connecting the first
+<figure id="fig:connectivity_basic" data-latex-placement="H">
+<img src="dl/connectivity_basic.png" style="width:50.0%" />
+<figcaption>An illustration of weights and biases connecting the first
 layer of our neural network to the first neuron of the second (hidden)
-layer.](dl/connectivity_basic.png){#fig:connectivity_basic width="50%"}
+layer.</figcaption>
+</figure>
 
 $$z = (w_1a_1 + w_2a_2 + w_3a_3) + b$$
 
@@ -257,9 +265,12 @@ that *there is no way to draw a line that cleanly separates the
 classes.* In other words, the XOR classification problem is **not
 linearly separable**.
 
-![Figure 4: Illustration of the XOR function, and how you cannot draw a
+<figure id="fig:xor" data-latex-placement="H">
+<img src="dl/xor.png" style="width:50.0%" />
+<figcaption>Illustration of the XOR function, and how you cannot draw a
 single line that separates the classes (white and black
-dots).](dl/xor.png){#fig:xor width="50%"}
+dots).</figcaption>
+</figure>
 
 XOR is a simple boolean operation, as we move to complex problems like
 animal classification and speech recognition, how can perceptrons hope
@@ -394,8 +405,10 @@ to train this arbitrarily large model.
 ## Common Activation Functions
 
 <div markdown="1" class="flushleft">
-![Figure 5: Plots of various activation
-functions](dl/activationfuncs.png){#fig:activationfuncs width="75%"}
+<figure id="fig:activationfuncs" data-latex-placement="H">
+<img src="dl/activationfuncs.png" style="width:75.0%" />
+<figcaption>Plots of various activation functions</figcaption>
+</figure>
 
 One commonly used activation function is the **sigmoid function**. This
 function squashes inputs into the range between 0 and 1. It is useful in
@@ -526,8 +539,11 @@ and associated graph below:
 
 $$f(x, y) = z = x^2 + y^2$$
 
-![Figure 6: Illustration of the function
-$f(x, y) = x^2 + y^2$](dl/x2y2.png){#fig:x2y2 width="50%"}
+<figure id="fig:x2y2" data-latex-placement="H">
+<img src="dl/x2y2.png" style="width:50.0%" />
+<figcaption>Illustration of the function <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup></span></figcaption>
+</figure>
 
 The **gradient** of a multivariate function (denoted in this case as
 $\nabla f(x,y)$ or $\nabla z$) points you in the *direction of steepest
@@ -567,10 +583,10 @@ $$\begin{bmatrix}
 
 If we plot this as a vector on our previous graph:
 
-<figure id="fig:x2y2_2">
+<figure id="fig:x2y2_2" data-latex-placement="H">
 <p><img src="dl/x2y2line.png" style="width:45.0%" alt="image" /> <img
 src="dl/x2y2lineabove.png" style="width:45.0%" alt="image" /></p>
-<figcaption>Figure 7: Illustration of the function <span
+<figcaption>Illustration of the function <span
 class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup></span>,
 with a vector showing the direction of steepest ascent from point <span
 class="math inline">(1, 1)</span></figcaption>
@@ -707,9 +723,12 @@ way too long to converge, while a large learning rate may not converge
 at all! For an illustration of this, see Figure
 [8](#fig:lr){reference-type="ref" reference="fig:lr"}.
 
-![Figure 8: A demonstration of how different learning rates affect
-convergence of a loss function (in this graphic represented as
-$J(\theta).$](dl/lr.png){#fig:lr width="100%"}
+<figure id="fig:lr" data-latex-placement="H">
+<img src="dl/lr.png" style="width:100.0%" />
+<figcaption>A demonstration of how different learning rates affect
+convergence of a loss function (in this graphic represented as <span
+class="math inline"><em>J</em>(<em>θ</em>).</span></figcaption>
+</figure>
 
 </div>
 <div markdown="1" class="questionbox">
@@ -760,8 +779,11 @@ be used by the network all the time. See Figure
 [9](#fig:dropout){reference-type="ref" reference="fig:dropout"} for a
 visual representation of this process.
 
-![Figure 9: Visualizing dropout in a fully connected neural
-network](dl/dropout.png){#fig:dropout width="100%"}
+<figure id="fig:dropout" data-latex-placement="H">
+<img src="dl/dropout.png" style="width:100.0%" />
+<figcaption>Visualizing dropout in a fully connected neural
+network</figcaption>
+</figure>
 
 Why would we do this? Well, if a network is allowed to use all of its
 neurons all of the time, there is no guarantee that the network will

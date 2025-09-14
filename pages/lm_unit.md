@@ -502,10 +502,11 @@ $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)
 where $W^O$ is a learned projection matrix. This design allows
 Transformers to capture multiple relational patterns simultaneously.
 
-![Figure 1: Multi-Head Attention Mechanism: Each head captures unique
-relationships and combines them for comprehensive
-context.](lm/multi_head_attention_example.png){#fig:multi_head_attention_example
-width="\\linewidth"}
+<figure id="fig:multi_head_attention_example" data-latex-placement="H">
+<img src="lm/multi_head_attention_example.png" />
+<figcaption>Multi-Head Attention Mechanism: Each head captures unique
+relationships and combines them for comprehensive context.</figcaption>
+</figure>
 
 **Applications and Impact:** The introduction of Transformers has led to
 breakthroughs in language modeling, powering models like BERT and GPT.

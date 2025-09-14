@@ -149,9 +149,12 @@ prediction is far off from the actual value, its contribution to the SSE
 will be disproportionately larger, making it easier to identify large
 errors.
 
-![Figure 1: An illustration of two lines of fit that would produce a low
+<figure id="fig:seefits" data-latex-placement="H">
+<img src="ml/seefits.png" style="width:45.0%" />
+<figcaption>An illustration of two lines of fit that would produce a low
 and high SSE respectively. The line that fits the data better has a low
-SSE](ml/seefits.png){#fig:seefits width="45%"}
+SSE</figcaption>
+</figure>
 
 **The goal in regression** is to minimize SSE, because a lower SSE value
 indicates a better fit of the model to the data. A model with a small
@@ -287,7 +290,7 @@ For a quick refresher on matrix calculus, see [Matrix Calculus for
 Machine Learning by
 StatQuest](https://www.youtube.com/watch?v=tIkzL4jlt8g).
 
-$$\begin{aligned}
+$$\begin{align*}
         \hat{\textbf{w}} &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - \hat{y}_i)^2 && \text{Find $\textbf{w}$ that minimizes the SSE. This is $\hat{\textbf{w}}$.}\\
         &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w} + b))^2 && \text{Plug in $\hat{y}_i = \textbf{x}_i^{\top}\textbf{w} + b$.}\\
         &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w}))^2 && \text{\parbox{0.5\textwidth}{Disregard $b$, since an intercept can be represented by appending a 1 to $\textbf{x}$.}}\\
@@ -305,7 +308,7 @@ $$\begin{aligned}
         (X^{\top}X)^{-1}(X^{\top}X)\hat{\textbf{w}} &= (X^{\top}X)^{-1}X^{\top}\textbf{y} && \text{Left multiply by $(X^{\top}X)^{-1}$}\\
         \hat{\textbf{w}} &= (X^{\top}X)^{-1}X^{\top}\textbf{y} && \text{Cancel}\\
     
-\end{aligned}$$
+\end{align*}$$
 
 This is pretty amazing. If you were to create just $X$ and $\textbf{y}$
 for any regression dataset, you can find $\hat{\textbf{w}}$. It doesn't
@@ -346,7 +349,7 @@ the **bias-variance tradeoff**, but for now just understand that the
 weights you find with ordinary linear regression tend to not generalize
 well.
 
-<figure id="fig:regression_comparison">
+<figure id="fig:regression_comparison" data-latex-placement="H">
 <p><img src="ml/regression_comparison.png" style="width:85.0%"
 alt="image" /> <span id="fig:regression_comparison"
 data-label="fig:regression_comparison"></span></p>
@@ -366,11 +369,11 @@ But first, what are the L2 and L1 norms? These norms are mathematical
 functions that map from vector space to scalar space
 ($\mathbb{R}^n \rightarrow \mathbb{R})$. They are defined as such:
 
-$$\begin{aligned}
+$$\begin{align*}
       \|\textbf{x}\|_2 &= \sqrt{\sum_{i=1}^n x_i^2} \\
       \|\textbf{x}\|_1 &= \sum_{i=1}^n \vert x_i \vert
     
-\end{aligned}$$
+\end{align*}$$
 
 So the L2 norm is the square root of the sum of squared elements from
 the vector, and the L1 norm is the sum of the absolute value of elements
@@ -382,11 +385,11 @@ $||\hat{\textbf{w}}||_2$ or $||\hat{\textbf{w}}||_1$ along with the
 original SSE objective. We therefore write our two new optimization
 objectives down:
 
-$$\begin{aligned}
+$$\begin{align*}
       Ridge\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
       LASSO\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
     
-\end{aligned}$$
+\end{align*}$$
 
 The $\lambda$ term allows us to control how much regularization we want.
 A small number makes the mode kind of "care" about keeping its weights
@@ -427,10 +430,13 @@ will exaggerate these effects, with incredibly high values for $\lambda$
 in LASSO regression resulting in only one or two features having
 non-zero weights.
 
-![Figure 2: Showing how the L1 and L2 norms influence $\hat{\textbf{w}}$
-through the nature of their manifestations on the loss landscape as a
-hyperdiamond and hypersphere respectively](ml/l1_l2.jpg){#fig:l1_l2
-width="90%"}
+<figure id="fig:l1_l2" data-latex-placement="H">
+<img src="ml/l1_l2.jpg" style="width:90.0%" />
+<figcaption>Showing how the L1 and L2 norms influence <span
+class="math inline">$\hat{\textbf{w}}$</span> through the nature of
+their manifestations on the loss landscape as a hyperdiamond and
+hypersphere respectively</figcaption>
+</figure>
 
 Both of these regression variants have use cases where they shine, so no
 one is "better" than the other. Ridge regression should be used when you
@@ -515,8 +521,10 @@ Where:
 ## The Sigmoid Function and Its Role
 
 <div markdown="1" class="flushleft">
-![Figure 3: A graph showing the sigmoid
-function.](ml/sigmoid_function.png){#fig:sigmoid_function width="45%"}
+<figure id="fig:sigmoid_function" data-latex-placement="H">
+<img src="ml/sigmoid_function.png" style="width:45.0%" />
+<figcaption>A graph showing the sigmoid function.</figcaption>
+</figure>
 
 The sigmoid function plays a crucial role in logistic regression because
 it takes any input from the linear equation and converts it into a value
@@ -679,9 +687,13 @@ $k$, and the results are plotted. The "elbow" point on the plot
 represents the optimal number of clusters---beyond this point,
 increasing $k$ provides diminishing returns in terms of reducing SSE.
 
-![Figure 4: An example of a graph showing SSE vs. $k$, and the elbow
-that can be used to pick the optimal
-$k$.](ml/SSEkElbowmethod.png){#fig:SSEkElbowmethod width="45%"}
+<figure id="fig:SSEkElbowmethod" data-latex-placement="H">
+<img src="ml/SSEkElbowmethod.png" style="width:45.0%" />
+<figcaption>An example of a graph showing SSE vs. <span
+class="math inline"><em>k</em></span>, and the elbow that can be used to
+pick the optimal <span
+class="math inline"><em>k</em></span>.</figcaption>
+</figure>
 
 Another method to determine $k$ is by using the **silhouette score**,
 which evaluates how similar a data point is to its assigned cluster
@@ -804,9 +816,11 @@ Here are key distinctions between the two methods:
   datasets with skewed distributions or where minimizing absolute
   differences is a priority.
 
-![Figure 5: An image comparing and contrasted the clusters created from
-k-means and k-medians methods.](ml/K-clustering.png){#fig:K-clustering
-width="45%"}
+<figure id="fig:K-clustering" data-latex-placement="H">
+<img src="ml/K-clustering.png" style="width:45.0%" />
+<figcaption> An image comparing and contrasted the clusters created from
+k-means and k-medians methods.</figcaption>
+</figure>
 
 The choice between the two methods depends heavily on the nature of the
 dataset. K-means is computationally more efficient but may produce
@@ -885,9 +899,11 @@ you must pick a ML model that has enough expressive power to capture
 underlying trends, but is not so expressive that it suffers from high
 variance errors.
 
-![Figure 6: An illustration visualizing different balances between bias
-and variance for model fitting.](ml/biasvariance.jpg){#fig:biasvariance
-width="80%"}
+<figure id="fig:biasvariance" data-latex-placement="H">
+<img src="ml/biasvariance.jpg" style="width:80.0%" />
+<figcaption>An illustration visualizing different balances between bias
+and variance for model fitting.</figcaption>
+</figure>
 
 </div>
 
@@ -908,10 +924,13 @@ However, if the function you are optimizing on is non-convex, there is a
 chance that a lower valley exists somewhere on this SSE landscape, but
 you can never be 100% certain!
 
-![Figure 7: An illustration visualizing a convex function and a
+<figure id="fig:convexity" data-latex-placement="H">
+<img src="ml/convexity.png" style="width:80.0%" />
+<figcaption>An illustration visualizing a convex function and a
 non-convex function. Also shown is the problem that comes with
 optimizing non-convex functions: getting stuck at a local
-minima.](ml/convexity.png){#fig:convexity width="80%"}
+minima.</figcaption>
+</figure>
 
 Figure [8](#fig:convexity){reference-type="ref"
 reference="fig:convexity"} illustrates this point. For the non-convex
