@@ -167,7 +167,7 @@ This equation may look complex, but it simply means that the probability of an e
     \large At the heart of language modeling lies the task of sequence prediction, which involves estimating the probability of a sequence of tokens. Meanwhile, autoregressive models, such as GPT, predict the next token in a sequence by conditioning on all previous tokens. This process is iterative, generating one token at a time, which allows these models to produce coherent sequences of text. Sequence prediction can be mathematically expressed as:
     
     \[
-    P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t | x_{<t})
+    P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t \mid x_{<t})
     \]
     Here:
     \begin{itemize}
