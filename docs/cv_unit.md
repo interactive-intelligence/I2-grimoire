@@ -1,4 +1,4 @@
-n---
+---
 layout: page
 title: Computer Vision
 permalink: /cv

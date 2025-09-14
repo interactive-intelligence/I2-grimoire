@@ -1,6 +1,6 @@
-n---
+---
 layout: page
-title: Lanuguage Modeling
+title: Language Modeling
 permalink: /lm
 nav_order: 4
 description: Language Modeling Unit
