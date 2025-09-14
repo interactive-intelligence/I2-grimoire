@@ -50,7 +50,7 @@ effect of others to try and draw out a feature. For example, the kernel
 in the image below is attempting to extract an "ear" feature from a
 section of the input image.
 
-![Illustration of feature extraction using
+![Figure 1: Illustration of feature extraction using
 kernel](cv/kernelextraction.png){#fig:kernelextraction
 width="1\\linewidth"}
 
@@ -61,7 +61,7 @@ the features we are searching for within the image exist. We call this a
 image, then an "ear" kernel applied to that image will result in a
 feature map that has high values in the top left where the ear was.
 
-![Illustration of the work done in a convolutional
+![Figure 2: Illustration of the work done in a convolutional
 layer](cv/imagetokerneltosmallmatrix.png){#fig:imagetokerneltosmallmatrix
 width="0.75\\linewidth"}
 
@@ -113,10 +113,10 @@ of the kernel, the sections that the kernel is applied to do not
 overlap. In the above image, the stride is 2. Observe more examples of
 strides that are depicted in Figures 3 and 4 below.
 
-![Illustration depicting a stride of 1
+![Figure 3: Illustration depicting a stride of 1
 pixel](cv/stridedepict.png){#fig:stridedepict width="1\\linewidth"}
 
-![Illustration depicting a stride of 2
+![Figure 4: Illustration depicting a stride of 2
 pixels](cv/stride2eg.png){#fig:stride2eg width="1\\linewidth"}
 
 Padding, on the other hand, refers to extra pixels around the edges of a
@@ -196,7 +196,7 @@ operation takes the maximum value in a given section of the feature map
 and selects that number to represent the section in the summarized map,
 as seen in the figure below.
 
-![Illustration of the max pooling
+![Figure 5: Illustration of the max pooling
 operation](cv/maxpooling.png){#fig:maxpooling width="0.75\\linewidth"}
 
 If we take the section of the map that the max pooling operation is
@@ -262,7 +262,7 @@ optimization, and **dropout** for regularization.
 See the figure below for an overview of the entire architecture of a
 Convolutional Neural Network.
 
-![Illustration of complete architecture of
+![Figure 6: Illustration of complete architecture of
 CNN](cv/full_cnn.png){#fig:full_cnn width="1\\linewidth"}
 
 </div>
@@ -390,7 +390,7 @@ Another method used in computer vision models is **image segmentation**.
 This approach focuses on identifying groups of pixels that belong
 together and works to separate individual objects in images.
 
-![Illustration of high-level image
+![Figure 7: Illustration of high-level image
 segmentation](cv/segmentation-tiger.png){#fig:segmentation-tiger
 width="0.75\\linewidth"}
 

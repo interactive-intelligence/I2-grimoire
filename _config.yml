@@ -8,7 +8,4 @@ aux_links:
   I2 Website: https://uw-i2.org
   Intro Course: https://course.uw-i2.org
   
-search_enabled: false
-
-kramdown:
-  table_extension: false
+search_enabled: true

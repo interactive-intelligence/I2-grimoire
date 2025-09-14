@@ -386,7 +386,7 @@ of Gaussians, for example, can have $\geq$ 1 peak. This prevents the
 mode averaging problem but increases the complexity of your model by a
 lot.
 
-![An illustration demonstrating the issues that arise from
+![Figure 1: An illustration demonstrating the issues that arise from
 mode-averaging within behavior cloning algorithms. The green and blue
 peaks represent choosing to go left or right around the obstacle, and
 the black dashed line represents what a simple policy will converge
@@ -488,12 +488,12 @@ clearly in the equation makes this an unavoidable fact. This gives us a
 much more concrete basis for why we should expect to observe the
 crashing behavior discussed earlier!
 
-![The blue curve is our single-mode Gaussian decision policy and the
-bimodal orange line is our expert policy (can go left or right around
-the tree). The top graph shows what we would like to happen, which is
-choosing a mode and sticking with it. However, the bottom graph shows
-what actually happens when we minimize forward KL divergence. This is
-mode-averaging behavior (crashing into the
+![Figure 2: The blue curve is our single-mode Gaussian decision policy
+and the bimodal orange line is our expert policy (can go left or right
+around the tree). The top graph shows what we would like to happen,
+which is choosing a mode and sticking with it. However, the bottom graph
+shows what actually happens when we minimize forward KL divergence. This
+is mode-averaging behavior (crashing into the
 tree).](rl/diffkl.png){#fig:diffkl width="0.7\\linewidth"}
 
 This analysis also gives us another avenue by which to improve behavior
@@ -539,12 +539,12 @@ ledge" that behavior cloning usually creates. A human adding corrective
 labels at critical failure points lets the agent know what to do at
 those points to get back on track.
 
-![A visualization of how DAgger helps keep the agent performing well. We
-first see the agent ($\hat{x}$) deviate from the expert ($x$), but we
-then take these observations of where the agent failed and give it
-instructions on how to get back on track. With enough iterations, a lot
-of failure cases can be mitigated.](rl/daggerviz.png){#fig:daggerviz
-width="0.7\\linewidth"}
+![Figure 3: A visualization of how DAgger helps keep the agent
+performing well. We first see the agent ($\hat{x}$) deviate from the
+expert ($x$), but we then take these observations of where the agent
+failed and give it instructions on how to get back on track. With enough
+iterations, a lot of failure cases can be
+mitigated.](rl/daggerviz.png){#fig:daggerviz width="0.7\\linewidth"}
 
 Behavior cloning is a section of RL that may seem simple at first, but
 can be quite involved when you try to solve the problems that come with
@@ -578,10 +578,10 @@ algorithms and analyze their strengths/weaknesses.
 ## Basic Policy Gradient
 
 <div markdown="1" class="flushleft">
-![An illustration showing how the agent and environment communicate
-through actions, states, and rewards in a traditional RL setting. The
-subscript $t$ is for timestep.](rl/rlsystem.png){#fig:rlsystem
-width="0.7\\linewidth"}
+![Figure 4: An illustration showing how the agent and environment
+communicate through actions, states, and rewards in a traditional RL
+setting. The subscript $t$ is for
+timestep.](rl/rlsystem.png){#fig:rlsystem width="0.7\\linewidth"}
 
 Let's start by introducing a new problem scenario. in this hypothetical,
 we do *not* have an expert to learn from. Instead, we receive
@@ -772,11 +772,11 @@ us in a better direction without sacrificing step size! The
 implementation of this is beyond the scope of the article so we will not
 be covering it.
 
-![There are a few items in this diagram. The parabola and tangent show
-the issues of large gradient steps when you have only a monte-carlo
-approximation to the true gradient. You can wildly overshoot where you
-should be ($\theta_{i+1}$).The dimensions of the stretched oval
-represent the parameters of the policy, and how steps in the wrong
+![Figure 5: There are a few items in this diagram. The parabola and
+tangent show the issues of large gradient steps when you have only a
+monte-carlo approximation to the true gradient. You can wildly overshoot
+where you should be ($\theta_{i+1}$).The dimensions of the stretched
+oval represent the parameters of the policy, and how steps in the wrong
 direction can be disastrous since the policy is very sensitive to small
 parameter shifts. What we don't have in RL is an easy objective to
 optimize on like the circle. These problems together are why NPG is
@@ -961,10 +961,10 @@ Note that the state-action pair $(s_t, a_t)$ is given to the equation,
 but all other state-action pairs come about as a consequence of
 following policy $\pi_\theta$ afterwards.
 
-![A visualization of what the Q-function takes into account. It averages
-the rewards from time $t$ and forward across considers many paths that
-policy $\pi_\theta$ could theoretically take. The output of a Q-function
-is called a Q-value. It signifies the "quality" of the given
+![Figure 6: A visualization of what the Q-function takes into account.
+It averages the rewards from time $t$ and forward across considers many
+paths that policy $\pi_\theta$ could theoretically take. The output of a
+Q-function is called a Q-value. It signifies the "quality" of the given
 state-action pair.](rl/qlearning.png){#fig:qlearning
 width="0.7\\linewidth"}
 

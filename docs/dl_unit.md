@@ -28,7 +28,7 @@ and the axons as edges.
 
 The figure below shows how a graph like this might appear.
 
-![A visualization of neural
+![Figure 1: A visualization of neural
 networks](dl/neuralnetwork.png){#fig:neuralnetwork
 width="0.5\\linewidth"}
 
@@ -50,7 +50,7 @@ into the input layer of the model.
 
 </div>
 
-![Visualization of how images are converted into
+![Figure 2: Visualization of how images are converted into
 vectors](dl/img-vector.png){#fig:img-vector width="1\\linewidth"}
 
 <div markdown="1" class="flushleft">
@@ -137,8 +137,8 @@ Have the three pink neurons be $a_1$, $a_2$, $a_3$. Only consider the
 top yellow neuron, and call it $z$. The arrow connecting $a_x$ to $z$ is
 called $w_x$. The bias for the neuron $z$ is $b$.
 
-![An illustration of weights and biases connecting the first layer of
-our neural network to the first neuron of the second (hidden)
+![Figure 3: An illustration of weights and biases connecting the first
+layer of our neural network to the first neuron of the second (hidden)
 layer.](dl/connectivity_basic.png){#fig:connectivity_basic
 width="0.5\\linewidth"}
 
@@ -259,8 +259,8 @@ that *there is no way to draw a line that cleanly separates the
 classes.* In other words, the XOR classification problem is **not
 linearly separable**.
 
-![Illustration of the XOR function, and how you cannot draw a single
-line that separates the classes (white and black
+![Figure 4: Illustration of the XOR function, and how you cannot draw a
+single line that separates the classes (white and black
 dots).](dl/xor.png){#fig:xor width="0.5\\linewidth"}
 
 XOR is a simple boolean operation, as we move to complex problems like
@@ -396,7 +396,7 @@ to train this arbitrarily large model.
 ## Common Activation Functions
 
 <div markdown="1" class="flushleft">
-![Plots of various activation
+![Figure 5: Plots of various activation
 functions](dl/activationfuncs.png){#fig:activationfuncs
 width="0.75\\linewidth"}
 
@@ -529,7 +529,7 @@ and associated graph below:
 
 $$f(x, y) = z = x^2 + y^2$$
 
-![Illustration of the function
+![Figure 6: Illustration of the function
 $f(x, y) = x^2 + y^2$](dl/x2y2.png){#fig:x2y2 width="0.5\\linewidth"}
 
 The **gradient** of a multivariate function (denoted in this case as
@@ -573,7 +573,7 @@ If we plot this as a vector on our previous graph:
 <figure id="fig:x2y2_2">
 <p><img src="dl/x2y2line.png" alt="image" /> <img
 src="dl/x2y2lineabove.png" alt="image" /></p>
-<figcaption>Illustration of the function <span
+<figcaption>Figure 7: Illustration of the function <span
 class="math inline"><em>f</em>(<em>x</em>,<em>y</em>) = <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup></span>,
 with a vector showing the direction of steepest ascent from point <span
 class="math inline">(1,1)</span></figcaption>
@@ -710,8 +710,8 @@ way too long to converge, while a large learning rate may not converge
 at all! For an illustration of this, see Figure
 [8](#fig:lr){reference-type="ref" reference="fig:lr"}.
 
-![A demonstration of how different learning rates affect convergence of
-a loss function (in this graphic represented as
+![Figure 8: A demonstration of how different learning rates affect
+convergence of a loss function (in this graphic represented as
 $J(\theta).$](dl/lr.png){#fig:lr width="1\\linewidth"}
 
 </div>
@@ -763,7 +763,7 @@ be used by the network all the time. See Figure
 [9](#fig:dropout){reference-type="ref" reference="fig:dropout"} for a
 visual representation of this process.
 
-![Visualizing dropout in a fully connected neural
+![Figure 9: Visualizing dropout in a fully connected neural
 network](dl/dropout.png){#fig:dropout width="1\\linewidth"}
 
 Why would we do this? Well, if a network is allowed to use all of its

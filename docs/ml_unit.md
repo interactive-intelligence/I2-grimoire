@@ -149,8 +149,8 @@ prediction is far off from the actual value, its contribution to the SSE
 will be disproportionately larger, making it easier to identify large
 errors.
 
-![An illustration of two lines of fit that would produce a low and high
-SSE respectively. The line that fits the data better has a low
+![Figure 1: An illustration of two lines of fit that would produce a low
+and high SSE respectively. The line that fits the data better has a low
 SSE](ml/seefits.png){#fig:seefits width="0.45\\linewidth"}
 
 **The goal in regression** is to minimize SSE, because a lower SSE value
@@ -366,8 +366,11 @@ But first, what are the L2 and L1 norms? These norms are mathematical
 functions that map from vector space to scalar space
 ($\mathbb{R}^n \rightarrow \mathbb{R})$. They are defined as such:
 
-$$\|\textbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2}$$
-$$\|\textbf{x}\|_1 = \sum_{i=1}^n \vert x_i \vert$$
+$$\begin{aligned}
+      \|\textbf{x}\|_2 &= \sqrt{\sum_{i=1}^n x_i^2} \\
+      \|\textbf{x}\|_1 &= \sum_{i=1}^n \vert x_i \vert
+    
+\end{aligned}$$
 
 So the L2 norm is the square root of the sum of squared elements from
 the vector, and the L1 norm is the sum of the absolute value of elements
@@ -379,8 +382,11 @@ $||\hat{\textbf{w}}||_2$ or $||\hat{\textbf{w}}||_1$ along with the
 original SSE objective. We therefore write our two new optimization
 objectives down:
 
-$$Ridge\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2$$
-$$LASSO\;SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1$$
+$$\begin{aligned}
+      Ridge\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
+      LASSO\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
+    
+\end{aligned}$$
 
 The $\lambda$ term allows us to control how much regularization we want.
 A small number makes the mode kind of "care" about keeping its weights
@@ -421,8 +427,8 @@ will exaggerate these effects, with incredibly high values for $\lambda$
 in LASSO regression resulting in only one or two features having
 non-zero weights.
 
-![Showing how the L1 and L2 norms influence $\hat{\textbf{w}}$ through
-the nature of their manifestations on the loss landscape as a
+![Figure 2: Showing how the L1 and L2 norms influence $\hat{\textbf{w}}$
+through the nature of their manifestations on the loss landscape as a
 hyperdiamond and hypersphere respectively](ml/l1_l2.jpg){#fig:l1_l2
 width="0.9\\linewidth"}
 
@@ -509,7 +515,7 @@ Where:
 ## The Sigmoid Function and Its Role
 
 <div markdown="1" class="flushleft">
-![A graph showing the sigmoid
+![Figure 3: A graph showing the sigmoid
 function.](ml/sigmoid_function.png){#fig:sigmoid_function
 width="0.45\\linewidth"}
 
@@ -674,8 +680,8 @@ $k$, and the results are plotted. The "elbow" point on the plot
 represents the optimal number of clusters---beyond this point,
 increasing $k$ provides diminishing returns in terms of reducing SSE.
 
-![An example of a graph showing SSE vs. $k$, and the elbow that can be
-used to pick the optimal
+![Figure 4: An example of a graph showing SSE vs. $k$, and the elbow
+that can be used to pick the optimal
 $k$.](ml/SSEkElbowmethod.png){#fig:SSEkElbowmethod
 width="0.45\\linewidth"}
 
@@ -801,8 +807,8 @@ Here are key distinctions between the two methods:
     datasets with skewed distributions or where minimizing absolute
     differences is a priority.
 
-![ An image comparing and contrasted the clusters created from k-means
-and k-medians methods.](ml/K-clustering.png){#fig:K-clustering
+![Figure 5: An image comparing and contrasted the clusters created from
+k-means and k-medians methods.](ml/K-clustering.png){#fig:K-clustering
 width="0.45\\linewidth"}
 
 The choice between the two methods depends heavily on the nature of the
@@ -882,8 +888,8 @@ you must pick a ML model that has enough expressive power to capture
 underlying trends, but is not so expressive that it suffers from high
 variance errors.
 
-![An illustration visualizing different balances between bias and
-variance for model fitting.](ml/biasvariance.jpg){#fig:biasvariance
+![Figure 6: An illustration visualizing different balances between bias
+and variance for model fitting.](ml/biasvariance.jpg){#fig:biasvariance
 width="0.8\\linewidth"}
 
 </div>
@@ -905,9 +911,9 @@ However, if the function you are optimizing on is non-convex, there is a
 chance that a lower valley exists somewhere on this SSE landscape, but
 you can never be 100% certain!
 
-![An illustration visualizing a convex function and a non-convex
-function. Also shown is the problem that comes with optimizing
-non-convex functions: getting stuck at a local
+![Figure 7: An illustration visualizing a convex function and a
+non-convex function. Also shown is the problem that comes with
+optimizing non-convex functions: getting stuck at a local
 minima.](ml/convexity.png){#fig:convexity width="0.8\\linewidth"}
 
 Figure [8](#fig:convexity){reference-type="ref"
