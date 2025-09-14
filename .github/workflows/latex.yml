@@ -50,7 +50,7 @@ jobs:
         # Get pandoc crossref
         cd $(mktemp -d)
         wget -c https://github.com/lierdakil/pandoc-crossref/releases/latest/download/pandoc-crossref-Linux-X64.tar.xz
-        tar -xf pandoc-crossref-Linux.tar.xz
+        tar -xf pandoc-crossref-Linux-X64.tar.xz
         sudo mv pandoc-crossref /usr/local/bin/
         sudo chmod a+x /usr/local/bin/pandoc-crossref
         cd -
