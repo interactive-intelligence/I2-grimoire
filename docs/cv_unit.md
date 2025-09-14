@@ -9,7 +9,7 @@ description: Computer Vision Unit
 
 ## Problem Definition
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Reinforcement Learning is a subfield of AI that concerns itself with
 optimizing behavior of **agents** in **environments** using **rewards**.
 It is focused on finding efficient ways to train an agent (think of
@@ -47,7 +47,7 @@ strengths/weaknesses.
 
 ## Common Symbols and Definitions
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Here are some common symbols used in RL and their meanings. Analogies
 have been provided for ease of understanding.
 
@@ -162,7 +162,7 @@ have been provided for ease of understanding.
 
 ## Markov Decision Process
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 I mentioned earlier that there were a few restrictions to defining
 something as an RL problem. The **Markovian property** is one of them.
 The transitions within an environment from state to state must be a
@@ -219,7 +219,7 @@ of a state.
 
 ## On vs. Off-Policy RL
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 A short but important note on the terms **on-policy** and **off-policy**
 RL. If you decide to pursue RL on a deeper level, the distinction will
 become more important as the math behind algorithms in each has
@@ -251,7 +251,7 @@ algorithms, while more sample efficient, tend to be less stable and
 require a few tricks to work properly.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Think of a video game, board game, or puzzle that you like. Then do
@@ -276,7 +276,7 @@ require a few tricks to work properly.
 
 ## Basic Behavior Cloning
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Taking a step back from the plethora of notation, we will approach RL
 somewhat naively through **behavior cloning**, one of the simplest forms
 of RL. Rewards are not even needed in this problem formulation, and it
@@ -346,7 +346,7 @@ all seems much too simple though. What is the drawback?
 
 ## Problems with Behavior Cloning
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 There are two compounding problems with behavior cloning that make a
 basic implementation mostly unviable for complex situations.
 
@@ -397,7 +397,7 @@ on.](rl/modeavg.png){#fig:modeavg width="0.9\\linewidth"}
 
 ## Mode Averaging
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Below is a walkthrough demonstrating how mode-averaging comes out as a
 problem in behavior cloning:
 
@@ -505,7 +505,7 @@ subsection of RL.
 
 # DAgger Algorithm
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 DAgger seeks to preserve the core of behavior cloning learning by
 following an expert but making it so that we are not on a "precarious
 ledge" and small perturbations do not send us way off track. DAgger
@@ -550,7 +550,7 @@ a naive implementation. The next few sections will cover more "core" RL
 algorithms and analyze their strengths/weaknesses.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Write definitions for the following symbols:
@@ -575,7 +575,7 @@ algorithms and analyze their strengths/weaknesses.
 
 ## Basic Policy Gradient
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 ![An illustration showing how the agent and environment communicate
 through actions, states, and rewards in a traditional RL setting. The
 subscript $t$ is for timestep.](rl/rlsystem.png){#fig:rlsystem
@@ -692,7 +692,7 @@ you will get an agent that can play a complex game!
 
 ## Return-to-Go
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Despite seeming complex enough, Vanilla PG suffers from a few problems:
 The biggest of them being that Vanilla PG is a **high-variance
 estimator**. What this means is that you could train the model 100's of
@@ -721,7 +721,7 @@ Notice that in the third summation, we changed from $t'=0$ to $t'=t$.
 
 ## Baseline Function
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Another way to reduce the variance of the estimator (without increasing
 the bias) is to subtract a **baseline function** ($b(s_t)$) from the
 return. Due to how PG collects samples to train on, scale variation
@@ -747,7 +747,7 @@ blend the line between PG and another RL algorithm (Actor-Critic).
 
 ## Natural Policy Gradient
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 The final PG improvement we will be covering (in brief) is Natural
 Policy Gradient (NPG). A large issue that comes up within PG methods is
 overshooting the true gradient. Remember the $\approx$ sign we
@@ -790,7 +790,7 @@ interested in exploring policy gradient methods more.
 
 ## Proof for Gradient of the PG Objective
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Below is a walkthrough demonstrating how to calculate the gradient of
 the policy gradient objective function:
 
@@ -897,7 +897,7 @@ the impact is minimal.
 $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \nabla_\theta \mathrm{log}\pi_\theta(a_t^i|s_t^i)\sum_{t'=0}^T \gamma^{t'} r(s_{t'}^i, a_{t'}^i)\biggr]$$
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  What is infinite-horizon discounted reward, and why is it important?
@@ -936,7 +936,7 @@ $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \na
 
 ## Q-Functions and Bellman Equations
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Q-Learning will introduce us to our first off-policy RL algorithm, and
 is the first step into a whole other realm of RL algorithms. Many of
 these algorithms use language or ideas captured within Q-Learning, which
@@ -1030,7 +1030,7 @@ the policy that $Q^\pi$ operates off of do *not* need to be the same.
 
 ## Replay Buffer and Memory
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 One of the main benefits of an off-policy algorithm are that we can use
 data from old trajectories many times instead of once. Since the policy
 that $\tau$ comes from in the optimization objective does not need to be
@@ -1054,7 +1054,7 @@ $$\underset{\phi}{\mathrm{argmin}}\;\mathbb{E}_{\tau \sim \mathcal{D}}\biggl[\bi
 
 ## Optimization Stability and Polyak Averaging
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 By now you may still have a little skepticism on how we can improve
 $Q^\pi_\phi$ if it is being compared not to a ground truth, but mainly
 to itself. *This is an issue that Q-Learning has, it is very unstable
@@ -1083,7 +1083,7 @@ as $\phi$.
 
 ## Explore vs. Exploit and epsilon-Greedy Search
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 One of the final small concepts to discuss is not actually unique to
 Q-Learning or even RL, but benefits them greatly and is worth talking
 about. In RL, we can have **explore vs. exploit** problems crop up. We
@@ -1124,7 +1124,7 @@ which paths to take. These paths can be much better in the long run for
 the agent. Perhaps there is a life lesson in here somewhere?
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  What does the Q-function accept, and what does it return? Why would
@@ -1157,7 +1157,7 @@ the agent. Perhaps there is a life lesson in here somewhere?
 
 # When to Use Reinforcement Learning
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Deep reinforcement learning is relatively situational, and can be very
 unstable to train. It unfortunately takes a lot of compute,
 hyperparameter tuning, and general trial-and-error to get something to
@@ -1182,7 +1182,7 @@ reading, but you can do it!
 
 # Conclusion (RL)
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 This section covered basic RL concepts, introducing common notation and
 4 major algorithms (Behavior Cloning, DAgger, Policy Gradient,
 Q-Learning). We also went over the drawbacks of some of these algorithms

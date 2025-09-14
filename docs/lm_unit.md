@@ -7,7 +7,7 @@ description: Language Modeling Unit
 ---
 # Introduction to Language Modeling
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Language Modeling (LM) is about building systems that can understand,
 generate, or transform human language. At its simplest, a language model
 predicts the next word in a sequence based on the words that came before
@@ -17,7 +17,7 @@ translation, text summarization, and search engines.
 
 Let's consider an example:
 
-<div class="center">
+<div markdown="1" class="center">
 *"The quick brown fox jumps \_\_\_."*
 
 </div>
@@ -50,7 +50,7 @@ each word, one after another, given their context.
 
 ## How Are Language Models Trained?
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 To train a language model, we show it large amounts of text and teach it
 to minimize its prediction errors. Specifically, we compare the words it
 predicts with the actual next words in the text and adjust the model to
@@ -68,7 +68,7 @@ better at predicting language patterns.
 
 ## Important Concepts in Language modeling
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Below are some of the essentials of language modeling:
 
 -   **Core Concepts** like tokenization, embeddings, and sequence
@@ -87,7 +87,7 @@ We want to understand the theoretical foundations of language models,
 how they're built and trained, and their real-world impact.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Why is it important for language models to predict the likelihood of
@@ -103,7 +103,7 @@ how they're built and trained, and their real-world impact.
 
 ## Tokenization: The First Step
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Tokenization breaks raw text into smaller units called **tokens**, which
 are the building blocks for language models. Tokenization is essential
 because language models cannot directly process text; they operate on
@@ -142,7 +142,7 @@ as \[\"transform\", \"ational\"\], capturing semantic and morphological
 relationships.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Compare and contrast word-level, character-level, and subword
@@ -158,7 +158,7 @@ relationships.
 
 ## Embeddings: Representing Tokens Numerically
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 After tokenization, tokens are represented as discrete symbols, which
 must be converted into numerical vectors for processing by language
 models. **Embeddings** achieve this transformation by mapping tokens to
@@ -228,7 +228,7 @@ relationships with other tokens.
     in dense vector spaces.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Explain the significance of dense vector spaces in embeddings. Why
@@ -249,7 +249,7 @@ relationships with other tokens.
 
 ## Sequence Modeling: The Core Objective
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 At the heart of language modeling lies the task of sequence prediction,
 which involves estimating the probability of a sequence of tokens.
 Meanwhile, autoregressive models, such as GPT, predict the next token in
@@ -341,7 +341,7 @@ understanding how language models generate coherent and contextually
 relevant outputs.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Derive the negative log-likelihood loss formula from the sequence
@@ -360,7 +360,7 @@ relevant outputs.
 
 ## Recurrent Neural Networks (RNNs)
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 **Recurrent Neural Networks (RNNs)** are designed to process sequential
 data by maintaining a hidden state that evolves over time. The hidden
 state $h_t$ at time step $t$ encodes information from both the current
@@ -416,7 +416,7 @@ overcome the limitations of sequential processing.
 
 ## Transformers: A Paradigm Shift
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 **Transformers** revolutionized language modeling by eliminating the
 need for sequential processing, enabling parallel computation and
 dramatically improving efficiency. At the core of the Transformer
@@ -523,7 +523,7 @@ relationships between tokens. This capability enables deep contextual
 understanding across an entire sequence.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Why do RNNs struggle with long-term dependencies, and how do LSTMs
@@ -543,7 +543,7 @@ understanding across an entire sequence.
 
 # NLP Tasks Enabled by Language Models
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Language models empower a diverse array of natural language processing
 (NLP) tasks, leveraging their ability to understand and generate text.
 Below are some key applications:
@@ -594,7 +594,7 @@ multiple tasks with minimal task-specific customization demonstrates
 their adaptability and utility in real-world applications.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Choose one NLP task (e.g., summarization or sentiment analysis) and
@@ -609,7 +609,7 @@ their adaptability and utility in real-world applications.
 
 ## Challenges in Large Language Models (LLMs)
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 The advent of large language models (LLMs) such as GPT-4 has unlocked
 unprecedented capabilities in natural language understanding and
 generation. However, these advancements come with significant societal
@@ -730,7 +730,7 @@ integration into critical societal functions.
 
 ## Reinforcement Learning with Human Feedback (RLHF)
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Reinforcement Learning with Human Feedback (RLHF) enhances language
 model alignment with user expectations by incorporating human-provided
 evaluations into the training process. This approach is particularly
@@ -804,7 +804,7 @@ language models, enabling them to deliver high-quality, aligned outputs
 in complex real-world applications.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Explain why hallucination occurs in LLMs. Suggest one specific
@@ -823,7 +823,7 @@ in complex real-world applications.
 
 # When to Use Language Models
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Language modeling has taken the world by storm, for those both in and
 out of the "AI" space. Advances within LM have allowed for the advent of
 chatbots and a whole new wave of AI tools and integrations.
@@ -840,7 +840,7 @@ pretrained models can be found and used quite easily on sites like
 
 # Conclusion (LM)
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 By delving into foundational concepts, core architectures, and advanced
 techniques like Reinforcement Learning with Human Feedback (RLHF), this
 article has provided a comprehensive overview of the current landscape

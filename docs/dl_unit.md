@@ -9,7 +9,7 @@ description: Deep Learning Unit
 
 ## Fundamental Structure
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 To understand deep learning (DL) on a deeper level, we must first look
 closer at neural networks. They are ubiquitous in the space of DL and
 are the backbone or an integral part of most modern DL model
@@ -33,7 +33,7 @@ networks](dl/neuralnetwork.png){#fig:neuralnetwork
 width="0.5\\linewidth"}
 
 </div>
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 As you can see in Figure 1 above, there are different levels or layers
 of neurons (pink, then yellow, and finally blue). That is a key
 characteristic of deep learning, a learning algorithm that uses
@@ -53,7 +53,7 @@ into the input layer of the model.
 ![Visualization of how images are converted into
 vectors](dl/img-vector.png){#fig:img-vector width="1\\linewidth"}
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Next are the **hidden layers**, which are yellow in the first image.
 There are usually multiple hidden layers in deep learning models,
 depending on how much processing the model must do before it can make a
@@ -104,7 +104,7 @@ sections.
 
 ## Flow of Information
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Now that you understand the different layers of a neural network, let's
 see how the values in the input layer travel through the edges to get to
 the output layer. For ease of understanding, we are using a very
@@ -205,7 +205,7 @@ your neural network, these numbers will change in expected ways.
 
 ## The Perceptron and XOR
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 We just wrote out the equations that define how information flows
 between two layers in a neural network. Well, if we stop here and don't
 add any more layers, we come up with what is a **perceptron**.
@@ -303,7 +303,7 @@ than just lines in our spaces to solve the XOR problem? The answer lies
 with nonlinearities (shocker!).
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Define the following words:
@@ -336,7 +336,7 @@ with nonlinearities (shocker!).
 
 ## Introducing Nonlinearities
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Let's take a step up from the XOR problem and look at something arguably
 more complex: Image classification. Image classification, especially
 with categories as specific as 'dog' or 'cat', is very challenging. It
@@ -395,7 +395,7 @@ to train this arbitrarily large model.
 
 ## Common Activation Functions
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 ![Plots of various activation
 functions](dl/activationfuncs.png){#fig:activationfuncs
 width="0.75\\linewidth"}
@@ -406,7 +406,7 @@ binary classification tasks but can cause issues like vanishing
 gradients in deeper networks (more on this later). The formula, where
 $x$ is a given neuron's output is:
 
-<div class="center">
+<div markdown="1" class="center">
 $\sigma(x) = \frac{1}{1+e^{-x}}$
 
 </div>
@@ -415,7 +415,7 @@ The hyperbolic tangent activation function, or **tanh**, squashes inputs
 between -1 and 1. It is zero-centered, which makes it easier for
 optimization compared to the sigmoid function. The tanh formula is:
 
-<div class="center">
+<div markdown="1" class="center">
 $tanh(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$
 
 </div>
@@ -425,7 +425,7 @@ the input if it's positive, and zero otherwise. It is computationally
 efficient and helps alleviate the vanishing gradient problem by allowing
 gradients to flow when the input is positive. ReLU is written as:
 
-<div class="center">
+<div markdown="1" class="center">
 $ReLU(x) = MAX(0,x)$
 
 </div>
@@ -435,7 +435,7 @@ There is also another form of the ReLU activation function called
 negative, helping prevent the issue of \"dead neurons\" (neurons that
 never activate). Leaky ReLU looks like:
 
-<div class="center">
+<div markdown="1" class="center">
 $$f(x)= 
         \begin{cases}
             x,& \text{if } x > 0\\
@@ -445,7 +445,7 @@ $$f(x)=
 </div>
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Define the following words:
@@ -465,7 +465,7 @@ $$f(x)=
 
 ## Loss Functions
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 How does a neural network 'learn' using training (a.k.a labeled) data?
 It uses a process called **backpropagation**. This process adjusts the
 weights assigned to connections between neurons and the biases assigned
@@ -522,7 +522,7 @@ the **backward pass** or **backpropagation**.
 
 ## Derivatives and Gradients
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 Before we delve into the semi-convoluted math behind backpropagation, we
 should revisit some concepts from calculus. Take a look at the equation
 and associated graph below:
@@ -599,7 +599,7 @@ taking 100's of derivatives.
 
 ## Gradient Flow
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 The model first calculates the derivative of the loss with respect to
 $\hat{y}_i$, since $\hat{y}_i$ is the output of the model. For ease of
 understanding, we will use MSE loss:
@@ -679,7 +679,7 @@ basic gradient descent!
 
 ## Optimizers and Learning Rates
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 While gradient descent is a common optimizer and is easy to follow
 mathematically, it is unfortunately very expensive computationally and
 can be slow. **Stochastic Gradient Descent (SGD)** is a similar, more
@@ -715,7 +715,7 @@ a loss function (in this graphic represented as
 $J(\theta).$](dl/lr.png){#fig:lr width="1\\linewidth"}
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  Define what the purpose of a loss function is
@@ -739,7 +739,7 @@ $J(\theta).$](dl/lr.png){#fig:lr width="1\\linewidth"}
 
 # Regularization
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 We will now cover an incredibly important topic for deep learning:
 **regularization**. In ML, regularization often is applied in the form
 of adding a norm to the loss function, encouraging weights to reach
@@ -751,7 +751,7 @@ varied ways. We will quickly cover two common ones in shallow detail.
 
 ## Dropout
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 **Dropout:** During each forward pass, a certain fraction of neurons are
 temporarily dropped from the neural network. The connections they have
 to other neurons are totally ignored and they are not used in the
@@ -796,7 +796,7 @@ the same as it was during training time.
 
 ## Batch Normalization
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 **Batchnorm:** Batchnorm, or batch normalization, is a very common
 technique used to regularize neural networks and improve training
 efficiency. Batchnorm can be thought of as an extra layer in a neural
@@ -842,7 +842,7 @@ are needed. Normalization plus scale and shift removes this problem, and
 thus batchnorm helps greatly with a network's convergence.
 
 </div>
-<div class="questionbox">
+<div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
 1.  In your own words, why does Dropout work?
@@ -859,7 +859,7 @@ thus batchnorm helps greatly with a network's convergence.
 
 # When to Use Deep Learning/Neural Networks
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 While we have shown the great power and ability of neural networks and
 deep learning, with all this power comes great cost. Neural networks are
 power-hungry, taking up significant computation power for all the
@@ -881,7 +881,7 @@ choose the right tool for the job.
 
 # Conclusion (DL)
 
-<div class="flushleft">
+<div markdown="1" class="flushleft">
 This section covered the fundamental concepts of deep learning, with a
 heavy focus on neural networks. We also introduced important concepts
 like non-linearity and backpropagation. We closed with an overview of
