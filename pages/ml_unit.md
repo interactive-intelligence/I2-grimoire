@@ -475,7 +475,7 @@ computational constraints).
 
 5.  **Bonus:** Solve for $\hat{\textbf{w}}$ in the Ridge regression
     setting. Here is the equation:
-    $$\underset{w}{argmin} \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2^2$$
+    $$\underset{w}{argmin} \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2^2.$$
     Your answer should be the closed form solution for Ridge regression
     and the proof should be similar to the one given for ordinary linear
     regression.
