@@ -45,7 +45,15 @@ jobs:
 
     - name: Convert latex to markdown
       run: |
+        # Get pandoc
         sudo apt-get install -y pandoc
+        # Get pandoc crossref
+        cd $(mktemp -d)
+        wget -c https://github.com/lierdakil/pandoc-crossref/releases/latest/download/pandoc-crossref-Linux.tar.xz
+        tar -xf pandoc-crossref-Linux.tar.xz
+        sudo mv pandoc-crossref /usr/local/bin/
+        sudo chmod a+x /usr/local/bin/pandoc-crossref
+        cd -
         # note: we reuse file_unit.tex as we don't need it anymore
         sed -e 's/{{unit}}/cv/g' md_template.tex > cv_unit.tex
         sed -e 's/{{unit}}/dl/g' md_template.tex > dl_unit.tex
@@ -53,7 +61,7 @@ jobs:
         sed -e 's/{{unit}}/ml/g' md_template.tex > ml_unit.tex
         sed -e 's/{{unit}}/rl/g' md_template.tex > rl_unit.tex
         echo 'Running Pandoc...'
-        parallel pandoc --lua-filter=liquid_divs.lua -o {}.md {}.tex ::: cv_unit dl_unit lm_unit ml_unit rl_unit
+        parallel pandoc --filter pandoc-crossref --lua-filter=liquid_divs.lua -o {}.md {}.tex ::: cv_unit dl_unit lm_unit ml_unit rl_unit
         # Add header to each file
         sed -i -e '1i---\nlayout: page\ntitle: Machine Learning\npermalink: /ml\nnav_order: 2\ndescription: Machine Learning Unit\n---' ml_unit.md
         sed -i -e '1i---\nlayout: page\ntitle: Deep Learning\npermalink: /dl\nnav_order: 3\ndescription: Deep Learning Unit\n---' dl_unit.md
@@ -121,10 +129,7 @@ jobs:
           I2 Website: https://uw-i2.org
           Intro Course: https://course.uw-i2.org
           
-        search_enabled: false
-
-        kramdown:
-          table_extension: false
+        search_enabled: true
         EOF
 
         cat << EOF > index.md
@@ -152,6 +157,7 @@ jobs:
         EOF
 
         # styles and mathjax rendering, ignore parbox
+        mkdir -p _includes
         cat << EOF > _includes/head_custom.html
         <style>
         .questionbox {
