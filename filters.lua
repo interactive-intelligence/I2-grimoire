@@ -21,3 +21,10 @@ function Div(div)
   -- If the div has no classes, let Pandoc handle it normally.
   return nil
 end
+
+function Link (link)
+  if link.attributes['reference-type'] == 'ref' then
+    link.attributes = {} -- This empties the attributes table
+  end
+  return link
+end
