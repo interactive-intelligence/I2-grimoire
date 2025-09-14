@@ -18,4 +18,4 @@ nav_order: 1
 </ul>
 
 ## NEW: Experimental web version
-Use the navigation bar to explore the experimental web version
+Use the navigation bar to browse the experimental web version
