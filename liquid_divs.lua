@@ -16,7 +16,7 @@ function Div(div)
 
     -- Return a RawBlock of HTML, which Pandoc will insert directly
     -- into the markdown output.
-    return pandoc.RawBlock('html', html_block)
+    return pandoc.RawBlock('markdown', html_block)
   end
   -- If the div has no classes, let Pandoc handle it normally.
   return nil
