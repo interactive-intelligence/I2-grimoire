@@ -369,10 +369,9 @@ introduce non-linearity to neural networks, models implement
 
 Activation functions are applied after computing the raw values to
 populate the nodes of a neural network layer. These raw outputs are
-called **logits**. Recall Figure
-[1](#fig:neuralnetwork){reference-type="ref"
-reference="fig:neuralnetwork"}. In the below equation, the values in the
-vector $\textbf{z}$ would be the logits of the hidden layer:
+called **logits**. Recall Figure [1](#fig:neuralnetwork). In the below
+equation, the values in the vector $\textbf{z}$ would be the logits of
+the hidden layer:
 
 $$\textbf{z} = W\textbf{a} + \textbf{b}$$
 
@@ -729,8 +728,7 @@ most deep learning libraries (e.g. PyTorch, Tensorflow) have defaults
 that work well for each of the different optimizers. Starting here is
 usually a good idea, because a learning rate that is too small will take
 way too long to converge, while a large learning rate may not converge
-at all! For an illustration of this, see Figure
-[8](#fig:lr){reference-type="ref" reference="fig:lr"}.
+at all! For an illustration of this, see Figure [8](#fig:lr).
 
 <figure id="fig:lr" data-latex-placement="H">
 <img src="dl/lr.png" style="width:100.0%"
@@ -786,8 +784,7 @@ forward nor the backward pass for that specific training example. In
 other words, dropped neurons have no direct bearing on the output and
 their associated weights will not change from that training example.
 This only occurs at train time. At test time, all neurons are allowed to
-be used by the network all the time. See Figure
-[9](#fig:dropout){reference-type="ref" reference="fig:dropout"} for a
+be used by the network all the time. See Figure [9](#fig:dropout) for a
 visual representation of this process.
 
 <figure id="fig:dropout" data-latex-placement="H">

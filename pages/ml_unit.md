@@ -420,9 +420,8 @@ weights that are low and spread out across all features. If you use
 LASSO regression, you will get a "sparse" $\hat{\textbf{w}}$, meaning
 that unimportant features will have their weights set to 0 and the
 important ones will have nonzero values. This is due to how the norms
-manifest on the "loss landscape". As shown in Figure
-[3](#fig:l1_l2){reference-type="ref" reference="fig:l1_l2"}, the
-solution (minima) to the Ridge SSE or LASSO SSE must sit on the
+manifest on the "loss landscape". As shown in Figure [3](#fig:l1_l2),
+the solution (minima) to the Ridge SSE or LASSO SSE must sit on the
 intersection of the a contour (oval) and the shape created by the norm.
 For L1, this norm has peaks at the axes, causing solutions to have zero
 values for $w_1$ but nonzero values for $w_2$. The L2 norm is less
@@ -942,8 +941,7 @@ that comes with optimizing non-convex functions: getting stuck at a
 local minima.</figcaption>
 </figure>
 
-Figure [8](#fig:convexity){reference-type="ref"
-reference="fig:convexity"} illustrates this point. For the non-convex
+Figure [8](#fig:convexity) illustrates this point. For the non-convex
 function, once you have reached a minimum, you don't know if it is a
 local minimum or a global minimum. However, in a convex function, you
 can be certain you have found a global minimum. Knowing that you are
