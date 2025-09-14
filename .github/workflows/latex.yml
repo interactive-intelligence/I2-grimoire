@@ -165,7 +165,7 @@ jobs:
             macros: {
               parbox: ["#2", 2]
             },
-            inlineMath: {'[+]': [['$', '$'], ['\\(', '\\)']]},
+            inlineMath: {'[+]': [['$', '$'], ['\\\(', '\\\)']]},
             processEscapes: true,
           }
         };
