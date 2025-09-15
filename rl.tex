@@ -119,9 +119,9 @@
 
    A subscript of an expectation can be somewhat ambiguous, and mean slightly different things depending on context. In this case, we are defining where $s^\ast$ and $a^\ast$ come from (the expert distribution $\mathcal{D}$). This becomes important because these two variables are part of the final term we introduce:
 
-   $$\mathrm{log}\pi_\theta(a^\ast|s^\ast)$$
+   $$\mathrm{log}\pi_\theta(a^\ast\mid s^\ast)$$
    $$\downarrow$$
-   $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^\ast|s^\ast)]\biggr]$$
+   $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^\ast \mid s^\ast)]\biggr]$$
 
    $\pi_\theta$ is the policy, parameterized by $\theta$. What this means is that if this policy is represented by a neural network, \textit{then $\theta$ are the weights and biases}. $\mathrm{log}\pi_\theta(a^\ast|s^\ast)$ is the ``log-probability'' of the model choosing $a^\ast$ given $s^\ast$. The highest this probability can be is 1. Note that the logarithm of 1 evaluates to 0. Anything below 1 will evaluate to be exponentially more negative/worse. So if we wish to find the weights and biases ($\theta$) that maximize $\mathrm{log}\pi_\theta(a^\ast|s^\ast)$, we need to select weights and biases that assign a probability of 1 to $a^\ast$ given $s^\ast$ and 0 to all other actions. We know that $a^\ast$ and $s^\ast$ come from an expert distribution $\mathcal{D}$ thanks to the subscript. Therefore if we find $\theta$, we have a policy that will act optimally given the states it has seen! This notation may seem heavy, but it is a primer for more complex algorithms. \break
 
