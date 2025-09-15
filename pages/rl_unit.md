@@ -313,8 +313,8 @@ defining where $s^\ast$ and $a^\ast$ come from (the expert distribution
 $\mathcal{D}$). This becomes important because these two variables are
 part of the final term we introduce:
 
-$$\mathrm{log}\pi_\theta(a^\ast|s^\ast)$$ $$\downarrow$$
-$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^\ast|s^\ast)]\biggr]$$
+$$\mathrm{log}\pi_\theta(a^\ast\mid s^\ast)$$ $$\downarrow$$
+$$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^\ast \mid s^\ast)]\biggr]$$
 
 $\pi_\theta$ is the policy, parameterized by $\theta$. What this means
 is that if this policy is represented by a neural network, *then
