@@ -7,7 +7,6 @@ description: Machine Learning Unit
 ---
 # Introduction to Machine Learning
 
-<div markdown="1" class="flushleft">
 Machine Learning (ML) is a powerful subset of artificial intelligence
 (AI) that empowers computers to learn from data and make predictions or
 decisions without the need for explicit programming. Rather than
@@ -25,11 +24,8 @@ intersections. Over time, the model refines its ability to correctly
 identify digits it has never encountered before, thus demonstrating its
 ability to generalize from the data it was trained on.
 
-</div>
-
 ## Data Splitting: Train and Test Sets
 
-<div markdown="1" class="flushleft">
 **Train/Test Split** refers to this method of dividing the dataset,
 typically using an 80-20 or 70-30 ratio. For example, in an 80-20 split,
 80% of the data is used for training, and the remaining 20% is held back
@@ -65,11 +61,8 @@ This train/test split method is fundamental to machine learning as it
 ensures that models can be assessed on their ability to generalize,
 avoiding bias toward the data they were trained on.
 
-</div>
-
 ## Regression and Classification Tasks
 
-<div markdown="1" class="flushleft">
 Machine learning generally tackles two major types of problems:
 regression and classification.
 
@@ -85,13 +78,10 @@ the predicted continuous value. In multiple regression, multiple
 features (like height, age, etc.) are used to predict an output, such as
 house prices or stock market trends.
 
-</div>
-
 # Linear Regression: Regression
 
 ## Fundamentals of Linear Regression
 
-<div markdown="1" class="flushleft">
 In machine learning, linear regression is one of the most fundamental
 algorithms. It tries to model the relationship between input features
 and the target output by fitting a straight line to the data points. The
@@ -112,11 +102,8 @@ minimize the difference between the predicted values and the actual
 target values in the training data. This is often done by minimizing the
 Sum of Squared Errors (SSE).
 
-</div>
-
 ## Understanding Sum of Squared Errors (SSE)
 
-<div markdown="1" class="flushleft">
 The **Sum of Squared Errors (SSE)** is a commonly used metric in
 regression analysis to quantify how well a model fits the observed data.
 It measures the total difference (or error) between the actual values
@@ -163,11 +150,8 @@ SSE suggests that its predictions are close to the actual observed
 values, indicating that the model is accurate and effectively capturing
 the patterns in the data.
 
-</div>
-
 ## Minimizing SSE: Simple Case
 
-<div markdown="1" class="flushleft">
 **Least Squares Regression** is one of the most widely used methods in
 statistics for finding the best-fitting line through a set of data
 points. The term "least squares" refers to the fact that the method
@@ -219,11 +203,8 @@ slope ($w_1$) that minimize SSE. Once these values are calculated, the
 resulting regression line represents the best-fitting line for the data
 according to the least squares criterion.
 
-</div>
-
 ## Minimizing SSE: General Case
 
-<div markdown="1" class="flushleft">
 What if you had a model with many more input features, like the one we
 showed at the beginning of the article?
 
@@ -320,11 +301,8 @@ will come back to what this is later. In addition to linear regression,
 we have two other very common types of regression called Ridge and
 LASSO.
 
-</div>
-
 ## Ridge and LASSO Regressions
 
-<div markdown="1" class="flushleft">
 We must first quickly introduce a concept called **regularization**.
 Quite often, you will find that the weights estimated by
 $\hat{\textbf{w}}$ do minimize the SSE for training data, but can
@@ -446,7 +424,6 @@ use LASSO when you want to perform intelligent "feature pruning" and
 only use relevant features for the final output (perhaps due to
 computational constraints).
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -486,7 +463,6 @@ computational constraints).
 
 ## Fundamentals of Logistic Regression
 
-<div markdown="1" class="flushleft">
 Logistic regression, despite its name, is a classification algorithm
 used to predict a binary outcome---often represented as a "yes/no" or
 "1/0." Unlike linear regression, which predicts continuous values,
@@ -517,11 +493,8 @@ Where:
 - $e$ is Euler's number, and the exponent ensures that the output is
   squeezed between 0 and 1.
 
-</div>
-
 ## The Sigmoid Function and Its Role
 
-<div markdown="1" class="flushleft">
 <figure id="fig:sigmoid_function" data-latex-placement="H">
 <img src="ml/sigmoid_function.png" style="width:45.0%"
 alt="Figure 3: A graph showing the sigmoid function." />
@@ -549,11 +522,8 @@ This probability can then be used to classify the input: if the
 probability is greater than 0.5, we predict class 1, and if it is less
 than 0.5, we predict class 0.
 
-</div>
-
 ## Training with the Log-Likelihood Loss
 
-<div markdown="1" class="flushleft">
 To make logistic regression work effectively, we need to find the best
 values for the weights $w$ and bias $b$. This is done by minimizing the
 **log-likelihood loss function**. This function measures how well the
@@ -566,11 +536,8 @@ optimization techniques like gradient descent. This ensures that the
 weights are fine-tuned to give the highest probability for the correct
 class as often as possible.
 
-</div>
-
 ## Extensions to Multiclass Classification
 
-<div markdown="1" class="flushleft">
 While logistic regression is primarily used for binary classification,
 it can be extended to handle multiple classes through methods such as
 **one-vs-rest (OvR)**. In this approach, we train multiple logistic
@@ -578,11 +545,8 @@ regression models, each one responsible for distinguishing whether an
 input belongs to one particular class or any of the others. The model
 with the highest probability ultimately decides the final class label.
 
-</div>
-
 ## Why It's Called "Regression"
 
-<div markdown="1" class="flushleft">
 The term "logistic regression" comes from its similarity to **linear
 regression**. Both methods start by calculating a linear combination of
 the input features. However, while linear regression outputs continuous
@@ -591,7 +555,6 @@ values into probabilities, which are used for classification tasks. This
 difference is crucial to understanding why logistic regression is a
 classification algorithm despite having "regression" in its name.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -607,7 +570,6 @@ classification algorithm despite having "regression" in its name.
 
 ## Introduction to Unsupervised Learning
 
-<div markdown="1" class="flushleft">
 In contrast to supervised learning, which learns from labeled data,
 **unsupervised learning** operates on **unlabeled data** and aims to
 find hidden patterns or structures within it. One powerful method used
@@ -617,11 +579,8 @@ contains points that are similar to each other. Unlike supervised
 methods where there is a clear "right answer", the objective here is to
 let the algorithm uncover these clusters on its own.
 
-</div>
-
 ## How K-Means Clustering Works
 
-<div markdown="1" class="flushleft">
 At its core, k-means clustering is about finding the best way to group
 data points. This process involves iteratively assigning data points to
 clusters and then recalculating the center of each cluster, known as the
@@ -653,11 +612,8 @@ The goal of this process is to minimize the sum of squared distances
 between each data point and its cluster's centroid. This ensures that
 points in the same cluster are as close to each other as possible.
 
-</div>
-
 ## Minimizing Within-Cluster Distance
 
-<div markdown="1" class="flushleft">
 In k-means clustering, the objective is to reduce the **within-cluster
 variance**, or in simpler terms, the total distance between the data
 points and the centroid of their assigned cluster. The function to
@@ -677,11 +633,8 @@ By minimizing the SSE, k-means clustering ensures that data points
 within the same cluster are tightly packed around their centroid, making
 the clustering meaningful.
 
-</div>
-
 ## Choosing the Number of Clusters
 
-<div markdown="1" class="flushleft">
 A critical decision in k-means clustering is determining the value of
 $k$, or how many clusters the data should be divided into. Often, this
 is not known in advance, so techniques such as the **elbow method** are
@@ -704,11 +657,8 @@ which evaluates how similar a data point is to its assigned cluster
 compared to other clusters. Higher silhouette scores indicate
 better-defined clusters.
 
-</div>
-
 ## Limitations of K-Means Clustering
 
-<div markdown="1" class="flushleft">
 While k-means is an effective clustering algorithm, it comes with
 several limitations:
 
@@ -732,7 +682,6 @@ clustering technique for discovering patterns in data, particularly when
 the data is well-structured and the number of clusters is approximately
 known.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -757,7 +706,6 @@ known.
 
 ## Introduction to K-Medians Clustering
 
-<div markdown="1" class="flushleft">
 While **k-means** is a widely used method for clustering, an alternative
 approach is **k-medians clustering**, which offers a different way of
 calculating cluster centers. Instead of using the mean of the data
@@ -774,11 +722,8 @@ that are less influenced by anomalous data points, providing a more
 stable representation of the typical cluster member in datasets with
 noisy or skewed distributions.
 
-</div>
-
 ## K-Medians Use Cases
 
-<div markdown="1" class="flushleft">
 **K-medians** clustering is especially useful in situations where the
 data contains significant **outliers** or when using non-Euclidean
 distance metrics. Unlike k-means, which can be overly influenced by
@@ -796,11 +741,8 @@ k-means in practice, it proves highly effective when the assumptions
 behind k-means (such as normal distribution of data or minimal outliers)
 do not hold.
 
-</div>
-
 ## Key Differences Between K-Means and K-Medians
 
-<div markdown="1" class="flushleft">
 The fundamental difference between **k-means** and **k-medians** lies in
 how they compute the cluster centroids and the distance metrics they
 use. K-means calculates the centroid as the **mean**, minimizing the sum
@@ -834,7 +776,6 @@ distorted clusters in datasets with many outliers, whereas k-medians
 offers a more resilient solution for datasets with irregularities or
 noise.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -853,7 +794,6 @@ noise.
 
 ## Bias-Variance Tradeoff
 
-<div markdown="1" class="flushleft">
 This is a concept that doesn't really fit anywhere else, but is
 incredibly important to talk about. The bias-variance tradeoff heavily
 rates to over and underfitting. **Overfitting** is when you have a model
@@ -913,11 +853,8 @@ different balances between bias and variance for model
 fitting.</figcaption>
 </figure>
 
-</div>
-
 ## Convexity
 
-<div markdown="1" class="flushleft">
 Convexity is important for ML models as well. So far, the linear models
 we have shown you are all **convex**. What this means is that we can
 guarantee we are able to converge upon an optimal set of weights if we
@@ -950,7 +887,6 @@ you the peace of mind in knowing that with enough training you will find
 weights that fit the data as well as possible for the model's complexity
 class.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -970,7 +906,6 @@ class.
 
 # When to Use Machine Learning Algorithms
 
-<div markdown="1" class="flushleft">
 Machine learning models are widely used in applications like image
 recognition, natural language processing, and predictive analytics.
 However, selecting the right algorithm for a task is essential. Simple
@@ -982,11 +917,8 @@ Furthermore, unsupervised learning methods like k-means clustering are
 valuable when you want to find hidden patterns in the data without
 labeled outcomes.
 
-</div>
-
 # Conclusion (ML)
 
-<div markdown="1" class="flushleft">
 This section covered the fundamental concepts of machine learning, with
 a focus on supervised learning (linear regression) and unsupervised
 learning (k-means clustering). We also introduced important concepts
@@ -998,5 +930,3 @@ machine learning continues to influence more of our lives. These
 concepts are also the most applicable in day-to-day ML, the backbone of
 modern systems. More often than not, Occam's Razor holds true: Don't use
 more than necessary and overcomplicate things.
-
-</div>

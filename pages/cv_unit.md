@@ -9,7 +9,6 @@ description: Computer Vision Unit
 
 ## What is Computer Vision?
 
-<div markdown="1" class="flushleft">
 **Computer vision** is a field of machine learning that focuses on
 enabling computers and programs to 'see' images. 'Seeing', in this case,
 defines a computer's ability to recognize and understand objects in
@@ -22,11 +21,8 @@ instersects with deep learning, but do note that computer vision as a
 field has existed well before deep learning and there are many aspects
 of the field that are more algorithm based than AI based.
 
-</div>
-
 # Convolutional Neural Networks
 
-<div markdown="1" class="flushleft">
 Now what machine learning algorithm is used for computer vision? That
 would be **Convolutional Neural Networks** or **CNNs**. CNNs are
 designed to process images and can either be found as independent models
@@ -287,7 +283,6 @@ alt="Figure 6: Illustration of complete architecture of CNN" />
 architecture of CNN</figcaption>
 </figure>
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -309,7 +304,6 @@ architecture of CNN</figcaption>
 
 # Self-Supervised Learning
 
-<div markdown="1" class="flushleft">
 **Self-supervised learning** or SSL, is a paradigm of machine learning
 that allows models to learn from useful representations of data. This
 means that models using SSL don't need large, extensively labeled
@@ -327,11 +321,8 @@ is that every time the model makes a forward pass, it reassigns the
 labels to whatever data is it confident about. there are several methods
 SSL models employ to efficiently and reliably conduct this process.
 
-</div>
-
 ## Methods of SSL
 
-<div markdown="1" class="flushleft">
 The first method we will discuss is **Contrastive Learning**. This is
 one of the core techniques of self-supervised learning. Contrastive
 learning works to train the model to distinguish between similar and
@@ -368,11 +359,8 @@ different elements interact within the image. Using predictive tasks,
 the model will learn more about the data and will be able to label it
 without supervision.
 
-</div>
-
 ## Importance of SSL
 
-<div markdown="1" class="flushleft">
 Self-supervised learning is critical in computer vision because it
 addresses the challenge of obtaining labeled datasets for image
 classification. Datasets for computer vision must be extensive and are
@@ -389,7 +377,6 @@ more efficient and scalable computer vision solutions, enabling broader
 applications and improvements in areas like image classification, object
 detection, and scene analysis.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -407,7 +394,6 @@ detection, and scene analysis.
 
 # Image Segmentation
 
-<div markdown="1" class="flushleft">
 Another method used in computer vision models is **image segmentation**.
 This approach focuses on identifying groups of pixels that belong
 together and works to separate individual objects in images.
@@ -478,7 +464,6 @@ segmentation** and **panoptic segmentation**. To learn more about
 segmentation, see [IBM Image
 Segmentation](https://tinyurl.com/7kz8dkhu).
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -494,7 +479,6 @@ Segmentation](https://tinyurl.com/7kz8dkhu).
 
 # When to Use Computer Vision
 
-<div markdown="1" class="flushleft">
 Computer vision is a field with a long history and many decades of
 research put into it. People have been working on these problems long
 before the recent waves of deep learning and machine learning. As such,
@@ -504,11 +488,8 @@ created with computer vision in mind (i.e. CNNs) can also be used in
 non-CV tasks if you want to leverage spatial information within your
 data.
 
-</div>
-
 # Conclusion (CV)
 
-<div markdown="1" class="flushleft">
 This section covered some of the fundamental concepts within computer
 vision. By leveraging techniques like Convolutional Neural Networks
 (CNNs) and self-supervised learning, we've learned how machines can
@@ -534,5 +515,3 @@ allows vehicles to recognize pedestrians, road signs, and obstacles in
 real-time, enhancing safety and efficiency on the roads. These
 advancements not only improve operational capabilities but also build
 trust in technology that plays such a significant role in our lives.
-
-</div>

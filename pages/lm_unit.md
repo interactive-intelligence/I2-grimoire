@@ -7,7 +7,6 @@ description: Language Modeling Unit
 ---
 # Introduction to Language Modeling
 
-<div markdown="1" class="flushleft">
 Language Modeling (LM) is about building systems that can understand,
 generate, or transform human language. At its simplest, a language model
 predicts the next word in a sequence based on the words that came before
@@ -46,11 +45,8 @@ This equation may look complex, but it simply means that the probability
 of an entire sequence is determined by multiplying the probabilities of
 each word, one after another, given their context.
 
-</div>
-
 ## How Are Language Models Trained?
 
-<div markdown="1" class="flushleft">
 To train a language model, we show it large amounts of text and teach it
 to minimize its prediction errors. Specifically, we compare the words it
 predicts with the actual next words in the text and adjust the model to
@@ -64,11 +60,8 @@ model's predictions are to the actual text, the smaller this loss
 becomes. Training involves minimizing this loss so the model becomes
 better at predicting language patterns.
 
-</div>
-
 ## Important Concepts in Language modeling
 
-<div markdown="1" class="flushleft">
 Below are some of the essentials of language modeling:
 
 - **Core Concepts** like tokenization, embeddings, and sequence
@@ -86,7 +79,6 @@ Below are some of the essentials of language modeling:
 We want to understand the theoretical foundations of language models,
 how they're built and trained, and their real-world impact.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -103,7 +95,6 @@ how they're built and trained, and their real-world impact.
 
 ## Tokenization: The First Step
 
-<div markdown="1" class="flushleft">
 Tokenization breaks raw text into smaller units called **tokens**, which
 are the building blocks for language models. Tokenization is essential
 because language models cannot directly process text; they operate on
@@ -141,7 +132,6 @@ meaningful subunits. For example, \"transformational\" can be tokenized
 as \[\"transform\", \"ational\"\], capturing semantic and morphological
 relationships.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -158,7 +148,6 @@ relationships.
 
 ## Embeddings: Representing Tokens Numerically
 
-<div markdown="1" class="flushleft">
 After tokenization, tokens are represented as discrete symbols, which
 must be converted into numerical vectors for processing by language
 models. **Embeddings** achieve this transformation by mapping tokens to
@@ -227,7 +216,6 @@ relationships with other tokens.
   This illustrates how embeddings capture relationships between words in
   dense vector spaces.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -249,7 +237,6 @@ relationships with other tokens.
 
 ## Sequence Modeling: The Core Objective
 
-<div markdown="1" class="flushleft">
 At the heart of language modeling lies the task of sequence prediction,
 which involves estimating the probability of a sequence of tokens.
 Meanwhile, autoregressive models, such as GPT, predict the next token in
@@ -340,7 +327,6 @@ of the entire sentence. Sequence modeling is the foundation for
 understanding how language models generate coherent and contextually
 relevant outputs.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -360,7 +346,6 @@ relevant outputs.
 
 ## Recurrent Neural Networks (RNNs)
 
-<div markdown="1" class="flushleft">
 **Recurrent Neural Networks (RNNs)** are designed to process sequential
 data by maintaining a hidden state that evolves over time. The hidden
 state $h_t$ at time step $t$ encodes information from both the current
@@ -412,11 +397,8 @@ While RNNs and their variants were widely used for language tasks, they
 have largely been replaced by architectures like Transformers, which
 overcome the limitations of sequential processing.
 
-</div>
-
 ## Transformers: A Paradigm Shift
 
-<div markdown="1" class="flushleft">
 **Transformers** revolutionized language modeling by eliminating the
 need for sequential processing, enabling parallel computation and
 dramatically improving efficiency. At the core of the Transformer
@@ -525,7 +507,6 @@ relevant to \"sat\" and \"mat,\" while also capturing the structural
 relationships between tokens. This capability enables deep contextual
 understanding across an entire sequence.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -546,7 +527,6 @@ understanding across an entire sequence.
 
 # NLP Tasks Enabled by Language Models
 
-<div markdown="1" class="flushleft">
 Language models empower a diverse array of natural language processing
 (NLP) tasks, leveraging their ability to understand and generate text.
 Below are some key applications:
@@ -596,7 +576,6 @@ service, content creation, and data analysis. Their ability to handle
 multiple tasks with minimal task-specific customization demonstrates
 their adaptability and utility in real-world applications.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -612,7 +591,6 @@ their adaptability and utility in real-world applications.
 
 ## Challenges in Large Language Models (LLMs)
 
-<div markdown="1" class="flushleft">
 The advent of large language models (LLMs) such as GPT-4 has unlocked
 unprecedented capabilities in natural language understanding and
 generation. However, these advancements come with significant societal
@@ -728,11 +706,8 @@ can be deployed responsibly to maximize their benefits while minimizing
 harm. This balance is essential for their continued advancement and
 integration into critical societal functions.
 
-</div>
-
 ## Reinforcement Learning with Human Feedback (RLHF)
 
-<div markdown="1" class="flushleft">
 Reinforcement Learning with Human Feedback (RLHF) enhances language
 model alignment with user expectations by incorporating human-provided
 evaluations into the training process. This approach is particularly
@@ -805,7 +780,6 @@ RLHF is a critical tool for enhancing the usability and safety of large
 language models, enabling them to deliver high-quality, aligned outputs
 in complex real-world applications.
 
-</div>
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
@@ -825,7 +799,6 @@ in complex real-world applications.
 
 # When to Use Language Models
 
-<div markdown="1" class="flushleft">
 Language modeling has taken the world by storm, for those both in and
 out of the "AI" space. Advances within LM have allowed for the advent of
 chatbots and a whole new wave of AI tools and integrations.
@@ -838,11 +811,8 @@ data-hungry these models can be, as well as training costs. plenty of
 pretrained models can be found and used quite easily on sites like
 [HuggingFace](https://huggingface.co/models).
 
-</div>
-
 # Conclusion (LM)
 
-<div markdown="1" class="flushleft">
 By delving into foundational concepts, core architectures, and advanced
 techniques like Reinforcement Learning with Human Feedback (RLHF), this
 article has provided a comprehensive overview of the current landscape
@@ -863,5 +833,3 @@ As we continue to push the boundaries of what language models can
 achieve, fostering a deeper understanding of their mechanisms and
 implications will be crucial for building intelligent, responsible, and
 impactful NLP systems.
-
-</div>
