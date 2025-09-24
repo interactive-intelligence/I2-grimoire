@@ -10,5 +10,5 @@ The web version processed using kramdown applying mathjax. ***Kramdown doesn't u
 
 | Character | Replacement |
 | --------- | ----------- |
-| `|`       | `&#92;vert`     |
-| `*`       | `&#92;ast`      |
+| `\|`      | `\vert`     |
+| `*`       | `\ast`      |
