@@ -1,6 +1,5 @@
 \section{Introduction to Language Modeling}
-\begin{flushleft}
-\large Language Modeling (LM) is about building systems that can understand, generate, or transform human language. At its simplest, a language model predicts the next word in a sequence based on the words that came before it. This ability forms the foundation of many applications in \textbf{natural language processing (NLP)}, such as chatbots (e.g., ChatGPT), machine translation, text summarization, and search engines. \break
+\large Language Modeling (LM) is about building systems that can understand, generate, or transform human language. At its simplest, a language model predicts the next word in a sequence based on the words that came before it. This ability forms the foundation of many applications in \textbf{natural language processing (NLP)}, such as chatbots (e.g., ChatGPT), machine translation, text summarization, and search engines. 
 
 Let’s consider an example:
 
@@ -15,7 +14,7 @@ Given this sentence, a language model would likely predict the word “over” a
     \item Generate coherent responses or paragraphs.
 \end{itemize}
 
-These are examples of text-generation tasks, where language models predict or create text based on input. Language models also support other types of NLP tasks, such as classification or summarization. \break
+These are examples of text-generation tasks, where language models predict or create text based on input. Language models also support other types of NLP tasks, such as classification or summarization. 
 
 Language models work by estimating the probability of a sequence of words. Formally, the model breaks this problem into smaller steps, predicting one word at a time based on the words before it:
 \[
@@ -23,12 +22,10 @@ P(w_1, w_2, \dots, w_n) = P(w_1)P(w_2|w_1)P(w_3|w_1, w_2)\dots P(w_n|w_1, w_2, \
 \]
 
 This equation may look complex, but it simply means that the probability of an entire sequence is determined by multiplying the probabilities of each word, one after another, given their context.
-\end{flushleft}
 
 
 \subsection{How Are Language Models Trained?}
 
-\begin{flushleft}
     \large To train a language model, we show it large amounts of text and teach it to minimize its prediction errors. Specifically, we compare the words it predicts with the actual next words in the text and adjust the model to get better over time. The measure of prediction error is called \textbf{cross-entropy loss}:
 
     \[
@@ -36,11 +33,9 @@ This equation may look complex, but it simply means that the probability of an e
     \]
 
     While this might seem technical, the idea is simple: the closer the model’s predictions are to the actual text, the smaller this loss becomes. Training involves minimizing this loss so the model becomes better at predicting language patterns.
-\end{flushleft}
 
 \subsection{Important Concepts in Language modeling}
 
-\begin{flushleft}
     \large Below are some of the essentials of language modeling:
     \begin{itemize}
         \item \textbf{Core Concepts} like tokenization, embeddings, and sequence modeling.
@@ -49,7 +44,6 @@ This equation may look complex, but it simply means that the probability of an e
         \item \textbf{Challenges} like managing bias, hallucinations, and the scale of large models.
     \end{itemize}
     We want to understand the theoretical foundations of language models, how they’re built and trained, and their real-world impact.
-\end{flushleft}
 
 \begin{questionbox}
 \textbf{Synthesis Questions:}
@@ -62,7 +56,6 @@ This equation may look complex, but it simply means that the probability of an e
 
 \section{Foundational Concepts}
 \subsection{Tokenization: The First Step}
-\begin{flushleft}
     \large Tokenization breaks raw text into smaller units called \textbf{tokens}, which are the building blocks for language models. Tokenization is essential because language models cannot directly process text; they operate on numerical data. The granularity of tokens varies:
     \begin{itemize}
         \item \textbf{Word-level Tokenization:} Splits text into individual words or phrases.
@@ -90,7 +83,6 @@ This equation may look complex, but it simply means that the probability of an e
     \end{itemize}
 
     Algorithms like Byte Pair Encoding (BPE) and WordPiece generate subword tokens, enabling the model to handle unseen words by breaking them into meaningful subunits. For example, "transformational" can be tokenized as ["transform", "ational"], capturing semantic and morphological relationships.
-\end{flushleft}
 
 \begin{questionbox}
 \textbf{Synthesis Questions:}
@@ -104,25 +96,24 @@ This equation may look complex, but it simply means that the probability of an e
 
 \subsection{Embeddings: Representing Tokens Numerically}
 
-\begin{flushleft}
-    \large After tokenization, tokens are represented as discrete symbols, which must be converted into numerical vectors for processing by language models. \textbf{Embeddings} achieve this transformation by mapping tokens to dense vector spaces where semantic and syntactic relationships are preserved. These embeddings play a crucial role in enabling models to understand and process natural language effectively. \break
+    \large After tokenization, tokens are represented as discrete symbols, which must be converted into numerical vectors for processing by language models. \textbf{Embeddings} achieve this transformation by mapping tokens to dense vector spaces where semantic and syntactic relationships are preserved. These embeddings play a crucial role in enabling models to understand and process natural language effectively. 
 
-    Embeddings are typically \textbf{dense vectors}, meaning they are compact numerical representations with most elements being non-zero. This property allows embeddings to efficiently capture semantic and syntactic relationships between tokens compared to sparse vectors, which contain many zeros. \break
+    Embeddings are typically \textbf{dense vectors}, meaning they are compact numerical representations with most elements being non-zero. This property allows embeddings to efficiently capture semantic and syntactic relationships between tokens compared to sparse vectors, which contain many zeros. 
 
     \textbf{Why Embeddings Matter:}
-    Embeddings play a crucial role in bridging the gap between human language and machine computation, enabling efficient downstream processing. \break
+    Embeddings play a crucial role in bridging the gap between human language and machine computation, enabling efficient downstream processing. 
 
     \textbf{Key Properties of Embeddings:}
     \begin{itemize}
         \item \textbf{Semantic Similarity:} Tokens with similar meanings have similar embeddings, enabling the model to capture linguistic relationships. Cosine similarity is preferred as it focuses on the angular distance between vectors, ignoring magnitude differences that may arise due to varying token frequencies.
         \item \textbf{Contextual Adaptability:} Contextual embeddings dynamically adjust based on sentence context, allowing the model to handle polysemous words (e.g., ``bank'' can refer to a financial institution or a riverbank).
-    \end{itemize} \break
+    \end{itemize} 
 
     \textbf{Mathematical Representation:}
     \[
     \text{Embedding}(\text{token}) = \mathbf{e} \in \mathbb{R}^d
     \]
-    where \(d\) is the dimensionality of the embedding space. Each token is represented as a point in this \(d\)-dimensional space, capturing its relationships with other tokens. \break
+    where \(d\) is the dimensionality of the embedding space. Each token is represented as a point in this \(d\)-dimensional space, capturing its relationships with other tokens. 
 
     \textbf{Types of Embeddings:}
     \begin{itemize}
@@ -147,7 +138,6 @@ This equation may look complex, but it simply means that the probability of an e
         \]
         This illustrates how embeddings capture relationships between words in dense vector spaces.
     \end{itemize}
-\end{flushleft}
 
 
 
@@ -163,7 +153,6 @@ This equation may look complex, but it simply means that the probability of an e
 
 
 \subsection{Sequence Modeling: The Core Objective}
-\begin{flushleft}
     \large At the heart of language modeling lies the task of sequence prediction, which involves estimating the probability of a sequence of tokens. Meanwhile, autoregressive models, such as GPT, predict the next token in a sequence by conditioning on all previous tokens. This process is iterative, generating one token at a time, which allows these models to produce coherent sequences of text. Sequence prediction can be mathematically expressed as:
     
     \[
@@ -188,7 +177,7 @@ This equation may look complex, but it simply means that the probability of an e
     \]
 
 
-    Each term in this product represents the conditional probability of a token given the tokens that precede it in the sequence. \break
+    Each term in this product represents the conditional probability of a token given the tokens that precede it in the sequence. 
 
     \textbf{Step-by-Step Calculation (Hypothetical Probabilities):}
     \begin{itemize}
@@ -211,7 +200,7 @@ This equation may look complex, but it simply means that the probability of an e
     \[
     P(\text{"cat"}|x_{<t}) = \frac{e^{z_{\text{"cat"}}}}{\sum_{w \in \{\text{"cat"}, \text{"dog"}, \text{"bird"}\}} e^{z_w}}
     \]
-    where \(z_{\text{"cat"}} = W \cdot h_t[\text{"cat"}]\). This ensures probabilistic coherence for output predictions. By chaining these probabilities, the model constructs meaningful sequence-level predictions. \break
+    where \(z_{\text{"cat"}} = W \cdot h_t[\text{"cat"}]\). This ensures probabilistic coherence for output predictions. By chaining these probabilities, the model constructs meaningful sequence-level predictions. 
 
     \textbf{Training Objective: Negative Log-Likelihood (NLL) Loss}
     Language models are typically trained using the \textbf{negative log-likelihood (NLL)} loss function, defined as:
@@ -236,7 +225,6 @@ This equation may look complex, but it simply means that the probability of an e
     P(\text{"A"}), \, P(\text{"journey"} | \text{"A"}), \, P(\text{"of"} | \text{"A journey"}), \dots
     \]
     The cumulative product of these probabilities represents the likelihood of the entire sentence. Sequence modeling is the foundation for understanding how language models generate coherent and contextually relevant outputs.
-\end{flushleft}
 
 \begin{questionbox}
 \textbf{Synthesis Questions:}
@@ -252,7 +240,6 @@ This equation may look complex, but it simply means that the probability of an e
 
 \subsection{Recurrent Neural Networks (RNNs)}
 
-\begin{flushleft}
     \large \textbf{Recurrent Neural Networks (RNNs)} are designed to process sequential data by maintaining a hidden state that evolves over time. The hidden state \(h_t\) at time step \(t\) encodes information from both the current input token \(x_t\) and the previous hidden state \(h_{t-1}\). This can be expressed as:
     \[
     h_t = f(W_x x_t + W_h h_{t-1} + b)
@@ -264,7 +251,7 @@ This equation may look complex, but it simply means that the probability of an e
         \item \(f\) is a non-linear activation function, often \(tanh\) or \(ReLU\).
     \end{itemize}
 
-    RNNs capture sequential dependencies effectively for short sequences. However, they struggle with long-term dependencies due to the \textbf{vanishing gradient problem}, where gradients become too small to update weights during backpropagation. \break
+    RNNs capture sequential dependencies effectively for short sequences. However, they struggle with long-term dependencies due to the \textbf{vanishing gradient problem}, where gradients become too small to update weights during backpropagation. 
 
     \textbf{Extensions to RNNs:}
     To address the limitations of vanilla RNNs, two popular architectures were developed:
@@ -288,13 +275,11 @@ This equation may look complex, but it simply means that the probability of an e
     An RNN processes one token at a time, updating its hidden state to encode cumulative context. By the end of the sequence, the hidden state represents the semantic meaning of the entire input.
 
     While RNNs and their variants were widely used for language tasks, they have largely been replaced by architectures like Transformers, which overcome the limitations of sequential processing.
-\end{flushleft}
 
 
 \subsection{Transformers: A Paradigm Shift}
 
-\begin{flushleft}
-    \large \textbf{Transformers} revolutionized language modeling by eliminating the need for sequential processing, enabling parallel computation and dramatically improving efficiency. At the core of the Transformer architecture is the \textbf{self-attention mechanism}, which allows the model to weigh the importance of different tokens in a sequence regardless of their position. \break
+    \large \textbf{Transformers} revolutionized language modeling by eliminating the need for sequential processing, enabling parallel computation and dramatically improving efficiency. At the core of the Transformer architecture is the \textbf{self-attention mechanism}, which allows the model to weigh the importance of different tokens in a sequence regardless of their position. 
 
     \textbf{Self-Attention Mechanism:}
     Self-attention captures dependencies across tokens in the sequence, allowing the model to weigh their relevance irrespective of their position. This is critical for capturing relationships such as subject-object dependencies in a sentence.
@@ -334,7 +319,7 @@ This equation may look complex, but it simply means that the probability of an e
     \[
     \text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O
     \]
-    Each head performs self-attention independently, and the results are concatenated and linearly transformed. \break
+    Each head performs self-attention independently, and the results are concatenated and linearly transformed. 
 
     \textbf{Decomposing Multi-Head Attention:}
     Each attention head computes attention scores independently, allowing the model to focus on different aspects of the input sequence. For a single head, the computation is as follows:
@@ -352,7 +337,7 @@ This equation may look complex, but it simply means that the probability of an e
     \[
     \text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O
     \]
-    where \(W^O\) is a learned projection matrix. This design allows Transformers to capture multiple relational patterns simultaneously. \break
+    where \(W^O\) is a learned projection matrix. This design allows Transformers to capture multiple relational patterns simultaneously. 
 
     \begin{figure}[H]
         \centering
@@ -361,7 +346,7 @@ This equation may look complex, but it simply means that the probability of an e
         \label{fig:multi_head_attention_example}
     \end{figure}
 
-    \textbf{Applications and Impact:} The introduction of Transformers has led to breakthroughs in language modeling, powering models like BERT and GPT. These models have achieved state-of-the-art performance on a wide range of NLP tasks, from machine translation to question answering, establishing Transformers as the foundation of modern NLP. \break
+    \textbf{Applications and Impact:} The introduction of Transformers has led to breakthroughs in language modeling, powering models like BERT and GPT. These models have achieved state-of-the-art performance on a wide range of NLP tasks, from machine translation to question answering, establishing Transformers as the foundation of modern NLP. 
 
     \textbf{Example:}
     Consider the sentence:
@@ -369,7 +354,6 @@ This equation may look complex, but it simply means that the probability of an e
     "The cat sat on the mat."
     \end{verbatim}
     Using self-attention, the Transformer can determine that "cat" is most relevant to "sat" and "mat," while also capturing the structural relationships between tokens. This capability enables deep contextual understanding across an entire sequence.
-\end{flushleft}
 
 
 \begin{questionbox}
@@ -387,7 +371,6 @@ This equation may look complex, but it simply means that the probability of an e
 
 \section{NLP Tasks Enabled by Language Models}
 
-\begin{flushleft}
     \large Language models empower a diverse array of natural language processing (NLP) tasks, leveraging their ability to understand and generate text. Below are some key applications:
 
     \begin{itemize}
@@ -423,7 +406,6 @@ This equation may look complex, but it simply means that the probability of an e
     \end{verbatim}
 
     These examples showcase the versatility of language models in addressing a wide spectrum of tasks, enabling advancements in areas like customer service, content creation, and data analysis. Their ability to handle multiple tasks with minimal task-specific customization demonstrates their adaptability and utility in real-world applications.
-\end{flushleft}
 
 \begin{questionbox}
 \textbf{Synthesis Questions:}
@@ -439,7 +421,6 @@ This equation may look complex, but it simply means that the probability of an e
 
 \subsection{Challenges in Large Language Models (LLMs)}
 
-\begin{flushleft}
     \large The advent of large language models (LLMs) such as GPT-4 has unlocked unprecedented capabilities in natural language understanding and generation. However, these advancements come with significant societal and technical challenges, which must be carefully mitigated to ensure responsible deployment. These challenges are particularly critical in sensitive applications such as healthcare, legal systems, and public discourse, where the stakes are high.
 
     \textbf{Challenges:}
@@ -478,7 +459,7 @@ This equation may look complex, but it simply means that the probability of an e
         Monitoring systems should include real-time detection of misuse patterns and proactive countermeasures such as content moderation pipelines. Access restrictions can involve role-based permissions or licensing to prevent unauthorized deployments.
     \end{itemize}
 
-    Addressing these challenges is critical to ensuring that LLMs remain reliable, ethical, and accessible. \break
+    Addressing these challenges is critical to ensuring that LLMs remain reliable, ethical, and accessible. 
 
     \textbf{Mitigation Strategies:}
     Researchers and developers have proposed several countermeasures to address these challenges and minimize their impact:
@@ -493,13 +474,11 @@ This equation may look complex, but it simply means that the probability of an e
     \end{itemize}
 
     By addressing these challenges and adopting mitigation strategies, LLMs can be deployed responsibly to maximize their benefits while minimizing harm. This balance is essential for their continued advancement and integration into critical societal functions.
-\end{flushleft}
 
 
 
 \subsection{Reinforcement Learning with Human Feedback (RLHF)}
 
-\begin{flushleft}
 \large Reinforcement Learning with Human Feedback (RLHF) enhances language model alignment with user expectations by incorporating human-provided evaluations into the training process. This approach is particularly effective in fine-tuning large models to ensure they generate useful, safe, and contextually appropriate outputs.
 
 \textbf{Why RLHF is Necessary:}
@@ -530,7 +509,7 @@ Consider the prompt: \textit{"What are the benefits and drawbacks of AI in the m
 
 The reward model uses these rankings to train the base model to prioritize nuanced and balanced outputs over simplistic or biased responses.
 
-This process ensures that language models respond appropriately to complex or sensitive prompts, enhancing their reliability and trustworthiness in real-world applications. \break
+This process ensures that language models respond appropriately to complex or sensitive prompts, enhancing their reliability and trustworthiness in real-world applications. 
 
 \textbf{Benefits of RLHF:}
 \begin{itemize}
@@ -540,7 +519,6 @@ This process ensures that language models respond appropriately to complex or se
 \end{itemize}
 
 RLHF is a critical tool for enhancing the usability and safety of large language models, enabling them to deliver high-quality, aligned outputs in complex real-world applications.
-\end{flushleft}
 
 
 
@@ -556,16 +534,12 @@ RLHF is a critical tool for enhancing the usability and safety of large language
 \end{questionbox}
 
 \section{When to Use Language Models}
-\begin{flushleft}
     \large Language modeling has taken the world by storm, for those both in and out of the ``AI'' space. Advances within LM have allowed for the advent of chatbots and a whole new wave of AI tools and integrations. Understanding what goes on under the hood of these models will allow you to place the proper amount of trust in their results and cut through the sales hype. Use language models in situations where their structure benefits them. There is no need to force a token-prediction model to somehow solve a simple classification problem! Be wary of how data-hungry these models can be, as well as training costs. plenty of pretrained models can be found and used quite easily on sites like \href{https://huggingface.co/models}{HuggingFace}.
-\end{flushleft}
 
 
 \section{Conclusion (LM)}
-\begin{flushleft}
-    \large By delving into foundational concepts, core architectures, and advanced techniques like Reinforcement Learning with Human Feedback (RLHF), this article has provided a comprehensive overview of the current landscape of language modeling. The future of NLP depends not only on technological improvements but also on addressing ethical considerations and ensuring that models align with human values and societal needs. \break
+    \large By delving into foundational concepts, core architectures, and advanced techniques like Reinforcement Learning with Human Feedback (RLHF), this article has provided a comprehensive overview of the current landscape of language modeling. The future of NLP depends not only on technological improvements but also on addressing ethical considerations and ensuring that models align with human values and societal needs. 
 
-    Language modeling has revolutionized the field of natural language processing, enabling breakthroughs in tasks ranging from text classification and translation to advanced conversational systems like chatbots. Central to this progress are architectural innovations such as Transformers, which have redefined how models process and generate human language. Alongside these advancements, challenges such as hallucination, scalability, and bias have emerged, underscoring the need for ongoing research and innovation. \break
+    Language modeling has revolutionized the field of natural language processing, enabling breakthroughs in tasks ranging from text classification and translation to advanced conversational systems like chatbots. Central to this progress are architectural innovations such as Transformers, which have redefined how models process and generate human language. Alongside these advancements, challenges such as hallucination, scalability, and bias have emerged, underscoring the need for ongoing research and innovation. 
 
     As we continue to push the boundaries of what language models can achieve, fostering a deeper understanding of their mechanisms and implications will be crucial for building intelligent, responsible, and impactful NLP systems.
-\end{flushleft}

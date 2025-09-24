@@ -1,11 +1,8 @@
 \section{Introduction to Computer Vision}
 \subsection{What is Computer Vision?}
-\begin{flushleft}
     \large \textbf{Computer vision} is a field of machine learning that focuses on enabling computers and programs to \lq see' images. \lq Seeing', in this case, defines a computer's ability to recognize and understand objects in images, such as a program \lq seeing' a dog and labeling it as such. Computer vision is used in many ways, most commonly utilized for \textbf{object detection, image classification, and segmentation} (a process of breaking an image down to identify boundaries of objects and objects themselves).  We will primarily be covering where computer vision instersects with deep learning, but do note that computer vision as a field has existed well before deep learning and there are many aspects of the field that are more algorithm based than AI based.
-\end{flushleft}
 
 \section{Convolutional Neural Networks}
-\begin{flushleft}
     \large Now what machine learning algorithm is used for computer vision? That would be \textbf{Convolutional Neural Networks} or \textbf{CNNs}. CNNs are designed to process images and can either be found as independent models or as parts of other neural networks. They can work as image pre-processors for other models, like multimodal language models. Similar to how neural networks were designed to mimic brain functionality, CNNs are designed to \textit{mimic a human's visual processing system} and the brain's visual cortex. 
 
     \subsection{Convolutional Layer}
@@ -122,7 +119,6 @@
             \caption{Illustration of complete architecture of CNN}
             \label{fig:full_cnn}
         \end{figure}
-\end{flushleft}
 
 \vspace{10bp}
 \begin{questionbox}
@@ -138,11 +134,8 @@
 \end{questionbox}
 
 \section{Self-Supervised Learning}
-\begin{flushleft}
     \large \textbf{Self-supervised learning} or SSL, is a paradigm of machine learning that allows models to learn from useful representations of data. This means that models using SSL don't need large, extensively labeled datasets (datasets that are usually labeled manually), saving time and resources. By employing self-supervised learning, models are able to use unlabeled data to learn. The fundamental idea of self-supervised learning is for the model, when given unlabeled data, to generate labels for said data. These labels will be used as ground truths (like true labels) in further operations. In the first step, the model attempts to identify patterns in the data and then, based on these patterns. assigns labels to the data it feels confident about. Then the model continues its training, using its labels and continuing to learn with backpropagation as normal. The only difference in the training process is that every time the model makes a forward pass, it reassigns the labels to whatever data is it confident about. there are several methods SSL models employ to efficiently and reliably conduct this process.
-\end{flushleft}
 \subsection{Methods of SSL}
-\begin{flushleft}
     \large The first method we will discuss is \textbf{Contrastive Learning}. This is one of the core techniques of self-supervised learning. Contrastive learning works to train the model to distinguish between similar and dissimilar points. Using this training, the model can determine which points should have the same label and which should have different labels. \newline  
     
     To implement contrastive learning, the model typically uses pairs or groups of data points. For example, in image data, the model might be given two views of the same image with slight transformations—like rotations, cropping, or color adjustments—as "positive" pairs. It then receives unrelated images as "negative" pairs. The model is trained to bring the positive pairs closer together in its internal representation space while pushing the negative pairs further apart. \newline 
@@ -150,11 +143,8 @@
     Another popular method is called \textbf{predictive tasks}. In this technique, the model is given a scenario in which it must predict the values of some features given the values of other features. For example, it may have to predict missing or hidden sections of images given the rest of the image. Techniques like \textbf{image inpainting} (predicting missing parts of an image) or \textbf{rotation prediction} (learning the correct orientation of rotated images) allow the model to learn contextual and spatial relationships within the image, strengthening its understanding of the data.
 
     In addition to image inpainting and rotation prediction, predictive tasks can also include techniques such as \textbf{context prediction}, where the model attempts to predict the surrounding context of a specific image region. In this scenario, a portion of the image is masked or hidden, and the model is tasked with inferring the values of the masked area based on the visible context. This process encourages the model to focus on local and global features, enhancing its understanding of how different elements interact within the image. Using predictive tasks, the model will learn more about the data and will be able to label it without supervision.
-\end{flushleft}
 \subsection{Importance of SSL}
-\begin{flushleft}
     \large Self-supervised learning is critical in computer vision because it addresses the challenge of obtaining labeled datasets for image classification. Datasets for computer vision must be extensive and are typically manually labeled, making it much harder to generate the data needed for supervised learning in computer vision tasks. In many fields, such as medical imaging, autonomous driving, and wildlife monitoring, labeled data is scarce or difficult to acquire. Self-supervised learning addresses this issue directly by allowing models to learn directly from unstructured data without the need for extensive labeling. This approach not only reduces the reliance on human labor for labeling but also enhances the model's generalization capabilities across diverse tasks and datasets. Ultimately, self-supervised learning paves the way for more efficient and scalable computer vision solutions, enabling broader applications and improvements in areas like image classification, object detection, and scene analysis.
-\end{flushleft}
 
 \vspace{10bp}
 \begin{questionbox}
@@ -168,7 +158,6 @@
 \end{questionbox}
 
 \section{Image Segmentation}
-\begin{flushleft}
     \large Another method used in computer vision models is \textbf{image segmentation}. This approach focuses on identifying groups of pixels that belong together and works to separate individual objects in images. 
     \begin{figure}[H]
         \centering
@@ -187,7 +176,6 @@
     Segmentation is also used to identify separate entities in images, entities that are larger than a few pixels. There are two main entity classes in segmentation, \textbf{things} and \textbf{stuffs}. Things are objects in images - people, structures, animals, etc. Things have characteristic shapes and have relatively little variance in size. Stuff, on the other hand, refers to classes with amorphic shapes, entities that are fluid and have no characteristic shapes. Sky, water, grass, and other backgrounds are typical examples of stuff. Stuff also doesn't have countable, individual instances, like things two. A blade of grass and a field of grass are both grass, but a bear and fives bears are not both a bear. There are some entities that, under certain image conditions, can be both things or stuff. For example, a large group of people can be interpreted as multiple ``persons” — each a distinctly shaped, countable thing — or a singular, amorphously shaped ``crowd”. \break
 
     The simplest method of entity segmentation is \textbf{semantic segmentation}. This method assigns a semantic class to each pixel, but does not identify classes or differentiate between thing and stuff classes. Semantic segmentation focuses on drawing boundaries between objects but does not assign labels to them or identify different instances of the same object. Other more complex methods of segmentation are \textbf{instance segmentation} and \textbf{panoptic segmentation}. To learn more about segmentation, see \href{https://tinyurl.com/7kz8dkhu}{IBM Image Segmentation}.
-\end{flushleft}
 
 \vspace{10bp}
 \begin{questionbox}
@@ -200,14 +188,10 @@
 \end{questionbox}
 
 \section{When to Use Computer Vision}
-\begin{flushleft}
     \large Computer vision is a field with a long history and many decades of research put into it. People have been working on these problems long before the recent waves of deep learning and machine learning. As such, it is worth digging deep into CV literature to find the best and most efficient model or architecture for your specific task. Some tools created with computer vision in mind (i.e. CNNs) can also be used in non-CV tasks if you want to leverage spatial information within your data.
-\end{flushleft}
 
 \section{Conclusion (CV)}
-\begin{flushleft}
     \large 
     This section covered some of the fundamental concepts within computer vision. By leveraging techniques like Convolutional Neural Networks (CNNs) and self-supervised learning, we’ve learned how machines can mimic human vision, identifying objects, segmenting images, and even understanding complex scenes. This is no small feat; it means computers can learn to see and interpret visual information, making them more intuitive and responsive to our needs. This deep dive reveals just how crucial CV is for making sense of the visual world around us in the modern era. Computer vision serves as a bridge between the raw data captured by cameras and the meaningful insights we derive from those images. It plays a vital role in our increasingly digital lives, impacting everything from social media filters to advanced security systems.  \break
     
     Understanding these methods is key because they enable computers to perform tasks that once seemed out of reach, like accurately detecting tumors in medical imaging or helping autonomous vehicles navigate safely. For instance, in healthcare, CNNs can analyze scans and X-rays, significantly reducing the time it takes to identify critical conditions, ultimately leading to faster diagnoses and better patient outcomes. Similarly, in the realm of autonomous driving, computer vision allows vehicles to recognize pedestrians, road signs, and obstacles in real-time, enhancing safety and efficiency on the roads. These advancements not only improve operational capabilities but also build trust in technology that plays such a significant role in our lives.
-\end{flushleft}
