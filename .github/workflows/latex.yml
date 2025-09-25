@@ -31,20 +31,23 @@ jobs:
         path-exclude /usr/share/info/*
         EOF
 
-    - name: Install tex live
-      run: sudo apt-get update && sudo apt-get install -y texlive-full texlive-latex-recommended
-    
-    - name: Build main document
-      run: pdflatex -interaction=nonstopmode -halt-on-error main.tex
-
-    - name: Build unit PDFs
+    - name: Prepare Unit TeX Files
       run: |
         sed -e 's/{{unit}}/cv/g;s/{{UNIT}}/COMPUTER VISION/g' unit_template.tex > cv_unit.tex
         sed -e 's/{{unit}}/dl/g;s/{{UNIT}}/DEEP LEARNING/g' unit_template.tex > dl_unit.tex
         sed -e 's/{{unit}}/lm/g;s/{{UNIT}}/LANGUAGE MODELING/g' unit_template.tex > lm_unit.tex
         sed -e 's/{{unit}}/ml/g;s/{{UNIT}}/MACHINE LEARNING/g' unit_template.tex > ml_unit.tex
         sed -e 's/{{unit}}/rl/g;s/{{UNIT}}/REINFORCEMENT LEARNING/g' unit_template.tex > rl_unit.tex
-        parallel pdflatex -interaction=nonstopmode -halt-on-error {} ::: cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
+
+    - uses: xu-cheng/latex-action@v4
+      with:
+        root_file: |
+          main.tex
+          cv_unit.tex
+          dl_unit.tex
+          lm_unit.tex
+          ml_unit.tex
+          rl_unit.tex
 
     - name: Upload pdf
       uses: actions/upload-artifact@v4
