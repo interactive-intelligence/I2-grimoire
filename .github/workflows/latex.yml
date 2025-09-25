@@ -23,10 +23,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: wtfjoke/setup-tectonic@v3
+    - name: Disable man-db (improves performance)
+      run: |
+        sudo tee /etc/dpkg/dpkg.cfg.d/01_nodoc > /dev/null << 'EOF'
+        path-exclude /usr/share/doc/*
+        path-exclude /usr/share/man/*
+        path-exclude /usr/share/info/*
+        EOF
+
+    - name: Install tex live
+      run: sudo apt install texlive-full texlive-latex-recommended
     
     - name: Build main document
-      run: tectonic main.tex
+      run: pdflatex -interaction=nonstopmode -halt-on-error main.tex
 
     - name: Build unit PDFs
       run: |
@@ -35,21 +44,13 @@ jobs:
         sed -e 's/{{unit}}/lm/g;s/{{UNIT}}/LANGUAGE MODELING/g' unit_template.tex > lm_unit.tex
         sed -e 's/{{unit}}/ml/g;s/{{UNIT}}/MACHINE LEARNING/g' unit_template.tex > ml_unit.tex
         sed -e 's/{{unit}}/rl/g;s/{{UNIT}}/REINFORCEMENT LEARNING/g' unit_template.tex > rl_unit.tex
-        parallel tectonic {} ::: cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
+        parallel pdflatex -interaction=nonstopmode -halt-on-error {} ::: cv_unit.tex dl_unit.tex lm_unit.tex ml_unit.tex rl_unit.tex
 
     - name: Upload pdf
       uses: actions/upload-artifact@v4
       with:
         name: PDF
         path: main.pdf
-
-    - name: Disable man-db (improves performance)
-      run: |
-        sudo tee /etc/dpkg/dpkg.cfg.d/01_nodoc > /dev/null << 'EOF'
-        path-exclude /usr/share/doc/*
-        path-exclude /usr/share/man/*
-        path-exclude /usr/share/info/*
-        EOF
 
     - name: Install pandoc
       uses: pandoc/actions/setup@v1
