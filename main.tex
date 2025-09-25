@@ -69,9 +69,9 @@
   \node at (0,0) {\includegraphics[width=5cm]{other/grim.png}};
 
   % Authors positioned around the outer circle
-  \foreach \name/\angle in {Gaurang Pendharkar/0, Varun Ananth/60, I2
-    Leadership/120,
-  Carter Swartout/180, Arya Sanjay/240, Misha Nivota/300} {
+  \foreach \name/\idx in {I2 Leadership/0, Gaurang Pendharkar/1, Varun Ananth/2,
+  Carter Swartout/3, Eric Ye/4, Arya Sanjay/5, Misha Nivota/6} {
+    \pgfmathtruncatemacro\angle{Mod(360 / 7 * \idx + 90, 360)}
     % Calculate rotation angle for names to be always upright
     \pgfmathparse{\angle<180 ? \angle-90 : \angle+90}
     \ifnum\angle=0
