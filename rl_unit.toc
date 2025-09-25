@@ -1,0 +1,26 @@
+\contentsline {section}{\numberline {1}What is Reinforcement Learning?}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Problem Definition}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Common Symbols and Definitions}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Markov Decision Process}{8}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}On vs. Off-Policy RL}{9}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Imitation Learning}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Basic Behavior Cloning}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Problems with Behavior Cloning}{12}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Proofs for Problems with Behavior Cloning}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Mode Averaging}{13}{subsection.3.1}%
+\contentsline {section}{\numberline {4}DAgger Algorithm}{16}{section.4}%
+\contentsline {section}{\numberline {5}Policy Gradient}{18}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Basic Policy Gradient}{18}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Advanced Policy Gradient Concepts}{21}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Return-to-Go}{21}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Baseline Function}{21}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Natural Policy Gradient}{22}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Proof for Gradient of the PG Objective}{23}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Deep Q-Learning}{26}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Q-Functions and Bellman Equations}{26}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Making Q-Learning Work}{29}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Replay Buffer and Memory}{29}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Optimization Stability and Polyak Averaging}{29}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Explore vs. Exploit and epsilon-Greedy Search}{30}{subsection.8.3}%
+\contentsline {section}{\numberline {9}When to Use Reinforcement Learning}{31}{section.9}%
+\contentsline {section}{\numberline {10}Conclusion (RL)}{32}{section.10}%

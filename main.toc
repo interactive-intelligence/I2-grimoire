@@ -1,0 +1,110 @@
+\contentsline {section}{\numberline {}MACHINE LEARNING}{4}{section*.4}%
+\contentsline {section}{\numberline {1}Introduction to Machine Learning}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Data Splitting: Train and Test Sets}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Regression and Classification Tasks}{6}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Linear Regression: Regression}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Fundamentals of Linear Regression}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Understanding Sum of Squared Errors (SSE)}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Minimizing SSE: Simple Case}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Minimizing SSE: General Case}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Ridge and LASSO Regressions}{12}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Logistic Regression: Classification}{15}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Fundamentals of Logistic Regression}{15}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Sigmoid Function and Its Role}{16}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Training with the Log-Likelihood Loss}{17}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Extensions to Multiclass Classification}{17}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Why It's Called “Regression”}{17}{subsection.3.5}%
+\contentsline {section}{\numberline {4}K-Means Clustering: Unsupervised Learning}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Introduction to Unsupervised Learning}{18}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}How K-Means Clustering Works}{18}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Minimizing Within-Cluster Distance}{18}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Choosing the Number of Clusters}{19}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Limitations of K-Means Clustering}{20}{subsection.4.5}%
+\contentsline {section}{\numberline {5}K-Means vs. K-Medians Clustering}{20}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Introduction to K-Medians Clustering}{20}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}K-Medians Use Cases}{21}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Key Differences Between K-Means and K-Medians}{21}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Other ML Concepts}{22}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Bias-Variance Tradeoff}{22}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Convexity}{24}{subsection.6.2}%
+\contentsline {section}{\numberline {7}When to Use Machine Learning Algorithms}{25}{section.7}%
+\contentsline {section}{\numberline {8}Conclusion (ML)}{25}{section.8}%
+\contentsline {section}{\numberline {}DEEP LEARNING}{26}{section*.13}%
+\contentsline {section}{\numberline {9}Introduction to Neural Networks}{27}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Fundamental Structure}{27}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Flow of Information}{29}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}The Perceptron and XOR}{31}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Non-Linearity and Activation Functions}{34}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Introducing Nonlinearities}{34}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Common Activation Functions}{36}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Backpropagation}{37}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Loss Functions}{37}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Derivatives and Gradients}{38}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Gradient Flow}{41}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Optimizers and Learning Rates}{43}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Regularization}{44}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Dropout}{44}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Batch Normalization}{45}{subsection.12.2}%
+\contentsline {section}{\numberline {13}When to Use Deep Learning/Neural Networks}{47}{section.13}%
+\contentsline {section}{\numberline {14}Conclusion (DL)}{47}{section.14}%
+\contentsline {section}{\numberline {}COMPUTER VISION}{48}{section*.23}%
+\contentsline {section}{\numberline {15}Introduction to Computer Vision}{49}{section.15}%
+\contentsline {subsection}{\numberline {15.1}What is Computer Vision?}{49}{subsection.15.1}%
+\contentsline {section}{\numberline {16}Convolutional Neural Networks}{49}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Convolutional Layer}{49}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}Nonlinearity in CNNs}{53}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}Pooling Layer}{53}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}Fully Connected Layer}{55}{subsection.16.4}%
+\contentsline {subsection}{\numberline {16.5}Loss Functions, Optimizers, and Regularization}{55}{subsection.16.5}%
+\contentsline {section}{\numberline {17}Self-Supervised Learning}{56}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Methods of SSL}{57}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}Importance of SSL}{57}{subsection.17.2}%
+\contentsline {section}{\numberline {18}Image Segmentation}{58}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Techniques of Segmentation}{59}{subsection.18.1}%
+\contentsline {section}{\numberline {19}When to Use Computer Vision}{60}{section.19}%
+\contentsline {section}{\numberline {20}Conclusion (CV)}{60}{section.20}%
+\contentsline {section}{\numberline {}REINFORCEMENT LEARNING}{62}{section*.31}%
+\contentsline {section}{\numberline {21}What is Reinforcement Learning?}{63}{section.21}%
+\contentsline {subsection}{\numberline {21.1}Problem Definition}{63}{subsection.21.1}%
+\contentsline {subsection}{\numberline {21.2}Common Symbols and Definitions}{63}{subsection.21.2}%
+\contentsline {subsection}{\numberline {21.3}Markov Decision Process}{65}{subsection.21.3}%
+\contentsline {subsection}{\numberline {21.4}On vs. Off-Policy RL}{66}{subsection.21.4}%
+\contentsline {section}{\numberline {22}Imitation Learning}{67}{section.22}%
+\contentsline {subsection}{\numberline {22.1}Basic Behavior Cloning}{67}{subsection.22.1}%
+\contentsline {subsection}{\numberline {22.2}Problems with Behavior Cloning}{69}{subsection.22.2}%
+\contentsline {section}{\numberline {23}Proofs for Problems with Behavior Cloning}{70}{section.23}%
+\contentsline {subsection}{\numberline {23.1}Mode Averaging}{70}{subsection.23.1}%
+\contentsline {section}{\numberline {24}DAgger Algorithm}{73}{section.24}%
+\contentsline {section}{\numberline {25}Policy Gradient}{75}{section.25}%
+\contentsline {subsection}{\numberline {25.1}Basic Policy Gradient}{75}{subsection.25.1}%
+\contentsline {section}{\numberline {26}Advanced Policy Gradient Concepts}{78}{section.26}%
+\contentsline {subsection}{\numberline {26.1}Return-to-Go}{78}{subsection.26.1}%
+\contentsline {subsection}{\numberline {26.2}Baseline Function}{78}{subsection.26.2}%
+\contentsline {subsection}{\numberline {26.3}Natural Policy Gradient}{79}{subsection.26.3}%
+\contentsline {subsection}{\numberline {26.4}Proof for Gradient of the PG Objective}{80}{subsection.26.4}%
+\contentsline {section}{\numberline {27}Deep Q-Learning}{83}{section.27}%
+\contentsline {subsection}{\numberline {27.1}Q-Functions and Bellman Equations}{83}{subsection.27.1}%
+\contentsline {section}{\numberline {28}Making Q-Learning Work}{86}{section.28}%
+\contentsline {subsection}{\numberline {28.1}Replay Buffer and Memory}{86}{subsection.28.1}%
+\contentsline {subsection}{\numberline {28.2}Optimization Stability and Polyak Averaging}{86}{subsection.28.2}%
+\contentsline {subsection}{\numberline {28.3}Explore vs. Exploit and epsilon-Greedy Search}{87}{subsection.28.3}%
+\contentsline {section}{\numberline {29}When to Use Reinforcement Learning}{88}{section.29}%
+\contentsline {section}{\numberline {30}Conclusion (RL)}{89}{section.30}%
+\contentsline {section}{\numberline {}LANGUAGE MODELING}{90}{section*.38}%
+\contentsline {section}{\numberline {31}Introduction to Language Modeling}{91}{section.31}%
+\contentsline {subsection}{\numberline {31.1}How Are Language Models Trained?}{91}{subsection.31.1}%
+\contentsline {subsection}{\numberline {31.2}Important Concepts in Language modeling}{92}{subsection.31.2}%
+\contentsline {section}{\numberline {32}Foundational Concepts}{92}{section.32}%
+\contentsline {subsection}{\numberline {32.1}Tokenization: The First Step}{92}{subsection.32.1}%
+\contentsline {subsection}{\numberline {32.2}Embeddings: Representing Tokens Numerically}{93}{subsection.32.2}%
+\contentsline {subsection}{\numberline {32.3}Sequence Modeling: The Core Objective}{95}{subsection.32.3}%
+\contentsline {section}{\numberline {33}Core Architectures of Language Models}{97}{section.33}%
+\contentsline {subsection}{\numberline {33.1}Recurrent Neural Networks (RNNs)}{97}{subsection.33.1}%
+\contentsline {subsection}{\numberline {33.2}Transformers: A Paradigm Shift}{98}{subsection.33.2}%
+\contentsline {section}{\numberline {34}NLP Tasks Enabled by Language Models}{102}{section.34}%
+\contentsline {section}{\numberline {35}Advanced Topics in Language Modeling}{103}{section.35}%
+\contentsline {subsection}{\numberline {35.1}Challenges in Large Language Models (LLMs)}{103}{subsection.35.1}%
+\contentsline {subsection}{\numberline {35.2}Reinforcement Learning with Human Feedback (RLHF)}{105}{subsection.35.2}%
+\contentsline {subsection}{\numberline {35.3}Learning to Reason through RLVR}{107}{subsection.35.3}%
+\contentsline {section}{\numberline {36}When to Use Language Models}{108}{section.36}%
+\contentsline {section}{\numberline {37}Conclusion (LM)}{108}{section.37}%
