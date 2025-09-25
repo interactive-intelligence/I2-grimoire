@@ -6,7 +6,7 @@ This is the repository for hosting the source for the I2 Grimoire!
 
 ## Notes
 
-The web version processed using kramdown applying mathjax. ***Kramdown doesn't understand math*** and incorrectly math as markdown. Therefore, one should use the following replacements in equations:
+The web version is processed using kramdown before any math processing happens. ***Kramdown doesn't understand math*** and incorrectly interprets math as markdown. Therefore, one should use the following replacements in equations:
 
 | Character | Replacement |
 | --------- | ----------- |
