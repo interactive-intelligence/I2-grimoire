@@ -780,6 +780,60 @@ RLHF is a critical tool for enhancing the usability and safety of large
 language models, enabling them to deliver high-quality, aligned outputs
 in complex real-world applications.
 
+## Learning to Reason through RLVR
+
+**RLVR (Reinforcement Learning with Verifiable Rewards)** has
+demonstrated significant improvements in reasoning tasks such as
+mathematics, programming, and scientific problem-solving. The key idea
+is to cast reasoning as a Reinforcement Learning (RL) problem, where the
+model learns not just to generate text, but to optimize a verifiable
+objective.
+
+In RLVR, the components map as follows:
+
+- **State**: the input question together with the current reasoning
+  chain (the partial solution built so far).
+
+- **Action**: the next token or step in the reasoning process.
+
+- **Policy**: the model's distribution over possible next actions
+  (tokens).
+
+- **Trajectory**: the full reasoning chain from start to final answer.
+
+- **Reward**: assigned at the end, typically a binary signal indicating
+  whether the final answer is correct.
+
+A simplified recipe for RLVR training looks like this:
+
+1.  **Initialize** with a base reasoning model (often trained with
+    supervised learning or chain-of-thought data).
+
+2.  **Roll out reasoning chains**: collect a dataset of problems with
+    known solutions, and have the model generate candidate solutions
+    step by step.
+
+3.  **Verify answers**: use automated checkers to determine correctness.
+
+4.  **Assign rewards**: correct answers get a positive reward; incorrect
+    ones get little or none.
+
+5.  **Policy update**: use an RL algorithm to adjust the model so that
+    reasoning paths leading to correct answers become more likely.
+
+6.  **Repeat**: over many iterations, the model learns to allocate more
+    compute toward productive reasoning chains.
+
+This RL framing enables scaling of **Test-Time Compute**---the
+computational effort spent on reasoning after training. Increasing this
+"thinking effort" (longer chains, deeper rollouts) generally improves
+performance, though at the cost of slower inference. This explains why
+"thinking models" feel slower: they are effectively exploring longer
+reasoning trajectories at test time.
+
+For a deeper discussion of this approach, see the [DeepSeek R1
+paper](https://arxiv.org/abs/2501.12948).
+
 <div markdown="1" class="questionbox">
 **Synthesis Questions:**
 
