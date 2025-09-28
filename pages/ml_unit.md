@@ -227,39 +227,29 @@ $$\textbf{w} = \begin{bmatrix}
 Our goal is to find $\hat{\textbf{w}}$, the weights for our model that
 minimize the SSE. Similarly, we define $\textbf{x}_i$ as a vector
 consisting of all the features *of a single datapoint*:
-
 $$\textbf{x}_i = \begin{bmatrix}
             x_1\\
             x_2\\
             \vdots\\
             x_n\\
-            \end{bmatrix}$$
-
-You can think of each $\textbf{x}_i$ as a point in n-dimensional space.
-We denote this mathematically as $\textbf{x}_i \in \mathbb{R}^n$. Using
-this, we can define $X$ as a matrix holding all of our $m$ datapoints:
-
-$$X = \begin{bmatrix}
+            \end{bmatrix}$$ You can think of each $\textbf{x}_i$ as a
+point in n-dimensional space. We denote this mathematically as
+$\textbf{x}_i \in \mathbb{R}^n$. Using this, we can define $X$ as a
+matrix holding all of our $m$ datapoints: $$X = \begin{bmatrix}
             \textbf{x}_1^{\top}\\
             \textbf{x}_2^{\top}\\
             \vdots\\
             \textbf{x}_m^{\top}\\
-            \end{bmatrix}$$
-
-We say that $X \in \mathbb{R}^{m \times n}$. Finally, we define
-$\textbf{y}$ as a vector holding all of our true labels $y$ from our
-training set.
-
-$$\textbf{y} = \begin{bmatrix}
+            \end{bmatrix}$$ We say that $X \in \mathbb{R}^{m \times n}$.
+Finally, we define $\textbf{y}$ as a vector holding all of our true
+labels $y$ from our training set. $$\textbf{y} = \begin{bmatrix}
             y_1\\
             y_2\\
             \vdots\\
             y_m\\
-            \end{bmatrix}$$
-
-The amount of $y$ values is the same as the amount of $x$ points ($m$).
-Using these elements, we can actually very easily construct a
-closed-form solution to $\hat{\textbf{w}}$!
+            \end{bmatrix}$$ The amount of $y$ values is the same as the
+amount of $x$ points ($m$). Using these elements, we can actually very
+easily construct a closed-form solution to $\hat{\textbf{w}}$!
 
 $$\hat{\textbf{w}} = (X^{\top}X)^{-1}X^{\top}\textbf{y}$$
 
@@ -271,7 +261,6 @@ algebra, see [Essence of Linear Algebra Series by
 For a quick refresher on matrix calculus, see [Matrix Calculus for
 Machine Learning by
 StatQuest](https://www.youtube.com/watch?v=tIkzL4jlt8g).
-
 $$\begin{align*}
         \hat{\textbf{w}} &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - \hat{y}_i)^2 && \text{Find $\textbf{w}$ that minimizes the SSE. This is $\hat{\textbf{w}}$.}\\
         &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w} + b))^2 && \text{Plug in $\hat{y}_i = \textbf{x}_i^{\top}\textbf{w} + b$.}\\
