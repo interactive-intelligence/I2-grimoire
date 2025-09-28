@@ -12,3 +12,5 @@ The web version is processed using kramdown before any math processing happens. 
 | --------- | ----------- |
 | `\|`      | `\vert`     |
 | `*`       | `\ast`      |
+
+Additionally, PDFs as figures are not supported in browsers, so if that is needed, we need create a custom pandoc filter that converts PDF to SVG first.
