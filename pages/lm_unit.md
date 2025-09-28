@@ -785,11 +785,13 @@ in complex real-world applications.
 **RLVR (Reinforcement Learning with Verifiable Rewards)** has
 demonstrated significant improvements in reasoning tasks such as
 mathematics, programming, and scientific problem-solving. The key idea
-is to cast reasoning as a Reinforcement Learning (RL) problem, where the
-model learns not just to generate text, but to optimize a verifiable
-objective.
+is to cast reasoning as a Reinforcement Learning (RL) problem, where we
+want a model to fulfill a verifiable objective (like correctly solving
+math problems), but we do not need to show the model *how* it should
+perform the intermediate reasoning steps in order to achieve the
+objective (we only care that it arrives at the right answer).
 
-In RLVR, the components map as follows:
+In RLVR, we map the components of RL in the following way:
 
 - **State**: the input question together with the current reasoning
   chain (the partial solution built so far).
