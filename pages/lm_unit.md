@@ -442,8 +442,8 @@ To understand the roles of $Q$, $K$, and $V$ in self-attention:
 **Key Features of Transformers:**
 
 - **Parallelism:** Unlike RNNs, which process tokens sequentially,
-  Transformers compute attention for all tokens simultaneously,
-  significantly speeding up training on large datasets.
+  Transformers compute attention for all tokens simultaneously, which
+  significantly speeds up training on large datasets.
 
 - **Positional Encodings:** Since Transformers do not have inherent
   sequential processing, they use positional encodings to inject
