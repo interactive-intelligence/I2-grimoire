@@ -306,7 +306,7 @@ This equation may look complex, but it simply means that the probability of an e
 
     \textbf{Key Features of Transformers:}
     \begin{itemize}
-        \item \textbf{Parallelism:} Unlike RNNs, which process tokens sequentially, Transformers compute attention for all tokens simultaneously, significantly speeding up training on large datasets.
+        \item \textbf{Parallelism:} Unlike RNNs, which process tokens sequentially, Transformers compute attention for all tokens simultaneously, which significantly speeds up training on large datasets.
         \item \textbf{Positional Encodings:} Since Transformers do not have inherent sequential processing, they use positional encodings to inject information about the order of tokens. Without positional encodings, Transformers would treat sequences as bags of tokens, losing critical information about token order and sequence structure. These encodings are added to the token embeddings and are typically derived from sinusoidal functions or learned directly:
         \[
         \text{PE}_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right), \quad
