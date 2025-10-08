@@ -820,8 +820,9 @@ A simplified recipe for RLVR training looks like this:
 4.  **Assign rewards**: correct answers get a positive reward; incorrect
     ones get little or none.
 
-5.  **Policy update**: use an RL algorithm to adjust the model so that
-    reasoning paths leading to correct answers become more likely.
+5.  **Policy update**: use an RL algorithm like Group Relative Policy
+    Optimization (GRPO) to adjust the model so that reasoning paths
+    leading to correct answers become more likely.
 
 6.  **Repeat**: over many iterations, the model learns to allocate more
     compute toward productive reasoning chains.
