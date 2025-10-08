@@ -1,6 +1,4 @@
--- liquid_divs.lua
 -- A Pandoc Lua filter to convert fenced divs to raw HTML divs.
-
 function Div(div)
   -- Check if the Div has at least one class assigned to it.
   if div.classes[1] then
@@ -34,14 +32,7 @@ function Math(elem)
   -- Check if the element is a block of display math.
   -- We don't want to modify inline math.
   if elem.mathtype == 'DisplayMath' then
-    -- Construct the Kramdown-compatible math block as a string.
-    -- It adds a newline after the opening '$$' and before the closing '$$'.
-    local kramdown_text = '$$\n' .. elem.text .. '\n$$'
-
-    -- Return a 'RawBlock' of markdown. This tells Pandoc to insert
-    -- the raw string directly into the output markdown file, bypassing
-    -- the standard markdown writer for this element.
-    return pandoc.RawBlock('markdown', kramdown_text)
+    return pandoc.RawInline("markdown", "\n$$" .. elem.text .. "$$\n")
   end
 
   -- For any other element type (e.g., InlineMath), return 'nil'
