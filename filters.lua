@@ -32,7 +32,7 @@ function Math(elem)
   -- Check if the element is a block of display math.
   -- We don't want to modify inline math.
   if elem.mathtype == 'DisplayMath' then
-    return pandoc.RawInline("markdown", "\n$$" .. elem.text .. "$$\n")
+    return pandoc.RawInline("markdown", "\n\n$$" .. elem.text .. "$$\n\n")
   end
 
   -- For any other element type (e.g., InlineMath), return 'nil'
