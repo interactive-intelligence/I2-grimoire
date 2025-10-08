@@ -197,7 +197,9 @@ efficient. Any further operations done by the model will be done on the
 'pooled' matrix, with features summarized and simplified through the use
 of a 2-dimensional filter. For a feature map having dimensions
 $h \times w \times c$, the dimensions of the map after pooling would be
+
 $$\biggl( \frac{h - f + 1}{s} \times \frac{w - f + 1}{s} \times c \biggr)$$
+
 Note that $f$ is the size of the filter used and $s$ denotes the length
 of the stride used.\
 
@@ -217,6 +219,7 @@ If we take the section of the map that the max pooling operation is
 being done on as $Z(i, j)$, we get the following formula for the
 calculation on $Z(i, j)$. This calculation is done assuming a section
 size of $2 \times 2$.
+
 $$Z_{pool}(i, j) = \max \{Z(2i,2j), Z(2i+1,2j), Z(2i,2j+1), Z(2i+1,2j+1)\}$$
 
 **Average pooling**, another pooling operation, uses a similar
@@ -224,6 +227,7 @@ methodology. Rather than taking the maximum value however, average
 pooling chooses the average value of the section rather than the maximum
 as representation in the pooling matrix. It's $Z_{pool}$ formula for a
 $2 \times 2$ section is as follows
+
 $$Z_{pool}(i, j) = \frac{1}{4} (Z(2i,2j) + Z(2i+1,2j) + Z(2i,2j+1) + Z(2i+1,2j+1))$$
 
 While pooling layers are extremely beneficial in making models more
@@ -250,6 +254,7 @@ on the data. For a single-dimensional input vector $\textbf{x}$, a
 weight matrix $\textbf{W}$, and a vector of bias terms of each neuron
 $\textbf{b}$, the formula for the vector of outputs $\textbf{z}$ would
 be
+
 $$\textbf{z} = \textbf{W} \cdot \textbf{x} + \textbf{b}$$
 
 The dense layer also typically uses an activation function when doing a

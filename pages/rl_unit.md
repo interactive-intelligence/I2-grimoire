@@ -282,6 +282,8 @@ This seems complicated so let's break it down:
 
 $$\downarrow$$
 
+
+
 $$\underset{\theta}{\textrm{argmax}}\biggl[ \cdot \biggr]$$
 
 Argmax with an underset $\theta$ means that we wish to find some
@@ -295,7 +297,11 @@ $\underset{x}{\textrm{argmax}}$ = 0.
 
 $$\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\cdot]$$
 
+
+
 $$\downarrow$$
+
+
 
 $$\underset{\theta}{\textrm{argmax}}\biggl[ \mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\cdot] \biggr]$$
 
@@ -307,7 +313,11 @@ part of the final term we introduce:
 
 $$\mathrm{log}\pi_\theta(a^\ast\mid s^\ast)$$
 
+
+
 $$\downarrow$$
+
+
 
 $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^\ast \mid s^\ast)]\biggr]$$
 
@@ -594,6 +604,7 @@ can have a few different formulations. Here is the one that will be
 important for policy gradient (PG):
 
 **Infinite Horizon Discounted Reward:**
+
 $$R(\tau) = \sum_{t=0}^\infty \gamma^t r(s_t, a_t)$$
 
 The $s_t$ and $a_t$ come from the trajectory $\tau$. We simply add up
@@ -1118,7 +1129,9 @@ the agent. Perhaps there is a life lesson in here somewhere?
 
 2.  A similar function to the Q-function exists, called the **Value
     function**. It is written as:
+
     $$V^\pi(s) = \mathbb{E}_{\pi_\theta} \biggl[ \sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t = s\biggr]$$
+
     Do the following:
 
     - Compare and contrast this function to the Q-function. What purpose

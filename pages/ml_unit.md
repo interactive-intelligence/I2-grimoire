@@ -86,7 +86,9 @@ In machine learning, linear regression is one of the most fundamental
 algorithms. It tries to model the relationship between input features
 and the target output by fitting a straight line to the data points. The
 general form of a linear regression model is:
+
 $$\hat{y} = b + w_1x_1 + w_2x_2 + ... + w_nx_n$$
+
 Where:
 
 - $\hat{y}$ is the predicted output,
@@ -228,30 +230,36 @@ $$\textbf{w} = \begin{bmatrix}
 Our goal is to find $\hat{\textbf{w}}$, the weights for our model that
 minimize the SSE. Similarly, we define $\textbf{x}_i$ as a vector
 consisting of all the features *of a single datapoint*:
+
 $$\textbf{x}_i = \begin{bmatrix}
             x_1\\
             x_2\\
             \vdots\\
             x_n\\
             \end{bmatrix}$$
+
 You can think of each $\textbf{x}_i$ as a point in n-dimensional space.
 We denote this mathematically as $\textbf{x}_i \in \mathbb{R}^n$. Using
 this, we can define $X$ as a matrix holding all of our $m$ datapoints:
+
 $$X = \begin{bmatrix}
             \textbf{x}_1^{\top}\\
             \textbf{x}_2^{\top}\\
             \vdots\\
             \textbf{x}_m^{\top}\\
             \end{bmatrix}$$
+
 We say that $X \in \mathbb{R}^{m \times n}$. Finally, we define
 $\textbf{y}$ as a vector holding all of our true labels $y$ from our
 training set.
+
 $$\textbf{y} = \begin{bmatrix}
             y_1\\
             y_2\\
             \vdots\\
             y_m\\
             \end{bmatrix}$$
+
 The amount of $y$ values is the same as the amount of $x$ points ($m$).
 Using these elements, we can actually very easily construct a
 closed-form solution to $\hat{\textbf{w}}$!
@@ -266,6 +274,7 @@ algebra, see [Essence of Linear Algebra Series by
 For a quick refresher on matrix calculus, see [Matrix Calculus for
 Machine Learning by
 StatQuest](https://www.youtube.com/watch?v=tIkzL4jlt8g).
+
 $$\begin{align*}
         \hat{\textbf{w}} &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - \hat{y}_i)^2 && \text{Find $\textbf{w}$ that minimizes the SSE. This is $\hat{\textbf{w}}$.}\\
         &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w} + b))^2 && \text{Plug in $\hat{y}_i = \textbf{x}_i^{\top}\textbf{w} + b$.}\\
@@ -446,7 +455,9 @@ computational constraints).
 
 5.  **Bonus:** Solve for $\hat{\textbf{w}}$ in the Ridge regression
     setting. Here is the equation:
+
     $$\underset{w}{argmin} \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2^2.$$
+
     Your answer should be the closed form solution for Ridge regression
     and the proof should be similar to the one given for ordinary linear
     regression.
@@ -613,7 +624,9 @@ variance**, or in simpler terms, the total distance between the data
 points and the centroid of their assigned cluster. The function to
 minimize is called the **sum of squared errors** (SSE), which measures
 how far the data points are from their respective cluster centroids:
+
 $$SSE = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2$$
+
 Where:
 
 - $x_i$ represents a data point,

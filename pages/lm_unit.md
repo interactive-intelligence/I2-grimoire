@@ -39,6 +39,7 @@ other types of NLP tasks, such as classification or summarization.
 Language models work by estimating the probability of a sequence of
 words. Formally, the model breaks this problem into smaller steps,
 predicting one word at a time based on the words before it:
+
 $$P(w_1, w_2, \dots, w_n) = P(w_1)P(w_2|w_1)P(w_3|w_1, w_2)\dots P(w_n|w_1, w_2, \dots, w_{n-1})$$
 
 This equation may look complex, but it simply means that the probability
@@ -179,7 +180,9 @@ efficient downstream processing.
   riverbank).
 
 **Mathematical Representation:**
+
 $$\text{Embedding}(\text{token}) = \mathbf{e} \in \mathbb{R}^d$$
+
 where $d$ is the dimensionality of the embedding space. Each token is
 represented as a point in this $d$-dimensional space, capturing its
 relationships with other tokens.
@@ -212,7 +215,9 @@ relationships with other tokens.
 - **Embedding Arithmetic:** A unique property of embeddings is their
   ability to encode semantic relationships through arithmetic
   operations. For instance:
+
   $$\text{Embedding}(\text{king}) - \text{Embedding}(\text{man}) + \text{Embedding}(\text{woman}) \approx \text{Embedding}(\text{queen})$$
+
   This illustrates how embeddings capture relationships between words in
   dense vector spaces.
 
@@ -246,6 +251,7 @@ produce coherent sequences of text. Sequence prediction can be
 mathematically expressed as:
 
 $$P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t \mid x_{<t})$$
+
 Here:
 
 - $x_t$ represents the current token at time step $t$.
@@ -283,6 +289,7 @@ token given the tokens that precede it in the sequence.
 - $P(\text{"jumps"} \mid \text{"The quick brown fox"}) = 0.6$
 
 Thus, the joint probability of the entire sequence is calculated as:
+
 $$P(\text{"The quick brown fox jumps"}) = 0.4 \cdot 0.3 \cdot 0.2 \cdot 0.5 \cdot 0.6 = 0.0072$$
 
 This step-by-step breakdown illustrates how language models leverage the
@@ -292,7 +299,9 @@ accounting for prior context.
 **Example with Numerical Probabilities:** Consider a toy vocabulary with
 three words: $\text{"cat"}$, $\text{"dog"}$, and $\text{"bird"}$. Given
 $h_t$, the model computes:
+
 $$P(\text{"cat"}|x_{<t}) = \frac{e^{z_{\text{"cat"}}}}{\sum_{w \in \{\text{"cat"}, \text{"dog"}, \text{"bird"}\}} e^{z_w}}$$
+
 where $z_{\text{"cat"}} = W \cdot h_t[\text{"cat"}]$. This ensures
 probabilistic coherence for output predictions. By chaining these
 probabilities, the model constructs meaningful sequence-level
@@ -301,7 +310,9 @@ predictions.
 **Training Objective: Negative Log-Likelihood (NLL) Loss** Language
 models are typically trained using the **negative log-likelihood (NLL)**
 loss function, defined as:
+
 $$\mathcal{L} = -\sum_{t=1}^T \log P(x_t | x_{<t})$$
+
 The NLL loss penalizes the model when it assigns low probabilities to
 the actual tokens in a sequence. Minimizing this loss ensures the model
 learns to generate sequences with high probability for real-world
@@ -322,7 +333,9 @@ language patterns.
         "A journey of a thousand miles begins with a single step."
 
 During training, the model learns to predict each word sequentially:
+
 $$P(\text{"A"}), \, P(\text{"journey"} | \text{"A"}), \, P(\text{"of"} | \text{"A journey"}), \dots$$
+
 The cumulative product of these probabilities represents the likelihood
 of the entire sentence. Sequence modeling is the foundation for
 understanding how language models generate coherent and contextually
@@ -352,7 +365,9 @@ data by maintaining a hidden state that evolves over time. The hidden
 state $h_t$ at time step $t$ encodes information from both the current
 input token $x_t$ and the previous hidden state $h_{t-1}$. This can be
 expressed as:
+
 $$h_t = f(W_x x_t + W_h h_{t-1} + b)$$
+
 Here:
 
 - $W_x$ and $W_h$ are weight matrices for the input and hidden state,
@@ -415,7 +430,9 @@ relevance irrespective of their position. This is critical for capturing
 relationships such as subject-object dependencies in a sentence.
 
 The generic attention operation is defined as:
+
 $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
+
 Here:
 
 - $Q$ (Query), $K$ (Key), and $V$ (Value) are projections of the input
@@ -455,14 +472,18 @@ To understand the roles of $Q$, $K$, and $V$ in self-attention:
   information about token order and sequence structure. These encodings
   are added to the token embeddings and are typically derived from
   sinusoidal functions or learned directly:
+
   $$\text{PE}_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right), \quad
           \text{PE}_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right)$$
+
   where $pos$ is the position, $i$ is the dimension index, and $d$ is
   the embedding size.
 
 **Multi-Head Attention:** To capture relationships across different
 subspaces, Transformers use multiple attention heads:
+
 $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
+
 Each head performs self-attention independently, and the results are
 concatenated and linearly transformed.
 
@@ -470,7 +491,9 @@ concatenated and linearly transformed.
 attention scores independently, allowing the model to focus on different
 aspects of the input sequence. For a single head, the computation is as
 follows:
+
 $$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
+
 where:
 
 - $W_i^Q, W_i^K, W_i^V$ are learned weight matrices specific to head
@@ -484,7 +507,9 @@ where:
 
 After computing the attention for all heads, the outputs are
 concatenated and linearly transformed:
+
 $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
+
 where $W^O$ is a learned projection matrix. This design allows
 Transformers to capture multiple relational patterns simultaneously.
 
