@@ -22,9 +22,29 @@ function Div(div)
   return nil
 end
 
-function Link (link)
+function Link(link)
   if link.attributes['reference-type'] == 'ref' then
     link.attributes = {} -- This empties the attributes table
   end
   return link
+end
+
+-- Put math on its own line
+function Math(elem)
+  -- Check if the element is a block of display math.
+  -- We don't want to modify inline math.
+  if elem.mathtype == 'DisplayMath' then
+    -- Construct the Kramdown-compatible math block as a string.
+    -- It adds a newline after the opening '$$' and before the closing '$$'.
+    local kramdown_text = '$$\n' .. elem.text .. '\n$$'
+
+    -- Return a 'RawBlock' of markdown. This tells Pandoc to insert
+    -- the raw string directly into the output markdown file, bypassing
+    -- the standard markdown writer for this element.
+    return pandoc.RawBlock('markdown', kramdown_text)
+  end
+
+  -- For any other element type (e.g., InlineMath), return 'nil'
+  -- to indicate that no changes should be made.
+  return nil
 end
