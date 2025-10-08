@@ -179,8 +179,8 @@ efficient downstream processing.
   riverbank).
 
 **Mathematical Representation:**
-$$\text{Embedding}(\text{token}) = \mathbf{e} \in \mathbb{R}^d$$ where
-$d$ is the dimensionality of the embedding space. Each token is
+$$\text{Embedding}(\text{token}) = \mathbf{e} \in \mathbb{R}^d$$
+where $d$ is the dimensionality of the embedding space. Each token is
 represented as a point in this $d$-dimensional space, capturing its
 relationships with other tokens.
 
@@ -245,7 +245,8 @@ iterative, generating one token at a time, which allows these models to
 produce coherent sequences of text. Sequence prediction can be
 mathematically expressed as:
 
-$$P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t \mid x_{<t})$$ Here:
+$$P(x_1, x_2, \dots, x_T) = \prod_{t=1}^T P(x_t \mid x_{<t})$$
+Here:
 
 - $x_t$ represents the current token at time step $t$.
 
@@ -300,11 +301,11 @@ predictions.
 **Training Objective: Negative Log-Likelihood (NLL) Loss** Language
 models are typically trained using the **negative log-likelihood (NLL)**
 loss function, defined as:
-$$\mathcal{L} = -\sum_{t=1}^T \log P(x_t | x_{<t})$$ The NLL loss
-penalizes the model when it assigns low probabilities to the actual
-tokens in a sequence. Minimizing this loss ensures the model learns to
-generate sequences with high probability for real-world language
-patterns.
+$$\mathcal{L} = -\sum_{t=1}^T \log P(x_t | x_{<t})$$
+The NLL loss penalizes the model when it assigns low probabilities to
+the actual tokens in a sequence. Minimizing this loss ensures the model
+learns to generate sequences with high probability for real-world
+language patterns.
 
 **Key Insights:**
 
@@ -350,7 +351,9 @@ relevant outputs.
 data by maintaining a hidden state that evolves over time. The hidden
 state $h_t$ at time step $t$ encodes information from both the current
 input token $x_t$ and the previous hidden state $h_{t-1}$. This can be
-expressed as: $$h_t = f(W_x x_t + W_h h_{t-1} + b)$$ Here:
+expressed as:
+$$h_t = f(W_x x_t + W_h h_{t-1} + b)$$
+Here:
 
 - $W_x$ and $W_h$ are weight matrices for the input and hidden state,
   respectively.
@@ -466,7 +469,8 @@ concatenated and linearly transformed.
 **Decomposing Multi-Head Attention:** Each attention head computes
 attention scores independently, allowing the model to focus on different
 aspects of the input sequence. For a single head, the computation is as
-follows: $$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
+follows:
+$$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
 where:
 
 - $W_i^Q, W_i^K, W_i^V$ are learned weight matrices specific to head

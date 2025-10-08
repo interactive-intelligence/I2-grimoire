@@ -170,8 +170,11 @@ to the bias term to indicate which neuron in the hidden layer it belongs
 to. We now have, for the entire hidden layer:
 
 $$z_1 = \textbf{w}_1\cdot\textbf{a} + b_1$$
+
 $$z_2 = \textbf{w}_2\cdot\textbf{a} + b_2$$
+
 $$z_3 = \textbf{w}_3\cdot\textbf{a} + b_3$$
+
 $$z_4 = \textbf{w}_4\cdot\textbf{a} + b_4$$
 
 Using the properties of matrix multiplication (see
@@ -271,7 +274,9 @@ to solve them, even if we blow up the number of weights and nodes? You
 may say that we can add more layers, which can be represented as:
 
 $$\textbf{z}^1 = W^1\textbf{a} + \textbf{b}^1$$
+
 $$\textbf{z}^2 = W^2\textbf{z}^1 + \textbf{b}^2$$
+
 $$\textbf{z}^3 = W^3\textbf{z}^2 + \textbf{b}^3$$
 
 With superscripts just denoting what layer we are processing. Collapsing
@@ -369,7 +374,9 @@ words, a non-linear multi-layer perceptron) can be written out as
 follows:
 
 $$\textbf{z}^1 = \phi(W^1\textbf{a} + \textbf{b}^1)$$
+
 $$\textbf{z}^2 = \phi(W^2\textbf{z}^1 + \textbf{b}^2)$$
+
 $$\textbf{z}^3 = \phi(W^3\textbf{z}^2 + \textbf{b}^3)$$
 
 Now let's collapse this equation, and see if we run into the same
@@ -435,6 +442,7 @@ negative, helping prevent the issue of \"dead neurons\" (neurons that
 never activate). Leaky ReLU looks like:
 
 <div markdown="1" class="center">
+
 $$f(x)= 
         \begin{cases}
             x,& \text{if } x > 0\\
@@ -545,11 +553,13 @@ $$\nabla z = \begin{bmatrix}
 Solve for $\frac{\partial z}{\partial x}$:
 
 $$\frac{\partial}{\partial x}z = \frac{\partial}{\partial x}(x^2 + y^2)$$
+
 $$\frac{\partial z}{\partial x} = 2x$$
 
 Solve for $\frac{\partial z}{\partial y}$:
 
 $$\frac{\partial}{\partial y}z = \frac{\partial}{\partial y}(x^2 + y^2)$$
+
 $$\frac{\partial z}{\partial y} = yx$$
 
 $$\nabla z = \begin{bmatrix}
@@ -600,7 +610,9 @@ $\hat{y}_i$, since $\hat{y}_i$ is the output of the model. For ease of
 understanding, we will use MSE loss:
 
 $$L = \frac{1}{N} \sum^{N}_{i=1} (y_i - \hat{y}_i)^2$$
+
 $$\frac{\partial}{\partial \hat{y}} L = \frac{\partial}{\partial \hat{y}}  \frac{1}{N} \sum^{N}_{i=1} (y_i - \hat{y}_i)^2$$
+
 $$\frac{\partial L}{\partial \hat{y}} =  \frac{1}{N} \sum^{N}_{i=1} -2(y_i - \hat{y}_i)$$
 
 This value is directly calculable, and it is propagated backward,
@@ -634,7 +646,9 @@ We already have $\frac{\partial L}{\partial\hat{y}}$ as shown above.
 $\frac{\partial \hat{y}}{\partial z}$ is calculated as such:
 
 $$\hat{y_i} = \sigma(z)$$
+
 $$\frac{\partial}{\partial z}\hat{y_i} = \frac{\partial}{\partial z} \sigma(z)$$
+
 $$\frac{\partial \hat{y_i}}{\partial z} = \sigma'(z)$$
 
 $\sigma'(z)$ is just the derivative of the sigmoid. This is easy to
@@ -644,7 +658,9 @@ calculate the partial derivative with respect to just $w_1$. Calculating
 the other $w$ follows easily.
 
 $$f(w_1, w_2,...,w_n) = z = \sum_{i=1}^n a_iw_i + b$$
+
 $$\frac{\partial}{\partial w_1}z = \frac{\partial}{\partial w_1}\sum_{i=1}^n a_iw_i + b$$
+
 $$\frac{\partial z}{\partial w_1} = a_1$$
 
 It follows that $\frac{\partial z}{\partial w_2} = a_2$,
@@ -653,6 +669,7 @@ say that $\frac{\partial z}{\partial w_x} = a_x$. We can plug all these
 results into our chain rule:
 
 $$\frac{\partial L}{\partial w_x} = \frac{\partial L}{\partial \hat{y}}\cdot\frac{\partial \hat{y}}{\partial z}\cdot\frac{\partial z}{\partial w_x}$$
+
 $$\frac{\partial L}{\partial w_x} =  (\frac{1}{N}\sum^{N}_{i=1} -2(y_i - \hat{y}_i)) \cdot (\sigma'(z)) \cdot (a_x)$$
 
 For deeper neural networks with many layers, this computational graph
@@ -813,13 +830,15 @@ and $m$ is the number of datapoints in a batch.
 
 Estimating $\mu$ and $\sigma$ for a batch:
 $$\mu_{batch} = \frac{1}{m}\sum_{i=1}^m x_i$$
+
 $$\sigma_{batch} = \sqrt{\frac{1}{m}\sum_{i=1}^m (x_i - \mu_{batch})}$$
 Updating the moving average:
 $$\mu = \alpha \mu + (1-\alpha)\mu_{batch}$$
-$$\sigma = \alpha \sigma + (1-\alpha)\sigma_{batch}$$ Normalize $x_i$ to
-$\tilde{x}_i$ using the moving average:
-$$\tilde{x}_i = \frac{x_i - \mu}{\sigma}$$ Scale and shift before
-sending values to next layer:
+
+$$\sigma = \alpha \sigma + (1-\alpha)\sigma_{batch}$$
+Normalize $x_i$ to $\tilde{x}_i$ using the moving average:
+$$\tilde{x}_i = \frac{x_i - \mu}{\sigma}$$
+Scale and shift before sending values to next layer:
 $$x_i^{output} = \gamma\tilde{x}_i + \beta$$
 
 Mean-centered and evenly varied data allows gradient descent to descend

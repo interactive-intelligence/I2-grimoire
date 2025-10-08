@@ -249,7 +249,8 @@ classification operations on the given input to draw a conclusion based
 on the data. For a single-dimensional input vector $\textbf{x}$, a
 weight matrix $\textbf{W}$, and a vector of bias terms of each neuron
 $\textbf{b}$, the formula for the vector of outputs $\textbf{z}$ would
-be $$\textbf{z} = \textbf{W} \cdot \textbf{x} + \textbf{b}$$
+be
+$$\textbf{z} = \textbf{W} \cdot \textbf{x} + \textbf{b}$$
 
 The dense layer also typically uses an activation function when doing a
 multi-level classification operation. This activation function takes the

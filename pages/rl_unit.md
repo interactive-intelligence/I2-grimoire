@@ -281,6 +281,7 @@ $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^\ast,a^\ast) \sim \mat
 This seems complicated so let's break it down:
 
 $$\downarrow$$
+
 $$\underset{\theta}{\textrm{argmax}}\biggl[ \cdot \biggr]$$
 
 Argmax with an underset $\theta$ means that we wish to find some
@@ -292,7 +293,10 @@ $$\underset{x}{\textrm{argmax}}\biggl[-x^2\biggr] = 0$$
 0 is the value of $x$ that maximizes $-x^2$, so
 $\underset{x}{\textrm{argmax}}$ = 0.
 
-$$\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\cdot]$$ $$\downarrow$$
+$$\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\cdot]$$
+
+$$\downarrow$$
+
 $$\underset{\theta}{\textrm{argmax}}\biggl[ \mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\cdot] \biggr]$$
 
 A subscript of an expectation can be somewhat ambiguous, and mean
@@ -301,7 +305,10 @@ defining where $s^\ast$ and $a^\ast$ come from (the expert distribution
 $\mathcal{D}$). This becomes important because these two variables are
 part of the final term we introduce:
 
-$$\mathrm{log}\pi_\theta(a^\ast\mid s^\ast)$$ $$\downarrow$$
+$$\mathrm{log}\pi_\theta(a^\ast\mid s^\ast)$$
+
+$$\downarrow$$
+
 $$\underset{\theta}{\textrm{argmax}}\biggl[\mathbb{E}_{(s^\ast,a^\ast) \sim \mathcal{D}}[\mathrm{log}\pi_\theta(a^\ast \mid s^\ast)]\biggr]$$
 
 $\pi_\theta$ is the policy, parameterized by $\theta$. What this means

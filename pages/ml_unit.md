@@ -86,7 +86,8 @@ In machine learning, linear regression is one of the most fundamental
 algorithms. It tries to model the relationship between input features
 and the target output by fitting a straight line to the data points. The
 general form of a linear regression model is:
-$$\hat{y} = b + w_1x_1 + w_2x_2 + ... + w_nx_n$$ Where:
+$$\hat{y} = b + w_1x_1 + w_2x_2 + ... + w_nx_n$$
+Where:
 
 - $\hat{y}$ is the predicted output,
 
@@ -232,24 +233,28 @@ $$\textbf{x}_i = \begin{bmatrix}
             x_2\\
             \vdots\\
             x_n\\
-            \end{bmatrix}$$ You can think of each $\textbf{x}_i$ as a
-point in n-dimensional space. We denote this mathematically as
-$\textbf{x}_i \in \mathbb{R}^n$. Using this, we can define $X$ as a
-matrix holding all of our $m$ datapoints: $$X = \begin{bmatrix}
+            \end{bmatrix}$$
+You can think of each $\textbf{x}_i$ as a point in n-dimensional space.
+We denote this mathematically as $\textbf{x}_i \in \mathbb{R}^n$. Using
+this, we can define $X$ as a matrix holding all of our $m$ datapoints:
+$$X = \begin{bmatrix}
             \textbf{x}_1^{\top}\\
             \textbf{x}_2^{\top}\\
             \vdots\\
             \textbf{x}_m^{\top}\\
-            \end{bmatrix}$$ We say that $X \in \mathbb{R}^{m \times n}$.
-Finally, we define $\textbf{y}$ as a vector holding all of our true
-labels $y$ from our training set. $$\textbf{y} = \begin{bmatrix}
+            \end{bmatrix}$$
+We say that $X \in \mathbb{R}^{m \times n}$. Finally, we define
+$\textbf{y}$ as a vector holding all of our true labels $y$ from our
+training set.
+$$\textbf{y} = \begin{bmatrix}
             y_1\\
             y_2\\
             \vdots\\
             y_m\\
-            \end{bmatrix}$$ The amount of $y$ values is the same as the
-amount of $x$ points ($m$). Using these elements, we can actually very
-easily construct a closed-form solution to $\hat{\textbf{w}}$!
+            \end{bmatrix}$$
+The amount of $y$ values is the same as the amount of $x$ points ($m$).
+Using these elements, we can actually very easily construct a
+closed-form solution to $\hat{\textbf{w}}$!
 
 $$\hat{\textbf{w}} = (X^{\top}X)^{-1}X^{\top}\textbf{y}$$
 
@@ -608,7 +613,8 @@ variance**, or in simpler terms, the total distance between the data
 points and the centroid of their assigned cluster. The function to
 minimize is called the **sum of squared errors** (SSE), which measures
 how far the data points are from their respective cluster centroids:
-$$SSE = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2$$ Where:
+$$SSE = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2$$
+Where:
 
 - $x_i$ represents a data point,
 
