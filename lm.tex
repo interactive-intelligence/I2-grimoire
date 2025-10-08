@@ -539,7 +539,7 @@ A simplified recipe for RLVR training looks like this:
     \item \textbf{Roll out reasoning chains}: collect a dataset of problems with known solutions, and have the model generate candidate solutions step by step.  
     \item \textbf{Verify answers}: use automated checkers to determine correctness.  
     \item \textbf{Assign rewards}: correct answers get a positive reward; incorrect ones get little or none.  
-    \item \textbf{Policy update}: use an RL algorithm to adjust the model so that reasoning paths leading to correct answers become more likely.  
+    \item \textbf{Policy update}: use an RL algorithm like Group Relative Policy Optimization (GRPO) to adjust the model so that reasoning paths leading to correct answers become more likely.  
     \item \textbf{Repeat}: over many iterations, the model learns to allocate more compute toward productive reasoning chains.  
 \end{enumerate}
 
