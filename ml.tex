@@ -42,7 +42,7 @@ This train/test split method is fundamental to machine learning as it ensures th
 
     The formula for SSE is:
     \begin{center}
-        \( SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 \)
+        \( \mathrm{SSE} = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 \)
     \end{center}
     
     Where:
@@ -172,8 +172,8 @@ This train/test split method is fundamental to machine learning as it ensures th
     So the L2 norm is the square root of the sum of squared elements from the vector, and the L1 norm is the sum of the absolute value of elements from the vector. These are our regularizers. If we calculate these norms on $\hat{\textbf{w}}$, you can see that the result gets larger if the elements of $\hat{\textbf{w}}$ are large/unbalanced (something we don't want). We want to find a solution that attempts to minimize $||\hat{\textbf{w}}||_2$ or $||\hat{\textbf{w}}||_1$ along with the original SSE objective. We therefore write our two new optimization objectives down:
 
     \begin{align*}
-      Ridge\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
-      LASSO\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
+      \text{Ridge SSE} &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
+      \text{LASSO SSE} &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
     \end{align*}
 
     The $\lambda$ term allows us to control how much regularization we want. A small number makes the mode kind of ``care'' about keeping its weights down. A large value forces the model to keep its weights down at the expense of weights that actually fit the data. Finding the right value for $\lambda$ is a balancing act.
@@ -209,7 +209,7 @@ This train/test split method is fundamental to machine learning as it ensures th
     \item Rewrite the euclidean distance formula $d(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$ using the L2-norm $||\textbf{x}||$ given two vectors $\textbf{x}$ and $\textbf{y}$. Do you notice any relationship between the L2-norm and euclidean distance?
     \item In your own words, what are the differences between Ordinary, Ridge, and LASSO regressions?
     \item \textbf{Bonus:} Solve for $\hat{\textbf{w}}$ in the Ridge regression setting. Here is the equation:
-      \[\underset{w}{argmin} \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2^2.\]
+      \[\argmin_w \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2^2.\]
       Your answer should be the closed form solution for Ridge regression and the proof should be similar to the one given for ordinary linear regression.
 \end{enumerate}
 \end{questionbox}
@@ -291,7 +291,7 @@ This train/test split method is fundamental to machine learning as it ensures th
 \subsection{Minimizing Within-Cluster Distance}
     \large In k-means clustering, the objective is to reduce the \textbf{within-cluster variance}, or in simpler terms, the total distance between the data points and the centroid of their assigned cluster. The function to minimize is called the \textbf{sum of squared errors} (SSE), which measures how far the data points are from their respective cluster centroids:
     \[
-    SSE = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2
+    \mathrm{SSE} = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2
     \]
     Where:
     \begin{itemize}
