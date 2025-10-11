@@ -120,7 +120,7 @@ significantly to the total error).
 The formula for SSE is:
 
 <div markdown="1" class="center">
-$SSE = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$
+$\mathrm{SSE} = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$
 
 </div>
 
@@ -368,8 +368,8 @@ original SSE objective. We therefore write our two new optimization
 objectives down:
 
 $$\begin{align*}
-      Ridge\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
-      LASSO\;SSE &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
+      \text{Ridge SSE} &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
+      \text{LASSO SSE} &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
     
 \end{align*}$$
 
@@ -456,7 +456,7 @@ computational constraints).
 5.  **Bonus:** Solve for $\hat{\textbf{w}}$ in the Ridge regression
     setting. Here is the equation:
 
-    $$\underset{w}{argmin} \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2^2.$$
+    $$\mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda||\hat{\textbf{w}}||_2^2.$$
 
     Your answer should be the closed form solution for Ridge regression
     and the proof should be similar to the one given for ordinary linear
@@ -625,7 +625,7 @@ points and the centroid of their assigned cluster. The function to
 minimize is called the **sum of squared errors** (SSE), which measures
 how far the data points are from their respective cluster centroids:
 
-$$SSE = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2$$
+$$\mathrm{SSE} = \sum_{j=1}^{k} \sum_{x_i \in C_j} \|x_i - \mu_j\|^2$$
 
 Where:
 
