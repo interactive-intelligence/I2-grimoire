@@ -119,10 +119,7 @@ significantly to the total error).
 
 The formula for SSE is:
 
-<div markdown="1" class="center">
-$\mathrm{SSE} = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$
-
-</div>
+$$\mathrm{SSE} = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2$$
 
 Where:
 
@@ -325,7 +322,7 @@ fine for houses in Florida. However, when we go to predict the prices of
 houses in Wyoming, we see that none of them are lakefront properties and
 therefore this feature that the model placed so much importance on has
 become useless. The model "put all its eggs in one basket" and now has
-poor performace on real data despite performing wonderfully on the
+poor performance on real data despite performing wonderfully on the
 training set! We will explore this concept further when talking about
 the **bias-variance tradeoff**, but for now just understand that the
 weights you find with ordinary linear regression tend to not generalize
