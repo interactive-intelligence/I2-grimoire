@@ -456,9 +456,9 @@
 
     The main idea behind Q-Learning is that we want to create a ``Quality Function'' that can evaluate state-action pairs. Given some state and an action in that state, we should get a number that tells us how good things will play out in the future if we were to take this action. In other words, what is the expected return from time $t$ and onward, if we take action $a_t$ in state $s_t$, and then follow policy $\pi_\theta$ from then on out? This function is usually approximated by a neural network. We will note this by parameterizing the Q-function with $\phi$ to represent the weights and biases of the network. We can write this all out as such below:
 
-    $$Q_\phi^\pi(s, a) = \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t = s,\;a_t = a\biggr]$$
+    $$Q_\phi^\pi(s, a) = \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T r(s_{t'}, a_{t'}) | s_t = s,\;a_t = a\biggr]$$
     
-    Note that the state-action pair $(s_t, a_t)$ is given to the equation, but all other state-action pairs come about as a consequence of following policy $\pi_\theta$ afterwards. 
+    Note that the state-action pair $(s_t, a_t)$ is given to the equation, but all other state-action pairs come about as a consequence of following policy $\pi_\theta$ afterwards. Also note that $\gamma^{t}$, the discounting factor, is not included. This is just to simplify the notation. You can consider it ``baked into'' the reward itself.
 
     \begin{figure}[H]
         \centering
@@ -472,12 +472,12 @@
     Now we can expand this intuition and equation into an update rule. With some algebraic manipulation, we find that the Q-function actually has a \textbf{recursive property}.
     
     \begin{align*}
-        Q_\phi^\pi(s_t, a_t) &= \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t, a_t\biggr]\\
-        & = r(s_t, a_t) + \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t+1}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_t) \biggr]\\
+        Q_\phi^\pi(s_t, a_t) &= \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T r(s_{t'}, a_{t'}) | s_t, a_t\biggr]\\
+        & = r(s_t, a_t) + \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t+1}^T r(s_{t'}, a_{t'}) | s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_{t+1}) \biggr]\\
         & = r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})
     \end{align*}
     
-    The ``$ s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_t)$'' part of the equation just shows where $s_{t+1}$ and $a_{t+1}$ come from: transition dynamics and the policy $\pi_\theta$ respectively. 
+    The ``$ s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_{t+1})$'' part of the equation just shows where $s_{t+1}$ and $a_{t+1}$ come from: transition dynamics and the policy $\pi_\theta$ respectively. 
     
     The recursive nature of the Q-function means it can be called a \textbf{Bellman equation}. This being true is a necessary condition for optimal behavior. If we got our hands on a ``perfect'' Q-function like this, where $Q_\phi^\pi(s_t, a_t)$ \textit{is really always equal to} $r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})$, then we call it $Q^\ast$ and can simply query it for the best action in any state. We would be able to act optimally always. However, this is not what we have our hands on. We have a neural network that needs to be trained to have similar behavior to the perfect $Q^\ast$. How can we accomplish this? It seems impossible due to the recursive nature of the equation. However, we can employ a trick here. 
     
@@ -523,7 +523,7 @@
 \begin{enumerate}
     \item What does the Q-function accept, and what does it return? Why would having this be useful for an agent navigating an environment?
     \item A similar function to the Q-function exists, called the \textbf{Value function}. It is written as:
-    $$V^\pi(s) = \mathbb{E}_{\pi_\theta} \biggl[ \sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t = s\biggr]$$
+    $$V^\pi(s) = \mathbb{E}_{\pi_\theta} \biggl[ \sum_{t' = t}^T r(s_{t'}, a_{t'}) | s_t = s\biggr]$$
     Do the following:
     \begin{itemize}
         \item Compare and contrast this function to the Q-function. What purpose do you think it could serve?
