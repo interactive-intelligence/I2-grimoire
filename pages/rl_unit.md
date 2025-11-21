@@ -955,11 +955,13 @@ network. We will note this by parameterizing the Q-function with $\phi$
 to represent the weights and biases of the network. We can write this
 all out as such below:
 
-$$Q_\phi^\pi(s, a) = \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t = s,\;a_t = a\biggr]$$
+$$Q_\phi^\pi(s, a) = \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T r(s_{t'}, a_{t'}) | s_t = s,\;a_t = a\biggr]$$
 
 Note that the state-action pair $(s_t, a_t)$ is given to the equation,
 but all other state-action pairs come about as a consequence of
-following policy $\pi_\theta$ afterwards.
+following policy $\pi_\theta$ afterwards. Also note that $\gamma^{t}$,
+the discounting factor, is not included. This is just to simplify the
+notation. You can consider it "baked into" the reward itself.
 
 <figure id="fig:qlearning" data-latex-placement="H">
 <img src="rl/qlearning.png" style="width:70.0%"
@@ -986,13 +988,13 @@ some algebraic manipulation, we find that the Q-function actually has a
 **recursive property**.
 
 $$\begin{align*}
-        Q_\phi^\pi(s_t, a_t) &= \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t, a_t\biggr]\\
-        & = r(s_t, a_t) + \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t+1}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_t) \biggr]\\
+        Q_\phi^\pi(s_t, a_t) &= \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T r(s_{t'}, a_{t'}) | s_t, a_t\biggr]\\
+        & = r(s_t, a_t) + \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t+1}^T r(s_{t'}, a_{t'}) | s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_{t+1}) \biggr]\\
         & = r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})
     
 \end{align*}$$
 
-The "$s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_t)$"
+The "$s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_{t+1})$"
 part of the equation just shows where $s_{t+1}$ and $a_{t+1}$ come from:
 transition dynamics and the policy $\pi_\theta$ respectively.
 
@@ -1130,7 +1132,7 @@ the agent. Perhaps there is a life lesson in here somewhere?
 2.  A similar function to the Q-function exists, called the **Value
     function**. It is written as:
 
-    $$V^\pi(s) = \mathbb{E}_{\pi_\theta} \biggl[ \sum_{t' = t}^T \gamma^{t'}r(s_{t'}, a_{t'}) | s_t = s\biggr]$$
+    $$V^\pi(s) = \mathbb{E}_{\pi_\theta} \biggl[ \sum_{t' = t}^T r(s_{t'}, a_{t'}) | s_t = s\biggr]$$
 
     Do the following:
 
