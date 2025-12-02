@@ -462,7 +462,6 @@ $$\begin{align*}
         &= \int \frac{p(x)}{q(x)}\mathrm{log}\frac{p(x)}{q(x)}q(x)\;dx\\
         &= \int p(x)\mathrm{log}\frac{p(x)}{q(x)}\;dx\\
         D_{KL}(p(x),q(x)) &= \mathbb{E}_{p(x)} \biggl[\mathrm{log}\frac{p(x)}{q(x)}\biggr]
-    
 \end{align*}$$
 
 We can apply the definition of forward KL divergence to the inner
@@ -526,11 +525,11 @@ A basic DAgger algorithm will look like the following:
     sequence
 
 3.  Have a human label each $s_t \in \tau$ with the optimal action
-    $a^\ast$. Call all these $(s, a)$ pairs $\mathcal{D}_{\pi_\theta}$
+    $a^\ast$. Call all these $(s, a)$ pairs $\mathcal{D}\sb{\pi_\theta}$
 
-4.  Add $\mathcal{D}_{\pi_\theta}$, or the new state action pairs, to
+4.  Add $\mathcal{D}\sb{\pi_\theta}$, or the new state action pairs, to
     $\mathcal{D}$.
-    $\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}_{\pi_\theta}$.
+    $\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}\sb{\pi_\theta}$.
     The datasets have been aggregated!
 
 5.  Repeat until the agent behaves well.
@@ -821,7 +820,6 @@ gradient and move it inside the integral:
 $$\begin{align*}
         \nabla_\theta J(\theta) &= \nabla_\theta\int R(\tau)p_{\theta}(\tau)\;d\tau \\
         \nabla_\theta J(\theta) &= \int \nabla_\theta R(\tau)p_{\theta}(\tau)\;d\tau
-    
 \end{align*}$$
 
 Now what do we do? Here is where something called the "REINFORCE" trick
@@ -834,8 +832,7 @@ $$\begin{align*}
         &= \int \frac{p_{\theta}(\tau)}{p_{\theta}(\tau)}\nabla_\theta p_{\theta}(\tau) R(\tau)\;d\tau \\
         &= \int p_{\theta}(\tau)\frac{1}{p_{\theta}(\tau)}\nabla_\theta p_{\theta}(\tau) R(\tau)\;d\tau \\
         &= \int p_{\theta}(\tau) \nabla_\theta \mathrm{log}(p_\theta(\tau)) R(\tau)\;d\tau \\
-        \nabla_\theta J(\theta) &= \mathbb{E}_{\tau \sim p_\theta(\tau)}[\nabla_\theta \mathrm{log}(p_\theta(\tau)) R(\tau)] 
-    
+        \nabla_\theta J(\theta) &= \mathbb{E}_{\tau \sim p_\theta(\tau)}[\nabla_\theta \mathrm{log}(p_\theta(\tau)) R(\tau)]
 \end{align*}$$
 
 We first multiply by $\frac{p_{\theta}(\tau)}{p_{\theta}(\tau)}$, which
@@ -873,7 +870,6 @@ $$\begin{align*}
         \nabla_\theta \mathrm{log}(p_\theta(\tau)) &= \nabla_\theta \biggl(\mathrm{log}(p(s_0)) + \sum_{t=0}^{T-1} \mathrm{log}(\pi_\theta(a_t|s_t)) + \mathrm{log}(p(s_{t+1}|s_t,a_t))\biggr)\\
         &= \nabla_\theta \mathrm{log}(p(s_0)) + \sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t)) + \nabla_\theta\mathrm{log}(p(s_{t+1}|s_t,a_t)) \\
         &= \sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t))
-    
 \end{align*}$$
 
 When we take the gradient with respect to $\theta$ ($\nabla_\theta$), we
@@ -889,7 +885,6 @@ $$\begin{align*}
         \nabla_\theta J(\theta) &= \mathbb{E}_{\tau \sim p_\theta(\tau)}[\nabla_\theta \mathrm{log}(p_\theta(\tau)) R(\tau)] \\
         &= \mathbb{E}_{\tau \sim p_\theta(\tau)}\biggl[\sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t))R(\tau)\biggr]\\
         &= \mathbb{E}_{\tau \sim p_\theta(\tau)}\biggl[\sum_{t=0}^{T-1} \nabla_\theta\mathrm{log}(\pi_\theta(a_t|s_t))\sum_{t'=0}^T \gamma^{t'} r(s_{t'}, a_{t'})\biggr]
-    
 \end{align*}$$
 
 And now, we create a Monte-Carlo approximation to the expectation by
@@ -991,7 +986,6 @@ $$\begin{align*}
         Q_\phi^\pi(s_t, a_t) &= \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t}^T r(s_{t'}, a_{t'}) | s_t, a_t\biggr]\\
         & = r(s_t, a_t) + \mathbb{E}_{\tau \sim \pi_\theta} \biggl[\sum_{t' = t+1}^T r(s_{t'}, a_{t'}) | s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_{t+1}) \biggr]\\
         & = r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1})
-    
 \end{align*}$$
 
 The "$s_{t+1} \sim p(\cdot|s_t,a_t),\;a_{t+1} \sim \pi_\theta(s_{t+1})$"
@@ -1027,7 +1021,6 @@ the agent to navigate the environment while maximizing returns.
 $$\begin{align*}
         & \underset{\phi}{\mathrm{argmin}}\;\mathbb{E}_{\tau \sim \pi}[\delta]\\
         & \underset{\phi}{\mathrm{argmin}}\;\mathbb{E}_{\tau \sim \pi}\biggl[\biggl(Q_\phi^\pi(s_t, a_t) - (r(s_t, a_t) + Q_\phi^\pi(s_{t+1}, a_{t+1}))\biggr)^2\biggr]
-    
 \end{align*}$$
 
 This is naturally off-policy, as the policy that $\tau$ comes from and

@@ -289,7 +289,6 @@ $$\begin{align*}
         (X^{\top}X)\hat{\textbf{w}} &= X^{\top}\textbf{y} && \text{\parbox{0.5\textwidth}{Convert from vector summation form to matrix form}}\\\\
         (X^{\top}X)^{-1}(X^{\top}X)\hat{\textbf{w}} &= (X^{\top}X)^{-1}X^{\top}\textbf{y} && \text{Left multiply by $(X^{\top}X)^{-1}$}\\
         \hat{\textbf{w}} &= (X^{\top}X)^{-1}X^{\top}\textbf{y} && \text{Cancel}\\
-    
 \end{align*}$$
 
 This is pretty amazing. If you were to create just $X$ and $\textbf{y}$
@@ -351,7 +350,6 @@ functions that map from vector space to scalar space
 $$\begin{align*}
       \|\textbf{x}\|_2 &= \sqrt{\sum_{i=1}^n x_i^2} \\
       \|\textbf{x}\|_1 &= \sum_{i=1}^n \vert x_i \vert
-    
 \end{align*}$$
 
 So the L2 norm is the square root of the sum of squared elements from
@@ -367,7 +365,6 @@ objectives down:
 $$\begin{align*}
       \text{Ridge SSE} &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_2 \\
       \text{LASSO SSE} &= \sum_{i=1}^{m} (y_i - \hat{y}_i)^2 + \lambda\|\hat{\textbf{w}}\|_1
-    
 \end{align*}$$
 
 The $\lambda$ term allows us to control how much regularization we want.
