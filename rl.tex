@@ -253,8 +253,8 @@
     \begin{enumerate}
         \item Train $\pi_\theta$ (initial policy) on examples from $\mathcal{D}$, the dataset of examples from the expert
         \item Run the policy $\pi_\theta$ and record the trajectory $\tau = (s_0, a_0, s_1, a_1...)$ or the actions it takes in a sequence
-        \item Have a human label each $s_t \in \tau$ with the optimal action $a^\ast$. Call all these $(s, a)$ pairs $\mathcal{D}_{\pi_\theta}$
-        \item Add $\mathcal{D}_{\pi_\theta}$, or the new state action pairs, to $\mathcal{D}$. $\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}_{\pi_\theta}$. The datasets have been aggregated!
+        \item Have a human label each $s_t \in \tau$ with the optimal action $a^\ast$. Call all these $(s, a)$ pairs $\mathcal{D}\sb{\pi_\theta}$
+        \item Add $\mathcal{D}\sb{\pi_\theta}$, or the new state action pairs, to $\mathcal{D}$. $\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}\sb{\pi_\theta}$. The datasets have been aggregated!
         \item Repeat until the agent behaves well.
     \end{enumerate}
 
