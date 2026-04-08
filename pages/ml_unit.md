@@ -273,18 +273,16 @@ Machine Learning by
 StatQuest](https://www.youtube.com/watch?v=tIkzL4jlt8g).
 
 $$\begin{align*}
-        \hat{\textbf{w}} &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - \hat{y}_i)^2 && \text{Find $\textbf{w}$ that minimizes the SSE. This is $\hat{\textbf{w}}$.}\\
-        &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w} + b))^2 && \text{Plug in $\hat{y}_i = \textbf{x}_i^{\top}\textbf{w} + b$.}\\
-        &= \mathop{\mathrm{argmin}}_w \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w}))^2 && \text{\parbox{0.5\textwidth}{Disregard $b$, since an intercept can be represented by appending a 1 to $\textbf{x}$.}}\\
+      \hat{\textbf{w}} &= \mathop{\mathrm{argmin}}_{\mathbf{w}} \sum_{i=1}^n (y_i - \hat{y}_i)^2 && \text{Find $\textbf{w}$ that minimizes the SSE. This is $\hat{\textbf{w}}$.}\\
+                       &= \mathop{\mathrm{argmin}}_\mathbf{w} \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w} + b))^2 && \text{Plug in $\hat{y}_i = \textbf{x}_i^{\top}\textbf{w} + b$.}\\
+                       &= \mathop{\mathrm{argmin}}_\mathbf{w} \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\textbf{w}))^2 && \text{\parbox{0.5\textwidth}{Disregard $b$, since an intercept can be represented by appending a 1 to $\textbf{x}$.}}\\
         0 &= \frac{\partial}{\partial w} \sum_{i=1}^n (y_i - (\textbf{x}_i^{\top}\hat{\textbf{w}}))^2 && \text{\parbox{0.5\textwidth}{Find $\hat{\textbf{w}}$ by taking the partial derivative of the argmin term and setting it equal to 0.}}\\
-        &= \sum_{i=1}^n \frac{\partial}{\partial w} (y_i - (\textbf{x}_i^{\top}\hat{\textbf{w}}))^2 && \text{Property of derivatives.}\\
-        &= \sum_{i=1}^n 2(y_i - \textbf{x}_i^{\top}\hat{\textbf{w}})(-\textbf{x}_i) && \text{Derive.}\\
-        &= \sum_{i=1}^n (y_i - \textbf{x}_i^{\top}\hat{\textbf{w}})(
-        \textbf{x}_i) && \text{Divide by -2}\\
-        &= \sum_{i=1}^n (
-        \textbf{x}_i)(y_i - \textbf{x}_i^{\top}\hat{\textbf{w}}) && \text{The term $y_i - \textbf{x}_i^{\top}\hat{\textbf{w}}$ is a scalar. $c\textbf{x} = \textbf{x}c$}\\
-        &= \sum_{i=1}^n (\textbf{x}_iy_i - \textbf{x}_i\textbf{x}_i^{\top}\hat{\textbf{w}}) && \text{Distribute}\\
-        &= \sum_{i=1}^n \textbf{x}_iy_i - \sum_{i=1}^n \textbf{x}_i\textbf{x}_i^{\top}\hat{\textbf{w}} && \text{Distribute}\\
+          &= \sum_{i=1}^n \frac{\partial}{\partial w} (y_i - (\textbf{x}_i^{\top}\hat{\textbf{w}}))^2 && \text{Property of derivatives.}\\
+          &= \sum_{i=1}^n 2(y_i - \textbf{x}_i^{\top}\hat{\textbf{w}})(-\textbf{x}_i) && \text{Derive.}\\
+          &= \sum_{i=1}^n (y_i - \textbf{x}_i^{\top}\hat{\textbf{w}})(\textbf{x}_i) && \text{Divide by -2}\\
+          &= \sum_{i=1}^n (\textbf{x}_i)(y_i - \textbf{x}_i^{\top}\hat{\textbf{w}}) && \text{The term $y_i - \textbf{x}_i^{\top}\hat{\textbf{w}}$ is a scalar. $c\textbf{x} = \textbf{x}c$}\\
+          &= \sum_{i=1}^n (\textbf{x}_iy_i - \textbf{x}_i\textbf{x}_i^{\top}\hat{\textbf{w}}) && \text{Distribute}\\
+          &= \sum_{i=1}^n \textbf{x}_iy_i - \sum_{i=1}^n \textbf{x}_i\textbf{x}_i^{\top}\hat{\textbf{w}} && \text{Distribute}\\
         (\sum_{i=1}^n \textbf{x}_i\textbf{x}_i^{\top})\hat{\textbf{w}} &= \sum_{i=1}^n \textbf{x}_iy_i && \text{Move second term to LHS.}\\
         (X^{\top}X)\hat{\textbf{w}} &= X^{\top}\textbf{y} && \text{\parbox{0.5\textwidth}{Convert from vector summation form to matrix form}}\\\\
         (X^{\top}X)^{-1}(X^{\top}X)\hat{\textbf{w}} &= (X^{\top}X)^{-1}X^{\top}\textbf{y} && \text{Left multiply by $(X^{\top}X)^{-1}$}\\
