@@ -335,7 +335,7 @@
 
     $$\sum_{t'=0}^T \gamma^{t'} r(s_{t'}^i, a_{t'}^i)$$
 
-    Notice that $t'$ will sum from 0 to $T$, regardless of what value $t$ is at in the middle summation. What this means is that, even when we are calculating gradients for $\mathrm{log}\pi_\theta(a_10|s_10)$, we are scaling them by rewards gained from timesteps 0 to 9. This is nonsensical, because actions at time $t=10$ cannot affect the past! As such, we make a slight adjustment to the formula for the PG gradient:
+    Notice that $t'$ will sum from 0 to $T$, regardless of what value $t$ is at in the middle summation. What this means is that, even when we are calculating gradients for $\log\pi_\theta(a_{10}|s_{10})$, we are scaling them by rewards gained from timesteps 0 to 9. This is nonsensical, because actions at time $t=10$ cannot affect the past! As such, we make a slight adjustment to the formula for the PG gradient:
 
     $$\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=0}^N\sum_{t=0}^T\biggl[ \nabla_\theta \mathrm{log}\pi_\theta(a_t^i|s_t^i)\sum_{t'=t}^T \gamma^{t'} r(s_{t'}^i, a_{t'}^i)\biggr]$$
 
